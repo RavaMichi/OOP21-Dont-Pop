@@ -15,6 +15,16 @@ public abstract class AbstractGameObject {
 		PLAYER,												//player
 		BULLET,LASER,THORNBALL,EXPLOSION,					//enemies
 		PWRUP_SHIELD,PWRUP_MULTIPLIER,PWRUP_SWEEPER;		//power ups
+		
+		public boolean isPlayer() {
+			return this == PLAYER;
+		}
+		public boolean isEnemy() {
+			return this == BULLET || this == LASER || this == THORNBALL || this == EXPLOSION;
+		}
+		public boolean isPowerUp() {
+			return this == PWRUP_SHIELD || this == PWRUP_MULTIPLIER || this == PWRUP_SWEEPER;
+		}
 	}
 	
 	private Point2D position;
