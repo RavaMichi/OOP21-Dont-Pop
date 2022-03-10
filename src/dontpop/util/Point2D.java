@@ -47,4 +47,9 @@ public class Point2D {
 		this.x /= scalar;
 		this.y /= scalar;
 	}
+	
+	@Override
+	public String toString() {
+		return "("+this.x+", "+this.y+")";
+	}
 }
