@@ -10,6 +10,18 @@ public class Point2D {
 		return new Point2D(point.getX(), point.getY());
 	}
 	
+	public static Point2D oppositeOf(final Point2D point) {
+		var p = Point2D.copyOf(point);
+		p.mul(-1);
+		return p;
+	}
+	
+	public static Point2D normalized(final Point2D point) {
+		var p = Point2D.copyOf(point);
+		p.normalize();
+		return p;
+	}
+	
 	private double x;
 	private double y;
 	
