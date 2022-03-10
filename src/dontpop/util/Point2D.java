@@ -1,9 +1,15 @@
 package dontpop.util;
 
-import progettoOOP.util.Point2D;
-
 public class Point2D {
 
+	public static Point2D of(final double x, final double y) {
+		return new Point2D(x,y);
+	}
+	
+	public static Point2D copyOf(final Point2D point) {
+		return new Point2D(point.getX(), point.getY());
+	}
+	
 	private double x;
 	private double y;
 	
