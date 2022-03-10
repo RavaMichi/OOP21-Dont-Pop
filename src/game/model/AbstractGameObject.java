@@ -10,6 +10,8 @@ public abstract class AbstractGameObject {
 		this.position = position;
 	}
 	
+	abstract void update();
+	
 	public Point2D getPosition() {
 		return this.position;
 	}
