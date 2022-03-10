@@ -1,4 +1,4 @@
-package dontpop.util;
+package game.util;
 /**
  * Represents a point or vector in a 2-dimensional space
  */
