@@ -20,6 +20,10 @@ public class Point2D {
 		return this.y;
 	}
 	
+	public double getMagnitude() {
+		return Math.sqrt(this.x*this.x + this.y*this.y);
+	}
+	
 	public void setX(double x) {
 		this.x = x;
 	}
@@ -46,6 +50,10 @@ public class Point2D {
 	public void div(final double scalar) {
 		this.x /= scalar;
 		this.y /= scalar;
+	}
+	
+	public void normalize() {
+		this.div(this.getMagnitude());
 	}
 	
 	@Override
