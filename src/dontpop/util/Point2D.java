@@ -22,6 +22,12 @@ public class Point2D {
 		return p;
 	}
 	
+	public static double distance(final Point2D pointA, final Point2D pointB) {
+		double x = pointB.getX() - pointA.getX();
+		double y = pointB.getY() - pointA.getY();
+		return Math.sqrt(x*x + y*y);
+	}
+	
 	private double x;
 	private double y;
 	
