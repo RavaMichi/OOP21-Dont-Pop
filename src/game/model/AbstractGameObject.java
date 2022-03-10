@@ -8,14 +8,24 @@ import game.util.Point2D;
  *
  */
 public abstract class AbstractGameObject {
+	/**
+	 *	Represents the type of the game object
+	 */
+	public enum ObjectType {
+		PLAYER,												//player
+		BULLET,LASER,THORNBALL,EXPLOSION,					//enemies
+		PWRUP_SHIELD,PWRUP_MULTIPLIER,PWRUP_SWEEPER;		//power ups
+	}
 	
 	private Point2D position;
+	final private ObjectType type;
 	/**
 	 * @param position
 	 * Creates a new game object in position
 	 */
-	public AbstractGameObject(Point2D position) {
+	public AbstractGameObject(Point2D position, final ObjectType type) {
 		this.position = position;
+		this.type = type;
 	}
 	/**
 	 * This method is called by the Game Engine every frame to update the state
