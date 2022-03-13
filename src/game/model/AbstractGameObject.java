@@ -29,6 +29,7 @@ public abstract class AbstractGameObject {
 	
 	private Point2D position;
 	final private ObjectType type;
+	private Collider collider = null;
 	/**
 	 * @param position
 	 * Creates a new game object in position
@@ -55,5 +56,18 @@ public abstract class AbstractGameObject {
 	 */
 	public void setPosition(Point2D newPosition) {
 		this.position = newPosition;
+	}
+	/**
+	 * @param coll
+	 * Set the collider of this game object
+	 */
+	public void setCollider(Collider coll) {
+		this.collider = coll;
+	}
+	/**
+	 * @return the collider of this game object
+	 */
+	public Collider getCollider() {
+		return this.collider;
 	}
 }
