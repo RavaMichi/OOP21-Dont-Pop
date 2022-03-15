@@ -70,4 +70,10 @@ public abstract class AbstractGameObject {
 	public Collider getCollider() {
 		return this.collider;
 	}
+	/**
+	 * @return the type of this game object
+	 */
+	public ObjectType getType() {
+		return this.type;
+	}
 }
