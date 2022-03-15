@@ -1,5 +1,7 @@
 package game.controller;
 
+import java.util.List;
+
 import game.model.AbstractGameObject;
 
 /* 
@@ -8,11 +10,31 @@ import game.model.AbstractGameObject;
 
 public class GameEngine {
 	
+	private Player player;
+	private List<AbstractGameObject> enemies;
+	private List<AbstractGameObject> pwr;
+	private ScoreManager score;
+	
+	public void startGameLoop() {
+		
+	}
+	
 	public void instantiate(AbstractGameObject obj) {
 		
 	}
 	
 	public void destroy(AbstractGameObject obj) {
 		
+	}
+	
+	public void applyPwrUp(AbstractGameObject pwrup) {
+		
+	}
+	
+	//? maybe int is not the right return type
+	public int getTime() {
+		
+		//! temporary return type
+		return 0;
 	}
 }
