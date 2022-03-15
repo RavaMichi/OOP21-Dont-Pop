@@ -15,6 +15,8 @@ public class GameEngine {
 	private List<AbstractGameObject> pwr;
 	private ScoreManager score;
 	
+	private final double TIME_CONST_60_HZ = (1/60);
+	
 	public void startGameLoop() {
 		
 	}
