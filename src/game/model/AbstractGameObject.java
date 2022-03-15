@@ -1,5 +1,6 @@
 package game.model;
 
+import game.controller.GameEngine;
 import game.util.Point2D;
 /**
  * 
@@ -28,15 +29,17 @@ public abstract class AbstractGameObject {
 	}
 	
 	private Point2D position;
-	final private ObjectType type;
+	private final ObjectType type;
 	private Collider collider = null;
+	private final GameEngine ge; 
 	/**
 	 * @param position
 	 * Creates a new game object in position
 	 */
-	public AbstractGameObject(Point2D position, final ObjectType type) {
+	public AbstractGameObject(Point2D position, final ObjectType type, final GameEngine ge) {
 		this.position = position;
 		this.type = type;
+		this.ge = ge;
 	}
 	/**
 	 * This method is called by the Game Engine every frame to update the state
@@ -75,5 +78,12 @@ public abstract class AbstractGameObject {
 	 */
 	public ObjectType getType() {
 		return this.type;
+	}
+	/**
+	 * Removes this game object from the game scene.
+	 * It is managed by the GameEngine class
+	 */
+	public void destroy() {
+		this.ge.destroy(this);
 	}
 }
