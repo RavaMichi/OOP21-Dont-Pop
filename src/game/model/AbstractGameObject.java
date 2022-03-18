@@ -1,6 +1,7 @@
 package game.model;
 
 import game.controller.GameEngine;
+import game.graphics.Renderer;
 import game.util.Point2D;
 /**
  * 
@@ -31,6 +32,7 @@ public abstract class AbstractGameObject {
 	private Point2D position;
 	private final ObjectType type;
 	private Collider collider = null;
+	private Renderer renderer = null;
 	private final GameEngine ge; 
 	/**
 	 * @param position
@@ -72,6 +74,19 @@ public abstract class AbstractGameObject {
 	 */
 	public Collider getCollider() {
 		return this.collider;
+	}
+	/**
+	 * @param rend
+	 * Set the renderer of this game object
+	 */
+	public void setRenderer(Renderer rend) {
+		this.renderer = rend;
+	}
+	/**
+	 * @return the renderer of this game object
+	 */
+	public Renderer getRenderer() {
+		return this.renderer;
 	}
 	/**
 	 * @return the type of this game object
