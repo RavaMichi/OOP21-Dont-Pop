@@ -23,17 +23,18 @@ public class ImageRenderer implements Renderer {
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final String imgPath, double size, double rotation) {
 		this.obj = obj;
-		this.imgPath = imgPath;
-		this.img = new Image(imgPath);
-		this.size = size;
 		this.rotate(rotation);
+		this.size = size;
 	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
         gc.drawImage(img, size, size);
 	}
-	
+	/**
+	 * @param degrees
+	 * Rotates this image by degrees angle
+	 */
 	public void rotate(final double degrees) {
 		ImageView iv = new ImageView(new Image(imgPath));
 		iv.setRotate(degrees);
