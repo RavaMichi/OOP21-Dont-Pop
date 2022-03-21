@@ -12,11 +12,13 @@ public class ImageRenderer implements Renderer {
 	/**
 	 * @param imgPath
 	 * @param size
-	 * Creates a new Renderer with image of imgPath and in-game width of size
+	 * @param rotation in degrees
+	 * Creates a new Renderer with image of imgPath and in-game width of size rotated by rotation angle
 	 */
-	public ImageRenderer(final String imgPath, double size) {
+	public ImageRenderer(final String imgPath, double size, double rotation) {
 		this.img = new Image(imgPath, false);
 		this.size = size;
+		this.rotate(rotation);
 	}
 	
 	@Override
@@ -24,7 +26,7 @@ public class ImageRenderer implements Renderer {
 		// TODO Auto-generated method stub
 	}
 	
-	public void rotate() {
+	public void rotate(final double degrees) {
 		
 	}
 }
