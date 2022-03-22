@@ -1,4 +1,4 @@
-package game.graphics;
+package game.model;
 
 /**
  * ScoreManager calculates the current score.
