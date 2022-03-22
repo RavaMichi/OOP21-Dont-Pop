@@ -16,6 +16,6 @@ public interface Renderer {
 	 * Converts the world position to screen position
 	 */
 	default int worldToPixel(double worldPosition) {
-		return 0;
+		return 0;//todo
 	}
 }
