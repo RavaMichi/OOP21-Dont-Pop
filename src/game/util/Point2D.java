@@ -13,8 +13,8 @@ public final class Point2D {
          * Creates a new point of coordinates (x, y)
          */
         public Point2D(final double x, final double y) {
-            this.x = x;
-            this.y = y;
+                this.x = x;
+                this.y = y;
         }
 
         /**
@@ -23,9 +23,9 @@ public final class Point2D {
          * @return a new point of coordinates (x, y)
          */
         public static Point2D of(final double x, final double y) {
-            return new Point2D(x, y);
+                return new Point2D(x, y);
         }
-	
+
 	/**
 	 * @param point to copy
 	 * @return a new Point2D equal to point
