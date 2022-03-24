@@ -29,6 +29,7 @@ public class LineRenderer implements Renderer {
 	@Override
 	public void paint(GraphicsContext gc) {
 		gc.setLineWidth(this.width);
+		gc.setStroke(color);
 		gc.strokeLine(this.worldToPixel(p1.getX()), this.worldToPixel(p1.getY()), this.worldToPixel(p2.getX()), this.worldToPixel(p2.getY()));
 	}
     /**
