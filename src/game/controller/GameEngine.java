@@ -182,6 +182,15 @@ public class GameEngine extends Thread {
     }
 
     /**
+     * Runs game keeping threads in mind.
+     * Without it, Front-End and Back-End would run in the same thread, with an awful outcome.
+     */
+    public void run() {
+        this.startGameLoop();
+    }
+
+
+    /**
      * Creates a game object.
      * @param obj
      */
