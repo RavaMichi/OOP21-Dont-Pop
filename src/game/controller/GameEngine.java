@@ -70,12 +70,27 @@ public class GameEngine extends Thread {
             this.score += delta;
         }
 
+        /**
+         * Gets current value of multiplier.
+         * @return multiplier
+         */
         public int getMultiplier() {
             return this.multiplier;
         }
 
+        /**
+         * Sets multiplier to any value.
+         * @param multiplier
+         */
         public void setMultiplier(final int multiplier) {
             this.multiplier = multiplier;
+        }
+
+        /**
+         * Resets multiplier back to 1.
+         */
+        public void resetMultiplier() {
+            this.multiplier = 1;
         }
     }
 
