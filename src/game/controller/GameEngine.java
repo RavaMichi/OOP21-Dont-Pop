@@ -3,7 +3,9 @@ package game.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+//consider breaking it down into more specific classes instead of bulk importing them
 import game.model.*;
+import game.util.Point2D;
 
 
 /** 
@@ -11,24 +13,25 @@ import game.model.*;
 */
 public class GameEngine {
 
-    private Player player;
-    private List<AbstractGameObject> enemies;
-    private List<AbstractGameObject> pwr;
-//    private ScoreManager score;
-    private static final int INITIAL_SIZE = 50;
-    private boolean hasShield = false;
-    private boolean hasMultiplier = false;
-    private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
-
-    private SpawnManager spawnmanager;
-
-    private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
-//    private static final long START_TIME = 0;
-
     /**
      * Game time, starting from 0.
      */
     private double time;
+    private Player player;
+    private List<AbstractGameObject> enemies;
+    private List<AbstractGameObject> pwr;
+    private ScoreManager score;
+    private SpawnManager spawnmanager;
+
+    private static final int INITIAL_SIZE = 50;
+    private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
+    private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
+
+    private boolean hasShield = false;
+    private boolean hasMultiplier = false;
+    private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
+
+//    private static final long START_TIME = 0;
 
     /**
      * Creates a new GameEngine object and initializes its fields.
@@ -58,20 +61,46 @@ public class GameEngine {
      * Starts the game loop (aka the engine).
      */
     public void startGameLoop() {
+        boolean gameOver = false;
         while (true) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
             //updates game time
             this.incTime();
-            
+
             //advance spawnManager
+            this.spawnmanager.advance();
             //update all AbstractGameObjects (for each --- update)
+            this.player.update();
+            for (AbstractGameObject enemy: this.enemies) {
+                enemy.update();
+            }
+            for (AbstractGameObject powerup: this.pwr) {
+                powerup.update();
+            }
             //collision control (Controllo collisioni separate)
                 //1. ENEMIES -- if true, game over (prints score and gets back to menu)
+            for (AbstractGameObject enemy: this.enemies) {
+                if (enemy.getCollider().checkCollision(this.player)) {
+                    gameOver = true;
+                    break;
+                }
+            }
+
+            //game over: breaking loop
+            if (gameOver) {
+                //TODO: print score
+                //TODO: go back to menu
+                //maybe you should put some thought into this break
+                break;
+            }
                 //2. POWERUPS -- if true, look out object type (enum) and apply effect
             //display collisions: for each --- render
-            
+            for (AbstractGameObject powerup: this.pwr) {
+                //TODO: check object type and apply effect
+                //TODO: display collisions (for each - render)
+            }
 
             final long endTime = System.currentTimeMillis();
 
@@ -111,14 +140,14 @@ public class GameEngine {
      * @param pwrup
      */
     public void applyPwrUp(final AbstractGameObject pwrup) {
-        switch(pwrup.getType()) {
+        switch (pwrup.getType()) {
             case PWRUP_SHIELD:
                 this.hasShield = true;
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
                 //five seconds of multiplier
-                this.multiplierTime = 5;
+                this.multiplierTime = MULTIPLIER_TIME;
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();
@@ -134,11 +163,17 @@ public class GameEngine {
     public double getTime() {
         return this.time;
     }
-    
+
+    /**
+     * @return object player
+     */
     public Player getPlayer() {
         return this.player;
     }
-    
+
+    /**
+     * @return player position
+     */
     public Point2D getPlayerPosition() {
         return this.player.getPosition();
     }
