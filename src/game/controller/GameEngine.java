@@ -31,6 +31,14 @@ public class GameEngine extends Thread {
     private boolean hasMultiplier = false;
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
+    /**
+     * Manages final score, that will be displayed both during gameplay and after gameover.
+     * Differs from ScoreManager, which manages GUI-related aspects of score displaying
+     */
+    private class ScoreManagement {
+        
+    }
+
 //    private static final long START_TIME = 0;
 
     /**
@@ -47,9 +55,12 @@ public class GameEngine extends Thread {
     private void incTime() {
         final double deltaTime = ((double) TIME_CONST_60_HZ_MS) / 1000;
         this.time += deltaTime;
+
         if (this.multiplierTime > 0) {
+            //decrements multiplier time, so as to make it come to an end
             this.multiplierTime -= deltaTime; 
         } else {
+            //multiplier powerup has expired: reverting settings back to normal
             if (this.hasMultiplier) {
                 this.hasMultiplier = false;
                 //TODO: add score multiplier manager
