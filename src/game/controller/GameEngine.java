@@ -10,7 +10,7 @@ import game.model.AbstractGameObject;
 */
 public class GameEngine {
 
-//    private Player player;
+    private Player player;
     private List<AbstractGameObject> enemies;
     private List<AbstractGameObject> pwr;
 //    private ScoreManager score;
@@ -98,6 +98,14 @@ public class GameEngine {
      */
     public double getTime() {
         return this.time;
+    }
+    
+    public Player getPlayer() {
+        return this.player;
+    }
+    
+    public Point2D getPlayerPosition() {
+        return this.player.getPosition();
     }
 
 //    public static void main(String args[]) {
