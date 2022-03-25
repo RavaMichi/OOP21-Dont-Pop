@@ -20,7 +20,7 @@ public class GameEngine extends Thread {
     private Player player;
     private List<AbstractGameObject> enemies;
     private List<AbstractGameObject> pwr;
-    private ScoreManager score;
+    private ScoreManager scoreManager;
     private SpawnManager spawnmanager;
 
     private static final int INITIAL_SIZE = 50;
