@@ -63,7 +63,7 @@ public abstract class AbstractGameObject {
      * This method is called by the Game Engine every frame to update the state of
      * this game object. Must be implemented in subclasses.
      */
-    abstract void update();
+    public abstract void update();
 
     /**
      * @return the Point2D object representing the spatial coordinates of this game
