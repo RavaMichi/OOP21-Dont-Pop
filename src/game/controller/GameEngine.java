@@ -11,8 +11,8 @@ import game.util.Point2D;
 /** 
  * GameEngine is the class that makes the game work.
 */
-public class GameEngine {
-
+public class GameEngine extends Thread {
+//or, extends Runnable - then call it from a thread
     /**
      * Game time, starting from 0.
      */
