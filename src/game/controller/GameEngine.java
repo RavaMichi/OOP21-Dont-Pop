@@ -36,7 +36,30 @@ public class GameEngine extends Thread {
      * Differs from ScoreManager, which manages GUI-related aspects of score displaying
      */
     private class ScoreManagement {
-        
+        private int score;
+
+        /**
+         * Gets current score.
+         * @return current score
+         */
+        public int getScore() {
+            return this.score;
+        }
+
+        /**
+         * Increments score by 1.
+         */
+        public void incScore() {
+            this.score++;
+        }
+
+        /**
+         * Increments score by <delta>.
+         * @param delta
+         */
+        public void incScore(final int delta) {
+            this.score += delta;
+        }
     }
 
 //    private static final long START_TIME = 0;
