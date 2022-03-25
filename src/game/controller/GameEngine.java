@@ -106,7 +106,11 @@ public class GameEngine extends Thread {
 
             try {
                 Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
-            } catch (Exception e) { }
+            } catch (IllegalArgumentException e1) { 
+                e1.printStackTrace();
+            } catch (InterruptedException e2) {
+                e2.printStackTrace();
+            }
         }
     }
 
