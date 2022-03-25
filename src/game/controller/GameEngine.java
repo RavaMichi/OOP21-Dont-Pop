@@ -22,6 +22,7 @@ public class GameEngine extends Thread {
     private List<AbstractGameObject> pwr;
     private ScoreManager scoreManager;
     private SpawnManager spawnmanager;
+    private ScoreCalc scoreCalc;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -35,8 +36,16 @@ public class GameEngine extends Thread {
      * Manages final score, that will be displayed both during gameplay and after gameover.
      * Differs from ScoreManager, which manages GUI-related aspects of score displaying
      */
-    private class ScoreManagement {
+    private class ScoreCalc {
         private int score;
+        private int multiplier;
+
+        /**
+         * Creates class and sets multiplier to 1 by default.
+         */
+        ScoreCalc() {
+            this.multiplier = 1;
+        }
 
         /**
          * Gets current score.
@@ -60,6 +69,14 @@ public class GameEngine extends Thread {
         public void incScore(final int delta) {
             this.score += delta;
         }
+
+        public int getMultiplier() {
+            return this.multiplier;
+        }
+
+        public void setMultiplier(final int multiplier) {
+            this.multiplier = multiplier;
+        }
     }
 
 //    private static final long START_TIME = 0;
@@ -70,6 +87,7 @@ public class GameEngine extends Thread {
     public GameEngine() {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
+        this.scoreCalc = new ScoreCalc();
     }
 
     /**
