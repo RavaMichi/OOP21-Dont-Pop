@@ -14,7 +14,7 @@ public class GameEngine extends Thread {
     /**
      * Game time, starting from 0.
      */
-    private double time;
+    private double gameTime;
     private Player player;
     private List<AbstractGameObject> enemies;
     private List<AbstractGameObject> pwr;
@@ -29,6 +29,8 @@ public class GameEngine extends Thread {
     private boolean hasShield = false;
     private boolean hasMultiplier = false;
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
+
+    private long deltaTime;
 
     /**
      * Manages final score, that will be displayed both during gameplay and after gameover.
@@ -108,7 +110,7 @@ public class GameEngine extends Thread {
      */
     private void incTime() {
         final double deltaTime = ((double) TIME_CONST_60_HZ_MS) / 1000;
-        this.time += deltaTime;
+        this.gameTime += deltaTime;
 
         if (this.multiplierTime > 0) {
             //decrements multiplier time, so as to make it come to an end
@@ -176,6 +178,11 @@ public class GameEngine extends Thread {
             } catch (InterruptedException e2) {
                 e2.printStackTrace();
             }
+
+            //end of frame
+            final long endFrame = System.currentTimeMillis();
+
+            this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
         }
     }
 
@@ -189,11 +196,20 @@ public class GameEngine extends Thread {
 
     /**
      * Calculates the time that passes between two frames, given that frames will not always be computed in the same time.
+     * @param startFrame frame time
+     * @param endFrame frame time
      * @return time difference between two frames
      */
-    public double deltaTime() {
-        //clearly a temporary comment
-        return 0;
+    public long deltaTime(final long startFrame, final long endFrame) {
+        return endFrame - startFrame;
+    }
+
+    /**
+     * Gets time difference between start and end of a frame (aka the frame duration).
+     * @return deltaTime
+     */
+    public long getDeltaTime() {
+        return this.deltaTime;
     }
 
     /**
@@ -247,7 +263,7 @@ public class GameEngine extends Thread {
      * @return time in seconds
      */
     public double getTime() {
-        return this.time;
+        return this.gameTime;
     }
 
     /**
