@@ -1,10 +1,8 @@
-package game.controller;
+package game.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//consider breaking it down into more specific classes instead of bulk importing them
-import game.model.*;
 import game.util.Point2D;
 
 
@@ -94,7 +92,7 @@ public class GameEngine extends Thread {
         }
     }
 
-//    private static final long START_TIME = 0;
+////    private static final long START_TIME = 0;
 
     /**
      * Creates a new GameEngine object and initializes its fields.
@@ -189,6 +187,14 @@ public class GameEngine extends Thread {
         this.startGameLoop();
     }
 
+    /**
+     * Calculates the time that passes between two frames, given that frames will not always be computed in the same time.
+     * @return time difference between two frames
+     */
+    public double deltaTime() {
+        //clearly a temporary comment
+        return 0;
+    }
 
     /**
      * Creates a game object.
