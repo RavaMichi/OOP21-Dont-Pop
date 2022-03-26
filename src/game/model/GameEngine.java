@@ -2,9 +2,7 @@ package game.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import game.util.Point2D;
-
 
 /** 
  * GameEngine is the class that makes the game work.
@@ -30,6 +28,7 @@ public class GameEngine extends Thread {
     private boolean hasMultiplier = false;
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
+    //Duration of a frame
     private long deltaTime;
 
     /**
@@ -93,8 +92,6 @@ public class GameEngine extends Thread {
             this.multiplier = 1;
         }
     }
-
-////    private static final long START_TIME = 0;
 
     /**
      * Creates a new GameEngine object and initializes its fields.
@@ -279,9 +276,4 @@ public class GameEngine extends Thread {
     public Point2D getPlayerPosition() {
         return this.player.getPosition();
     }
-
-//    public static void main(String args[]) {
-//        System.out.println("" + START_TIME);
-//        System.out.println("" + this.getTime());
-//    }
 }
