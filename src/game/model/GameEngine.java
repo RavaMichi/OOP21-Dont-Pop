@@ -7,7 +7,7 @@ import game.util.Point2D;
 /** 
  * GameEngine is the class that makes the game work.
 */
-public class GameEngine extends Thread {
+public class GameEngine {
 //or, extends Runnable - then call it from a thread
     /**
      * Game time, starting from 0.
@@ -181,14 +181,6 @@ public class GameEngine extends Thread {
 
             this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
         }
-    }
-
-    /**
-     * Runs game keeping threads in mind.
-     * Without it, Front-End and Back-End would run in the same thread, with an awful outcome.
-     */
-    public void run() {
-        this.startGameLoop();
     }
 
     /**
