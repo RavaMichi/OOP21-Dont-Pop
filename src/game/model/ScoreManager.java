@@ -1,5 +1,7 @@
 package game.model;
 
+import game.graphics.ScoreScene;
+
 /**
  * ScoreManager calculates the current score.
  */

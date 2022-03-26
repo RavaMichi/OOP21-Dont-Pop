@@ -1,19 +1,21 @@
 package game.graphics;
 
+import game.model.ScoreManager;
+
 /**
  * ScoreScene displays a GUI showing your current score.
  */
 public class ScoreScene {
 
     private ScoreManager scoreManager;
-    
+
     /**
      * Creates & initializes this class.
      */
     public ScoreScene() {
         this.scoreManager = new ScoreManager();
     }
-    
+
     /**
      * @return this ScoreScene
      * Gets this ScoreScene
