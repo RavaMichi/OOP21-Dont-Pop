@@ -1,7 +1,7 @@
 package game.graphics;
 
-import application.ImageRenderer.Sprite;
 import game.model.AbstractGameObject;
+import javafx.application.Platform;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -36,7 +36,6 @@ public class ImageRenderer implements Renderer {
 	private Image currentImg;
 	private Sprite baseSprite;
 	private final AbstractGameObject obj;
-	private double size;
 	/**
 	 * @param obj - the game object linked to this renderer
 	 * @param sprite
@@ -46,10 +45,9 @@ public class ImageRenderer implements Renderer {
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
 		this.obj = obj;
-		this.size = size;
 		this.baseSprite = sprite;
 		this.currentImg = sprite.getImage();
-		this.rotate(rotation);
+		this.rotate(rotation, this.worldToPixel(size));
 	}
 	
 	@Override
@@ -61,13 +59,21 @@ public class ImageRenderer implements Renderer {
 	}
 	/**
 	 * @param degrees
-	 * Rotates this image by degrees angle
+	 * @param width - in pixels!
+	 * Rotates this image by degrees angle and scales it to fit in a box of size width
 	 */
-	public void rotate(final double degrees) {
-		ImageView iv = new ImageView(new Image(imgPath, size, size, true, false));
-		iv.setRotate(degrees);
-		SnapshotParameters param = new SnapshotParameters();
-		param.setFill(Color.TRANSPARENT);
-		this.currentImg = iv.snapshot(param, null);
+	private void rotate(final double degrees, final double width) {
+		//rotation is performed in the FX thread ( runLater() is used to achieve that )
+		Platform.runLater(() -> {
+			ImageView iv = new ImageView(this.baseSprite.getImage());
+			iv.setFitWidth(width);
+	        iv.setPreserveRatio(true);
+	        iv.setSmooth(true);
+	        iv.setCache(true);
+			iv.setRotate(degrees);
+			SnapshotParameters param = new SnapshotParameters();
+			param.setFill(Color.TRANSPARENT);
+			this.currentImg = iv.snapshot(param, null);
+		});
 	}
 }
