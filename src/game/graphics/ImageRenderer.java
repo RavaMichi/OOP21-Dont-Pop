@@ -11,11 +11,31 @@ import javafx.scene.paint.Color;
  */
 public class ImageRenderer implements Renderer {
 
-	private Image img;
+	/**
+	 * Enumerator representing a sprite. Each sprite has its own preallocated image.
+	 * The use of sprites instead of new images is recommended in order to boost rendering performance. 
+	 */
+	public static enum Sprite {
+		//...sprites to add...//
+		PLAYER("path/to/player/img");
+		
+		private final Image img;
+		
+		private Sprite(final String path) {
+			System.out.println("Loading sprite '" + path + "'...");
+			this.img = new Image(path);
+			System.out.println("Done");
+		}
+		
+		public Image getImage() {
+			return this.img;
+		}
+	}
+	
+	private Image currentImg;
 	private String imgPath;
 	private final AbstractGameObject obj;
 	private double size;
-	private double imgRatio = 1;
 	/**
 	 * @param obj - the game object linked to this renderer
 	 * @param imgPath
@@ -35,7 +55,7 @@ public class ImageRenderer implements Renderer {
 		//incomplete
 		int xPos = this.worldToPixel(this.obj.getPosition().getX());
 		int yPos = this.worldToPixel(this.obj.getPosition().getY());
-        gc.drawImage(img, xPos, yPos, img.getWidth(), img.getHeight());
+        gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	/**
 	 * @param degrees
@@ -46,6 +66,6 @@ public class ImageRenderer implements Renderer {
 		iv.setRotate(degrees);
 		SnapshotParameters param = new SnapshotParameters();
 		param.setFill(Color.TRANSPARENT);
-		this.img = iv.snapshot(param, null);
+		this.currentImg = iv.snapshot(param, null);
 	}
 }
