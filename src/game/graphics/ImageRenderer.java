@@ -1,5 +1,6 @@
 package game.graphics;
 
+import application.ImageRenderer.Sprite;
 import game.model.AbstractGameObject;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,20 +34,21 @@ public class ImageRenderer implements Renderer {
 	}
 	
 	private Image currentImg;
-	private String imgPath;
+	private Sprite baseSprite;
 	private final AbstractGameObject obj;
 	private double size;
 	/**
 	 * @param obj - the game object linked to this renderer
-	 * @param imgPath
+	 * @param sprite
 	 * @param size
 	 * @param rotation in degrees
-	 * Creates a new Renderer with image of imgPath and in-game width of size rotated by rotation angle
+	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle
 	 */
-	public ImageRenderer(final AbstractGameObject obj, final String imgPath, double size, double rotation) {
+	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
 		this.obj = obj;
 		this.size = size;
-		this.imgPath = imgPath;
+		this.baseSprite = sprite;
+		this.currentImg = sprite.getImage();
 		this.rotate(rotation);
 	}
 	
