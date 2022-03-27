@@ -1,6 +1,7 @@
 package game.graphics;
 
 import game.model.AbstractGameObject;
+import game.util.Point2D;
 import javafx.application.Platform;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -36,25 +37,29 @@ public class ImageRenderer implements Renderer {
 	private Image currentImg;
 	private Sprite baseSprite;
 	private final AbstractGameObject obj;
+	private Point2D offset;
 	/**
 	 * @param obj - the game object linked to this renderer
 	 * @param sprite
 	 * @param size
-	 * @param rotation in degrees
-	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle
+	 * @param rotation - in degrees
+	 * @param offset - in world coordinates
+	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle.
+	 * The image top-left corner will be painted at obj position traslated by offset
 	 */
-	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
+	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation, Point2D offset) {
 		this.obj = obj;
 		this.baseSprite = sprite;
 		this.currentImg = sprite.getImage();
+		this.offset = offset;
 		this.rotate(rotation, this.worldToPixel(size));
 	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
 		//incomplete
-		int xPos = this.worldToPixel(this.obj.getPosition().getX());
-		int yPos = this.worldToPixel(this.obj.getPosition().getY());
+		int xPos = this.worldToPixel(this.obj.getPosition().getX() + offset.getX());
+		int yPos = this.worldToPixel(this.obj.getPosition().getY() + offset.getY());
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	/**
