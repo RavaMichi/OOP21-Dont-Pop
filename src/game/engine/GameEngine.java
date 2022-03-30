@@ -3,6 +3,7 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 import game.util.Point2D;
+import game.model.*;
 
 /** 
  * GameEngine is the class that makes the game work.
@@ -197,7 +198,7 @@ public class GameEngine {
      * Gets time difference between start and end of a frame (aka the frame duration).
      * @return deltaTime
      */
-    public long getDeltaTime() {
+    public double getDeltaTime() {
         return this.deltaTime;
     }
 
@@ -258,7 +259,7 @@ public class GameEngine {
     /**
      * @return object player
      */
-    public Player getPlayer() {
+    public PlayerObj getPlayer() {
         return this.player;
     }
 
