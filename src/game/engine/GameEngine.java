@@ -144,12 +144,16 @@ public class GameEngine {
             this.spawnmanager.advance();
             //update all AbstractGameObjects (for each --- update)
             this.player.update();
-            for (AbstractGameObject enemy: this.enemies) {
-                enemy.update();
-            }
-            for (AbstractGameObject powerup: this.pwr) {
-                powerup.update();
-            }
+            
+            this.enemies.forEach(o -> o.update());
+//            for (AbstractGameObject enemy: this.enemies) {
+//                enemy.update();
+//            }
+            
+            this.pwr.forEach(o -> o.update());
+//            for (AbstractGameObject powerup: this.pwr) {
+//                powerup.update();
+//            }
             
             this.destroyQueue.forEach(o -> {
             	if (this.enemies.contains(o)) {
@@ -285,10 +289,14 @@ public class GameEngine {
 	}
 	
 	private void checkPowerupCollision() {
-		for (AbstractGameObject powerup: this.pwr) {
-			this.applyPwrUp(powerup);
-			this.destroy(powerup);
-        }
+		this.pwr.forEach(o -> {
+			this.applyPwrUp(o);
+			this.destroy(o);
+		});
+//		for (AbstractGameObject powerup: this.pwr) {
+//			this.applyPwrUp(powerup);
+//			this.destroy(powerup);
+//        }
 	}
 	
 	private void render() {
