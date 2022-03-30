@@ -147,7 +147,7 @@ public class GameEngine {
             //collision control (Controllo collisioni separate)
                 //1. ENEMIES -- if true, game over (prints score and gets back to menu)
             for (AbstractGameObject enemy: this.enemies) {
-                if (enemy.getCollider().checkCollision(this.player)) {
+                if (enemy.getCollider().checkCollision((CircleCollider)this.player.getCollider())) {
                     gameOver = true;
                     break;
                 }
