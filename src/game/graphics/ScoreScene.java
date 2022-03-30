@@ -9,7 +9,7 @@ import javafx.scene.Scene;
  */
 public class ScoreScene {
 
-    private final Scene scene;
+    //private final Scene scene;
     private ScoreManager scoreManager;
 
     /**
