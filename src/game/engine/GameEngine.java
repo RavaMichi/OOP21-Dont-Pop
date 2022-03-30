@@ -20,6 +20,7 @@ public class GameEngine {
     private ScoreManager scoreManager;
     private SpawnManager spawnmanager;
     private ScoreCalc scoreCalc;
+    private List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -101,6 +102,7 @@ public class GameEngine {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
         this.scoreCalc = new ScoreCalc();
+        this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
     }
 
     /**
@@ -144,6 +146,14 @@ public class GameEngine {
             for (AbstractGameObject powerup: this.pwr) {
                 powerup.update();
             }
+            
+            this.destroyQueue.forEach(o -> {
+            	if (this.enemies.contains(o)) {
+            		this.enemies.remove(o);
+            	} else if (this.pwr.contains(o)) {
+            		this.pwr.remove(o);
+            	}
+            });
             //collision control (Controllo collisioni separate)
                 //1. ENEMIES -- if true, game over (prints score and gets back to menu)
             for (AbstractGameObject enemy: this.enemies) {
@@ -220,11 +230,7 @@ public class GameEngine {
      * @param obj
      */
     public void destroy(final AbstractGameObject obj) {
-        if (this.enemies.contains(obj)) {
-            this.enemies.remove(obj);
-        } else if (this.pwr.contains(obj)) {
-            this.pwr.remove(obj);
-        }
+        	this.destroyQueue.add(obj);
     }
 
     /**
