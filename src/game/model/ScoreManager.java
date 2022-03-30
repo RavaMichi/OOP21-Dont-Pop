@@ -4,9 +4,10 @@ import game.graphics.ScoreScene;
 
 /**
  * ScoreManager calculates the current score.
+ * Modifica i valori della tabella
  */
 public class ScoreManager {
-
+	
     private int score;
     private int multiplier;
 

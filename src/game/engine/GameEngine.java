@@ -3,6 +3,7 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 import game.util.Point2D;
+import game.graphics.GameScene;
 import game.model.*;
 
 /** 
@@ -21,6 +22,7 @@ public class GameEngine {
     private SpawnManager spawnmanager;
     private ScoreCalc scoreCalc;
     private List<AbstractGameObject> destroyQueue;
+    private GameScene gameScene;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -98,11 +100,13 @@ public class GameEngine {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine() {
+    public GameEngine(GameScene gameScene) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
         this.scoreCalc = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
+        this.gameScene = gameScene;
+        //likely add fps in future
     }
 
     /**
@@ -156,12 +160,7 @@ public class GameEngine {
             });
             //collision control (Controllo collisioni separate)
                 //1. ENEMIES -- if true, game over (prints score and gets back to menu)
-            for (AbstractGameObject enemy: this.enemies) {
-                if (enemy.getCollider().checkCollision((CircleCollider)this.player.getCollider())) {
-                    gameOver = true;
-                    break;
-                }
-            }
+            gameOver = this.checkEnemyCollision();
 
             //game over: breaking loop
             if (gameOver) {
@@ -172,11 +171,10 @@ public class GameEngine {
             }
                 //2. POWERUPS -- if true, look out object type (enum) and apply effect
             //display collisions: for each --- render
-            for (AbstractGameObject powerup: this.pwr) {
-                //TODO: check object type and apply effect
-                //TODO: display collisions (for each - render)
-            }
+            this.checkPowerupCollision();
 
+            this.render();
+            
             final long endTime = System.currentTimeMillis();
 
             try {
@@ -275,4 +273,30 @@ public class GameEngine {
     public Point2D getPlayerPosition() {
         return this.player.getPosition();
     }
+
+
+	private boolean checkEnemyCollision() {
+		for (AbstractGameObject enemy: this.enemies) {
+		    if (enemy.getCollider().checkCollision((CircleCollider)this.player.getCollider())) {
+		        return true;
+		    }
+		}
+		return false;
+	}
+	
+	private void checkPowerupCollision() {
+		for (AbstractGameObject powerup: this.pwr) {
+			this.applyPwrUp(powerup);
+			this.destroy(powerup);
+        }
+	}
+	
+	private void render() {
+		var renderList = new ArrayList<AbstractGameObject>();
+        renderList.addAll(this.enemies);
+        renderList.addAll(this.pwr);
+        renderList.add(this.player);
+        
+        this.gameScene.render(renderList);
+	}
 }
