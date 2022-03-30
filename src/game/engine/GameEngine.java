@@ -1,4 +1,4 @@
-package game.model;
+package game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class GameEngine {
      * Game time, starting from 0.
      */
     private double gameTime;
-    private Player player;
+    private PlayerObj player;
     private List<AbstractGameObject> enemies;
     private List<AbstractGameObject> pwr;
     private ScoreManager scoreManager;
@@ -29,7 +29,7 @@ public class GameEngine {
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
     //Duration of a frame
-    private long deltaTime;
+    private double deltaTime;
 
     /**
      * Manages final score, that will be displayed both during gameplay and after gameover.
