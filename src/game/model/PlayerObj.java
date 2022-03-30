@@ -3,7 +3,7 @@ package game.model;
 import game.controller.GameEngine;
 import game.util.Point2D;
 
-class PlayerObj extends AbstractGameObject {
+public class PlayerObj extends AbstractGameObject {
 
 	Point2D playerPosition;
 	GameEngine gameEngine;

@@ -3,7 +3,7 @@ package game.model;
 import game.controller.GameEngine;
 import game.util.Point2D;
 
-class EnemyBombObj extends AbstractGameObject {
+public class EnemyBombObj extends AbstractGameObject {
 	
 	Point2D point;
 	float timer;

@@ -3,7 +3,7 @@ package game.model;
 import game.controller.GameEngine;
 import game.util.Point2D;
 
-class EnemyProjectileObj extends AbstractGameObject {
+public class EnemyProjectileObj extends AbstractGameObject {
 
 	Point2D currentPosition;
 	Point2D direction;
