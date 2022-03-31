@@ -1,3 +1,4 @@
+package game.util;
 
 /**
  * The Class RandomInt.

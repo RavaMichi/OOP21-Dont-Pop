@@ -1,3 +1,4 @@
+package game.engine;
 import java.awt.geom.Point2D;
 
 public class EnemyFactory {
@@ -28,7 +29,7 @@ public class EnemyFactory {
 
 		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
 
-			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perchè così spawna
+			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perchï¿½ cosï¿½ spawna
 			// dentro
 
 			return new EnemyBombObj(spawnBomb, timeToDetonate, gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO

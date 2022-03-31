@@ -1,6 +1,6 @@
-package game.model;
+package game.engine;
 
-import game.graphics.ScoreScene;
+import game.ui.ScoreScene;
 
 /**
  * ScoreManager calculates the current score.

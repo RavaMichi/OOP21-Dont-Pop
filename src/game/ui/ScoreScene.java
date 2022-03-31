@@ -1,6 +1,6 @@
-package game.graphics;
+package game.ui;
 
-import game.model.ScoreManager;
+import game.engine.ScoreManager;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;

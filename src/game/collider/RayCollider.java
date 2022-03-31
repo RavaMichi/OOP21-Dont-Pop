@@ -1,5 +1,6 @@
-package game.model;
+package game.collider;
 
+import game.model.AbstractGameObject;
 import game.util.Point2D;
 /**
  * Collider representing a line in space

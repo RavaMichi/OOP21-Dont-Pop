@@ -1,3 +1,6 @@
+package game.engine;
+import game.model.AbstractGameObject;
+import game.util.RandomInt;
 
 public class SpawnManager {
 
@@ -25,7 +28,7 @@ public class SpawnManager {
 
 	// cambiare deltatime in double
 	private double tempo_totale = 0; // + gameEngine.getCurrentTime();
-	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura più di 1/60 di secondo ma non credo ci possa
+	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura piï¿½ di 1/60 di secondo ma non credo ci possa
 										// mettere il doppio del tempo per eseguirsi
 
 	private double FIRST_LOOP_LIMIT = 3;// 3 secondi
@@ -53,7 +56,7 @@ public class SpawnManager {
 		tempo_totale += gameEngine.deltatime;
 //BULLET		
 
-		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PIù
+		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PIï¿½
 				|| ((tSpawnBullet * bulletSpawnati + tolleranza_frame) <= tempo_totale
 						&& tempo_totale >= (tSpawnBullet * bulletSpawnati + tolleranza_frame)
 						&& (tempo_totale > BULLET_MIN_TIME_SPAWN))) {
@@ -75,7 +78,7 @@ public class SpawnManager {
 				&& laserSpawnati <= LASER_SPAWN_LIMIT)) { // faccio spawnare uno/due bullet ora sono 2
 
 			counterCicloLaser++;
-			for (int i = 0; i < quantilaser; i++) { // così spawna quanti laser voglio
+			for (int i = 0; i < quantilaser; i++) { // cosï¿½ spawna quanti laser voglio
 				laserSpawnati++;
 				AbstractGameObject enemy = enemyFactory.GetEnemyObj(LASER_ID); // NE HO CREATO UNO
 				gameEngine.instantiate(enemy);

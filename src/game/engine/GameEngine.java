@@ -3,7 +3,8 @@ package game.engine;
 import java.util.ArrayList;
 import java.util.List;
 import game.util.Point2D;
-import game.graphics.GameScene;
+import game.collider.CircleCollider;
+import game.ui.GameScene;
 import game.model.*;
 
 /** 

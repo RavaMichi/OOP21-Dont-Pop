@@ -1,6 +1,6 @@
 package game.model;
 
-import game.controller.GameEngine;
+import game.engine.GameEngine;
 import game.util.Point2D;
 
 public class EnemyLineObj extends AbstractGameObject {
@@ -20,7 +20,7 @@ public class EnemyLineObj extends AbstractGameObject {
 	}
 
 	@Override
-	void update() {
+	public void update() {
 		// fa lampeggiare la linea e poi attiva il collider
 		
 	}
