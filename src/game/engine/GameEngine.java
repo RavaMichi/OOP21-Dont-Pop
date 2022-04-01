@@ -7,6 +7,7 @@ import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.Score;
+import game.engine.Application;
 
 /** 
  * GameEngine is the class that makes the game work.
@@ -24,6 +25,7 @@ public class GameEngine extends Thread {
     private Score score;
     private List<AbstractGameObject> destroyQueue;
     private GameScene gameScene;
+    private Application application;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -39,12 +41,13 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(GameScene gameScene) {
+    public GameEngine(GameScene gameScene, Application application) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
         this.score = new Score();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
         this.gameScene = gameScene;
+        this.application = application;
         //likely add fps in future
     }
 
@@ -135,6 +138,11 @@ public class GameEngine extends Thread {
         }
     }
 
+    @Override
+    public void run() {
+    	
+    }
+    
     /**
      * Calculates the time that passes between two frames, given that frames will not always be computed in the same time.
      * @param startFrame frame time
