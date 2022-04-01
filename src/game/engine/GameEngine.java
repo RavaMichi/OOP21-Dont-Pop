@@ -6,11 +6,12 @@ import game.util.Point2D;
 import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
+import game.util.Score;
 
 /** 
  * GameEngine is the class that makes the game work.
 */
-public class GameEngine {
+public class GameEngine extends Thread {
 //or, extends Runnable - then call it from a thread
     /**
      * Game time, starting from 0.
@@ -19,9 +20,8 @@ public class GameEngine {
     private PlayerObj player;
     private List<AbstractGameObject> enemies;
     private List<AbstractGameObject> pwr;
-    private ScoreManager scoreManager;
     private SpawnManager spawnmanager;
-    private ScoreCalc scoreCalc;
+    private Score score;
     private List<AbstractGameObject> destroyQueue;
     private GameScene gameScene;
 
@@ -37,74 +37,12 @@ public class GameEngine {
     private double deltaTime;
 
     /**
-     * Manages final score, that will be displayed both during gameplay and after gameover.
-     * Differs from ScoreManager, which manages GUI-related aspects of score displaying
-     */
-    private class ScoreCalc {
-        private int score;
-        private int multiplier;
-
-        /**
-         * Creates class and sets multiplier to 1 by default.
-         */
-        ScoreCalc() {
-            this.multiplier = 1;
-        }
-
-        /**
-         * Gets current score.
-         * @return current score
-         */
-        public int getScore() {
-            return this.score;
-        }
-
-        /**
-         * Increments score by 1.
-         */
-        public void incScore() {
-            this.score++;
-        }
-
-        /**
-         * Increments score by <delta>.
-         * @param delta
-         */
-        public void incScore(final int delta) {
-            this.score += delta;
-        }
-
-        /**
-         * Gets current value of multiplier.
-         * @return multiplier
-         */
-        public int getMultiplier() {
-            return this.multiplier;
-        }
-
-        /**
-         * Sets multiplier to any value.
-         * @param multiplier
-         */
-        public void setMultiplier(final int multiplier) {
-            this.multiplier = multiplier;
-        }
-
-        /**
-         * Resets multiplier back to 1.
-         */
-        public void resetMultiplier() {
-            this.multiplier = 1;
-        }
-    }
-
-    /**
      * Creates a new GameEngine object and initializes its fields.
      */
     public GameEngine(GameScene gameScene) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
-        this.scoreCalc = new ScoreCalc();
+        this.score = new Score();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
         this.gameScene = gameScene;
         //likely add fps in future
@@ -309,3 +247,9 @@ public class GameEngine {
         this.gameScene.render(renderList);
 	}
 }
+
+/*
+ * Aggiungi:
+ * Calcolo punteggio (dal gameengine)
+ * Salvataggio record punteggi di ogni singolo giocatore (il gameengine li calcola)
+ */

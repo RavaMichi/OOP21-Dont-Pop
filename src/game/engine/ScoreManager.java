@@ -1,6 +1,10 @@
 package game.engine;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import game.ui.ScoreScene;
+import game.util.Score;
 
 /**
  * ScoreManager calculates the current score.
@@ -9,13 +13,13 @@ import game.ui.ScoreScene;
 public class ScoreManager {
 	
     private int score;
-    private int multiplier;
+    private List<Score> scoreList;
 
     /**
      * Creates & initializes this class.
      */
     public ScoreManager() {
-        this.multiplier = 1;
+    	this.scoreList = new LinkedList<>();
     }
 
     /**
@@ -25,3 +29,6 @@ public class ScoreManager {
 
     }
 }
+/*
+ * 
+ */
