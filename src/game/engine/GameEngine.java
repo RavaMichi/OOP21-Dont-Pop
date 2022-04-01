@@ -87,21 +87,15 @@ public class GameEngine extends Thread {
             //update all AbstractGameObjects (for each --- update)
             this.player.update();
             
-            this.enemies.forEach(o -> o.update());
-//            for (AbstractGameObject enemy: this.enemies) {
-//                enemy.update();
-//            }
-            
-            this.pwr.forEach(o -> o.update());
-//            for (AbstractGameObject powerup: this.pwr) {
-//                powerup.update();
-//            }
-            
-            this.destroyQueue.forEach(o -> {
-            	if (this.enemies.contains(o)) {
-            		this.enemies.remove(o);
-            	} else if (this.pwr.contains(o)) {
-            		this.pwr.remove(o);
+            this.enemies.forEach(enemy -> enemy.update());
+
+            this.pwr.forEach(powerup -> powerup.update());
+
+            this.destroyQueue.forEach(obj -> {
+            	if (this.enemies.contains(obj)) {
+            		this.enemies.remove(obj);
+            	} else if (this.pwr.contains(obj)) {
+            		this.pwr.remove(obj);
             	}
             });
             //collision control (Controllo collisioni separate)
@@ -140,7 +134,8 @@ public class GameEngine extends Thread {
 
     @Override
     public void run() {
-    	
+    	this.startGameLoop();
+    	this.application.score(this.score.getScore());
     }
     
     /**
@@ -236,9 +231,9 @@ public class GameEngine extends Thread {
 	}
 	
 	private void checkPowerupCollision() {
-		this.pwr.forEach(o -> {
-			this.applyPwrUp(o);
-			this.destroy(o);
+		this.pwr.forEach(powerup -> {
+			this.applyPwrUp(powerup);
+			this.destroy(powerup);
 		});
 //		for (AbstractGameObject powerup: this.pwr) {
 //			this.applyPwrUp(powerup);

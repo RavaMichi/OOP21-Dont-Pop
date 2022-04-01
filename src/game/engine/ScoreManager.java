@@ -13,17 +13,21 @@ import game.util.Score;
 public class ScoreManager {
 	
     private int score;
+    private String player;
     private List<Score> scoreList;
+    
 
     /**
      * Creates & initializes this class.
      */
-    public ScoreManager() {
+    public ScoreManager(final int score, final String player) {
     	this.scoreList = new LinkedList<>();
+    	this.score = score;
+    	this.player = player;
     }
 
     /**
-     * TODO: WRITE A JAVADOC FOR THIS CLASS.
+     * Returns to menu.
      */
     public void menu() {
 

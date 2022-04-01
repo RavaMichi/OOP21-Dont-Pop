@@ -20,12 +20,15 @@ public class ScoreScene extends Application {
 
     //private final Scene scene;
     private ScoreManager scoreManager;
+    private final Scene scene;
 
     /**
      * Creates & initializes this class.
      */
     public ScoreScene(final ScoreManager scoreManager) {
     	this.scoreManager = scoreManager;
+    	//passagli come argomento qualcosa, cerca su Google
+    	this.scene = new Scene();
     }
 
     /*
@@ -66,10 +69,8 @@ public class ScoreScene extends Application {
      * @return this ScoreScene
      * Gets this ScoreScene
      */
-    public ScoreScene get() {
-        //DETAILS NEED TO GET DEFINED BETTER
-        //DO I NEED A NEW SCENE CLASS?
-        return this;
+    public Scene get() {
+        return this.scene;
     }
 
 }
