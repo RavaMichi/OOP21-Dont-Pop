@@ -1,12 +1,15 @@
 package game.util;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * A standard generic Pair<E1, E2> with getters, hashCode, equals, and toString well implemented.
  */
-public class Pair<E1, E2> {
+public class Pair<E1, E2> implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private final E1 e1;
 	private final E2 e2;
 	
