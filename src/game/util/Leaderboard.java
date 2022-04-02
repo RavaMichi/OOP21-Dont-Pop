@@ -22,6 +22,37 @@ public class Leaderboard {
 	public Leaderboard(final String savePath) {
 		this.savePath = savePath;
 	}
+	/**
+	 * @return the current ranking
+	 */
+	public List<Pair<String,Integer>> getRanking() {
+		return List.copyOf(this.ranking);
+	}
+	/**
+	 * @param playerName
+	 * @param score
+	 * Adds to the ranking the player, if the score is in the top 5 scores
+	 */
+	public void addToRanking(String playerName, int score) {
+		var entry = new Pair<String,Integer>(playerName, score);
+		if (this.ranking.isEmpty()) {
+			this.ranking.add(entry);
+		} else {
+			//sorting during insertion
+			int index = 0;
+			for (; index < this.ranking.size(); index++) {
+				if (score > this.ranking.get(index).get2()) {
+					break;
+				}
+			}
+			this.ranking.add(index, entry);
+			
+			if (this.ranking.size() > RANKING_LENGTH) {
+				this.ranking.remove(this.ranking.size() - 1);
+			}
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	/**
 	 * Loads the ranking saved in the savefile
@@ -38,7 +69,7 @@ public class Leaderboard {
 	 */
 	public void save() {
 		try (var oos = new ObjectOutputStream(new FileOutputStream(new File(this.savePath)))) {
-			oos.writeObject(ranking);
+			oos.writeObject(this.ranking);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
