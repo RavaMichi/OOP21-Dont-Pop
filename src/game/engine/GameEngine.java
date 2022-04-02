@@ -19,13 +19,13 @@ public class GameEngine extends Thread {
      */
     private double gameTime;
     private PlayerObj player;
-    private List<AbstractGameObject> enemies;
-    private List<AbstractGameObject> pwr;
     private SpawnManager spawnmanager;
     private Score score;
-    private List<AbstractGameObject> destroyQueue;
     private GameScene gameScene;
     private Application application;
+    private List<AbstractGameObject> enemies;
+    private List<AbstractGameObject> pwr;
+    private List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -35,8 +35,7 @@ public class GameEngine extends Thread {
     private boolean hasMultiplier = false;
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
-    //Duration of a frame
-    private double deltaTime;
+    private double deltaTime;	//Duration of a frame
 
     /**
      * Creates a new GameEngine object and initializes its fields.
