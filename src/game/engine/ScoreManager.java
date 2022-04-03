@@ -3,8 +3,7 @@ package game.engine;
 import java.util.LinkedList;
 import java.util.List;
 
-import game.ui.ScoreScene;
-import game.util.Score;
+import game.util.ScoreCalc;
 
 /**
  * ScoreManager calculates the current score.
@@ -14,7 +13,7 @@ public class ScoreManager {
 	
     private int score;
     private String player;
-    private List<Score> scoreList;
+    private List<ScoreCalc> scoreList;
     
 
     /**
