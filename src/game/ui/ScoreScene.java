@@ -1,6 +1,7 @@
 package game.ui;
 
 import game.engine.ScoreManager;
+import game.util.ScoreCalc;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -25,8 +26,8 @@ public class ScoreScene {
     /**
      * Creates & initializes this class.
      */
-    public ScoreScene(final ScoreManager scoreManager) {
-    	this.scoreManager = scoreManager;
+    public ScoreScene(ScoreCalc scoreCalc) {
+    	this.scoreManager = new ScoreManager(scoreCalc);
     	//passagli come argomento qualcosa, cerca su Google
     	this.scene = new Scene(table);
     }

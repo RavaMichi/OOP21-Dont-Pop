@@ -1,8 +1,6 @@
 package game.engine;
 
-import java.util.LinkedList;
-import java.util.List;
-
+import game.util.Leaderboard;
 import game.util.ScoreCalc;
 
 /**
@@ -10,28 +8,37 @@ import game.util.ScoreCalc;
  * Modifica i valori della tabella
  */
 public class ScoreManager {
-	
-    private int score;
-    private String player;
-    private List<ScoreCalc> scoreList;
     
-
+	private Leaderboard leaderboard;
+	private ScoreCalc scoreCalc;
+	
     /**
      * Creates & initializes this class.
      */
-    public ScoreManager(final int score, final String player) {
-    	this.scoreList = new LinkedList<>();
-    	this.score = score;
-    	this.player = player;
+    public ScoreManager(ScoreCalc scoreCalc) {
+    	this.scoreCalc = scoreCalc;
+    	
+    	this.leaderboard = new Leaderboard("res/ScoreList.txt");
+    	this.leaderboard.load();
+    	
+    	this.leaderboard.addToRanking("gigiabaffa", 5);
+    	this.leaderboard.addToRanking("hehehe", 10);
+    	this.leaderboard.save();
     }
+    
+    /*
+     * WHO SHALL CREATE LEADERBOARD AND SCOREMANAGER?
+     * - GAMEENGINE
+     * - SCORESCENE
+     * - APPLICATION
+     */
 
     /**
      * Returns to menu.
      */
     public void menu() {
-
+    	//TODO: call menu method of application
+    	//ScoreScene will call this method
     }
+    
 }
-/*
- * 
- */

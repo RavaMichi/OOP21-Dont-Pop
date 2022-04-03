@@ -19,20 +19,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+
+import game.util.Leaderboard;
+import game.engine.ScoreManager;
+
 public class TestScoreScene extends javafx.application.Application {
 
 	//table
 	private TableView table = new TableView();
 	
 	//data to put in table
-	private final ObservableList<Integer> data = FXCollections.observableArrayList(
-			new Integer(1),
-			new Integer(1),
-			new Integer(2),
-			new Integer(3),
-			new Integer(5),
-			new Integer(8)
-			);
+	private final ObservableList<Integer> data = FXCollections.observableArrayList();
 	
 	//size of the square filling the screen
 	private double screenSize;
@@ -90,6 +87,7 @@ public class TestScoreScene extends javafx.application.Application {
 		//add scene to stage and make it visible
 		stage.setScene(scene);
 		stage.show();
+		
 	}
 
 }
