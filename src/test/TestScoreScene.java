@@ -1,5 +1,9 @@
 package test;
 
+import game.util.Pair;
+import game.util.ScoreCalc;
+import game.util.Leaderboard;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
