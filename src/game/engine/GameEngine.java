@@ -6,7 +6,7 @@ import game.util.Point2D;
 import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
-import game.util.Score;
+import game.util.ScoreCalc;
 import game.engine.Application;
 
 /** 
@@ -20,7 +20,7 @@ public class GameEngine extends Thread {
     private double gameTime;
     private PlayerObj player;
     private SpawnManager spawnmanager;
-    private Score score;
+    private ScoreCalc score;
     private GameScene gameScene;
     private Application application;
     private List<AbstractGameObject> enemies;
@@ -30,6 +30,8 @@ public class GameEngine extends Thread {
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
     private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
+    private static final double START_X = 0.5;
+    private static final double START_Y = 0.5;
 
     private boolean hasShield = false;
     private boolean hasMultiplier = false;
@@ -43,10 +45,12 @@ public class GameEngine extends Thread {
     public GameEngine(GameScene gameScene, Application application) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.pwr = new ArrayList<>();   //default size: 10
-        this.score = new Score();
+        this.score = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
         this.gameScene = gameScene;
         this.application = application;
+        this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
+        this.spawnmanager = new SpawnManager(this);
         //likely add fps in future
     }
 
@@ -73,7 +77,7 @@ public class GameEngine extends Thread {
      * Starts the game loop (aka the engine).
      */
     public void startGameLoop() {
-        boolean gameOver = false;
+        ////boolean gameOver = false;
         while (true) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
@@ -98,8 +102,8 @@ public class GameEngine extends Thread {
             	}
             });
             //collision control (Controllo collisioni separate)
-                //1. ENEMIES -- if true, game over (prints score and gets back to menu)
-            gameOver = this.checkEnemyCollision();
+            //1. ENEMIES -- if true, game over (prints score and gets back to menu)
+            final boolean gameOver = this.checkEnemyCollision();
 
             //game over: breaking loop
             if (gameOver) {
@@ -108,10 +112,12 @@ public class GameEngine extends Thread {
                 //maybe you should put some thought into this break
                 break;
             }
-                //2. POWERUPS -- if true, look out object type (enum) and apply effect
+            //2. POWERUPS -- if true, look out object type (enum) and apply effect
             //display collisions: for each --- render
             this.checkPowerupCollision();
 
+            this.score.incScore();
+            
             this.render();
             
             final long endTime = System.currentTimeMillis();

@@ -4,7 +4,7 @@ package game.util;
  * Manages final score, that will be displayed both during gameplay and after gameover.
  * Differs from ScoreManager, which manages GUI-related aspects of score displaying
  */
-public class Score {
+public class ScoreCalc {
 	private int score;
     private int multiplier;
     private int frameCounter;
@@ -13,13 +13,13 @@ public class Score {
     /**
      * Creates class and sets multiplier to 1 by default.
      */
-    public Score() {
+    public ScoreCalc() {
         this.multiplier = 1;
     }
 
     /**
      * Gets current score.
-     * @return current score
+     * @return score
      */
     public int getScore() {
         return this.score;
@@ -38,11 +38,16 @@ public class Score {
     }
 
     /**
-     * Increments score by <delta>.
+     * Increments score by an arbitrary amount.
+     * Can choose to ignore multiplier (default: apply current multiplier).
      * @param delta
      */
-    public void incScore(final int delta) {
-        this.score += delta;
+    public void incScore(final int delta, final boolean ignoreMulitplier) {
+    	if (ignoreMulitplier) {
+    		this.score += delta;
+    	} else {
+    		this.score += delta * this.getMultiplier();
+    	}
     }
 
     /**
@@ -68,6 +73,10 @@ public class Score {
         this.multiplier = 1;
     }
     
+    /**
+     * Gets current frame counter.
+     * @return frameCounter
+     */
     private int getFrameCounter() {
     	return this.frameCounter;
     }
