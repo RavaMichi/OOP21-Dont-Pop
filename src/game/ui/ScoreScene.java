@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * ScoreScene displays a GUI showing your current score.
  * Mostra la tabella
  */
-public class ScoreScene extends Application {
+public class ScoreScene {
 
     //private final Scene scene;
     private ScoreManager scoreManager;
@@ -28,7 +28,7 @@ public class ScoreScene extends Application {
     public ScoreScene(final ScoreManager scoreManager) {
     	this.scoreManager = scoreManager;
     	//passagli come argomento qualcosa, cerca su Google
-    	this.scene = new Scene();
+    	this.scene = new Scene(table);
     }
 
     /*
@@ -36,7 +36,6 @@ public class ScoreScene extends Application {
      */
     private TableView table = new TableView();
     
-    @Override
     public void start(Stage stage) {
     	Scene scene = new Scene(new Group());
     	stage.setTitle("Table View Sample");
