@@ -7,6 +7,8 @@ package game.util;
 public class Score {
 	private int score;
     private int multiplier;
+    private int frameCounter;
+    private final static int FRAMES_PER_SCORE = 4;
 
     /**
      * Creates class and sets multiplier to 1 by default.
@@ -24,10 +26,15 @@ public class Score {
     }
 
     /**
-     * Increments score by 1.
+     * Increments score every 4 frames, giving >=15 points per second.
      */
     public void incScore() {
-        this.score++;
+    	this.incFrameCounter();
+    	if (this.getFrameCounter() % FRAMES_PER_SCORE == 0) {
+    		//delta = 1 * multiplier --> hence why I left multiplier only
+            this.score += multiplier;
+            this.resetFrameCounter();
+    	}
     }
 
     /**
@@ -59,5 +66,23 @@ public class Score {
      */
     public void resetMultiplier() {
         this.multiplier = 1;
+    }
+    
+    private int getFrameCounter() {
+    	return this.frameCounter;
+    }
+    
+    /**
+     * Increments frame counter by 1.
+     */
+    private void incFrameCounter() {
+    	this.frameCounter++;
+    }
+    
+    /**
+     * Resets frame counter to 0.
+     */
+    private void resetFrameCounter() {
+    	this.frameCounter = 0;
     }
 }
