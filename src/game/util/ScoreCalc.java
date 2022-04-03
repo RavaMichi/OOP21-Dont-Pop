@@ -5,10 +5,9 @@ package game.util;
  * Differs from ScoreManager, which manages GUI-related aspects of score displaying
  */
 public class ScoreCalc {
-	private int score;
-    private int multiplier;
-    private int frameCounter;
-    private final static int FRAMES_PER_SCORE = 4;
+	private double score;
+    private double multiplier;
+    private final static double SCORE_PER_FRAME = 0.25;
 
     /**
      * Creates class and sets multiplier to 1 by default.
@@ -21,7 +20,7 @@ public class ScoreCalc {
      * Gets current score.
      * @return score
      */
-    public int getScore() {
+    public double getScore() {
         return this.score;
     }
 
@@ -29,12 +28,7 @@ public class ScoreCalc {
      * Increments score every 4 frames, giving >=15 points per second.
      */
     public void incScore() {
-    	this.incFrameCounter();
-    	if (this.getFrameCounter() % FRAMES_PER_SCORE == 0) {
-    		//delta = 1 * multiplier --> hence why I left multiplier only
-            this.score += multiplier;
-            this.resetFrameCounter();
-    	}
+    	this.score += this.getMultiplier() * SCORE_PER_FRAME;
     }
 
     /**
@@ -42,8 +36,8 @@ public class ScoreCalc {
      * Can choose to ignore multiplier (default: apply current multiplier).
      * @param delta
      */
-    public void incScore(final int delta, final boolean ignoreMulitplier) {
-    	if (ignoreMulitplier) {
+    public void incScore(final double delta, final boolean ignoreMultiplier) {
+    	if (ignoreMultiplier) {
     		this.score += delta;
     	} else {
     		this.score += delta * this.getMultiplier();
@@ -54,7 +48,7 @@ public class ScoreCalc {
      * Gets current value of multiplier.
      * @return multiplier
      */
-    public int getMultiplier() {
+    public double getMultiplier() {
         return this.multiplier;
     }
     
@@ -62,7 +56,7 @@ public class ScoreCalc {
      * Sets multiplier to any value.
      * @param multiplier
      */
-    public void setMultiplier(final int multiplier) {
+    public void setMultiplier(final double multiplier) {
         this.multiplier = multiplier;
     }
 
@@ -71,27 +65,5 @@ public class ScoreCalc {
      */
     public void resetMultiplier() {
         this.multiplier = 1;
-    }
-    
-    /**
-     * Gets current frame counter.
-     * @return frameCounter
-     */
-    private int getFrameCounter() {
-    	return this.frameCounter;
-    }
-    
-    /**
-     * Increments frame counter by 1.
-     */
-    private void incFrameCounter() {
-    	this.frameCounter++;
-    }
-    
-    /**
-     * Resets frame counter to 0.
-     */
-    private void resetFrameCounter() {
-    	this.frameCounter = 0;
     }
 }
