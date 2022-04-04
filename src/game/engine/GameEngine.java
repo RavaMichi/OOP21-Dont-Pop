@@ -20,14 +20,14 @@ public class GameEngine extends Thread {
      * Game time, starting from 0.
      */
     private double gameTime;
-    private PlayerObj player;
-    private SpawnManager spawnManager;
-    private ScoreCalc scoreCalc;
-    private GameScene gameScene;
-    private Application application;
-    private List<AbstractGameObject> enemies;
-    private List<AbstractGameObject> powerups;
-    private List<AbstractGameObject> destroyQueue;
+    private final PlayerObj player;
+    private final SpawnManager spawnManager;
+    private final ScoreCalc scoreCalc;
+    private final GameScene gameScene;
+    private final Application application;
+    private final List<AbstractGameObject> enemies;
+    private final List<AbstractGameObject> powerups;
+    private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -35,8 +35,8 @@ public class GameEngine extends Thread {
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
 
-    private boolean hasShield = false;
-    private boolean hasMultiplier = false;
+    private boolean hasShield;		//false
+    private boolean hasMultiplier;	//false
     private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
     private double deltaTime;	//Duration of a frame
@@ -143,7 +143,9 @@ public class GameEngine extends Thread {
 
     @Override
     public void run() {
+    	//start game loop
     	this.startGameLoop();
+    	//on gameover, set score in application
     	this.application.score(this.scoreCalc.getScore());
     }
     
