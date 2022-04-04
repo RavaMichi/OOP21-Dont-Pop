@@ -13,7 +13,7 @@ public class Pair<E1, E2> implements Serializable {
 	private final E1 e1;
 	private final E2 e2;
 	
-	public Pair(E1 e1, E2 e2) {
+	public Pair(final E1 e1, final E2 e2) {
 		super();
 		this.e1 = e1;
 		this.e2 = e2;
@@ -33,7 +33,7 @@ public class Pair<E1, E2> implements Serializable {
 	}
 	
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj) {
 			return true;
 		}
@@ -43,9 +43,9 @@ public class Pair<E1, E2> implements Serializable {
 		if(getClass() != obj.getClass()) {
 			return false;
 		}
-		Pair other = (Pair) obj;
+		final Pair other = (Pair) obj;
 		return Objects.equals(e1, other.e1) &&
-				Objects.equals(e2, other.e2);
+			   Objects.equals(e2, other.e2);
 	}
 	
 	@Override

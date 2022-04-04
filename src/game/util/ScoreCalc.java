@@ -4,45 +4,51 @@ package game.util;
  * Manages final score, that will be displayed both during gameplay and after gameover.
  * Differs from ScoreManager, which manages GUI-related aspects of score displaying
  */
-public class Score {
-	private int score;
-    private int multiplier;
+public class ScoreCalc {
+	private double score;
+    private double multiplier;
+    private final static double SCORE_PER_FRAME = 0.25;
 
     /**
      * Creates class and sets multiplier to 1 by default.
      */
-    public Score() {
+    public ScoreCalc() {
         this.multiplier = 1;
     }
 
     /**
      * Gets current score.
-     * @return current score
+     * @return score
      */
-    public int getScore() {
+    public double getScore() {
         return this.score;
     }
 
     /**
-     * Increments score by 1.
+     * Increments score every 4 frames, giving >=15 points per second.
      */
     public void incScore() {
-        this.score++;
+    	this.score += this.getMultiplier() * SCORE_PER_FRAME;
     }
 
     /**
-     * Increments score by <delta>.
+     * Increments score by an arbitrary amount.
+     * Can choose to ignore multiplier (default: apply current multiplier).
      * @param delta
      */
-    public void incScore(final int delta) {
-        this.score += delta;
+    public void incScore(final double delta, final boolean ignoreMultiplier) {
+    	if (ignoreMultiplier) {
+    		this.score += delta;
+    	} else {
+    		this.score += delta * this.getMultiplier();
+    	}
     }
 
     /**
      * Gets current value of multiplier.
      * @return multiplier
      */
-    public int getMultiplier() {
+    public double getMultiplier() {
         return this.multiplier;
     }
     
@@ -50,7 +56,7 @@ public class Score {
      * Sets multiplier to any value.
      * @param multiplier
      */
-    public void setMultiplier(final int multiplier) {
+    public void setMultiplier(final double multiplier) {
         this.multiplier = multiplier;
     }
 
