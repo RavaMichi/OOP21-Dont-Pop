@@ -37,7 +37,10 @@ public class GameEngine extends Thread {
     private boolean hasMultiplier;	//false
     ////private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
-    private double deltaTime;	//Duration of a frame
+    /**
+     * Duration of a frame (in seconds).
+     */
+    private double deltaTime;
 
     /**
      * Creates a new GameEngine object and initializes its fields.
@@ -150,12 +153,10 @@ public class GameEngine extends Thread {
                 //end game loop
                 break;
             }
-            //2. POWERUPS -- if true, look out object type (enum) and apply effect
-            //display collisions: for each --- render
-            this.checkPowerupCollision();
-
-            this.scoreCalc.incScore();	//SCORE INCREMENT
-            this.render();				//RENDERING CHANGES
+            
+            this.checkPowerupCollision();	//POWERUPS
+            this.scoreCalc.incScore();		//SCORE INCREMENT
+            this.render();					//RENDERING CHANGES
             
             final long endTime = System.currentTimeMillis();
             this.putThreadToSleep(startTime, endTime);
@@ -218,7 +219,7 @@ public class GameEngine extends Thread {
     }
 
     /**
-     * Applies a powerup.
+     * Applies a powerup after checking its object type in AbstractGameObject.ObjectType (enum).
      * @param pwrup
      */
     public void applyPwrUp(final AbstractGameObject pwrup) {
@@ -277,7 +278,7 @@ public class GameEngine extends Thread {
 	
 	/**
 	 * Checks if a collision with a powerup has occurred.
-	 * If yes, applies powerup and destroys it.
+	 * If true, applies powerup and destroys it.
 	 */
 	private void checkPowerupCollision() {
 		this.powerups.forEach(powerup -> {
@@ -286,7 +287,11 @@ public class GameEngine extends Thread {
 		});
 	}
 	
+	/**
+	 * Displays collisions and, in general, any new changes in the game scene.
+	 */
 	private void render() {
+		//for each --- render
 		final var renderList = new ArrayList<AbstractGameObject>();
         renderList.addAll(this.enemies);
         renderList.addAll(this.powerups);
