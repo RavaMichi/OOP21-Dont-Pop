@@ -136,17 +136,18 @@ public class GameEngine extends Thread {
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
             
-            //collision control (Controllo collisioni separate)
-            //1. ENEMIES -- if true, game over (prints score and gets back to menu)
+            //check gameover
             final boolean gameOver = this.checkEnemyCollision();
 
             //game over: breaking loop
             if (gameOver) {
             	//TODO: consider changing everything to a continue loop, putting powerups in an if statement (if (!gameOver)) and setting a flag like while(!gameOver) at the beginning of the loop
-                final long endTime = System.currentTimeMillis();
                 
+            	//thread sleeps for remaining frame duration
+            	final long endTime = System.currentTimeMillis();
                 this.putThreadToSleep(startTime, endTime);
                 
+                //calculate frame duration
                 final long endFrame = System.currentTimeMillis();
                 this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
 
@@ -154,17 +155,16 @@ public class GameEngine extends Thread {
                 break;
             }
             
-            this.checkPowerupCollision();	//POWERUPS
-            this.scoreCalc.incScore();		//SCORE INCREMENT
-            this.render();					//RENDERING CHANGES
+            this.checkPowerupCollision();	//powerups
+            this.scoreCalc.incScore();		//score increment
+            this.render();					//rendering changes
             
+            //thread sleeps for remaining frame duration
             final long endTime = System.currentTimeMillis();
             this.putThreadToSleep(startTime, endTime);
 
-            //end of frame
+            //calculate frame duration
             final long endFrame = System.currentTimeMillis();
-
-            //calculating frame duration
             this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
         }
     }
@@ -263,7 +263,7 @@ public class GameEngine extends Thread {
 
     /**
      * Checks if a collision with an enemy has occurred.
-     * If true, the game is over.
+     * If true --> game over.
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
