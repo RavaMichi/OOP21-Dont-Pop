@@ -16,10 +16,8 @@ import game.engine.Application;
 */
 public class GameEngine extends Thread {
 //or, extends Runnable - then call it from a thread
-    /**
-     * Game time, starting from 0.
-     */
-    private double gameTime;
+    
+    private double gameTime;	//game time, starting from 0
     private final PlayerObj player;
     private final SpawnManager spawnManager;
     private final ScoreCalc scoreCalc;
@@ -44,7 +42,7 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(GameScene gameScene, Application application, ScoreCalc scoreCalc) {
+    public GameEngine(final GameScene gameScene, final Application application, final ScoreCalc scoreCalc) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
         this.scoreCalc = scoreCalc;
@@ -110,18 +108,31 @@ public class GameEngine extends Thread {
 
             //game over: breaking loop
             if (gameOver) {
-            	
-                //TODO: print score
-                //TODO: go back to menu
-                //maybe you should put some thought into this break
+            	//TODO: consider changing everything to a continue loop, putting powerups in an if statement (if (!gameOver)) and setting a flag like while(!gameOver) at the beginning of the loop
+                final long endTime = System.currentTimeMillis();
+                
+                try {
+                    Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
+                } catch (IllegalArgumentException e1) { 
+                    e1.printStackTrace();
+                } catch (InterruptedException e2) {
+                    e2.printStackTrace();
+                }
+                
+                final long endFrame = System.currentTimeMillis();
+                this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
+
+                //end game loop
                 break;
             }
             //2. POWERUPS -- if true, look out object type (enum) and apply effect
             //display collisions: for each --- render
             this.checkPowerupCollision();
 
+            //SCORE INCREMENT
             this.scoreCalc.incScore();
             
+            //RENDERING CHANGES
             this.render();
             
             final long endTime = System.currentTimeMillis();
@@ -137,6 +148,7 @@ public class GameEngine extends Thread {
             //end of frame
             final long endFrame = System.currentTimeMillis();
 
+            //calculating frame duration
             this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
         }
     }
@@ -147,13 +159,15 @@ public class GameEngine extends Thread {
     	this.startGameLoop();
     	//on gameover, set score in application
     	this.application.score(this.scoreCalc.getScore());
+    	//TODO: print score
+        //TODO: go back to menu
     }
     
     /**
      * Calculates the time that passes between two frames, given that frames will not always be computed in the same time.
      * @param startFrame frame time
      * @param endFrame frame time
-     * @return time difference between two frames
+     * @return time difference between two frames (in ms)
      */
     public long deltaTime(final long startFrame, final long endFrame) {
         return endFrame - startFrame;
@@ -233,7 +247,7 @@ public class GameEngine extends Thread {
 
 
 	private boolean checkEnemyCollision() {
-		for (AbstractGameObject enemy: this.enemies) {
+		for (final AbstractGameObject enemy: this.enemies) {
 		    if (enemy.getCollider().checkCollision((CircleCollider)this.player.getCollider())) {
 		        return true;
 		    }
@@ -246,14 +260,10 @@ public class GameEngine extends Thread {
 			this.applyPwrUp(powerup);
 			this.destroy(powerup);
 		});
-//		for (AbstractGameObject powerup: this.pwr) {
-//			this.applyPwrUp(powerup);
-//			this.destroy(powerup);
-//        }
 	}
 	
 	private void render() {
-		var renderList = new ArrayList<AbstractGameObject>();
+		final var renderList = new ArrayList<AbstractGameObject>();
         renderList.addAll(this.enemies);
         renderList.addAll(this.powerups);
         renderList.add(this.player);
