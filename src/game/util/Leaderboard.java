@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Class used to store the scores of the best players
  */
@@ -17,10 +18,17 @@ public class Leaderboard {
 	private static final int RANKING_LENGTH = 5;
 	
 	private ArrayList<Pair<String,Integer>> ranking = new ArrayList<>();
-	private final String savePath;
+	private final File saveFile;
 	
 	public Leaderboard(final String savePath) {
-		this.savePath = savePath;
+		this.saveFile = new File(savePath);
+		try {
+			if (saveFile.createNewFile()) {
+				save();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * @return the current ranking
@@ -58,7 +66,7 @@ public class Leaderboard {
 	 * Loads the ranking saved in the savefile
 	 */
 	public void load() {
-		try (var ois = new ObjectInputStream(new FileInputStream(new File(this.savePath)))) {
+		try (var ois = new ObjectInputStream(new FileInputStream(saveFile))) {	
 			this.ranking = (ArrayList<Pair<String,Integer>>)ois.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,10 +76,11 @@ public class Leaderboard {
 	 * Saves the current ranking in the savefile
 	 */
 	public void save() {
-		try (var oos = new ObjectOutputStream(new FileOutputStream(new File(this.savePath)))) {
+		try (var oos = new ObjectOutputStream(new FileOutputStream(saveFile))) {
 			oos.writeObject(this.ranking);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 }
+
