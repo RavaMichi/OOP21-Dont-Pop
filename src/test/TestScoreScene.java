@@ -29,24 +29,22 @@ public class TestScoreScene extends javafx.application.Application {
 	private TableView table = new TableView();
 	
 	//data to put in table
-	private final ObservableList<Integer> data = FXCollections.observableArrayList();
-	
-	//size of the square filling the screen
-	private double screenSize;
-	
+	private final ObservableList<Integer> data = FXCollections.observableArrayList(1,2,3);
+		
 	@Override
 	public void start(Stage stage) throws Exception {
 		
 		//get screen size and choose the smallest axis
-		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		this.screenSize = Math.min(screenBounds.getWidth(), screenBounds.getHeight());
-		System.out.println(screenBounds);
+		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+		//size of the square filling the screen
+		final double screenSize = Math.min(screenBounds.getWidth(), screenBounds.getHeight());
+		////System.out.println(screenBounds);
 		
 		//create a non-resizable scene
-		Scene scene = new Scene(new Group());
+		final Scene scene = new Scene(new Group());
 		stage.setTitle("Score Ranking");
-		stage.setWidth(this.screenSize);
-		stage.setHeight(this.screenSize);
+		stage.setWidth(screenSize);
+		stage.setHeight(screenSize);
 		stage.setResizable(false);
 
 		//create label
@@ -57,17 +55,17 @@ public class TestScoreScene extends javafx.application.Application {
 		this.table.setEditable(true);
 
 		//rank column
-		TableColumn rankCol = new TableColumn("Rank");
+		final TableColumn rankCol = new TableColumn("Rank");
 		rankCol.setMinWidth(200);
 		rankCol.setCellValueFactory(new PropertyValueFactory<Integer, String>("rank"));
 
 		//name column
-		TableColumn nameCol = new TableColumn("Name");
+		final TableColumn nameCol = new TableColumn("Name");
 		nameCol.setMinWidth(200);
 		nameCol.setCellValueFactory(new PropertyValueFactory<Integer, String>("name"));
 
 		//score column
-		TableColumn scoreCol = new TableColumn("Score");
+		final TableColumn scoreCol = new TableColumn("Score");
 		scoreCol.setMinWidth(200);
 		scoreCol.setCellValueFactory(new PropertyValueFactory<Integer, String>("score"));
 
