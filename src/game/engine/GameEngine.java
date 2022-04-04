@@ -28,14 +28,14 @@ public class GameEngine extends Thread {
     private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
-    private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
+    ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
     private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
 
     private boolean hasShield;		//false
     private boolean hasMultiplier;	//false
-    private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
+    ////private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
     private double deltaTime;	//Duration of a frame
 
@@ -61,15 +61,62 @@ public class GameEngine extends Thread {
         final double deltaTime = ((double) TIME_CONST_60_HZ_MS) / 1000;
         this.gameTime += deltaTime;
 
-        if (this.multiplierTime > 0) {
-            //decrements multiplier time, so as to make it come to an end
-            this.multiplierTime -= deltaTime; 
+        //MULTIPLIER TIME MANAGEMENT
+        this.manageMultiplierTime();
+    }
+    
+    /**
+     * Manages multiplier time, decreasing it until it reaches 0.
+     */
+    private void manageMultiplierTime() {
+        if (this.scoreCalc.getMultiplierTime() > 0) {
+            //decrements multiplier time
+            this.scoreCalc.decMultiplierTime(deltaTime); 
         } else {
-            //multiplier powerup has expired: reverting settings back to normal
+            //multiplier expired: restoring normal settings
             if (this.hasMultiplier) {
                 this.hasMultiplier = false;
+                this.scoreCalc.resetMultiplier();
                 //TODO: add score multiplier manager
             }
+        }
+    }
+    
+    /**
+     * Updates all AbstractGameObjects.
+     */
+    private void updateAllGameObjects() {
+    	//for each --- update
+        this.player.update();
+        this.enemies.forEach(enemy -> enemy.update());
+        this.powerups.forEach(powerup -> powerup.update());
+    }
+    
+    /**
+     * Removes all objects inside destroy queue.
+     */
+    private void removeObjectsInDestroyQueue() {
+        this.destroyQueue.forEach(obj -> {
+        	if (this.enemies.contains(obj)) {
+        		this.enemies.remove(obj);
+        	} else if (this.powerups.contains(obj)) {
+        		this.powerups.remove(obj);
+        	}
+        });
+    }
+    
+    /**
+     * Puts thread to sleep for the remaining duration of the frame.
+     * @param startTime
+     * @param endTime
+     */
+    private void putThreadToSleep(final long startTime, final long endTime) {
+    	try {
+            Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
+        } catch (IllegalArgumentException e1) { 
+            e1.printStackTrace();
+        } catch (InterruptedException e2) {
+            e2.printStackTrace();
         }
     }
 
@@ -77,30 +124,14 @@ public class GameEngine extends Thread {
      * Starts the game loop (aka the engine).
      */
     public void startGameLoop() {
-        ////boolean gameOver = false;
         while (true) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
-            //updates game time
-            this.incTime();
-
-            //advance spawnManager
-            this.spawnManager.advance();
-            
-            //update all AbstractGameObjects (for each --- update)
-            this.player.update();
-            this.enemies.forEach(enemy -> enemy.update());
-            this.powerups.forEach(powerup -> powerup.update());
-
-            //remove objects inside destroy queue
-            this.destroyQueue.forEach(obj -> {
-            	if (this.enemies.contains(obj)) {
-            		this.enemies.remove(obj);
-            	} else if (this.powerups.contains(obj)) {
-            		this.powerups.remove(obj);
-            	}
-            });
+            this.incTime();					//updates game time
+            this.spawnManager.advance();	//advance spawnManager
+            this.updateAllGameObjects();
+            this.removeObjectsInDestroyQueue();
             
             //collision control (Controllo collisioni separate)
             //1. ENEMIES -- if true, game over (prints score and gets back to menu)
@@ -111,13 +142,7 @@ public class GameEngine extends Thread {
             	//TODO: consider changing everything to a continue loop, putting powerups in an if statement (if (!gameOver)) and setting a flag like while(!gameOver) at the beginning of the loop
                 final long endTime = System.currentTimeMillis();
                 
-                try {
-                    Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
-                } catch (IllegalArgumentException e1) { 
-                    e1.printStackTrace();
-                } catch (InterruptedException e2) {
-                    e2.printStackTrace();
-                }
+                this.putThreadToSleep(startTime, endTime);
                 
                 final long endFrame = System.currentTimeMillis();
                 this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
@@ -129,21 +154,11 @@ public class GameEngine extends Thread {
             //display collisions: for each --- render
             this.checkPowerupCollision();
 
-            //SCORE INCREMENT
-            this.scoreCalc.incScore();
-            
-            //RENDERING CHANGES
-            this.render();
+            this.scoreCalc.incScore();	//SCORE INCREMENT
+            this.render();				//RENDERING CHANGES
             
             final long endTime = System.currentTimeMillis();
-
-            try {
-                Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
-            } catch (IllegalArgumentException e1) { 
-                e1.printStackTrace();
-            } catch (InterruptedException e2) {
-                e2.printStackTrace();
-            }
+            this.putThreadToSleep(startTime, endTime);
 
             //end of frame
             final long endFrame = System.currentTimeMillis();
@@ -213,8 +228,8 @@ public class GameEngine extends Thread {
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
-                //five seconds of multiplier
-                this.multiplierTime = MULTIPLIER_TIME;
+                //sets multiplier value (duration: 5 seconds)
+                this.scoreCalc.setMultiplier(ScoreCalc.MULTIPLIER_2X);
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();
@@ -245,16 +260,25 @@ public class GameEngine extends Thread {
         return this.player.getPosition();
     }
 
-
+    /**
+     * Checks if a collision with an enemy has occurred.
+     * If true, the game is over.
+     * @return true if gameover, false otherwise
+     */
 	private boolean checkEnemyCollision() {
 		for (final AbstractGameObject enemy: this.enemies) {
-		    if (enemy.getCollider().checkCollision((CircleCollider)this.player.getCollider())) {
+		    if (enemy.getCollider().checkCollision(
+		    		(CircleCollider)this.player.getCollider())) {
 		        return true;
 		    }
 		}
 		return false;
 	}
 	
+	/**
+	 * Checks if a collision with a powerup has occurred.
+	 * If yes, applies powerup and destroys it.
+	 */
 	private void checkPowerupCollision() {
 		this.powerups.forEach(powerup -> {
 			this.applyPwrUp(powerup);

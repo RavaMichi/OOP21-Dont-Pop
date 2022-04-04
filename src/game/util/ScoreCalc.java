@@ -7,8 +7,16 @@ package game.util;
 public class ScoreCalc {
 	private int score;
     private int multiplier;
+    private double multiplierTime;
     private int frameCounter;
+    private final static double MULTIPLIER_TIME = 5;	//five seconds of multiplier
     private final static int FRAMES_PER_SCORE = 4;
+    
+    public final static int MULTIPLIER_2X = 2;
+    public final static int MULTIPLIER_3X = 3;
+    public final static int MULTIPLIER_4X = 4;
+    public final static int MULTIPLIER_5X = 5;
+    
 
     /**
      * Creates class and sets multiplier to 1 by default.
@@ -21,7 +29,7 @@ public class ScoreCalc {
      * Gets current score.
      * @return score
      */
-    public double getScore() {
+    public int getScore() {
         return this.score;
     }
 
@@ -64,6 +72,15 @@ public class ScoreCalc {
      */
     public void setMultiplier(final int multiplier) {
         this.multiplier = multiplier;
+        this.multiplierTime = MULTIPLIER_TIME;
+    }
+    
+    /**
+     * Sets multiplier to default value (2x).
+     * Useful when you don't want to specify the value of the multiplier.
+     */
+    public void setMultiplier() {
+    	this.setMultiplier(MULTIPLIER_2X);
     }
 
     /**
@@ -71,6 +88,18 @@ public class ScoreCalc {
      */
     public void resetMultiplier() {
         this.multiplier = 1;
+    }
+    
+    /**
+     * Gets remaining multiplier time.
+     * @return multiplierTime
+     */
+    public double getMultiplierTime() {
+    	return this.multiplierTime;
+    }
+    
+    public void decMultiplierTime(final double decrement) {
+    	this.multiplierTime -= decrement;
     }
     
     /**
