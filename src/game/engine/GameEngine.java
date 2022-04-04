@@ -65,23 +65,21 @@ public class GameEngine extends Thread {
         this.gameTime += deltaTime;
 
         //MULTIPLIER TIME MANAGEMENT
-        this.manageMultiplierTime();
+        this.manageMultiplierTime(deltaTime);
     }
     
     /**
      * Manages multiplier time, decreasing it until it reaches 0.
      */
-    private void manageMultiplierTime() {
+    private void manageMultiplierTime(final double deltaTime) {
+    	//decrease multiplier time
         if (this.scoreCalc.getMultiplierTime() > 0) {
-            //decrements multiplier time
             this.scoreCalc.decMultiplierTime(deltaTime); 
-        } else {
-            //multiplier expired: restoring normal settings
-            if (this.hasMultiplier) {
-                this.hasMultiplier = false;
-                this.scoreCalc.resetMultiplier();
-                //TODO: add score multiplier manager
-            }
+        } else if (this.hasMultiplier) {
+        	//multiplier expired: restoring normal settings
+            this.hasMultiplier = false;
+            this.scoreCalc.resetMultiplier();
+            //TODO: add score multiplier manager
         }
     }
     
