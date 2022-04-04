@@ -98,6 +98,10 @@ public class ScoreCalc {
     	return this.multiplierTime;
     }
     
+    /**
+     * Decreases multiplier time by an arbitrary amount.
+     * @param decrement
+     */
     public void decMultiplierTime(final double decrement) {
     	this.multiplierTime -= decrement;
     }
