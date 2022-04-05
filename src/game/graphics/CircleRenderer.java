@@ -23,11 +23,18 @@ public class CircleRenderer implements Renderer {
 		this.radius = radius;
 		this.color = color;
 	}
+	/**
+     * @param opacity
+     * Changes the circle color opacity
+     */
+	public void setOpacity(double opacity) {
+		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-
+		gc.setFill(color);
+		gc.fillOval(this.parent.getPosition().getX() - this.radius, this.parent.getPosition().getY() - this.radius, this.radius*2, this.radius*2);
 	}
 
 }
