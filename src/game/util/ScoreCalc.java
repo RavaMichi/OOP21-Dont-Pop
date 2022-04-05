@@ -11,11 +11,7 @@ public class ScoreCalc {
     private int frameCounter;
     private final static double MULTIPLIER_TIME = 5;	//five seconds of multiplier
     private final static int FRAMES_PER_SCORE = 4;
-    
-    public final static int MULTIPLIER_2X = 2;
-    public final static int MULTIPLIER_3X = 3;
-    public final static int MULTIPLIER_4X = 4;
-    public final static int MULTIPLIER_5X = 5;
+    private final static int MULTIPLIER_2X = 2;
     
 
     /**
