@@ -15,7 +15,7 @@ public class ScoreManager {
     /**
      * Creates & initializes this class.
      */
-    public ScoreManager(ScoreCalc scoreCalc) {
+    public ScoreManager(final ScoreCalc scoreCalc) {
     	this.scoreCalc = scoreCalc;
     	
     	this.leaderboard = new Leaderboard("res/ScoreList.txt");

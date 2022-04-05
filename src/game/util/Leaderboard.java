@@ -19,16 +19,16 @@ public class Leaderboard {
 
 	private static final int RANKING_LENGTH = 5;
 	
-    private ArrayList<Pair<String,Integer>> ranking = new ArrayList<>();
+    private List<Pair<String,Integer>> ranking = new ArrayList<>();
     private final File saveFile;
 	
 	public Leaderboard(final String savePath) {
 		this.saveFile = new File(savePath);
 		try {
 			if (saveFile.createNewFile()) {
-				save();
+				this.save();
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -84,7 +84,7 @@ public class Leaderboard {
 	/**
 	 * Saves the current ranking in the savefile.
 	 */
-	public void save() {
+	public final void save() {
 		try (var oos = new ObjectOutputStream(new FileOutputStream(saveFile))) {
 			oos.writeObject(this.ranking);
 		} catch (FileNotFoundException e1) {
