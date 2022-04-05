@@ -19,7 +19,9 @@ public class ImageRenderer implements Renderer {
 	 */
 	public static enum Sprite {
 		//...sprites to add...//
-		PLAYER("path/to/player/img");
+		PLAYER("/baloon.png"),
+		BULLET("/bullet.png"),
+		THORNBALL("/thornball.png");
 		
 		private final Image img;
 		
@@ -49,10 +51,17 @@ public class ImageRenderer implements Renderer {
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation, Point2D offset) {
 		this.obj = obj;
-		this.baseSprite = sprite;
-		this.currentImg = sprite.getImage();
+		setSprite(sprite);
 		this.offset = offset;
 		this.rotate(rotation, this.worldToPixel(size));
+	}
+	/**
+	 * @param newSprite
+	 * Sets the current image to the newSprite image
+	 */
+	public void setSprite(Sprite newSprite) {
+		this.baseSprite = newSprite;
+		this.currentImg = newSprite.getImage();
 	}
 	
 	@Override
