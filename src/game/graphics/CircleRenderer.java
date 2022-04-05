@@ -25,9 +25,10 @@ public class CircleRenderer implements Renderer {
 	}
 	/**
      * @param opacity
-     * Changes the circle color opacity
+     * Changes the circle color opacity. It's a number between 0 and 1
      */
 	public void setOpacity(double opacity) {
+		opacity = Math.min(Math.max(opacity, 0), 1);
 		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 	}
 	
