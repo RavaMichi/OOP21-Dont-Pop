@@ -1,9 +1,9 @@
 package game.model;
 
-import game.controller.GameEngine;
+import game.engine.GameEngine;
 import game.util.Point2D;
 
-class PlayerObj extends AbstractGameObject {
+public class PlayerObj extends AbstractGameObject {
 
 	Point2D playerPosition;
 	GameEngine gameEngine;
@@ -16,7 +16,7 @@ class PlayerObj extends AbstractGameObject {
 	}
 
 	@Override
-	void update() {
+	public void update() {
 		// gameEngine.getMousePosition
 		
 	}

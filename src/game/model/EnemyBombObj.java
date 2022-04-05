@@ -1,9 +1,9 @@
 package game.model;
 
-import game.controller.GameEngine;
+import game.engine.GameEngine;
 import game.util.Point2D;
 
-class EnemyBombObj extends AbstractGameObject {
+public class EnemyBombObj extends AbstractGameObject {
 	
 	Point2D point;
 	float timer;
@@ -18,7 +18,7 @@ class EnemyBombObj extends AbstractGameObject {
 	}
 
 	@Override
-	void update() {
+	public void update() {
 		// genera UI esplosione, dopo *timer* secondi attiva collider
 		
 	}

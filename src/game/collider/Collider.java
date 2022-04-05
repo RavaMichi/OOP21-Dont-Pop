@@ -1,4 +1,5 @@
-package game.model;
+package game.collider;
+
 /**
  * Interface containing the collision detection system
  */

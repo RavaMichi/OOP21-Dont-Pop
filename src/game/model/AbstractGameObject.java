@@ -1,6 +1,7 @@
 package game.model;
 
-import game.controller.GameEngine;
+import game.collider.Collider;
+import game.engine.GameEngine;
 import game.graphics.Renderer;
 import game.util.Point2D;
 

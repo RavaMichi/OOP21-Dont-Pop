@@ -1,4 +1,4 @@
-package game.graphics;
+package game.ui;
 
 import java.util.List;
 

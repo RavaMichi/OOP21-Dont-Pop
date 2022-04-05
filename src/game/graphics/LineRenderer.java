@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.model.AbstractGameObject;
 import game.util.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -13,13 +14,17 @@ public class LineRenderer implements Renderer {
 	private Color color;
 	private double width;
 	/**
-	 * @param p1 - in world coordinates
-	 * @param p2 - in world coordinates
-	 * @param color
-	 * @param width
-	 * Creates a new Renderer by passing a start point, an end point, a color and the line width
+	 * @param obj - the GameObject
+	 * @param direction - in world coordinates
+	 * @param color - the line color
+	 * @param width - the line width
+	 * Creates a new LineRenderer at obj position, pointing direction, with customizable color and width
 	 */
-	public LineRenderer(Point2D p1, Point2D p2, Color color, double width) {
+	public LineRenderer(final AbstractGameObject obj, Point2D direction, Color color, double width) {
+		double m = direction.getY()/direction.getX();
+		Point2D p1 = getLimit(obj.getPosition(), m, 0);
+		Point2D p2 = getLimit(obj.getPosition(), m, 1);
+		
 		this.p1 = p1;
 		this.p2 = p2;
 		this.color = color;
@@ -28,7 +33,7 @@ public class LineRenderer implements Renderer {
 	
 	@Override
 	public void paint(GraphicsContext gc) {
-		gc.setLineWidth(this.width);
+		gc.setLineWidth(this.worldToPixel(this.width));
 		gc.setStroke(color);
 		gc.strokeLine(this.worldToPixel(p1.getX()), this.worldToPixel(p1.getY()), this.worldToPixel(p2.getX()), this.worldToPixel(p2.getY()));
 	}
@@ -38,5 +43,21 @@ public class LineRenderer implements Renderer {
      */
 	public void setOpacity(double opacity) {
 		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
+	}
+	/**
+	 * @param origin
+	 * @param m
+	 * @param xLimit
+	 * @return the projection of the line y-y0=m(x-x0) on the xLimit border of the in-game world
+	 */
+	private Point2D getLimit(Point2D origin, double m, double xLimit) {
+		double y = m*(xLimit - origin.getX()) + origin.getY();
+		if (y > 1 || y < 0) {
+			double newY = y>1 ? 1 : 0;
+			double x = (newY - origin.getY() + m*origin.getX())/m;
+			return Point2D.of(x, newY);
+		} else {
+			return Point2D.of(xLimit, y);
+		}
 	}
 }
