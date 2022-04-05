@@ -45,10 +45,10 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(final GameScene gameScene, final Application application, final ScoreCalc scoreCalc) {
+    public GameEngine(final GameScene gameScene, final Application application) {
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
-        this.scoreCalc = scoreCalc;
+        this.scoreCalc = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
         this.gameScene = gameScene;
         this.application = application;
@@ -133,27 +133,28 @@ public class GameEngine extends Thread {
             this.spawnManager.advance();	//advance spawnManager
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
-            
-            //check gameover
-            final boolean gameOver = this.checkEnemyCollision();
+            this.checkPowerupCollision();	//powerups
 
             //game over: breaking loop
-            if (gameOver) {
+            if (this.checkEnemyCollision()) {
             	//TODO: consider changing everything to a continue loop, putting powerups in an if statement (if (!gameOver)) and setting a flag like while(!gameOver) at the beginning of the loop
+            	
+            	if (this.hasShield) {
+            		this.hasShield = false;
+            	} else {
+            		//end game loop
+            		break;
+            	}
+            	
+            	//////thread sleeps for remaining frame duration
+            	////final long endTime = System.currentTimeMillis();
+                ////this.putThreadToSleep(startTime, endTime);
                 
-            	//thread sleeps for remaining frame duration
-            	final long endTime = System.currentTimeMillis();
-                this.putThreadToSleep(startTime, endTime);
-                
-                //calculate frame duration
-                final long endFrame = System.currentTimeMillis();
-                this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
-
-                //end game loop
-                break;
+                //////calculate frame duration
+                ////final long endFrame = System.currentTimeMillis();
+                ////this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
             }
             
-            this.checkPowerupCollision();	//powerups
             this.scoreCalc.incScore();		//score increment
             this.render();					//rendering changes
             
@@ -296,6 +297,14 @@ public class GameEngine extends Thread {
         renderList.add(this.player);
         
         this.gameScene.render(renderList);
+	}
+	
+	/**
+	 * Gets mouse position.
+	 * @return mouse position
+	 */
+	public Point2D getMousePosition() {
+		return this.gameScene.getMouseWorldPosition();
 	}
 }
 
