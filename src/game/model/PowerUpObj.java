@@ -1,6 +1,6 @@
 package game.model;
 
-import game.model.GameEngine;
+import game.engine.GameEngine;
 import game.util.Point2D;
 
 class PowerUpObj extends AbstractGameObject {
