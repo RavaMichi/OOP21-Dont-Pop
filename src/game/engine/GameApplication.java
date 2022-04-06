@@ -15,9 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
 public class GameApplication extends Application {
-	public final static int size;// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
+	private final static int size;// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n ï¿½
 									// la percentuale dello schermo. ergo ho i valori da 0 a 1
-	public int score = 0;
+	//public int score = 0; NON SERVE QUI
 	private Stage primaryStage2 = new Stage();
 	/*
 	 * creati dentro i singoli metodi ScoreCalc scoreCalc; ScoreManager scoremanager
@@ -29,17 +29,17 @@ public class GameApplication extends Application {
 	}
 
 	// prende un int che va da zero a 1
-	static double convertToDouble(final int num) {
+	public static double convertToDouble(final int num) {
 		// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
 		double tmp = num / size;
 		// ritorna la posizione percentuale rispetto allo scermo. esempio gli passo 350
-		// e la risoluzione è 700 lui mi tira fuori 0.5 (50% della lunghezza dello
+		// e la risoluzione ï¿½ 700 lui mi tira fuori 0.5 (50% della lunghezza dello
 		// schermo )
 		return tmp;
 	}
 
 	// fa l'opposto di quello sopra
-	static int convertToInt(final double num) {
+	public static int convertToInt(final double num) {
 		int tmp = (int) num * size;
 		return tmp;
 	}
