@@ -69,21 +69,6 @@ public class GameEngine extends Thread {
     }
     
     /**
-     * Manages multiplier time, decreasing it until it reaches 0.
-     */
-    private void manageMultiplierTime(final double deltaTime) {
-    	//decrease multiplier time
-        if (this.scoreCalc.getMultiplierTime() > 0) {
-            this.scoreCalc.decMultiplierTime(deltaTime); 
-        } else if (this.hasMultiplier) {
-        	//multiplier expired: restoring normal settings
-            this.hasMultiplier = false;
-            this.scoreCalc.resetMultiplier();
-            //TODO: add score multiplier manager
-        }
-    }
-    
-    /**
      * Updates all AbstractGameObjects.
      */
     private void updateAllGameObjects() {
