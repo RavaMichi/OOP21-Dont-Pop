@@ -113,12 +113,12 @@ public class GameEngine extends Thread {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
-            this.incTime();					            //updates game time
-            this.scoreCalc.calculateScore(deltaTime);   //multiplier time management
-            this.spawnManager.advance();	            //advance spawnManager
+            this.incTime();					     	            //updates game time
+            this.scoreCalc.calculateScore(deltaTime);   		//multiplier time management
+            this.spawnManager.advance();	            		//advance spawnManager (enemy spawning)
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
-            this.checkPowerupCollision();	            //powerups
+            this.checkPowerupCollision();	            		//powerups
 
             //game over: breaking loop
             if (this.checkEnemyCollision()) {
