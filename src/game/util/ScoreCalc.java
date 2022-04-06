@@ -13,6 +13,8 @@ public class ScoreCalc {
     private final static int FRAMES_PER_SCORE = 4;
     private final static int MULTIPLIER_2X = 2;
     
+    private boolean hasMultiplier;
+    
 
     /**
      * Creates class and sets multiplier to 1 by default.
@@ -40,7 +42,7 @@ public class ScoreCalc {
     		this.resetFrameCounter();
     	}
     }
-
+	
     /**
      * Increments score by an arbitrary amount.
      * Can choose to ignore multiplier (default: apply current multiplier).
@@ -52,6 +54,21 @@ public class ScoreCalc {
     	} else {
     		this.score += delta * this.getMultiplier();
     	}
+    }
+
+    /**
+     * Manages multiplier time, decreasing it until it reaches 0.
+     */
+    private void manageMultiplierTime(final double deltaTime) {
+	    //decrease multiplier time
+        if (this.getMultiplierTime() > 0) {
+            this.decMultiplierTime(deltaTime);
+        } else if (this.hasMultiplier) {
+            //multiplier expired: restoring normal settings
+            this.hasMultiplier = false;
+            this.scoreCalc.resetMultiplier();
+            //TODO: add score multiplier manager
+        }
     }
 
     /**
