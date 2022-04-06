@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.engine.GameApplication;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
 import javafx.application.Platform;
@@ -53,7 +54,7 @@ public class ImageRenderer implements Renderer {
 		this.obj = obj;
 		setSprite(sprite);
 		this.offset = offset;
-		this.rotate(rotation, this.worldToPixel(size));
+		this.rotate(rotation, GameApplication.convertToInt(size));
 	}
 	/**
 	 * @param newSprite
@@ -67,8 +68,8 @@ public class ImageRenderer implements Renderer {
 	@Override
 	public void paint(GraphicsContext gc) {
 		//incomplete
-		int xPos = this.worldToPixel(this.obj.getPosition().getX() + offset.getX());
-		int yPos = this.worldToPixel(this.obj.getPosition().getY() + offset.getY());
+		int xPos = GameApplication.convertToInt(this.obj.getPosition().getX() + offset.getX());
+		int yPos = GameApplication.convertToInt(this.obj.getPosition().getY() + offset.getY());
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	/**

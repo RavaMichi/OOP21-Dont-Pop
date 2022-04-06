@@ -1,7 +1,7 @@
 package game.graphics;
 
+import game.engine.GameApplication;
 import game.model.AbstractGameObject;
-import game.util.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 /**
@@ -20,7 +20,7 @@ public class CircleRenderer implements Renderer {
 	 */
 	public CircleRenderer(final AbstractGameObject parent, double radius, Color color) {
 		this.parent = parent;
-		this.radius = radius;
+		setRadius(radius);
 		this.color = color;
 	}
 	/**
@@ -31,11 +31,21 @@ public class CircleRenderer implements Renderer {
 		opacity = Math.min(Math.max(opacity, 0), 1);
 		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 	}
+	/**
+	 * Set the radius of the circle
+	 * @param radius
+	 */
+	public void setRadius(final double radius) {
+		this.radius = GameApplication.convertToInt(radius);
+	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
 		gc.setFill(color);
-		gc.fillOval(this.parent.getPosition().getX() - this.radius, this.parent.getPosition().getY() - this.radius, this.radius*2, this.radius*2);
+		gc.fillOval(GameApplication.convertToInt(this.parent.getPosition().getX()) - this.radius,
+				GameApplication.convertToInt(this.parent.getPosition().getY()) - this.radius,
+				this.radius*2,
+				this.radius*2);
 	}
 
 }
