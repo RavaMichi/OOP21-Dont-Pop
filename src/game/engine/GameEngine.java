@@ -61,11 +61,7 @@ public class GameEngine extends Thread {
      * Updates (increments) game time (in seconds).
      */
     private void incTime() {
-        final double deltaTime = ((double) TIME_CONST_60_HZ_MS) / 1000;
-        this.gameTime += deltaTime;
-
-        //MULTIPLIER TIME MANAGEMENT
-        this.manageMultiplierTime(deltaTime);
+        this.gameTime += this.deltaTime;
     }
     
     /**
@@ -79,9 +75,10 @@ public class GameEngine extends Thread {
     }
     
     /**
-     * Removes all objects inside destroy queue.
+     * Removes all objects inside destroy queue and clears it.
      */
     private void removeObjectsInDestroyQueue() {
+        //remove objects
         this.destroyQueue.forEach(obj -> {
         	if (this.enemies.contains(obj)) {
         		this.enemies.remove(obj);
@@ -89,6 +86,8 @@ public class GameEngine extends Thread {
         		this.powerups.remove(obj);
         	}
         });
+        //clear queue
+        this.destroyQueue.clear();
     }
     
     /**
@@ -114,11 +113,12 @@ public class GameEngine extends Thread {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
-            this.incTime();					//updates game time
-            this.spawnManager.advance();	//advance spawnManager
+            this.incTime();					            //updates game time
+            this.scoreCalc.calculateScore(deltaTime);   //multiplier time management
+            this.spawnManager.advance();	            //advance spawnManager
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
-            this.checkPowerupCollision();	//powerups
+            this.checkPowerupCollision();	            //powerups
 
             //game over: breaking loop
             if (this.checkEnemyCollision()) {
@@ -142,7 +142,7 @@ public class GameEngine extends Thread {
                 ////this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
             }
             
-            this.scoreCalc.incScore();		//score increment
+            ////this.scoreCalc.incScore();		//score increment
             this.render();					//rendering changes
             
             //thread sleeps for remaining frame duration
