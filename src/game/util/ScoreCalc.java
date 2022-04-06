@@ -10,8 +10,8 @@ public class ScoreCalc {
     private double multiplierTime;
     private double frameCounter;
     private final static double MULTIPLIER_TIME = 5;	//five seconds of multiplier
-    private final static POINTS_PER_SECOND= 15;
-    private final static SECONDS_PER_POINT = 1 / POINTS_PER_SECOND;
+    private final static int POINTS_PER_SECOND= 15;
+    private final static double SECONDS_PER_POINT = 1 / (double)POINTS_PER_SECOND;
     private final static int MULTIPLIER_2X = 2;
     
     private boolean hasMultiplier;
@@ -38,7 +38,7 @@ public class ScoreCalc {
      * @param delta
      */
     public void incScore(final int deltaScore) {
-        this.score += delta * this.getMultiplier();
+        this.score += deltaScore * this.getMultiplier();
     }
 
     /**
@@ -51,7 +51,7 @@ public class ScoreCalc {
         } else if (this.hasMultiplier) {
             //multiplier expired: restoring normal settings
             this.hasMultiplier = false;
-            this.scoreCalc.resetMultiplier();
+            this.resetMultiplier();
             //TODO: add score multiplier manager
         }
     }
@@ -121,7 +121,7 @@ public class ScoreCalc {
      * Gets current frame counter.
      * @return frameCounter
      */
-    private int getFrameCounter() {
+    private double getFrameCounter() {
     	return this.frameCounter;
     }
     
