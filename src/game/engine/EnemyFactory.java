@@ -1,5 +1,11 @@
 package game.engine;
-import java.awt.geom.Point2D;
+
+import game.model.AbstractGameObject;
+import game.model.EnemyBombObj;
+import game.model.EnemyLineObj;
+import game.model.EnemyProjectileObj;
+import game.util.Point2D;
+import game.util.WhereToSpawn;
 
 public class EnemyFactory {
 	/*
@@ -9,7 +15,7 @@ public class EnemyFactory {
 	 *
 	 * 
 	 */
-	GameEngine gameEngine = GameEngine.getGameEngine(); // uso del metodo dalla definizione di classe per avere il
+	GameEngine gameEngine; //= GameEngine.getGameEngine(); // uso del metodo dalla definizione di classe per avere il
 														// riferimento al game engine corrente
 	WhereToSpawn wheretospawn = new WhereToSpawn();
 	Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());// PUNTO RANDOM IN CUI
@@ -22,7 +28,7 @@ public class EnemyFactory {
 	public AbstractGameObject GetEnemyObj(final int n) {
 
 		if (n == AbstractGameObject.ObjectType.BULLET.ordinal()) {
-			return new EnemyProjectileObj(spawnPosition, spawnDir, AbstractGameObject.ObjectType.BULLET, gameEngine); // OK
+			return new EnemyProjectileObj(spawnPosition, spawnDir, (float) 0.02 , AbstractGameObject.ObjectType.BULLET, gameEngine); // dir è di 0.due decimi di schermo a chiamata
 
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
 			return new Thornball(spawnPosition); // APETTARE CREAZIONE CLASSE
@@ -32,10 +38,10 @@ public class EnemyFactory {
 			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perchï¿½ cosï¿½ spawna
 			// dentro
 
-			return new EnemyBombObj(spawnBomb, timeToDetonate, gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO
+			return new EnemyBombObj(spawnBomb, timeToDetonate, AbstractGameObject.ObjectType.EXPLOSION ,  gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO
 
 		} else if (n == AbstractGameObject.ObjectType.LASER.ordinal()) {
-			return new EnemyLineObj(spawnPosition, spawnDir, AbstractGameObject.ObjectType.LASER, gameEngine);// OK
+			return new EnemyLineObj(spawnPosition, spawnDir,timeToDetonate, AbstractGameObject.ObjectType.LASER, gameEngine);// 5 è il tempo  di detonazione
 		}
 
 	}

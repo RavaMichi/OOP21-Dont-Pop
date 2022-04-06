@@ -1,4 +1,5 @@
 package game.engine;
+
 import game.model.AbstractGameObject;
 import game.util.RandomInt;
 
@@ -20,7 +21,7 @@ public class SpawnManager {
 	private static final double TIME_SPAWN_LASER = 10; // ogni 10 sec
 	private double tSpawnBullet = 2.5; // INIZIALMENTE ogni 2.5 sec
 	private double bulletSpawnati = 1; // mi serve per moltipllicare la costante di tempo (quante volte ha
-								// spawnato)//counter sballato di uno per iniziare il primo ciclo
+	// spawnato)//counter sballato di uno per iniziare il primo ciclo
 
 	private int laserSpawnati = 1; // counter sballato di uno per iniziare il primo ciclo
 	private int quantilaser = 2;
@@ -28,18 +29,17 @@ public class SpawnManager {
 
 	// cambiare deltatime in double
 	private double tempo_totale = 0; // + gameEngine.getCurrentTime();
-	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura pi� di 1/60 di secondo ma non credo ci possa
-										// mettere il doppio del tempo per eseguirsi
+	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura pi� di 1/60 di secondo ma non
+														// credo ci possa
+	// mettere il doppio del tempo per eseguirsi
 
 	private double FIRST_LOOP_LIMIT = 3;// 3 secondi
 
 	//
-
-	private PoweupFactory powerUpfFactory = new PoweupFactory();
+	private GameEngine gameEngine;
+	private PoweupFactory powerUpfFactory = new PoweupFactory(this.gameEngine);
 	private EnemyFactory enemyFactory = new EnemyFactory();
 	private RandomInt randomInt = new RandomInt();
-
-	private GameEngine gameEngine;
 
 	public SpawnManager(final GameEngine gameEngine) {
 		super();
@@ -47,13 +47,17 @@ public class SpawnManager {
 	}
 
 	public void advance() {
-		if (tempo_totale >= FIRST_LOOP_LIMIT && tempo_totale <= FIRST_LOOP_LIMIT + tolleranza_frame) { // vuol dire che																						// ha aspettato																					// i tot secondi
+		if (tempo_totale >= FIRST_LOOP_LIMIT && tempo_totale <= FIRST_LOOP_LIMIT + tolleranza_frame) { // vuol dire che
+																										// // ha
+																										// aspettato //
+																										// i tot secondi
 			this.game_start();
 		}
 	}
 
-	private  void game_start() {
-		tempo_totale += gameEngine.deltatime;
+	private void game_start() {
+		double tempodasommare = gameEngine.getDeltaTime();
+		tempo_totale += tempodasommare;
 //BULLET		
 
 		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PI�
