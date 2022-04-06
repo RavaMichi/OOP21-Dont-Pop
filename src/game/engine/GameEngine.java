@@ -23,9 +23,9 @@ public class GameEngine extends Thread {
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final Application application;
-    private final List<AbstractGameObject> enemies;
-    private final List<AbstractGameObject> powerups;
-    private final List<AbstractGameObject> destroyQueue;
+    private final List<? extends AbstractGameObject> enemies;
+    private final List<? extends AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<? extends AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
