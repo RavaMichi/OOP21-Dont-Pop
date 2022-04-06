@@ -25,8 +25,8 @@ public class TextRenderer implements Renderer {
 	 */
 	public TextRenderer(AbstractGameObject parent, String text, double size, Color color) {
 		this.parent = parent;
-		this.text = text;
-		this.color = color;
+		setText(text);
+		setColor(color);
 		this.font = new Font(DEFAULT_FONT_NAME, GameApplication.convertToInt(size));
 	}
 	
@@ -37,6 +37,20 @@ public class TextRenderer implements Renderer {
 		gc.fillText(this.text,
 				GameApplication.convertToInt(this.parent.getPosition().getX()),
 				GameApplication.convertToInt(this.parent.getPosition().getY()));
+	}
+	/**
+	 * Sets the text.
+	 * @param txt
+	 */
+	public void setText(String txt) {
+		this.text = txt;
+	}
+	/**
+	 * Sets the color of the text.
+	 * @param color
+	 */
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 }
