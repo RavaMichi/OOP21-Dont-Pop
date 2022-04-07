@@ -46,12 +46,12 @@ public class GameEngine extends Thread {
      * Creates a new GameEngine object and initializes its fields.
      */
     public GameEngine(final GameScene gameScene, final Application application) {
+        this.gameScene = gameScene;
+        this.application = application;
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
         this.scoreCalc = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
-        this.gameScene = gameScene;
-        this.application = application;
         this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
         this.spawnManager = new SpawnManager(this);
         //likely add fps in future
@@ -63,7 +63,7 @@ public class GameEngine extends Thread {
     private void incTime() {
         this.gameTime += this.deltaTime;
     }
-    
+
     /**
      * Updates all AbstractGameObjects.
      */
@@ -73,7 +73,7 @@ public class GameEngine extends Thread {
         this.enemies.forEach(enemy -> enemy.update());
         this.powerups.forEach(powerup -> powerup.update());
     }
-    
+
     /**
      * Removes all objects inside destroy queue and clears it.
      */
