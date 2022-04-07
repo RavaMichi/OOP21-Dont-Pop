@@ -80,9 +80,9 @@ public class GameApplication extends Application {
 	}
 
 	public void score() {
-		ScoreCalc scolreCalc = new ScoreCalc();
-		ScoreManager scoremanager = new ScoreManager(scolreCalc);// prende score e il player dal game engine
-		ScoreScene scoreScene = new ScoreScene(scolreCalc);
+		ScoreCalc scoreCalc = new ScoreCalc();
+		ScoreManager scoremanager = new ScoreManager(scoreCalc);// prende score e il player dal game engine
+		ScoreScene scoreScene = new ScoreScene(scoreCalc);
 		scoreScene.start(this.primaryStage2);
 		this.setSceneM(scoreScene.get());
 
