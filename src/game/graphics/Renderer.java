@@ -10,12 +10,4 @@ public interface Renderer {
 	 * Draws on gc this rendering information
 	 */
 	void paint(GraphicsContext gc);
-	/**
-	 * @param worldPosition
-	 * @return the screen position
-	 * Converts the world position to screen position
-	 */
-	default int worldToPixel(double worldPosition) {
-		return 0;//todo
-	}
 }

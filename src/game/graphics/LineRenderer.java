@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.engine.GameApplication;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -33,15 +34,16 @@ public class LineRenderer implements Renderer {
 	
 	@Override
 	public void paint(GraphicsContext gc) {
-		gc.setLineWidth(this.worldToPixel(this.width));
+		gc.setLineWidth(GameApplication.convertToInt(this.width));
 		gc.setStroke(color);
-		gc.strokeLine(this.worldToPixel(p1.getX()), this.worldToPixel(p1.getY()), this.worldToPixel(p2.getX()), this.worldToPixel(p2.getY()));
+		gc.strokeLine(GameApplication.convertToInt(p1.getX()), GameApplication.convertToInt(p1.getY()), GameApplication.convertToInt(p2.getX()), GameApplication.convertToInt(p2.getY()));
 	}
     /**
      * @param opacity
-     * Changes the line color opacity
+     * Changes the line color opacity. It's a number between 0 and 1
      */
 	public void setOpacity(double opacity) {
+		opacity = Math.min(Math.max(opacity, 0), 1);
 		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 	}
 	/**

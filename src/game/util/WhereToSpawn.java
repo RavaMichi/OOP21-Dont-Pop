@@ -1,5 +1,4 @@
 package game.util;
-import java.awt.geom.Point2D;
 
 /**
  * The Class WhereToSpawn.
@@ -51,17 +50,15 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		
 			
 			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
-				return new Point2D.Double(-0.2,randomNumber);
+				return new Point2D(-0.2,randomNumber);
 			} else if ( sideOfSpawn == SideOfSpawn.SUD.ordinal() ) {
-				return new Point2D.Double(randomNumber,1.2);
+				return new Point2D(randomNumber,1.2);
 			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
-				return new Point2D.Double(1.2 , randomNumber);
+				return new Point2D(1.2 , randomNumber);
 			} else if (sideOfSpawn == SideOfSpawn.NORD.ordinal() ) {
-				return new Point2D.Double(randomNumber,-0.2);
+				return new Point2D(randomNumber,-0.2);
 			}
-		
-			
-			return new Point2D.Double(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
+			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
 			
 		}
 
@@ -73,8 +70,8 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		 */
 		public Point2D getPowerUPSpawnPoint() {
 			RandomInt randomInt= new RandomInt();
-			int x = randomInt.getRandomInt(0,1);
-			int y = randomInt.getRandomInt(0,1);
-			return new Point2D.Double(x , y);
+			double x = randomInt.getRandomInt(0,1)/100;
+			double y = randomInt.getRandomInt(0,1)/100;
+			return new Point2D(x , y);
 			}
 }

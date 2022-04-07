@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.engine.GameApplication;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
 import javafx.application.Platform;
@@ -19,7 +20,9 @@ public class ImageRenderer implements Renderer {
 	 */
 	public static enum Sprite {
 		//...sprites to add...//
-		PLAYER("path/to/player/img");
+		PLAYER("/baloon.png"),
+		BULLET("/bullet.png"),
+		THORNBALL("/thornball.png");
 		
 		private final Image img;
 		
@@ -49,17 +52,24 @@ public class ImageRenderer implements Renderer {
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation, Point2D offset) {
 		this.obj = obj;
-		this.baseSprite = sprite;
-		this.currentImg = sprite.getImage();
+		setSprite(sprite);
 		this.offset = offset;
-		this.rotate(rotation, this.worldToPixel(size));
+		this.rotate(rotation, GameApplication.convertToInt(size));
+	}
+	/**
+	 * @param newSprite
+	 * Sets the current image to the newSprite image
+	 */
+	public void setSprite(Sprite newSprite) {
+		this.baseSprite = newSprite;
+		this.currentImg = newSprite.getImage();
 	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
 		//incomplete
-		int xPos = this.worldToPixel(this.obj.getPosition().getX() + offset.getX());
-		int yPos = this.worldToPixel(this.obj.getPosition().getY() + offset.getY());
+		int xPos = GameApplication.convertToInt(this.obj.getPosition().getX() + offset.getX());
+		int yPos = GameApplication.convertToInt(this.obj.getPosition().getY() + offset.getY());
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	/**

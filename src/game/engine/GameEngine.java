@@ -23,9 +23,9 @@ public class GameEngine extends Thread {
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final Application application;
-    private final List<AbstractGameObject> enemies;
-    private final List<AbstractGameObject> powerups;
-    private final List<AbstractGameObject> destroyQueue;
+    private final List<? extends AbstractGameObject> enemies;
+    private final List<? extends AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<? extends AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -61,26 +61,7 @@ public class GameEngine extends Thread {
      * Updates (increments) game time (in seconds).
      */
     private void incTime() {
-        final double deltaTime = ((double) TIME_CONST_60_HZ_MS) / 1000;
-        this.gameTime += deltaTime;
-
-        //MULTIPLIER TIME MANAGEMENT
-        this.manageMultiplierTime(deltaTime);
-    }
-    
-    /**
-     * Manages multiplier time, decreasing it until it reaches 0.
-     */
-    private void manageMultiplierTime(final double deltaTime) {
-    	//decrease multiplier time
-        if (this.scoreCalc.getMultiplierTime() > 0) {
-            this.scoreCalc.decMultiplierTime(deltaTime); 
-        } else if (this.hasMultiplier) {
-        	//multiplier expired: restoring normal settings
-            this.hasMultiplier = false;
-            this.scoreCalc.resetMultiplier();
-            //TODO: add score multiplier manager
-        }
+        this.gameTime += this.deltaTime;
     }
     
     /**
@@ -94,9 +75,10 @@ public class GameEngine extends Thread {
     }
     
     /**
-     * Removes all objects inside destroy queue.
+     * Removes all objects inside destroy queue and clears it.
      */
     private void removeObjectsInDestroyQueue() {
+        //remove objects
         this.destroyQueue.forEach(obj -> {
         	if (this.enemies.contains(obj)) {
         		this.enemies.remove(obj);
@@ -104,6 +86,8 @@ public class GameEngine extends Thread {
         		this.powerups.remove(obj);
         	}
         });
+        //clear queue
+        this.destroyQueue.clear();
     }
     
     /**
@@ -129,15 +113,18 @@ public class GameEngine extends Thread {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
-            this.incTime();					//updates game time
-            this.spawnManager.advance();	//advance spawnManager
+            this.incTime();					     	            //updates game time
+            this.scoreCalc.calculateScore(deltaTime);   		//multiplier time management
+            this.spawnManager.advance();	            		//advance spawnManager (enemy spawning)
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
-            this.checkPowerupCollision();	//powerups
+            this.checkPowerupCollision();	            		//powerups
 
             //game over: breaking loop
             if (this.checkEnemyCollision()) {
-            	//TODO: consider changing everything to a continue loop, putting powerups in an if statement (if (!gameOver)) and setting a flag like while(!gameOver) at the beginning of the loop
+            	//TODO: consider changing everything to a continue loop, 
+            	//putting powerups in an if statement (if (!gameOver)) and 
+            	//setting a flag like while(!gameOver) at the beginning of the loop
             	
             	if (this.hasShield) {
             		this.hasShield = false;
@@ -155,7 +142,7 @@ public class GameEngine extends Thread {
                 ////this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
             }
             
-            this.scoreCalc.incScore();		//score increment
+            ////this.scoreCalc.incScore();		//score increment
             this.render();					//rendering changes
             
             //thread sleeps for remaining frame duration
@@ -229,7 +216,7 @@ public class GameEngine extends Thread {
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
                 //sets multiplier value (duration: 5 seconds)
-                this.scoreCalc.setMultiplier(ScoreCalc.MULTIPLIER_2X);
+                this.scoreCalc.setMultiplier();
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();

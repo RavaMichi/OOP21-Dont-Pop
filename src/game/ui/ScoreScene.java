@@ -40,8 +40,8 @@ public class ScoreScene {
     public void start(Stage stage) {
     	Scene scene = new Scene(new Group());
     	stage.setTitle("Table View Sample");
-    	stage.setWidth(300);
-    	stage.setHeight(500);
+    	/*stage.setWidth(300);
+    	stage.setHeight(500);*/
     	
     	final Label label = new Label("Leaderboard");
     	label.setFont(new Font("Arial", 20));
@@ -60,9 +60,9 @@ public class ScoreScene {
     	vbox.getChildren().addAll(label, table);
     	
     	((Group) scene.getRoot()).getChildren().addAll(vbox);
-    	
+    	/*
     	stage.setScene(scene);
-    	stage.show();
+    	stage.show();*/
     }
     
     /**

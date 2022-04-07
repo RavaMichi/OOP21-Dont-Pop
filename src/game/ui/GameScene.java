@@ -4,10 +4,12 @@ import java.util.List;
 
 import game.model.AbstractGameObject;
 import game.util.Point2D;
+import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.text.TextAlignment;
 /**
  * Represents the Scene where to display the actual game objects.
  * It is managed by the GameEngine
@@ -30,6 +32,9 @@ public class GameScene {
 		Group gr = new Group();
 		this.activeCanvas = new Canvas(size, size);
 		this.bufferCanvas = new Canvas(size, size);
+		
+		setTextSettings();
+		
 		//adds to the scene only the active canvas
 		gr.getChildren().add(this.activeCanvas);
 		
@@ -77,6 +82,16 @@ public class GameScene {
 		Canvas temp = this.bufferCanvas;
 		this.bufferCanvas = this.activeCanvas;
 		this.activeCanvas = temp;
+	}
+	/**
+	 * Sets the settings for text rendering.
+	 * Makes the text centered at creation.
+	 */
+	private void setTextSettings() {
+		this.activeCanvas.getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+		this.bufferCanvas.getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+		this.activeCanvas.getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+		this.bufferCanvas.getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
 	}
 	/**
 	 * Clears the buffer canvas
