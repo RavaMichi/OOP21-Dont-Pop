@@ -8,9 +8,9 @@ public final class Point2D {
         private double y;
 
         /**
+         * Creates a new point of coordinates (x, y)
          * @param x
          * @param y
-         * Creates a new point of coordinates (x, y)
          */
         public Point2D(final double x, final double y) {
                 this.x = x;
@@ -18,6 +18,7 @@ public final class Point2D {
         }
 
         /**
+         * Creates a new point of coordinates (x, y). Can be called from a point to create another one.
          * @param x
          * @param y
          * @return a new point of coordinates (x, y)
@@ -27,6 +28,7 @@ public final class Point2D {
         }
 
 	/**
+	 * Creates a copy of a point.
 	 * @param point to copy
 	 * @return a new Point2D equal to point
 	 */
@@ -35,6 +37,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Gets the point opposite to the one specified.
 	 * @param point
 	 * @return a new Point2D opposite to point
 	 */
@@ -45,6 +48,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Normalizes the given point.
 	 * @param point
 	 * @return a new Point2D equal to point with a magnitude of 1
 	 */
@@ -55,6 +59,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Calculates the distance between two points.
 	 * @param pointA
 	 * @param pointB
 	 * @return the distance between pointA and pointB
@@ -66,6 +71,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Gets the x-axis coordinate.
 	 * @return the x coordinate
 	 */
 	public double getX() {
@@ -73,6 +79,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Gets the y-axis coordinate.
 	 * @return the y coordinate
 	 */
 	public double getY() {
@@ -80,6 +87,7 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Gets the magnitude of the vector (its distance from origin).
 	 * @return the magnitude of this vector
 	 */
 	public double getMagnitude() {
@@ -87,24 +95,24 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Sets the x coordinate to x.
 	 * @param x
-	 * Sets the x coordinate to x
 	 */
 	public void setX(final double x) {
 		this.x = x;
 	}
 	
 	/**
+	 * Sets the y coordinate to y.
 	 * @param y
-	 * Sets the y coordinate to y
 	 */
 	public void setY(final double y) {
 		this.y = y;
 	}
 	
 	/**
+	 * Adds point to this Point2D (Vector addition).
 	 * @param point to add
-	 * Adds point to this Point2D (Vector addition)
 	 */
 	public void add(final Point2D point) {
 		this.x += point.getX();
@@ -112,8 +120,8 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Subtracts point to this Point2D (Vector addition).
 	 * @param point to subtract
-	 * Subtracts point to this Point2D (Vector addition)
 	 */
 	public void sub(final Point2D point) {
 		this.x -= point.getX();
@@ -121,8 +129,8 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Copied X and Y from another Point2D.
 	 * @param point to set
-	 * Copies X and Y from another Point2D
 	 */
 	public void set(final Point2D point) {
 		this.x = point.getX();
@@ -130,8 +138,8 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Multiply this Point2D with scalar (Scalar multiplication).
 	 * @param scalar to multiply
-	 * Multiply this Point2D with scalar (Scalar multiplication)
 	 */
 	public void mul(final double scalar) {
 		this.x *= scalar;
@@ -139,8 +147,8 @@ public final class Point2D {
 	}
 	
 	/**
+	 * Divide this Point2D by scalar (Scalar multiplication) (Vector-Scalar division).
 	 * @param scalar
-	 * Divide this Point2D by scalar (Scalar multiplication) (Vector-Scalar division)
 	 */
 	public void div(final double scalar) {
 		this.x /= scalar;
@@ -154,6 +162,9 @@ public final class Point2D {
 		this.div(this.getMagnitude());
 	}
 	
+	/**
+	 * Returns a string representation of this object.
+	 */
 	@Override
 	public String toString() {
 		return "(" + this.x + ", " + this.y + ")";
