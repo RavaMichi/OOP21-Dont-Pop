@@ -121,6 +121,15 @@ public final class Point2D {
 	}
 	
 	/**
+	 * @param point to set
+	 * Copies X and Y from another Point2D
+	 */
+	public void set(final Point2D point) {
+		this.x = point.getX();
+		this.y = point.getY();
+	}
+	
+	/**
 	 * @param scalar to multiply
 	 * Multiply this Point2D with scalar (Scalar multiplication)
 	 */
