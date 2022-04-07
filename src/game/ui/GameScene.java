@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.text.TextAlignment;
+
 /**
  * Represents the Scene where to display the actual game objects.
  * It is managed by the GameEngine
@@ -23,6 +24,7 @@ public class GameScene {
 	
 	private Point2D mousePosition = new Point2D(0.5,0.5);
 	private int size;
+	
 	/**
 	 * @param sizeX
 	 * @param sizeY
@@ -47,12 +49,14 @@ public class GameScene {
 		this.size = size;
 		this.scene = new Scene(gr);
 	}
+	
 	/**
 	 * @return the scene to display
 	 */
 	public Scene getScene() {
 		return this.scene;
 	}
+	
 	/**
 	 * @return the GraphicsContext where to draw the objects
 	 */
@@ -60,12 +64,14 @@ public class GameScene {
 		//images are drawn into the buffer first, then displayed
 		return this.bufferCanvas.getGraphicsContext2D();
 	}
+	
 	/**
 	 * @return the in-game coordinates of the mouse
 	 */
 	public Point2D getMouseWorldPosition() {
 		return this.mousePosition; 
 	}
+	
 	/**
 	 * @param objects - List of game objects
 	 * Displays all the elements in objects which have a renderer
@@ -75,6 +81,7 @@ public class GameScene {
 		objects.stream().filter(o -> o.getRenderer() != null).forEach(o -> o.getRenderer().paint(getGraphics()));
 		swapCanvas();
 	}
+	
 	/**
 	 * Swap the buffer canvas with the active one
 	 */
@@ -83,6 +90,7 @@ public class GameScene {
 		this.bufferCanvas = this.activeCanvas;
 		this.activeCanvas = temp;
 	}
+	
 	/**
 	 * Sets the settings for text rendering.
 	 * Makes the text centered at creation.
@@ -93,6 +101,7 @@ public class GameScene {
 		this.activeCanvas.getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
 		this.bufferCanvas.getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
 	}
+	
 	/**
 	 * Clears the buffer canvas
 	 */
