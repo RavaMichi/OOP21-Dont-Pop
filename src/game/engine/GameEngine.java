@@ -22,7 +22,7 @@ public class GameEngine extends Thread {
     private final SpawnManager spawnManager;
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
-    private final Application application;
+    private final GameApplication application;
     private final List<AbstractGameObject> enemies;
     private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
     private final List<AbstractGameObject> destroyQueue;
@@ -45,7 +45,7 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(final GameScene gameScene, final Application application) {
+    public GameEngine(final GameScene gameScene, final GameApplication application) {
         this.gameScene = gameScene;
         this.application = application;
         this.enemies = new ArrayList<>(INITIAL_SIZE);
