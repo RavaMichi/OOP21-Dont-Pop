@@ -91,4 +91,11 @@ public class ImageRenderer implements Renderer {
 			this.currentImg = iv.snapshot(param, null);
 		});
 	}
+	/**
+	 * 
+	 * @return the attached game object
+	 */
+	protected AbstractGameObject getGameObject() {
+		return this.obj;
+	}
 }

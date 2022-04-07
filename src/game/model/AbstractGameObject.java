@@ -123,4 +123,11 @@ public abstract class AbstractGameObject {
     public void destroy() {
         this.gameEngine.destroy(this);
     }
+    /**
+     * 
+     * @return the game engine where this object is instantiated.
+     */
+    public GameEngine getGameEngine() {
+    	return this.gameEngine;
+    }
 }
