@@ -18,7 +18,7 @@ public class ScoreManager {
     public ScoreManager(final ScoreCalc scoreCalc) {
     	this.scoreCalc = scoreCalc;
     	
-    	this.leaderboard = new Leaderboard("res/ScoreList.txt");
+    	this.leaderboard = new Leaderboard("res/.save");
     	this.leaderboard.load();
     	
     	this.leaderboard.addToRanking("gigiabaffa", 5);
