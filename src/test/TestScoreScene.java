@@ -33,7 +33,7 @@ public class TestScoreScene extends javafx.application.Application {
 		
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+		//application will pass you the screen size
 		//get screen size and choose the smallest axis
 		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		//size of the square filling the screen
@@ -82,7 +82,7 @@ public class TestScoreScene extends javafx.application.Application {
 		//add vertical box to group
 		((Group) scene.getRoot()).getChildren().addAll(vbox);
 
-		//add scene to stage and make it visible
+		//add scene to stage and make it visible (remove in final version)
 		stage.setScene(scene);
 		stage.show();
 		
