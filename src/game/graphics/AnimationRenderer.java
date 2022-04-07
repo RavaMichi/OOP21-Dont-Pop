@@ -25,8 +25,8 @@ public class AnimationRenderer implements Renderer {
 	public AnimationRenderer(final List<ImageRenderer> images, double speed, boolean loop) {
 		if (images == null || images.size() == 0) throw new IllegalArgumentException("images can't be null or empty.");
 		this.frames = images;
-		this.animationTime = 1/speed;
-		this.loop = loop;
+		setSpeed(speed);
+		enableLoop(loop);
 		this.ge = images.get(0).getGameObject().getGameEngine();
 	}
 	
@@ -54,5 +54,28 @@ public class AnimationRenderer implements Renderer {
 			}
 		}
 	}
-
+	/**
+	 * Sets the speed of the animation
+	 * @param speed
+	 */
+	public void setSpeed(final double speed) {
+		this.animationTime = 1/speed;
+	}
+	/**
+	 * Enables/disables the looping of the animation
+	 * @param loop
+	 */
+	public void enableLoop(final boolean loop) {
+		this.loop = loop;
+	}
+	/**
+	 * Sets the current frame to index frame
+	 * @param index - must be within range, or it will be ignored
+	 */
+	public void goToFrame(final int index) {
+		if (index >= 0 && index < this.frames.size()) {
+			this.index = index;
+			this.timer = 0;
+		}
+	}
 }
