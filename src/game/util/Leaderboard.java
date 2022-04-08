@@ -70,10 +70,10 @@ public class Leaderboard {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	/**
 	 * Loads the ranking saved in the savefile.
 	 */
+	@SuppressWarnings("unchecked")
 	public void load() {
 		try (var ois = new ObjectInputStream(new FileInputStream(saveFile))) {	
 			this.ranking = (ArrayList<Pair<String,Integer>>)ois.readObject();
