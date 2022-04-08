@@ -32,25 +32,24 @@ public class AnimationRenderer implements Renderer {
 	
 	@Override
 	public void paint(GraphicsContext gc) {
-		frames.get(index).paint(gc);
+		var imgR = frames.get(index);
+		if (imgR != null) {
+			imgR.paint(gc);
+		}
 		incIndex();
 	}
 	/**
 	 * Used to update the sequence
 	 */
 	private void incIndex() {
-		if (this.index < this.frames.size()) {
-			//update timer
-			this.timer += ge.getDeltaTime();
-			//index increment condition
-			if (this.timer >= this.animationTime) {
-				this.timer -= this.animationTime;
-				
-				this.index++;
-				if (this.loop && this.index > this.frames.size()) {
-					//loop
-					this.index = 0;
-				}
+		this.timer += ge.getDeltaTime();
+		//index increment condition
+		if (this.timer >= this.animationTime) {
+			this.timer -= this.animationTime;
+			
+			this.index++;
+			if (this.index >= this.frames.size()) {
+				this.index = this.loop ? 0 : this.frames.size() - 1;
 			}
 		}
 	}
