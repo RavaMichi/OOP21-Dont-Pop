@@ -9,7 +9,7 @@ import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
-import game.engine.Application;
+import game.engine.GameApplication;
 
 /** 
  * GameEngine is the class that makes the game work.
