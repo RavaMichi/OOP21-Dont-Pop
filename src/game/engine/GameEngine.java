@@ -9,7 +9,7 @@ import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
-import game.engine.Application;
+import game.engine.GameApplication;
 
 /** 
  * GameEngine is the class that makes the game work.
@@ -22,10 +22,10 @@ public class GameEngine extends Thread {
     private final SpawnManager spawnManager;
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
-    private final Application application;
-    private final List<? extends AbstractGameObject> enemies;
-    private final List<? extends AbstractGameObject> powerups;	//to change in PowerUpObject
-    private final List<? extends AbstractGameObject> destroyQueue;
+    private final GameApplication application;
+    private final List<AbstractGameObject> enemies;
+    private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -45,64 +45,16 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(final GameScene gameScene, final Application application) {
+    public GameEngine(final GameScene gameScene, final GameApplication application) {
+        this.gameScene = gameScene;
+        this.application = application;
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
         this.scoreCalc = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
-        this.gameScene = gameScene;
-        this.application = application;
         this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
         this.spawnManager = new SpawnManager(this);
         //likely add fps in future
-    }
-
-    /**
-     * Updates (increments) game time (in seconds).
-     */
-    private void incTime() {
-        this.gameTime += this.deltaTime;
-    }
-    
-    /**
-     * Updates all AbstractGameObjects.
-     */
-    private void updateAllGameObjects() {
-    	//for each --- update
-        this.player.update();
-        this.enemies.forEach(enemy -> enemy.update());
-        this.powerups.forEach(powerup -> powerup.update());
-    }
-    
-    /**
-     * Removes all objects inside destroy queue and clears it.
-     */
-    private void removeObjectsInDestroyQueue() {
-        //remove objects
-        this.destroyQueue.forEach(obj -> {
-        	if (this.enemies.contains(obj)) {
-        		this.enemies.remove(obj);
-        	} else if (this.powerups.contains(obj)) {
-        		this.powerups.remove(obj);
-        	}
-        });
-        //clear queue
-        this.destroyQueue.clear();
-    }
-    
-    /**
-     * Puts thread to sleep for the remaining duration of the frame.
-     * @param startTime
-     * @param endTime
-     */
-    private void putThreadToSleep(final long startTime, final long endTime) {
-    	try {
-            Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
-        } catch (IllegalArgumentException e1) { 
-            e1.printStackTrace();
-        } catch (InterruptedException e2) {
-            e2.printStackTrace();
-        }
     }
 
     /**
@@ -247,7 +199,63 @@ public class GameEngine extends Thread {
         return this.player.getPosition();
     }
 
+	/**
+	 * Gets mouse position.
+	 * @return mouse position
+	 */
+	public Point2D getMousePosition() {
+		return this.gameScene.getMouseWorldPosition();
+	}
+	
+	/**
+     * Updates (increments) game time (in seconds).
+     */
+    private void incTime() {
+        this.gameTime += this.deltaTime;
+    }
+
     /**
+     * Updates all AbstractGameObjects.
+     */
+    private void updateAllGameObjects() {
+    	//for each --- update
+        this.player.update();
+        this.enemies.forEach(enemy -> enemy.update());
+        this.powerups.forEach(powerup -> powerup.update());
+    }
+
+    /**
+     * Removes all objects inside destroy queue and clears it.
+     */
+    private void removeObjectsInDestroyQueue() {
+        //remove objects
+        this.destroyQueue.forEach(obj -> {
+        	if (this.enemies.contains(obj)) {
+        		this.enemies.remove(obj);
+        	} else if (this.powerups.contains(obj)) {
+        		this.powerups.remove(obj);
+        	}
+        });
+        //clear queue
+        this.destroyQueue.clear();
+    }
+    
+    /**
+     * Puts thread to sleep for the remaining duration of the frame.
+     * @param startTime
+     * @param endTime
+     */
+    private void putThreadToSleep(final long startTime, final long endTime) {
+    	try {
+            Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
+        } catch (IllegalArgumentException e1) { 
+            e1.printStackTrace();
+        } catch (InterruptedException e2) {
+            e2.printStackTrace();
+        }
+    }
+	
+	/**
      * Checks if a collision with an enemy has occurred.
      * If true --> game over.
      * @return true if gameover, false otherwise
@@ -284,14 +292,6 @@ public class GameEngine extends Thread {
         renderList.add(this.player);
         
         this.gameScene.render(renderList);
-	}
-	
-	/**
-	 * Gets mouse position.
-	 * @return mouse position
-	 */
-	public Point2D getMousePosition() {
-		return this.gameScene.getMouseWorldPosition();
 	}
 }
 

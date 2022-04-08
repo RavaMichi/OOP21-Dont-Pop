@@ -1,18 +1,23 @@
 package game.engine;
-java.awt.Dimension;
 
-import java.awt.Toolkit;
-import java.awt.geom.Rectangle2D;
-
+//import java.awt.geom.Rectangle2D;
 import game.ui.GameScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;
 import game.util.ScoreCalc;
+
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
-import test.TestScoreScene;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+
+import test.TestScoreScene;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 public class GameApplication extends Application {
 	private final static int size;// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n �
@@ -24,6 +29,7 @@ public class GameApplication extends Application {
 	 * ; GameScene gamescene; ScoreScene scorescene ; Leaderboard leaderBoard;
 	 */
 	static {
+		//Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		size = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
 	}
@@ -74,9 +80,9 @@ public class GameApplication extends Application {
 	}
 
 	public void score() {
-		ScoreCalc scolreCalc = new ScoreCalc();
-		ScoreManager scoremanager = new ScoreManager(scolreCalc);// prende score e il player dal game engine
-		ScoreScene scoreScene = new ScoreScene(scolreCalc);
+		ScoreCalc scoreCalc = new ScoreCalc();
+		ScoreManager scoremanager = new ScoreManager(scoreCalc);// prende score e il player dal game engine
+		ScoreScene scoreScene = new ScoreScene(scoreCalc);
 		scoreScene.start(this.primaryStage2);
 		this.setSceneM(scoreScene.get());
 

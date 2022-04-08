@@ -22,6 +22,10 @@ public class Leaderboard {
     private List<Pair<String,Integer>> ranking = new ArrayList<>();
     private final File saveFile;
 	
+    /**
+     * Builds a new object of class Leaderboard.
+     * @param savePath
+     */
 	public Leaderboard(final String savePath) {
 		this.saveFile = new File(savePath);
 		try {
@@ -41,9 +45,9 @@ public class Leaderboard {
 	}
 	
 	/**
+	 * Adds to the ranking the player, if the score is in the top 5 scores
 	 * @param playerName
 	 * @param score
-	 * Adds to the ranking the player, if the score is in the top 5 scores
 	 */
 	public void addToRanking(final String playerName, final int score) {
 		final var entry = new Pair<String,Integer>(playerName, score);
@@ -81,6 +85,7 @@ public class Leaderboard {
 			e3.printStackTrace();
 		}
 	}
+	
 	/**
 	 * Saves the current ranking in the savefile.
 	 */

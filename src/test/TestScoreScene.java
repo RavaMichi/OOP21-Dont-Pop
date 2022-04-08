@@ -1,8 +1,5 @@
 package test;
 
-import game.util.Pair;
-import game.util.ScoreCalc;
-import game.util.Leaderboard;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,21 +16,40 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-
-import game.util.Leaderboard;
+import game.util.ScoreCalc;
 import game.engine.ScoreManager;
 
 public class TestScoreScene extends javafx.application.Application {
 
 	//table
 	private TableView table = new TableView();
-	
 	//data to put in table
 	private final ObservableList<Integer> data = FXCollections.observableArrayList(1,2,3);
 		
+	private final ScoreManager scoreManager;
+	private final ScoreCalc scoreCalc;
+				
+	/**
+	 * Class constructor.
+	 */
+	public TestScoreScene(/*put score calc arg here after debugging*/) {
+		this.scoreCalc = new ScoreCalc();
+		this.scoreManager = new ScoreManager(this.scoreCalc);	//debug
+	}
+	
+	/**
+	 * Starts this class (debug).
+	 * Remove this in non-test version.
+	 */
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(final Stage stage) throws Exception {
+		this.createTable(stage);
 		
+		//now make the table get its data from the score manager
+	}
+	
+	private void createTable(final Stage stage) {
+		//application will pass you the screen size
 		//get screen size and choose the smallest axis
 		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		//size of the square filling the screen
@@ -82,7 +98,7 @@ public class TestScoreScene extends javafx.application.Application {
 		//add vertical box to group
 		((Group) scene.getRoot()).getChildren().addAll(vbox);
 
-		//add scene to stage and make it visible
+		//add scene to stage and make it visible (remove in final version)
 		stage.setScene(scene);
 		stage.show();
 		
