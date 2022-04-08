@@ -33,6 +33,7 @@ public class ScoreManager {
     	this.leaderboard.addToRanking("third", 15);
     	this.leaderboard.addToRanking("second", 20);
     	this.leaderboard.addToRanking("first", 25);
+    	
     	//save in file after adding current record
     	this.leaderboard.save();
     }
