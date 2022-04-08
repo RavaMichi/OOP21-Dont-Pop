@@ -1,7 +1,10 @@
 package game.engine;
 
+import java.util.List;
+
 import game.util.Leaderboard;
 import game.util.ScoreCalc;
+import game.util.Pair;
 
 /**
  * ScoreManager calculates the current score.
@@ -41,6 +44,14 @@ public class ScoreManager {
      * - APPLICATION
      */
 
+    /**
+     * Gets a copy of the ranking list inside Leaderboard.
+     * @return current ranking
+     */
+    public List<Pair<String,Integer>> getRanking() {
+    	return this.leaderboard.getRanking();
+    }
+    
     /**
      * Returns to menu.
      */
