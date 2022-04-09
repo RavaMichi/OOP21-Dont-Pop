@@ -27,13 +27,14 @@ import game.util.RankItem;
 
 public class TestScoreScene extends Application {
 
-	//table
+	//tables
 	private TableView<RankItem> leaderboardTable = new TableView<>();
 	private TableView<RankItem> yourScoreTable = new TableView<>();
-	//data to put in table
+	//data to put in tables
 	private final ObservableList<Pair<String,Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
-	private final ObservableList<RankItem> yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
+	private final ObservableList<RankItem> yourScoreData = 
+			FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
 		
 	private final ScoreManager scoreManager;
 	private final ScoreCalc scoreCalc;
@@ -47,7 +48,6 @@ public class TestScoreScene extends Application {
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
 		this.leaderboardData = FXCollections.observableArrayList();
 		
-		//FIXME: numbers behave strangely on each run: last ones eventually get overwritten by first one
 		//add ranking data to data
 		for (var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
@@ -146,7 +146,8 @@ public class TestScoreScene extends Application {
 		//create menu button
 		final Button menuButton = new Button("Home");
 		menuButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
+		    @Override
+		    public void handle(ActionEvent e) {
 		    	/*TODO: Go to GameApplication menu*/
 		    }
 		});
