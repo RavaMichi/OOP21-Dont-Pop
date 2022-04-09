@@ -142,8 +142,6 @@ public class ScoreScene {
 		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, menuButton);
 		//add vertical box to group
 		((Group) scene.getRoot()).getChildren().addAll(vbox);
-		
-		
     }
     
     /**
