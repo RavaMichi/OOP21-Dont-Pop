@@ -28,10 +28,12 @@ import game.util.RankItem;
 public class TestScoreScene extends Application {
 
 	//table
-	private TableView<RankItem> table = new TableView<>();
+	private TableView<RankItem> leaderboardTable = new TableView<>();
+	private TableView<RankItem> yourScoreTable = new TableView<>();
 	//data to put in table
 	private final ObservableList<Pair<String,Integer>> ranking;
-	private final ObservableList<RankItem> data;
+	private final ObservableList<RankItem> leaderboardData;
+	private final ObservableList<RankItem> yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
 		
 	private final ScoreManager scoreManager;
 	private final ScoreCalc scoreCalc;
@@ -43,14 +45,14 @@ public class TestScoreScene extends Application {
 		this.scoreCalc = new ScoreCalc();
 		this.scoreManager = new ScoreManager(this.scoreCalc);	//debug
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
-		this.data = FXCollections.observableArrayList();
+		this.leaderboardData = FXCollections.observableArrayList();
 		
 		//FIXME: numbers behave strangely on each run: last ones eventually get overwritten by first one
 		//add ranking data to data
 		for (var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
-			this.data.add(new RankItem(
-						index + 1, 
+			this.leaderboardData.add(new RankItem(
+						Integer.toString(index + 1),
 						i.get1(), 
 						i.get2()));
 		}
@@ -63,7 +65,6 @@ public class TestScoreScene extends Application {
 	@Override
 	public void start(final Stage stage) throws Exception {
 		this.createTable(stage);
-		
 		//now make the table get its data from the score manager
 	}
 
@@ -85,40 +86,62 @@ public class TestScoreScene extends Application {
 		stage.setHeight(screenSize);
 		stage.setResizable(false);
 
-		//create label (vbox)
-		final Label label = new Label("Leaderboard");
-		label.setFont(new Font("Arial", 20));
-
+		//create leaderboard label (vbox)
+		final Label leaderboardLabel = new Label("Leaderboard");
+		leaderboardLabel.setFont(new Font("Arial", 20));
 		//make table editable
-		this.table.setEditable(true);
-
+		this.leaderboardTable.setEditable(true);
 		//create columns
 		final TableColumn<RankItem, Integer> rankCol = new TableColumn<>("Rank");
 		final TableColumn<RankItem, String> nameCol = new TableColumn<>("Name");
 		final TableColumn<RankItem, Integer> scoreCol = new TableColumn<>("Score");
-		
 		//fetch data
 		rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-		
 		//turn off data sorting
 		rankCol.setSortable(false);
 		nameCol.setSortable(false);
 		scoreCol.setSortable(false);
-		
 		//add columns to table
-		this.table.setItems(this.data);
-		this.table.getColumns().addAll(rankCol, nameCol, scoreCol);
-		
-		
+		this.leaderboardTable.setItems(this.leaderboardData);
+		this.leaderboardTable.getColumns().addAll(rankCol, nameCol, scoreCol);
 		//set minimum width & table bounds
 		//TODO: set these values with CSS only
 		rankCol.setMinWidth(60);
 		nameCol.setMinWidth(200);
 		scoreCol.setMinWidth(200);
-		this.table.setMaxHeight(148);
-		this.table.setMaxWidth(462);
+		this.leaderboardTable.setMaxHeight(148);
+		this.leaderboardTable.setMaxWidth(462);
+		
+		//create your rank label (vbox)
+		final Label yourScoreLabel = new Label("Your Score");
+		yourScoreLabel.setFont(new Font("Verdana", 20));
+		//make table editable
+		this.yourScoreTable.setEditable(true);
+		//create columns
+		final TableColumn<RankItem, Integer> yourRankCol = new TableColumn<>("Rank");
+		final TableColumn<RankItem, String> yourNameCol = new TableColumn<>("Name");
+		final TableColumn<RankItem, Integer> yourScoreCol = new TableColumn<>("Score");
+		//fetch data
+		yourRankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
+		yourNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+		yourScoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
+		//turn off data sorting
+		yourRankCol.setSortable(false);
+		yourNameCol.setSortable(false);
+		yourScoreCol.setSortable(false);
+		//add columns to table
+		this.yourScoreTable.setItems(this.yourScoreData);
+		this.yourScoreTable.getColumns().addAll(yourRankCol, yourNameCol, yourScoreCol);
+		//set minimum width & table bounds
+		//TODO: set these values with CSS only
+		yourRankCol.setMinWidth(60);
+		yourNameCol.setMinWidth(200);
+		yourScoreCol.setMinWidth(200);
+		this.yourScoreTable.setMaxHeight(52);
+		this.yourScoreTable.setMaxWidth(462);
+		
 		
 		//create menu button
 		final Button menuButton = new Button("Home");
@@ -132,8 +155,7 @@ public class TestScoreScene extends Application {
 		final VBox vbox = new VBox();
 		vbox.setSpacing(5);
 		vbox.setPadding(new Insets(10, 0, 0, 10));
-		vbox.getChildren().addAll(label, this.table, menuButton);
-
+		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, menuButton);
 		//add vertical box to group
 		((Group) scene.getRoot()).getChildren().addAll(vbox);
 
@@ -142,7 +164,7 @@ public class TestScoreScene extends Application {
 		stage.show();
 		
 	}
-
+	
 	/*
 	 * Metti il punteggio corrente sopra alla tabella (a new table above this table?)
 	 * Evidenzia la riga del punteggio corrente
