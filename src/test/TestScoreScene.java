@@ -2,8 +2,6 @@ package test;
 
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +12,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,35 +23,10 @@ import javafx.stage.Stage;
 import game.engine.ScoreManager;
 import game.util.ScoreCalc;
 import game.util.Pair;
+import game.util.RankItem;
 
 public class TestScoreScene extends Application {
-	
-	public class RankItem {
-		private SimpleIntegerProperty rank;
-		private SimpleStringProperty name;
-		private SimpleIntegerProperty score;
-		
-		public RankItem(final int rank, final String name, final int score) {
-			this.rank = new SimpleIntegerProperty(rank);
-			this.name = new SimpleStringProperty(name);
-			this.score = new SimpleIntegerProperty(score);
-		}
 
-		public int getRank() {
-			return this.rank.get();
-		}
-
-		public String getName() {
-			return this.name.get();
-		}
-
-		public int getScore() {
-			return this.score.get();
-		}
-		
-		
-	}
-	
 	//table
 	private TableView<RankItem> table = new TableView<>();
 	//data to put in table
@@ -130,28 +102,23 @@ public class TestScoreScene extends Application {
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
 		
-		//set minimum width
-		rankCol.setMinWidth(60);
-		nameCol.setMinWidth(200);
-		scoreCol.setMinWidth(200);
-		
 		//turn off data sorting
 		rankCol.setSortable(false);
 		nameCol.setSortable(false);
 		scoreCol.setSortable(false);
 		
 		//add columns to table
-//		this.table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		this.table.setItems(this.data);
 		this.table.getColumns().addAll(rankCol, nameCol, scoreCol);
-//		this.table.getItems().setAll(this.data);
-		this.table.setMaxHeight(160);
-
-//		for (int i=0; i<this.data.size(); i++) {
-//			this.table.getItems().add(this.data.get(i));
-//		}
 		
 		
+		//set minimum width & table bounds
+		//TODO: set these values with CSS only
+		rankCol.setMinWidth(60);
+		nameCol.setMinWidth(200);
+		scoreCol.setMinWidth(200);
+		this.table.setMaxHeight(148);
+		this.table.setMaxWidth(462);
 		
 		//create menu button
 		final Button menuButton = new Button("Home");
