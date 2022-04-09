@@ -6,6 +6,7 @@ package game.util;
  */
 public class ScoreCalc {
 	private int score;
+    private boolean calcStatus;
     private int multiplier;
     private double multiplierTime;
     private double frameCounter;
@@ -30,6 +31,22 @@ public class ScoreCalc {
      */
     public int getScore() {
         return this.score;
+    }
+    
+    /**
+     * Gets current calc status: if true, the score shall be calculated.
+     * @return calcStatus
+     */
+    public boolean getCalcStatus() {
+    	return this.calcStatus;
+    }
+    
+    /**
+     * Sets whether ScoreCalc shall calculate the score (true) or not (false)
+     * @param status
+     */
+    public void setCalcStatus(final boolean status) {
+    	this.calcStatus = status;
     }
 	
     /**
@@ -61,12 +78,15 @@ public class ScoreCalc {
      *
      */
 	public void calculateScore(final double deltaTime) {
-		this.frameCounter += deltaTime;
-    	if (this.getFrameCounter() >= SECONDS_PER_POINT) {
-    		this.incScore(1);
-    		this.resetFrameCounter();
-    	}
-        this.manageMultiplierTime(deltaTime);
+		//only calculates score if calcStatus is true
+		if (this.getCalcStatus()) {
+			this.frameCounter += deltaTime;
+	    	if (this.getFrameCounter() >= SECONDS_PER_POINT) {
+	    		this.incScore(1);
+	    		this.resetFrameCounter();
+	    	}
+	        this.manageMultiplierTime(deltaTime);
+		}
 	}
 	
     /**
