@@ -28,11 +28,11 @@ public class ScoreManager {
     	//this.leaderboard.addToRanking("hehehe", 10);
     	
     	//add five entries to leaderboard (test)
-    	this.leaderboard.addToRanking("fifth", 5);
-    	this.leaderboard.addToRanking("fourth", 10);
-    	this.leaderboard.addToRanking("third", 15);
-    	this.leaderboard.addToRanking("second", 20);
-    	this.leaderboard.addToRanking("first", 25);
+//    	this.leaderboard.addToRanking("fifth", 5);
+//    	this.leaderboard.addToRanking("fourth", 10);
+//    	this.leaderboard.addToRanking("third", 15);
+//    	this.leaderboard.addToRanking("second", 20);
+//    	this.leaderboard.addToRanking("first", 25);
     	
     	//save in file after adding current record
     	this.leaderboard.save();

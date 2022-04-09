@@ -131,7 +131,7 @@ public class TestScoreScene extends Application {
 		scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
 		
 		//set minimum width
-		rankCol.setMinWidth(200);
+		rankCol.setMinWidth(60);
 		nameCol.setMinWidth(200);
 		scoreCol.setMinWidth(200);
 		
@@ -145,7 +145,7 @@ public class TestScoreScene extends Application {
 		this.table.setItems(this.data);
 		this.table.getColumns().addAll(rankCol, nameCol, scoreCol);
 //		this.table.getItems().setAll(this.data);
-		this.table.setMaxHeight(200);
+		this.table.setMaxHeight(160);
 
 //		for (int i=0; i<this.data.size(); i++) {
 //			this.table.getItems().add(this.data.get(i));
@@ -176,4 +176,9 @@ public class TestScoreScene extends Application {
 		
 	}
 
+	/*
+	 * Metti il punteggio corrente sopra alla tabella (a new table above this table?)
+	 * Evidenzia la riga del punteggio corrente
+	 * Centra il bottone home
+	 */
 }
