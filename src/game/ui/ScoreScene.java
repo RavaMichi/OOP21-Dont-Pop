@@ -158,7 +158,7 @@ public class ScoreScene {
      * Gets this class.
      * @return ScoreScene
      */
-    public ScoreScene getScoreScene() {
+    public ScoreScene get() {
     	return this;
     }
 
