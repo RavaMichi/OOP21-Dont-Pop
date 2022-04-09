@@ -23,6 +23,7 @@ public class GameEngine extends Thread {
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final GameApplication application;
+    private final ScoreDisplay scoreDisplay;
     private final List<AbstractGameObject> enemies;
     private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
     private final List<AbstractGameObject> destroyQueue;
@@ -48,6 +49,7 @@ public class GameEngine extends Thread {
     public GameEngine(final GameScene gameScene, final GameApplication application) {
         this.gameScene = gameScene;
         this.application = application;
+        this.scoreDisplay = new ScoreDisplay();
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
         this.scoreCalc = new ScoreCalc();
@@ -177,6 +179,15 @@ public class GameEngine extends Thread {
                 //does nothing
         }
     }
+    
+    /**
+     * Ends the game on game over.
+     * Prints the score and kills the player.
+     */
+    public void endGame() {
+    	this.application.score();
+    	this.player.die();
+    }
 
     /**
      * @return time in seconds
@@ -205,6 +216,30 @@ public class GameEngine extends Thread {
 	 */
 	public Point2D getMousePosition() {
 		return this.gameScene.getMouseWorldPosition();
+	}
+	
+	/**
+	 * Gets the score calculator.
+	 * @return object scoreCalc
+	 */
+	public ScoreCalc getScoreCalc() {
+		return this.scoreCalc;
+	}
+	
+	/**
+	 * Gets this score display object, used to print current score at playtime.
+	 * @return scoreDisplay
+	 */
+	public ScoreDisplay getScoreDisplay() {
+		return this.scoreDisplay;
+	}
+	
+	/**
+	 * Gets a reference to this object (GameEngine).
+	 * @return this GameEngine
+	 */
+	public GameEngine get() {
+		return this;
 	}
 	
 	/**
@@ -290,6 +325,7 @@ public class GameEngine extends Thread {
         renderList.addAll(this.enemies);
         renderList.addAll(this.powerups);
         renderList.add(this.player);
+        renderList.add(this.scoreDisplay);
         
         this.gameScene.render(renderList);
 	}
@@ -299,4 +335,6 @@ public class GameEngine extends Thread {
  * Aggiungi:
  * Calcolo punteggio (dal gameengine)
  * Salvataggio record punteggi di ogni singolo giocatore (il gameengine li calcola)
+ * ScoreDisplay: score.update() ???
+ * Metodo di Manu nello SpawnManager prima di fare la render()
  */
