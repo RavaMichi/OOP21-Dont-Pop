@@ -40,21 +40,18 @@ public class ImageRenderer implements Renderer {
 	private Image currentImg;
 	private Sprite baseSprite;
 	private final AbstractGameObject obj;
-	private Point2D offset;
 	private double size;
 	/**
 	 * @param obj - the game object linked to this renderer
 	 * @param sprite
 	 * @param size
 	 * @param rotation - in degrees
-	 * @param offset - in world coordinates
 	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle.
-	 * The image top-left corner will be painted at obj position traslated by offset
+	 * The image will be centered at obj position.
 	 */
-	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation, Point2D offset) {
+	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
 		this.obj = obj;
 		setSprite(sprite);
-		this.offset = offset;
 		this.size = size;
 		this.rotate(rotation, GameApplication.convertToInt(size));
 	}
@@ -70,8 +67,8 @@ public class ImageRenderer implements Renderer {
 	@Override
 	public void paint(GraphicsContext gc) {
 		//incomplete
-		int xPos = GameApplication.convertToInt(this.obj.getPosition().getX() + offset.getX());
-		int yPos = GameApplication.convertToInt(this.obj.getPosition().getY() + offset.getY());
+		double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
+		double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	/**
