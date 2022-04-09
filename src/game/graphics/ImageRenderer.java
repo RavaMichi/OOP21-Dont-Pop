@@ -22,7 +22,12 @@ public class ImageRenderer implements Renderer {
 		//...sprites to add...//
 		PLAYER("/baloon.png"),
 		BULLET("/bullet.png"),
-		THORNBALL("/thornball.png");
+		THORNBALL("/thornball.png"),
+		GOLDEN_PLAYER("/golden_baloon.png"),
+		POP_ANIMATION_1("/pop_1"),
+		POP_ANIMATION_2("/pop_2"),
+		POP_ANIMATION_3("/pop_3"),
+		POP_ANIMATION_4("/pop_4");
 		
 		private final Image img;
 		
