@@ -41,6 +41,7 @@ public class ImageRenderer implements Renderer {
 	private Sprite baseSprite;
 	private final AbstractGameObject obj;
 	private Point2D offset;
+	private double size;
 	/**
 	 * @param obj - the game object linked to this renderer
 	 * @param sprite
@@ -54,6 +55,7 @@ public class ImageRenderer implements Renderer {
 		this.obj = obj;
 		setSprite(sprite);
 		this.offset = offset;
+		this.size = size;
 		this.rotate(rotation, GameApplication.convertToInt(size));
 	}
 	/**
@@ -71,6 +73,13 @@ public class ImageRenderer implements Renderer {
 		int xPos = GameApplication.convertToInt(this.obj.getPosition().getX() + offset.getX());
 		int yPos = GameApplication.convertToInt(this.obj.getPosition().getY() + offset.getY());
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
+	}
+	/**
+	 * Sets the current rotation in degrees of this image
+	 * @param degrees
+	 */
+	public void setRotation(final double degrees) {
+		rotate(degrees, GameApplication.convertToInt(this.size));
 	}
 	/**
 	 * @param degrees
