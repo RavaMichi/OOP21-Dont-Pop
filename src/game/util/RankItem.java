@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
  * Useful class to keep all infos about a rank entry in the ScoreScene table.
  */
 public class RankItem {
-	private SimpleIntegerProperty rank;
+	private SimpleStringProperty rank;
 	private SimpleStringProperty name;
 	private SimpleIntegerProperty score;
 	
@@ -17,8 +17,8 @@ public class RankItem {
 	 * @param name
 	 * @param score
 	 */
-	public RankItem(final int rank, final String name, final int score) {
-		this.rank = new SimpleIntegerProperty(rank);
+	public RankItem(final String rank, final String name, final int score) {
+		this.rank = new SimpleStringProperty(rank);
 		this.name = new SimpleStringProperty(name);
 		this.score = new SimpleIntegerProperty(score);
 	}
@@ -27,7 +27,7 @@ public class RankItem {
 	 * Gets rank of current entry.
 	 * @return rank
 	 */
-	public int getRank() {
+	public String getRank() {
 		return this.rank.get();
 	}
 
