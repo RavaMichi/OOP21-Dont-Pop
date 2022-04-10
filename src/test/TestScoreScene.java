@@ -1,6 +1,5 @@
 package test;
 
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +25,9 @@ import game.util.RankItem;
 
 public class TestScoreScene extends Application {
 
+	private final ScoreManager scoreManager;
+	private final ScoreCalc scoreCalc;
+	
 	//tables
 	private TableView<RankItem> leaderboardTable = new TableView<>();
 	private TableView<RankItem> yourScoreTable = new TableView<>();
@@ -35,9 +37,6 @@ public class TestScoreScene extends Application {
 	private final ObservableList<RankItem> yourScoreData = 
 			FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
 		
-	private final ScoreManager scoreManager;
-	private final ScoreCalc scoreCalc;
-				
 	/**
 	 * Class constructor.
 	 */
@@ -73,7 +72,7 @@ public class TestScoreScene extends Application {
 	 */
 	@SuppressWarnings("unchecked")
 	private void createTable(final Stage stage) {
-		//TODO: application will pass you the screen size
+		//application will pass you the screen size
 		//get screen size and choose the smallest axis
 		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		final double screenSize = Math.min(screenBounds.getWidth(), screenBounds.getHeight());
@@ -147,7 +146,7 @@ public class TestScoreScene extends Application {
 		menuButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	/*TODO: Go to GameApplication menu*/
+		    	/*Go to GameApplication menu*/
 		    }
 		});
 
