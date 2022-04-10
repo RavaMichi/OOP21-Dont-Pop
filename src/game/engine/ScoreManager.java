@@ -13,15 +13,13 @@ import game.util.Pair;
 public class ScoreManager {
     
 	private Leaderboard leaderboard;
-	private ScoreCalc scoreCalc;
 	
     /**
      * Creates & initializes this class.
      */
-    public ScoreManager(final ScoreCalc scoreCalc) {
-    	this.scoreCalc = scoreCalc;
+    public ScoreManager(final Leaderboard leaderboard) {
     	
-    	this.leaderboard = new Leaderboard("res/.save");
+    	this.leaderboard = leaderboard;
     	this.leaderboard.load();
     	
     	//this.leaderboard.addToRanking("gigiabaffa", 5);
