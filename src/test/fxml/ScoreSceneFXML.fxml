@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text?>
+<?import fxmltableview.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+	xmlns:fx="http://javafx.com/fxml"
+    fx:controller="Dont-Pop.src.test.TestScoreScene"
+    spacing="5">
+    <padding>
+        <Insets top="10" 
+        		bottom="0" 
+        		left="10" 
+        		right="0"/>
+    </padding>
+
+    <!--Your Score-->
+    <Label fx:id="yourScoreLabel"
+    	text="Your Score"/>
+    <TableView fx:id="yourScoreTable">
+        <columns>
+            <!--Rank-->
+            <TableColumn fx:id="yourRankCol" 
+                text="Rank" 
+                prefWidth="60">
+                <cellValueFactory>
+                    <PropertyValueFactory property="rank"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Name-->
+            <TableColumn fx:id="yourNameCol" 
+                text="Name" 
+                prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Score-->
+            <TableColumn fx:id="yourScoreCol" 
+                text="Score" 
+                prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="score"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <!--Leaderboard-->
+    <Label fx:id="leaderboardLabel" 
+    	text="Leaderboard"/>
+    <TableView fx:id="leaderboardTable">
+        <columns>
+            <!--Rank-->
+            <TableColumn fx:id="rankCol" 
+                text="Rank" 
+                prefWidth="60">
+                <cellValueFactory>
+                    <PropertyValueFactory property="rank"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Name-->
+            <TableColumn fx:id="nameCol" 
+                text="Name" 
+                prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+
+            <!--Score-->
+            <TableColumn fx:id="scoreCol" 
+                text="Score" 
+                prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="score"/>
+                </cellValueFactory>
+                <cellFactory>
+                    <FormattedTableCellFactory alignment="center"/>
+                </cellFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <!--Menu-->
+    <Button fx:id="menuButton"
+        text="Home"
+        onAction="#buttonClicked"/>
+</VBox>

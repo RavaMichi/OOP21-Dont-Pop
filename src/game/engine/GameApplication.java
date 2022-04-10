@@ -10,7 +10,7 @@ import game.util.Leaderboard;
 import game.util.ScoreCalc;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import test.TestScoreScene;
+import test.TestScoreSceneLegacy;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
