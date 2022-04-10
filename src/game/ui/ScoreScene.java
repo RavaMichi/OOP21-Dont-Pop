@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import game.engine.ScoreManager;
 import game.util.Pair;
 import game.util.RankItem;
+import game.util.ScoreCalc;
 
 /**
  * ScoreScene displays a GUI showing your current score in a beautiful table.
@@ -26,6 +27,7 @@ import game.util.RankItem;
 public class ScoreScene {
 
     private final ScoreManager scoreManager;
+    private final ScoreCalc scoreCalc;
     private final Scene scene;
     
     //tables
@@ -42,10 +44,11 @@ public class ScoreScene {
      * Then, Creates a ScoreScene.
      */
     @SuppressWarnings("unchecked")
-	public ScoreScene(final Stage stage, final ScoreManager scoreManager, final int screenSize) {
+	public ScoreScene(final Stage stage, final ScoreManager scoreManager, final ScoreCalc scoreCalc, final int screenSize) {
     	stage.setTitle("Score Ranking");
     	this.scene = new Scene(new Group());
     	this.scoreManager = scoreManager;
+    	this.scoreCalc = scoreCalc;
     	this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
     	this.leaderboardData = FXCollections.observableArrayList();
     	
