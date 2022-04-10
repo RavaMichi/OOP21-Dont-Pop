@@ -35,13 +35,6 @@ public class ScoreManager {
     	//save in file after adding current record
     	this.leaderboard.save();
     }
-    
-    /*
-     * WHO SHALL CREATE LEADERBOARD AND SCOREMANAGER?
-     * - GAMEENGINE
-     * - SCORESCENE
-     * - APPLICATION
-     */
 
     /**
      * Gets a copy of the ranking list inside Leaderboard.
