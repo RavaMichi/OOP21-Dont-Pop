@@ -46,16 +46,16 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(final GameScene gameScene, final GameApplication application) {
-        this.gameScene = gameScene;
+    public GameEngine(final GameApplication application, final GameScene gameScene, final ScoreCalc scoreCalc) {
         this.application = application;
+        this.gameScene = gameScene;
+        this.scoreCalc = scoreCalc;
         this.scoreDisplay = new ScoreDisplay();
+        this.spawnManager = new SpawnManager(this);
+        this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
-        this.scoreCalc = new ScoreCalc();
         this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
-        this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
-        this.spawnManager = new SpawnManager(this);
         //likely add fps in future
     }
 
