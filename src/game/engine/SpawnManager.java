@@ -29,7 +29,7 @@ public class SpawnManager {
 
 	// cambiare deltatime in double
 	private double tempo_totale = 0; // + gameEngine.getCurrentTime();
-	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura pi� di 1/60 di secondo ma non
+	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura piï¿½ di 1/60 di secondo ma non
 														// credo ci possa
 	// mettere il doppio del tempo per eseguirsi
 
@@ -46,7 +46,7 @@ public class SpawnManager {
 		this.gameEngine = gameEngine;
 	}
 
-	public void advance() {
+	public void advance() throws Exception {
 		if (tempo_totale >= FIRST_LOOP_LIMIT && tempo_totale <= FIRST_LOOP_LIMIT + tolleranza_frame) { // vuol dire che
 																										// // ha
 																										// aspettato //
@@ -54,13 +54,14 @@ public class SpawnManager {
 			this.game_start();
 		}
 	}
-
-	private void game_start() {
+//TODO: METTERE LO SCORE CALC E USARE IL METODO PER CALCOLARE IL PUNTEGGIO NEL GAME-START E CREARE LO SCALC FUORI DA APPLICATTION.MENU
+	private void game_start() throws Exception {
 		double tempodasommare = gameEngine.getDeltaTime();
-		tempo_totale += tempodasommare;
+	//	tempo_totale += tempodasommare;//valutare se usare il tempo con gettime
+		tempo_totale=gameEngine.getTime()+gameEngine.getDeltaTime();
 //BULLET		
 
-		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PI�
+		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PIï¿½
 				|| ((tSpawnBullet * bulletSpawnati + tolleranza_frame) <= tempo_totale
 						&& tempo_totale >= (tSpawnBullet * bulletSpawnati + tolleranza_frame)
 						&& (tempo_totale > BULLET_MIN_TIME_SPAWN))) {
@@ -82,7 +83,7 @@ public class SpawnManager {
 				&& laserSpawnati <= LASER_SPAWN_LIMIT)) { // faccio spawnare uno/due bullet ora sono 2
 
 			counterCicloLaser++;
-			for (int i = 0; i < quantilaser; i++) { // cos� spawna quanti laser voglio
+			for (int i = 0; i < quantilaser; i++) { // cosï¿½ spawna quanti laser voglio
 				laserSpawnati++;
 				AbstractGameObject enemy = enemyFactory.GetEnemyObj(LASER_ID); // NE HO CREATO UNO
 				gameEngine.instantiate(enemy);
@@ -107,7 +108,7 @@ public class SpawnManager {
 		}
 	}
 
-	public AbstractGameObject getPowerUp() {
+	public AbstractGameObject getPowerUp() throws Exception {
 		/*
 		 * I POWER UP SONO: PWRUP_SHIELD, //6 PWRUP_MULTIPLIER, //7 PWRUP_SWEEPER //8
 		 */

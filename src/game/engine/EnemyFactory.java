@@ -19,7 +19,9 @@ public class EnemyFactory {
 														// riferimento al game engine corrente
 	WhereToSpawn wheretospawn = new WhereToSpawn();
 	Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());// PUNTO RANDOM IN CUI
-																							// SPAWNARE
+	Point2D thornPosition=wheretospawn.getThornballSpawnPoint(wheretospawn.getThornballRandomSide());
+	
+	// SPAWNARE
 	Point2D spawnDir = gameEngine.getPlayerPosition();
 	Point2D spawnBomb = wheretospawn.getPowerUPSpawnPoint();
 
@@ -31,7 +33,7 @@ public class EnemyFactory {
 			return new EnemyProjectileObj(spawnPosition, spawnDir, (float) 0.02 , AbstractGameObject.ObjectType.BULLET, gameEngine); // dir è di 0.due decimi di schermo a chiamata
 
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
-			return new Thornball(spawnPosition); // APETTARE CREAZIONE CLASSE
+			return new Thornball(thornPosition); // APETTARE CREAZIONE CLASSE
 
 		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
 

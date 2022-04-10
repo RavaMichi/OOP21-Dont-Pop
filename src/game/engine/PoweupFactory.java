@@ -13,10 +13,10 @@ public class PoweupFactory {
 	Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
 	
 	public PoweupFactory(GameEngine gameEngine2) {
-		/this.gameEngine=gameEngine2;
+		this.gameEngine=gameEngine2;
 	}
 
-	public AbstractGameObject GetPowerUpObj(int n) {
+	public AbstractGameObject GetPowerUpObj(int n) throws Exception {//per evitare il ritorno di un nul
 		//modifica da fare AbstractGameObject
 		
 				if (n == AbstractGameObject.ObjectType.PWRUP_SHIELD.ordinal() ) {
@@ -26,7 +26,7 @@ public class PoweupFactory {
 				} else if ( n == AbstractGameObject.ObjectType.PWRUP_SWEEPER.ordinal() ) {
 					return new PowerUpObj(spawnPosition, AbstractGameObject.ObjectType.PWRUP_SWEEPER, this.gameEngine );
 				}
-		
+				else throw new Exception("powerup non creato per indice sbagliato");
 	}
 	
 }
