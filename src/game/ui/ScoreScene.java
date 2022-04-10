@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import game.engine.GameApplication;
 import game.engine.ScoreManager;
 import game.util.Pair;
 import game.util.RankItem;
@@ -36,21 +37,21 @@ public class ScoreScene {
 	//data to put in tables
 	private final ObservableList<Pair<String,Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
-	private final ObservableList<RankItem> yourScoreData = 
-			FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
+	private final ObservableList<RankItem> yourScoreData;
 
     /**
      * Creates & initializes this class.
      * Then, Creates a ScoreScene.
      */
     @SuppressWarnings("unchecked")
-	public ScoreScene(final Stage stage, final ScoreManager scoreManager, final ScoreCalc scoreCalc, final int screenSize) {
+	public ScoreScene(final GameApplication application, final Stage stage, final ScoreManager scoreManager, final ScoreCalc scoreCalc, final int screenSize) {
     	stage.setTitle("Score Ranking");
     	this.scene = new Scene(new Group());
     	this.scoreManager = scoreManager;
     	this.scoreCalc = scoreCalc;
     	this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
     	this.leaderboardData = FXCollections.observableArrayList();
+    	this.yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", application.getPlayerName(), this.scoreCalc.getScore()));
     	
     	//add ranking data to leaderboardData
 		for (var i: this.ranking) {
