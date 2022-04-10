@@ -43,9 +43,9 @@ public class ScoreScene {
      * Creates & initializes this class.
      * Then, Creates a ScoreScene.
      */
-    public ScoreScene(final Stage stage, final Scene scene, final ScoreManager scoreManager, final int screenSize) {
-//    	this.scene = scene;
-    	this.scene = scene;
+    public ScoreScene(final Stage stage, final ScoreManager scoreManager, final int screenSize) {
+    	stage.setTitle("Score Ranking");
+    	this.scene = new Scene(new Group());
     	this.scoreManager = scoreManager;
     	this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
     	this.leaderboardData = FXCollections.observableArrayList();
@@ -141,7 +141,7 @@ public class ScoreScene {
 		vbox.setPadding(new Insets(10, 0, 0, 10));
 		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, menuButton);
 		//add vertical box to group
-		((Group) scene.getRoot()).getChildren().addAll(vbox);
+		((Group) this.scene.getRoot()).getChildren().addAll(vbox);
     }
     
     /**
