@@ -20,7 +20,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import game.engine.ScoreManager;
 import game.util.ScoreCalc;
 import game.util.Pair;
 import game.util.RankItem;
