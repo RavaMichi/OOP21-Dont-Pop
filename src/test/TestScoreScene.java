@@ -140,7 +140,6 @@ public class TestScoreScene extends Application {
 		this.yourScoreTable.setMaxHeight(52);
 		this.yourScoreTable.setMaxWidth(462);
 		
-		
 		//create menu button
 		final Button menuButton = new Button("Home");
 		menuButton.setOnAction(new EventHandler<ActionEvent>() {
