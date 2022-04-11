@@ -10,6 +10,7 @@ import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
 import game.engine.GameApplication;
+import game.model.ScoreDisplayObj;
 
 /** 
  * GameEngine is the class that makes the game work.
@@ -23,7 +24,7 @@ public class GameEngine extends Thread {
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final GameApplication application;
-    private final ScoreDisplay scoreDisplay;
+    private final ScoreDisplayObj scoreDisplay;
     private final List<AbstractGameObject> enemies;
     private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
     private final List<AbstractGameObject> destroyQueue;
@@ -33,6 +34,8 @@ public class GameEngine extends Thread {
     private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
+    private static final double SCORE_POS_X = 0.1;
+    private static final double SCORE_POS_Y = 0.1;
 
     private boolean hasShield;		//false
     private boolean hasMultiplier;	//false
@@ -50,7 +53,7 @@ public class GameEngine extends Thread {
         this.application = application;
         this.gameScene = gameScene;
         this.scoreCalc = scoreCalc;
-        this.scoreDisplay = new ScoreDisplay();
+        this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
         this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
         this.enemies = new ArrayList<>(INITIAL_SIZE);
@@ -230,7 +233,7 @@ public class GameEngine extends Thread {
 	 * Gets this score display object, used to print current score at playtime.
 	 * @return scoreDisplay
 	 */
-	public ScoreDisplay getScoreDisplay() {
+	public ScoreDisplayObj getScoreDisplay() {
 		return this.scoreDisplay;
 	}
 	
