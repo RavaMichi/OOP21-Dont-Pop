@@ -72,7 +72,11 @@ public class GameEngine extends Thread {
 
             this.incTime();					     	            //updates game time
             this.scoreCalc.calculateScore(deltaTime);   		//multiplier time management
-            this.spawnManager.advance();	            		//advance spawnManager (enemy spawning)
+            try {
+				this.spawnManager.advance();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	            		//advance spawnManager (enemy spawning)
             this.updateAllGameObjects();
             this.removeObjectsInDestroyQueue();
             this.checkPowerupCollision();	            		//powerups
