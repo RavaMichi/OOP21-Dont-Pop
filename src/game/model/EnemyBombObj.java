@@ -1,26 +1,39 @@
 package game.model;
 
 import game.engine.GameEngine;
+import game.graphics.*;
+import game.collider.*;
 import game.util.Point2D;
+import javafx.scene.paint.Color;
 
 public class EnemyBombObj extends AbstractGameObject {
 	
-	Point2D point;
-	float timer;
+	private double timer = 0;
+	private Boolean hasExploded = false;
 	
-	/*
-	 * Requires position, direction and time to activation
-	 */
 	public EnemyBombObj(Point2D position, float timeToActivation, ObjectType type, GameEngine ge) {
 		super(position, type, ge);
-		point = position;
-		timer = timeToActivation;
+		this.setRenderer((Renderer) new CircleRenderer(this, 0.25, Color.color(1, 0, 0, 0.7)));
 	}
 
 	@Override
 	public void update() {
-		// genera UI esplosione, dopo *timer* secondi attiva collider
+		timer -= this.getGameEngine().getDeltaTime();
+		if (timer <= 0) {
+			explode();
+		}
+		if (timer <= -0.25) {
+			this.destroy();
+		}
 		
+	}
+
+	private void explode() {
+		if (!hasExploded) {
+			hasExploded = true;
+			this.setCollider((Collider)new CircleCollider(this, 0.25));
+			((CircleRenderer) this.getRenderer()).setOpacity(1);
+		}
 	}
 
 }
