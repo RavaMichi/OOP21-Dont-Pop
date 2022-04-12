@@ -17,7 +17,7 @@ import java.util.List;
 //prima salva la lunghezza della classifica, poi gli elementi
 public class Leaderboard {
 
-	private static final int RANKING_LENGTH = 5;
+	private static final int RANKING_LENGTH = 50;
 	
     private List<Pair<String,Integer>> ranking = new ArrayList<>();
     private final File saveFile;
