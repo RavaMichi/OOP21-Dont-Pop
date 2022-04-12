@@ -10,3 +10,7 @@
 /PlayerObj.class
 /RayCollider.class
 /ScoreManager.class
+/EnemyBallObj.class
+/PowerUpObj.class
+/ScoreDisplayObj.class
+/StartTimerObj.class

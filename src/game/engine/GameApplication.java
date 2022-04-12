@@ -24,7 +24,7 @@ public class GameApplication extends Application {
 									// la percentuale dello schermo. ergo ho i valori da 0 a 1
 	public int score = 0;
 	private Stage primaryStage2 = new Stage();
-		ScoreCalc scolreCalc = new ScoreCalc();
+		ScoreCalc scoreCalc = new ScoreCalc();
 		
 		
 	static {
@@ -68,7 +68,7 @@ public class GameApplication extends Application {
 
 	public void game() {
 		GameScene gamescene = new GameScene(size);
-		GameEngine gameEngine = new GameEngine(gamescene, this);
+		GameEngine gameEngine = new GameEngine(this, gamescene , scoreCalc);
 		gameEngine.run();
 		this.setSceneM(gamescene.getScene());
 
@@ -76,10 +76,10 @@ public class GameApplication extends Application {
 
 	public void score(/*int punteggio da mettere e creare lo scalc fuori*/) {
 	
-		ScoreManager scoremanager = new ScoreManager(scolreCalc);// prende score e il nome  player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
-		ScoreScene scoreScene = new ScoreScene(scolreCalc);//aggiungere il manager
-		scoreScene.start(this.primaryStage2);//da cambiare
-		this.setSceneM(scoreScene.get());
+		ScoreManager scoremanager = new ScoreManager(leaderboard);// prende score e il nome  player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
+		ScoreScene scoreScene = new ScoreScene(this,this.primaryStage2,this.scoremanager, this.scoreCalc);//aggiungere il manager
+	
+		this.setSceneM(scoreScene.getScene());
 
 	}
 

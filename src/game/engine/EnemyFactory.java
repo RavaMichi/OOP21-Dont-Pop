@@ -1,6 +1,7 @@
 package game.engine;
 
 import game.model.AbstractGameObject;
+import game.model.EnemyBallObj;
 import game.model.EnemyBombObj;
 import game.model.EnemyLineObj;
 import game.model.EnemyProjectileObj;
@@ -33,7 +34,7 @@ public class EnemyFactory {
 			return new EnemyProjectileObj(spawnPosition, spawnDir, (float) 0.02 , AbstractGameObject.ObjectType.BULLET, gameEngine); // dir è di 0.due decimi di schermo a chiamata
 
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
-			return new Thornball(thornPosition); // APETTARE CREAZIONE CLASSE
+			return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
 
 		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
 
@@ -45,6 +46,7 @@ public class EnemyFactory {
 		} else if (n == AbstractGameObject.ObjectType.LASER.ordinal()) {
 			return new EnemyLineObj(spawnPosition, spawnDir,timeToDetonate, AbstractGameObject.ObjectType.LASER, gameEngine);// 5 è il tempo  di detonazione
 		}
+		return null; //da cambiare immagino
 
 	}
 }

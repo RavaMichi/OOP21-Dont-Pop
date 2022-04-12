@@ -88,10 +88,8 @@ public  Point2D getThornballSpawnPoint(int side) {
 			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
 				return new Point2D(-0.2,randomNumber);
 			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
-				return new Point2D(1.2 , randomNumber);
-			
-			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
-			
+				return new Point2D(1.2 , randomNumber);			
 		}
-		
+			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
+  }
 }
