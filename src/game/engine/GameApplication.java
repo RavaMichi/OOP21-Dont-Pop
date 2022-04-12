@@ -37,16 +37,14 @@ public class GameApplication extends Application {
 	}
 	
 	// prende un int che va da zero a 1
-	static double convertToDouble(final int num) {// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
-		double tmp = num / size;// ritorna la posizione percentuale rispetto allo scermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 (50% della lunghezza dello
+	public static double convertToDouble(final int num) {// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
+		return num / size;// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 (50% della lunghezza dello
 		// schermo )
-		return tmp;
 	}
 
 	// fa l'opposto di quello sopra
-	static int convertToInt(final double num) {
-		int tmp = (int) num * size;
-		return tmp;
+	public static int convertToInt(final double num) {
+		return (int) (num * size);
 	}
 
 	public void startGameApplication() { // public void start(final Stage primaryStage) {
