@@ -86,13 +86,8 @@ public class GameEngine extends Thread {
             	//TODO: consider changing everything to a continue loop, 
             	//putting powerups in an if statement (if (!gameOver)) and 
             	//setting a flag like while(!gameOver) at the beginning of the loop
-            	
-            	if (this.hasShield) {
-            		this.hasShield = false;
-            	} else {
-            		//end game loop
-            		break;
-            	}
+                this.player.die();
+                this.scoreCalc.setCalcStatus(false);
             	
             	//////thread sleeps for remaining frame duration
             	////final long endTime = System.currentTimeMillis();
@@ -121,7 +116,7 @@ public class GameEngine extends Thread {
     	//start game loop
     	this.startGameLoop();
     	//on gameover, set score in application
-    	this.application.score(this.scoreCalc.getScore());
+
     	//TODO: print score
         //TODO: go back to menu
     }
@@ -192,8 +187,7 @@ public class GameEngine extends Thread {
      * Prints the score and kills the player.
      */
     public void endGame() {
-    	this.application.score();
-    	this.player.die();
+    	this.application.score(this.scoreCalc.getScore());
     }
 
     /**
@@ -306,7 +300,11 @@ public class GameEngine extends Thread {
 		for (final AbstractGameObject enemy: this.enemies) {
 		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
-		        return true;
+		        if (this.hasShield) {
+			        this.hasShield = false;
+                } else {
+                    return true;
+                }
 		    }
 		}
 		return false;
