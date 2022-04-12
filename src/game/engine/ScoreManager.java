@@ -12,15 +12,21 @@ import game.util.Pair;
  */
 public class ScoreManager {
     
+	private String playerName;
+	private int score;
 	private Leaderboard leaderboard;
+	private GameApplication application;
 	
     /**
      * Creates & initializes this class.
      */
-    public ScoreManager(final Leaderboard leaderboard) {
+    public ScoreManager(final String playerName, final int score, final Leaderboard leaderboard, final GameApplication application) {
     	
+    	this.playerName = playerName;
+    	this.score = score;
     	this.leaderboard = leaderboard;
     	this.leaderboard.load();
+    	this.application = application;
     	
     	//this.leaderboard.addToRanking("gigiabaffa", 5);
     	//this.leaderboard.addToRanking("hehehe", 10);
@@ -42,6 +48,14 @@ public class ScoreManager {
      */
     public List<Pair<String,Integer>> getRanking() {
     	return this.leaderboard.getRanking();
+    }
+    
+    public String getPlayerName() {
+    	return this.playerName;
+    }
+    
+    public int getScore() {
+    	return this.score;
     }
     
     /**

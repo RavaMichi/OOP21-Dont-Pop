@@ -44,14 +44,12 @@ public class ScoreScene {
      * Then, Creates a ScoreScene.
      */
     @SuppressWarnings("unchecked")
-	public ScoreScene(final GameApplication application, final Stage stage, final ScoreManager scoreManager, final ScoreCalc scoreCalc, final int screenSize) {
-    	stage.setTitle("Score Ranking");
+	public ScoreScene(final ScoreManager scoreManager, final int screenSize) {
     	this.scene = new Scene(new Group());
     	this.scoreManager = scoreManager;
-    	this.scoreCalc = scoreCalc;
     	this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
     	this.leaderboardData = FXCollections.observableArrayList();
-    	this.yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", application.getPlayerName(), this.scoreCalc.getScore()));
+    	this.yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", scoreManager.getPlayerName(), this.scoreCalc.getScore()));
     	
     	//add ranking data to leaderboardData
 		for (var i: this.ranking) {
@@ -62,6 +60,9 @@ public class ScoreScene {
 						i.get2()));
 		}
     	
+		String stylesheet = getClass().getResource("/game/ui/scorescene_styles.css").toExternalForm();
+		scene.getStylesheets().add(stylesheet);
+		
 		//LEADERBOARD
 		//create label (vbox)
 		final Label leaderboardLabel = new Label("Leaderboard");

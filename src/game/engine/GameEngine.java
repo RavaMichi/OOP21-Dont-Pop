@@ -24,7 +24,7 @@ public class GameEngine extends Thread {
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final GameApplication application;
-    private final ScoreDisplayObj scoreDisplay;
+    private final ScoreDisplayObj scoreDisplay;			//score overlay
     private final List<AbstractGameObject> enemies;
     private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
     private final List<AbstractGameObject> destroyQueue;
