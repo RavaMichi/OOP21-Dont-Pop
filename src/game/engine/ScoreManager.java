@@ -12,8 +12,8 @@ import game.util.Pair;
  */
 public class ScoreManager {
     
-	private String playerName;
 	private int score;
+	private String playerName;
 	private Leaderboard leaderboard;
 	private GameApplication application;
 	
@@ -21,23 +21,13 @@ public class ScoreManager {
      * Creates & initializes this class.
      */
     public ScoreManager(final String playerName, final int score, final Leaderboard leaderboard, final GameApplication application) {
-    	
-    	this.playerName = playerName;
     	this.score = score;
+    	this.playerName = playerName;
     	this.leaderboard = leaderboard;
-    	this.leaderboard.load();
     	this.application = application;
     	
-    	//this.leaderboard.addToRanking("gigiabaffa", 5);
-    	//this.leaderboard.addToRanking("hehehe", 10);
-    	
-    	//add five entries to leaderboard (test)
-//    	this.leaderboard.addToRanking("I'm a pro player", 1000);
-//    	this.leaderboard.addToRanking("Gettin' second here", 500);
-//    	this.leaderboard.addToRanking("Yeeeet I'm third", 250);
-//    	this.leaderboard.addToRanking("At least I'm not last", 100);
-//    	this.leaderboard.addToRanking("Noob here :(", 50);
-    	
+    	this.leaderboard.load();
+    	this.leaderboard.addToRanking(this.playerName, this.score);
     	//save in file after adding current record
     	this.leaderboard.save();
     }
