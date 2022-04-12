@@ -19,7 +19,8 @@ public abstract class AbstractGameObject {
     public enum ObjectType {
         PLAYER,                                         // player
         BULLET, LASER, THORNBALL, EXPLOSION,            // enemies
-        PWRUP_SHIELD, PWRUP_MULTIPLIER, PWRUP_SWEEPER;  // power ups
+        PWRUP_SHIELD, PWRUP_MULTIPLIER, PWRUP_SWEEPER,  // power ups
+        SCORE;
 
         /**
          * @return true if object is a player
