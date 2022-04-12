@@ -28,7 +28,7 @@ import game.util.ScoreCalc;
 public class ScoreScene {
 
     private final ScoreManager scoreManager;
-    private final ScoreCalc scoreCalc;
+//    private final ScoreCalc scoreCalc;
     private final Scene scene;
     
     //tables
@@ -49,7 +49,7 @@ public class ScoreScene {
     	this.scoreManager = scoreManager;
     	this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
     	this.leaderboardData = FXCollections.observableArrayList();
-    	this.yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", scoreManager.getPlayerName(), this.scoreCalc.getScore()));
+    	this.yourScoreData = FXCollections.observableArrayList(new RankItem("", scoreManager.getPlayerName(), this.scoreManager.getScore()));
     	
     	//add ranking data to leaderboardData
 		for (var i: this.ranking) {
