@@ -5,14 +5,18 @@
     /*-fx-background-color: white;*/
 }
 
+#your-score-label {
+    -fx-padding:80 0 0 0;
+}
+
 #your-score-table {
-    -fx-max-height: 52;
-    -fx-max-width: 462;
+    -fx-max-height: 62;
 }
 
 #leaderboard-label {
     -fx-font-size: 40px;
     -fx-font-family: fantasy;
+    -fx-padding: 0 0 0 0;
 }
 
 #leaderboard-label:hover {
@@ -21,19 +25,18 @@
 
 #leaderboard-table {
     -fx-max-height: 148;
-    -fx-max-width: 462;
 }
 
 #rank-col {
-    -fx-min-width: 60;
+    -fx-pred-width: 60;
 }
 
 #name-col {
-    -fx-min-width: 200;
+    -fx-pref-width: 200;
 }
 
 #score-col {
-    -fx-min-width: 200;
+    -fx-pref-width: 200;
 }
 
 .button {
@@ -45,12 +48,13 @@
     -fx-background-color: red;
 }
 
-.tableview {
+.table-view {
     -fx-background-position: center;
     -fx-text-fill: red;
+    -fx-max-width: 480;
 }
 
-#vbox {
+#border-pane {
     -fx-background-color: pink;
     -fx-spacing: 5;
     -fx-padding: 10 10 10 10;
