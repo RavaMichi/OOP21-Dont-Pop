@@ -53,6 +53,6 @@
 #vbox {
     -fx-background-color: pink;
     -fx-spacing: 5;
-    -fx-padding: 10 0 0 10;
+    -fx-padding: 10 10 10 10;
     -fx-alignment: center;
 }
