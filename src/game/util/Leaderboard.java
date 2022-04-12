@@ -45,7 +45,7 @@ public class Leaderboard {
 	}
 	
 	/**
-	 * Adds to the ranking the player, if the score is in the top 5 scores
+	 * Adds to the ranking the player, if the score is in the top scores
 	 * @param playerName
 	 * @param score
 	 */
@@ -54,6 +54,16 @@ public class Leaderboard {
 		if (this.ranking.isEmpty()) {
 			this.ranking.add(entry);
 		} else {
+			//check if already present
+			for (var p : this.ranking) {
+				if (p.get1().equals(playerName)) {
+					if (p.get2() < score) {
+						//replace player with new score
+						this.ranking.set(this.ranking.indexOf(p), new Pair<String, Integer>(playerName, score));
+					}
+					return;
+				}
+			}
 			//sorting during insertion
 			int index = 0;
 			while (index < this.ranking.size()) {
@@ -68,6 +78,19 @@ public class Leaderboard {
 				this.ranking.remove(this.ranking.size() - 1);
 			}
 		}
+	}
+	/**
+	 * Get the rank position of the player playerName
+	 * @param playerName - the player name
+	 * @return the rank
+	 */
+	public int getRank(final String playerName) {
+		for (int i = 0; i < RANKING_LENGTH; i++) {
+			if (this.ranking.get(i).get1().equals(playerName)) {
+				return i + 1;
+			}
+		}
+		return -1;
 	}
 	
 	/**
