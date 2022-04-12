@@ -49,10 +49,10 @@ public class GameEngine extends Thread {
     /**
      * Creates a new GameEngine object and initializes its fields.
      */
-    public GameEngine(final GameApplication application, final GameScene gameScene, final ScoreCalc scoreCalc) {
+    public GameEngine(final GameApplication application, final GameScene gameScene) {
         this.application = application;
         this.gameScene = gameScene;
-        this.scoreCalc = scoreCalc;
+        this.scoreCalc = new ScoreCalc();
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
         this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);

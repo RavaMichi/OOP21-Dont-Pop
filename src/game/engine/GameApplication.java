@@ -65,7 +65,7 @@ public class GameApplication extends Application {
 
 	public void game() {
 		GameScene gamescene = new GameScene(size);
-		GameEngine gameEngine = new GameEngine(this, gamescene , scoreCalc);
+		GameEngine gameEngine = new GameEngine(this, gamescene);
 		gameEngine.run();
 		this.setSceneM(gamescene.getScene());
 
