@@ -43,7 +43,6 @@
 .button {
     -fx-text-fill: white;
     -fx-background-color: lightblue;
-    -fx-label-padding: 30;
 }
 
 .button:hover {
