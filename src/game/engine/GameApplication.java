@@ -59,6 +59,7 @@ public class GameApplication extends Application {
 	}
 
 	public void menu() {
+		//menumanager non servirà a un cazzo, poi andrà tolto
 		MenuManager menumanager = new MenuManager();		//manca la classe, aspetto per modificare il cosrtuttore
 		MenuScene menuscene = new MenuScene(menumanager);	//manca la classe, aspetto per modificare il cosrtuttore
 		this.setSceneM(menuscene.get());					//manca la classe, aspett il nome del metodo
