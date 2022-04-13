@@ -2,13 +2,13 @@ package game.graphics;
 
 import game.engine.GameApplication;
 import game.model.AbstractGameObject;
-import game.util.Point2D;
 import javafx.application.Platform;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+
 /**
  * Renderer of an image
  */
@@ -51,13 +51,14 @@ public class ImageRenderer implements Renderer {
 	private Sprite baseSprite;
 	private final AbstractGameObject obj;
 	private double size;
+	
 	/**
+	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle.
+	 * The image will be centered at obj position.
 	 * @param obj - the game object linked to this renderer
 	 * @param sprite
 	 * @param size
 	 * @param rotation - in degrees
-	 * Creates a new Renderer with sprite and in-game width of size rotated by rotation angle.
-	 * The image will be centered at obj position.
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
 		this.obj = obj;
@@ -65,15 +66,20 @@ public class ImageRenderer implements Renderer {
 		this.size = size;
 		this.rotate(rotation, GameApplication.convertToInt(size));
 	}
+	
 	/**
-	 * @param newSprite
 	 * Sets the current image to the newSprite image
+	 * @param newSprite
 	 */
 	public void setSprite(Sprite newSprite) {
 		this.baseSprite = newSprite;
 		this.currentImg = newSprite.getImage();
 	}
 	
+	/**
+	 * Paints an image on the screen.
+	 * @param GraphicsContext gc
+	 */
 	@Override
 	public void paint(GraphicsContext gc) {
 		//incomplete
@@ -81,6 +87,7 @@ public class ImageRenderer implements Renderer {
 		double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
+	
 	/**
 	 * Sets the current rotation in degrees of this image
 	 * @param degrees
@@ -88,10 +95,11 @@ public class ImageRenderer implements Renderer {
 	public void setRotation(final double degrees) {
 		rotate(degrees, GameApplication.convertToInt(this.size));
 	}
+	
 	/**
+	 * Rotates this image by degrees angle and scales it to fit in a box of size width
 	 * @param degrees
 	 * @param width - in pixels!
-	 * Rotates this image by degrees angle and scales it to fit in a box of size width
 	 */
 	private void rotate(final double degrees, final double width) {
 		//rotation is performed in the FX thread ( runLater() is used to achieve that )
@@ -107,8 +115,9 @@ public class ImageRenderer implements Renderer {
 			this.currentImg = iv.snapshot(param, null);
 		});
 	}
+	
 	/**
-	 * 
+	 * Gets the attached game object (the one to be rendered).
 	 * @return the attached game object
 	 */
 	protected AbstractGameObject getGameObject() {
