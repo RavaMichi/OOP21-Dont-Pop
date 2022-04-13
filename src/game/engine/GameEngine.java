@@ -31,7 +31,7 @@ public class GameEngine extends Thread {
     private final ScoreDisplayObj scoreDisplay;			//score overlay
     private final List<Pair<AbstractGameObject, Integer>> enemies;
     private final List<Pair<AbstractGameObject, Integer>> powerups;	//to change in PowerUpObject
-    private final List<AbstractGameObject> destroyQueue;
+    private final List<Pair<AbstractGameObject, Integer>> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
@@ -173,7 +173,19 @@ public class GameEngine extends Thread {
      * @param obj
      */
     public void destroy(final AbstractGameObject obj) {
-        	this.destroyQueue.add(obj);
+        if (obj.getType().isEnemy()) {
+        	this.enemies.forEach(e -> {
+        		if (e.get1().equals(obj)) {
+        			this.destroyQueue.add(e);
+        		}
+        	});
+        } else if (obj.getType().isPowerUp()) {
+        	this.powerups.forEach(p -> {
+        		if (p.get1().equals(obj)) {
+        			this.destroyQueue.add(p);
+        		}
+        	});
+        }
     }
 
     /**
@@ -282,12 +294,11 @@ public class GameEngine extends Thread {
     private void removeObjectsInDestroyQueue() {
         //remove objects
         this.destroyQueue.forEach(obj -> {
-        	if (this.enemies.contains(obj)) {
+        	if (obj.get1().getType().isEnemy()) {
         		this.enemies.remove(obj);
-        	} else if (this.powerups.contains(obj)) {
+        	} else {
         		this.powerups.remove(obj);
         	}
-        	//guardare se l'oggetto 
         });
         //clear queue
         this.destroyQueue.clear();
