@@ -2,57 +2,65 @@
     -fx-font-weight: bold;
     -fx-font-size: 12px;
     -fx-text-fill: #365fce;
-    /*-fx-background-color: white;*/
 }
 
+/*Your Score*/
 #your-score-label {
     -fx-font-size: 40px;
     -fx-padding:80 0 0 0;
 }
-
 #your-score-table {
     -fx-max-height: 62;
 }
+#your-score {
+    -fx-padding: 0 0 10 0;
+    -fx-alignment: center;
+}
 
+/*Leaderboard*/
 #leaderboard-label {
     -fx-font-size: 40px;
     -fx-font-family: fantasy;
     -fx-padding: 0 0 0 0;
 }
-
 #leaderboard-label:hover {
     -fx-text-fill: orange;
 }
-
 #leaderboard-table {
     -fx-max-height: 148;
 }
+#leaderboard {
+    -fx-alignment: center;
+}
 
+/*Table Columns*/
 #rank-col {
     -fx-pred-width: 60;
 }
-
 #name-col {
     -fx-pref-width: 200;
 }
-
 #score-col {
     -fx-pref-width: 200;
 }
 
+/*Menu*/
 .button {
     -fx-text-fill: white;
     -fx-background-color: lightblue;
 }
-
 .button:hover {
     -fx-background-color: red;
+}
+#menu {
+    -fx-padding: 20 0 0 0;
+    -fx-alignment: center;
 }
 
 .table-view {
     -fx-background-position: center;
     -fx-text-fill: red;
-    -fx-max-width: 480;
+    -fx-max-width: 600;
 }
 
 #border-pane {

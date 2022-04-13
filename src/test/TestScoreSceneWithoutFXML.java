@@ -64,6 +64,7 @@ public class TestScoreSceneWithoutFXML extends Application {
 	 * Remove this in non-test version.
 	 */
 	@Override
+	@SuppressWarnings("unchecked")
 	public void start(final Stage stage) throws Exception {
 		//application will pass you the screen size
 		//get screen size and choose the smallest axis
@@ -92,11 +93,10 @@ public class TestScoreSceneWithoutFXML extends Application {
 		yourRankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
 		yourNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		yourScoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-		
+		//set column id
 		yourRankCol.setId("rank-col");
 		yourNameCol.setId("name-col");
 		yourScoreCol.setId("score-col");
-		
 		//turn off data sorting
 		yourRankCol.setSortable(false);
 		yourNameCol.setSortable(false);
@@ -115,7 +115,10 @@ public class TestScoreSceneWithoutFXML extends Application {
 //		yourScoreCol.setMinWidth(200);
 //		this.yourScoreTable.setMaxHeight(52);
 //		this.yourScoreTable.setMaxWidth(462);
-
+		//your score container
+		final VBox yourScore = new VBox();
+		yourScore.setId("your-score");
+		yourScore.getChildren().addAll(yourScoreLabel, this.yourScoreTable);
 		
 		//create leaderboard label (vbox)
 		final Label leaderboardLabel = new Label("Leaderboard");
@@ -132,11 +135,10 @@ public class TestScoreSceneWithoutFXML extends Application {
 		rankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-		
+		//set column id
 		rankCol.setId("rank-col");
 		nameCol.setId("name-col");
 		scoreCol.setId("score-col");
-		
 		//turn off data sorting
 		rankCol.setSortable(false);
 		nameCol.setSortable(false);
@@ -155,8 +157,10 @@ public class TestScoreSceneWithoutFXML extends Application {
 //		scoreCol.setMinWidth(200);
 //		this.leaderboardTable.setMaxHeight(148);
 //		this.leaderboardTable.setMaxWidth(462);
-		
-		
+		//leaderboard container
+		final VBox leaderboard = new VBox();
+		leaderboard.setId("leaderboard");
+		leaderboard.getChildren().addAll(leaderboardLabel, this.leaderboardTable);
 		
 		//create menu button
 		final Button menuButton = new Button("Home");
@@ -168,20 +172,23 @@ public class TestScoreSceneWithoutFXML extends Application {
 		    }
 		});
 
-		//add items to vertical box
-		final VBox vbox = new VBox();
-		vbox.setId("vbox");
 		
-		final HBox hbox = new HBox();
-		hbox.setId("hbox");
-		hbox.getChildren().add(menuButton);
+		//menu container
+		final VBox menu = new VBox();
+		menu.setId("menu");
+		menu.getChildren().add(menuButton);
 //		vbox.setSpacing(5);
 //		vbox.setPadding(new Insets(10, 0, 0, 10));
-		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, hbox);
 		
-		final BorderPane root = new BorderPane(vbox);
+		//add items to vertical box layout
+		final VBox layout = new VBox();
+		layout.setId("layout");
+		layout.getChildren().addAll(yourScore, leaderboard, menu);
+		
+		final BorderPane root = new BorderPane(layout);
+		root.setId("border-pane");
 //		BorderPane.setAlignment(vbox, Pos.CENTER);
-		vbox.setAlignment(Pos.TOP_CENTER);
+		layout.setAlignment(Pos.TOP_CENTER);
 		
 		final Scene scene = new Scene(root);
 		
