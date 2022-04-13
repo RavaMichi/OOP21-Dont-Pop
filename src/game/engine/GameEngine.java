@@ -21,7 +21,7 @@ import game.model.ScoreDisplayObj;
 */
 public class GameEngine extends Thread {
 //or, extends Runnable - then call it from a thread
-    
+	
     private double gameTime;	//game time, starting from 0
     private final PlayerObj player;
     private final SpawnManager spawnManager;
