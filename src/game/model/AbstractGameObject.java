@@ -12,6 +12,7 @@ import game.util.Point2D;
  *
  */
 public abstract class AbstractGameObject {
+	
     /**
      * Represents the type of the game object Has functions to check the type of a
      * game object (AbstractGameObject)
@@ -23,6 +24,7 @@ public abstract class AbstractGameObject {
         SCORE;
 
         /**
+         * Checks whether this object is a player.
          * @return true if object is a player
          */
         public boolean isPlayer() {
@@ -30,6 +32,7 @@ public abstract class AbstractGameObject {
         }
 
         /**
+         * Checks whether this object is an enemy.
          * @return true if object is an enemy
          */
         public boolean isEnemy() {
@@ -37,6 +40,7 @@ public abstract class AbstractGameObject {
         }
 
         /**
+         * Checks whether this object is a powerup.
          * @return true if object is a powerup
          */
         public boolean isPowerUp() {
@@ -51,9 +55,10 @@ public abstract class AbstractGameObject {
     private final GameEngine gameEngine;
 
     /**
+     * Creates a new game object in position <position>.
      * @param position
      * @param type
-     * @param gameEngine Creates a new game object in position
+     * @param gameEngine 
      */
     public AbstractGameObject(final Point2D position, final ObjectType type, final GameEngine gameEngine) {
         this.position = position;
@@ -68,28 +73,31 @@ public abstract class AbstractGameObject {
     public abstract void update();
 
     /**
-     * @return the Point2D object representing the spatial coordinates of this game
-     *         object
+     * Gets the Point2D object representing the spatial coordinates of this game object.
+     * @return position
      */
     public Point2D getPosition() {
         return this.position;
     }
 
     /**
-     * @param newPosition Set the position of this game object to newPosition
+     * Set the position of this game object to newPosition.
+     * @param newPosition
      */
     public void setPosition(final Point2D newPosition) {
         this.position = newPosition;
     }
 
     /**
-     * @param coll Set the collider of this game object
+     * Set the collider of this game object.
+     * @param collider
      */
-    public void setCollider(final Collider coll) {
-        this.collider = coll;
+    public void setCollider(final Collider collider) {
+        this.collider = collider;
     }
 
     /**
+     * Gets the collider of this game object.
      * @return the collider of this game object
      */
     public Collider getCollider() {
@@ -97,13 +105,15 @@ public abstract class AbstractGameObject {
     }
 
     /**
-     * @param rend Set the renderer of this game object
+     * Set the renderer of this game object.
+     * @param renderer
      */
-    public void setRenderer(final Renderer rend) {
-        this.renderer = rend;
+    public void setRenderer(final Renderer renderer) {
+        this.renderer = renderer;
     }
 
     /**
+     * Gets the renderer of this game object.
      * @return the renderer of this game object
      */
     public Renderer getRenderer() {
@@ -111,6 +121,7 @@ public abstract class AbstractGameObject {
     }
 
     /**
+     * Gets the type of this game object.
      * @return the type of this game object
      */
     public ObjectType getType() {
@@ -118,15 +129,15 @@ public abstract class AbstractGameObject {
     }
 
     /**
-     * Removes this game object from the game scene. It is managed by the GameEngine
-     * class
+     * Removes this game object from the game scene. 
+     * It is managed by the GameEngine class.
      */
     public void destroy() {
         this.gameEngine.destroy(this);
     }
     /**
-     * 
-     * @return the game engine where this object is instantiated.
+     * Gets GameEngine object (which instantiated this object).
+     * @return game engine
      */
     public GameEngine getGameEngine() {
     	return this.gameEngine;
