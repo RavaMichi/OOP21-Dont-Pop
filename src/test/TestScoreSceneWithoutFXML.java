@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Screen;
@@ -76,7 +77,44 @@ public class TestScoreSceneWithoutFXML extends Application {
 		stage.setHeight(screenSize-50);
 		stage.setResizable(false);
 		
+		//create your rank label (vbox)
+		final Label yourScoreLabel = new Label("Your Score");
+		yourScoreLabel.setId("your-score-label");
+//		yourScoreLabel.setFont(new Font("Verdana", 20));
+		//make table editable
+		this.yourScoreTable.setEditable(true);
+		this.yourScoreTable.setId("your-score-table");
+		//create columns
+		final TableColumn<RankItem, Integer> yourRankCol = new TableColumn<>("Rank");
+		final TableColumn<RankItem, String> yourNameCol = new TableColumn<>("Name");
+		final TableColumn<RankItem, Integer> yourScoreCol = new TableColumn<>("Score");
+		//fetch data
+		yourRankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
+		yourNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+		yourScoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
 		
+		yourRankCol.setId("rank-col");
+		yourNameCol.setId("name-col");
+		yourScoreCol.setId("score-col");
+		
+		//turn off data sorting
+		yourRankCol.setSortable(false);
+		yourNameCol.setSortable(false);
+		yourScoreCol.setSortable(false);
+		//turn off column reordering
+		yourRankCol.setReorderable(false);
+		yourNameCol.setReorderable(false);
+		yourScoreCol.setReorderable(false);
+		//add columns to table
+		this.yourScoreTable.setItems(this.yourScoreData);
+		this.yourScoreTable.getColumns().addAll(yourRankCol, yourNameCol, yourScoreCol);
+		//set minimum width & table bounds
+		//TODO: set these values with CSS only
+//		yourRankCol.setMinWidth(60);
+//		yourNameCol.setMinWidth(200);
+//		yourScoreCol.setMinWidth(200);
+//		this.yourScoreTable.setMaxHeight(52);
+//		this.yourScoreTable.setMaxWidth(462);
 
 		
 		//create leaderboard label (vbox)
@@ -103,6 +141,10 @@ public class TestScoreSceneWithoutFXML extends Application {
 		rankCol.setSortable(false);
 		nameCol.setSortable(false);
 		scoreCol.setSortable(false);
+		//turn off column reordering
+		rankCol.setReorderable(false);
+		nameCol.setReorderable(false);
+		scoreCol.setReorderable(false);
 		//add columns to table
 		this.leaderboardTable.setItems(this.leaderboardData);
 		this.leaderboardTable.getColumns().addAll(rankCol, nameCol, scoreCol);
@@ -114,43 +156,11 @@ public class TestScoreSceneWithoutFXML extends Application {
 //		this.leaderboardTable.setMaxHeight(148);
 //		this.leaderboardTable.setMaxWidth(462);
 		
-		//create your rank label (vbox)
-		final Label yourScoreLabel = new Label("Your Score");
-		yourScoreLabel.setId("your-score-label");
-		yourScoreLabel.setFont(new Font("Verdana", 20));
-		//make table editable
-		this.yourScoreTable.setEditable(true);
-		this.yourScoreTable.setId("your-score-table");
-		//create columns
-		final TableColumn<RankItem, Integer> yourRankCol = new TableColumn<>("Rank");
-		final TableColumn<RankItem, String> yourNameCol = new TableColumn<>("Name");
-		final TableColumn<RankItem, Integer> yourScoreCol = new TableColumn<>("Score");
-		//fetch data
-		yourRankCol.setCellValueFactory(new PropertyValueFactory<>("rank"));
-		yourNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-		yourScoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
 		
-		yourRankCol.setId("rank-col");
-		yourNameCol.setId("name-col");
-		yourScoreCol.setId("score-col");
-		
-		//turn off data sorting
-		yourRankCol.setSortable(false);
-		yourNameCol.setSortable(false);
-		yourScoreCol.setSortable(false);
-		//add columns to table
-		this.yourScoreTable.setItems(this.yourScoreData);
-		this.yourScoreTable.getColumns().addAll(yourRankCol, yourNameCol, yourScoreCol);
-		//set minimum width & table bounds
-		//TODO: set these values with CSS only
-//		yourRankCol.setMinWidth(60);
-//		yourNameCol.setMinWidth(200);
-//		yourScoreCol.setMinWidth(200);
-//		this.yourScoreTable.setMaxHeight(52);
-//		this.yourScoreTable.setMaxWidth(462);
 		
 		//create menu button
 		final Button menuButton = new Button("Home");
+		menuButton.setId("menu-button");
 		menuButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
@@ -161,9 +171,13 @@ public class TestScoreSceneWithoutFXML extends Application {
 		//add items to vertical box
 		final VBox vbox = new VBox();
 		vbox.setId("vbox");
+		
+		final HBox hbox = new HBox();
+		hbox.setId("hbox");
+		hbox.getChildren().add(menuButton);
 //		vbox.setSpacing(5);
 //		vbox.setPadding(new Insets(10, 0, 0, 10));
-		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, menuButton);
+		vbox.getChildren().addAll(yourScoreLabel, this.yourScoreTable, leaderboardLabel, this.leaderboardTable, hbox);
 		
 		final BorderPane root = new BorderPane(vbox);
 //		BorderPane.setAlignment(vbox, Pos.CENTER);
