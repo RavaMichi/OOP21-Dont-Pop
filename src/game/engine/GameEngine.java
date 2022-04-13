@@ -1,10 +1,13 @@
 package game.engine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import game.util.Leaderboard;
+import game.util.Pair;
 import game.util.Point2D;
 import game.collider.CircleCollider;
 import game.ui.GameScene;
@@ -26,8 +29,8 @@ public class GameEngine extends Thread {
     private final GameScene gameScene;
     private final GameApplication application;
     private final ScoreDisplayObj scoreDisplay;			//score overlay
-    private final List<AbstractGameObject> enemies;
-    private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<Pair<AbstractGameObject, Integer>> enemies;
+    private final List<Pair<AbstractGameObject, Integer>> powerups;	//to change in PowerUpObject
     private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
@@ -145,10 +148,22 @@ public class GameEngine extends Thread {
      * @param obj
      */
     public void instantiate(final AbstractGameObject obj) {
-        if (obj.getType().isEnemy()) {
-            this.enemies.add(obj);
+        this.instantiate(obj, 0);
+    }
+    
+    public void instantiate(final AbstractGameObject obj, final int priority) {
+    	if (obj.getType().isEnemy()) {
+    		for (int i=0; i<this.enemies.size(); i++) {
+    			if (this.enemies.get(i).get2() > priority) {
+    	            this.enemies.add(i, new Pair<>(obj, priority));
+    			}
+    		}
         } else if (obj.getType().isPowerUp()) {
-            this.powerups.add(obj);
+        	for (int i=0; i<this.powerups.size(); i++) {
+    			if (this.powerups.get(i).get2() > priority) {
+    	            this.powerups.add(i, new Pair<>(obj, priority));
+    			}
+    		}
         }
         //player does not get instantiated
     }
@@ -257,8 +272,8 @@ public class GameEngine extends Thread {
     private void updateAllGameObjects() {
     	//for each --- update
         this.player.update();
-        this.enemies.forEach(enemy -> enemy.update());
-        this.powerups.forEach(powerup -> powerup.update());
+        this.enemies.forEach(enemy -> enemy.get1().update());
+        this.powerups.forEach(powerup -> powerup.get1().update());
     }
 
     /**
@@ -272,6 +287,7 @@ public class GameEngine extends Thread {
         	} else if (this.powerups.contains(obj)) {
         		this.powerups.remove(obj);
         	}
+        	//guardare se l'oggetto 
         });
         //clear queue
         this.destroyQueue.clear();
@@ -298,12 +314,13 @@ public class GameEngine extends Thread {
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
-		var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
-		for (final AbstractGameObject enemy: enemyList) {
-		    if (enemy.getCollider().checkCollision(
+		var enemyList = this.enemies.stream().filter(e -> e.get1().getCollider() != null).collect(Collectors.toList());
+		for (final var enemy: enemyList) {
+		    if (enemy.get1().getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
 		        if (this.hasShield) {
 			        this.hasShield = false;
+			        this.destroy(enemy.get1());
                 } else {
                     return true;
                 }
@@ -318,8 +335,8 @@ public class GameEngine extends Thread {
 	 */
 	private void checkPowerupCollision() {
 		this.powerups.forEach(powerup -> {
-			this.applyPwrUp(powerup);
-			this.destroy(powerup);
+			this.applyPwrUp(powerup.get1());
+			this.destroy(powerup.get1());
 		});
 	}
 	
@@ -329,8 +346,8 @@ public class GameEngine extends Thread {
 	private void render() {
 		//for each --- render
 		final var renderList = new ArrayList<AbstractGameObject>();
-        renderList.addAll(this.enemies);
-        renderList.addAll(this.powerups);
+		renderList.addAll(this.enemies.stream().map(e -> e.get1()).collect(Collectors.toList()));
+        renderList.addAll(this.powerups.stream().map(e -> e.get1()).collect(Collectors.toList()));
         renderList.add(this.player);
         renderList.add(this.scoreDisplay);
         
