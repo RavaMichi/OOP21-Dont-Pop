@@ -27,7 +27,12 @@ public class ImageRenderer implements Renderer {
 		POP_ANIMATION_1("/pop_1"),
 		POP_ANIMATION_2("/pop_2"),
 		POP_ANIMATION_3("/pop_3"),
-		POP_ANIMATION_4("/pop_4");
+		POP_ANIMATION_4("/pop_4"),
+		//PNGs TO BE CREATED YET
+		PWRUP_SHIELD(""),
+		PWRUP_MULTIPLIER(""),
+		PWRUP_SWEEPER("");
+		
 		
 		private final Image img;
 		
