@@ -1,8 +1,7 @@
 package test.junit;
 import static org.junit.Assert.*;
 
-import game.collider.CircleCollider;
-import game.collider.Collider;
+import game.collider.*;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
 
@@ -45,4 +44,23 @@ public class Test {
 		assertTrue(circle.getCollider().checkCollision((CircleCollider)player.getCollider()));
 	}
 	
+	@org.junit.Test
+	public void testRayCollider() {
+		initPlayer();
+		var ray = new AbstractGameObject(Point2D.of(0, 0), null, null) {
+			@Override
+			public void update() {
+			}
+		};
+		//laser is a diagonal
+		ray.setCollider(new RayCollider(ray, Point2D.of(1, 1)));
+		
+		//they touch
+		assertTrue(ray.getCollider().checkCollision((CircleCollider)player.getCollider()));
+		player.update();
+		assertTrue(ray.getCollider().checkCollision((CircleCollider)player.getCollider()));
+		player.update();
+		//they don't touch
+		assertFalse(ray.getCollider().checkCollision((CircleCollider)player.getCollider()));
+	}
 }
