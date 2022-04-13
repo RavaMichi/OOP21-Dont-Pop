@@ -9,6 +9,12 @@ public class PowerUpObj extends AbstractGameObject {
 
 	private double timer = 0;
 	
+	/**
+	 * Creates a new powerup object of the type specified in its proper argument.
+	 * @param position
+	 * @param type
+	 * @param gameEngine
+	 */
 	public PowerUpObj(Point2D position, ObjectType type, GameEngine gameEngine) {
 		super(position, type, gameEngine);
 		if (type == AbstractGameObject.ObjectType.PWRUP_SHIELD) {
@@ -21,6 +27,10 @@ public class PowerUpObj extends AbstractGameObject {
 		this.setCollider((Collider)new CircleCollider(this, 0.1));
 	}
 
+	/**
+	 * Updates the remaining life of the powerup.
+	 * Counts elapsed time and destroys it when time's up. 
+	 */
 	@Override
 	public void update() {
 		timer += this.getGameEngine().getDeltaTime();
