@@ -48,9 +48,9 @@ public class GameApplication extends Application {
 	 * @param num
 	 * @return percentage size
 	 */
-	public static double convertToDouble(final int num) {// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
-		return num / screenSize;// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 (50% della lunghezza dello
-		// schermo )
+	public static double convertToDouble(final int num) {	// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
+		return num / screenSize;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 
+									// (50% della lunghezza dello schermo)
 	}
 
 	// fa l'opposto di quello sopra
@@ -102,7 +102,7 @@ public class GameApplication extends Application {
 	 * @param score
 	 */
 	public void score(final int score) {
-		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome  player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
+		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
 		ScoreScene scoreScene = new ScoreScene(this.scoremanager, screenSize);//aggiungere il manager
 	
 		this.setSceneM(scoreScene.getScene());
