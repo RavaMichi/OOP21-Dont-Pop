@@ -25,7 +25,7 @@ public class LaunchScoreScene extends Application {
 //	}
 	
 	public static void main(String[] args) {
-		launch(TestScoreScene.class, args);
+		launch(TestScoreSceneWithoutFXML.class, args);
 	}
 
 	/**

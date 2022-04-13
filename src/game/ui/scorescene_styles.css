@@ -6,6 +6,7 @@
 }
 
 #your-score-label {
+    -fx-font-size: 40px;
     -fx-padding:80 0 0 0;
 }
 
@@ -42,6 +43,7 @@
 .button {
     -fx-text-fill: white;
     -fx-background-color: lightblue;
+    -fx-label-padding: 30;
 }
 
 .button:hover {
