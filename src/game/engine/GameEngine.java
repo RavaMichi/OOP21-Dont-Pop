@@ -2,6 +2,7 @@ package game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import game.util.Leaderboard;
 import game.util.Point2D;
@@ -297,7 +298,8 @@ public class GameEngine extends Thread {
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
-		for (final AbstractGameObject enemy: this.enemies) {
+		var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
+		for (final AbstractGameObject enemy: enemyList) {
 		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
 		        if (this.hasShield) {
