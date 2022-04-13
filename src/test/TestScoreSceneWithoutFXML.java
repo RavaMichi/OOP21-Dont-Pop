@@ -72,8 +72,8 @@ public class TestScoreSceneWithoutFXML extends Application {
 		//create a non-resizable scene
 //		final Scene scene = new Scene(new Group());
 		stage.setTitle("Score Ranking");
-		stage.setWidth(screenSize);
-		stage.setHeight(screenSize);
+		stage.setWidth(screenSize-50);
+		stage.setHeight(screenSize-50);
 		stage.setResizable(false);
 		
 		
