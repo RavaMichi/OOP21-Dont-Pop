@@ -23,6 +23,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import game.util.ScoreCalc;
+import game.engine.GameApplication;
 import game.util.Pair;
 import game.util.RankItem;
 
@@ -108,11 +109,13 @@ public class TestScoreSceneWithoutFXML extends Application {
 		//add columns to table
 		this.yourScoreTable.setItems(this.yourScoreData);
 		this.yourScoreTable.getColumns().addAll(yourRankCol, yourNameCol, yourScoreCol);
+		this.yourScoreTable.setMaxWidth(GameApplication.convertToInt(0.85));
+		this.yourScoreTable.setFixedCellSize(GameApplication.convertToInt(0.03));
 		//set minimum width & table bounds
 		//TODO: set these values with CSS only
-//		yourRankCol.setMinWidth(60);
-//		yourNameCol.setMinWidth(200);
-//		yourScoreCol.setMinWidth(200);
+		yourRankCol.setPrefWidth(GameApplication.convertToInt(0.1));
+		yourNameCol.setPrefWidth(GameApplication.convertToInt(0.449));
+		yourScoreCol.setPrefWidth(GameApplication.convertToInt(0.3));
 //		this.yourScoreTable.setMaxHeight(52);
 //		this.yourScoreTable.setMaxWidth(462);
 		//your score container
@@ -147,14 +150,17 @@ public class TestScoreSceneWithoutFXML extends Application {
 		rankCol.setReorderable(false);
 		nameCol.setReorderable(false);
 		scoreCol.setReorderable(false);
+		
 		//add columns to table
 		this.leaderboardTable.setItems(this.leaderboardData);
 		this.leaderboardTable.getColumns().addAll(rankCol, nameCol, scoreCol);
+		this.leaderboardTable.setMaxWidth(GameApplication.convertToInt(0.85));
+		this.leaderboardTable.setFixedCellSize(GameApplication.convertToInt(0.03));
 		//set minimum width & table bounds
 		//TODO: set these values with CSS only
-//		rankCol.setMinWidth(60);
-//		nameCol.setMinWidth(200);
-//		scoreCol.setMinWidth(200);
+		rankCol.setPrefWidth(GameApplication.convertToInt(0.1));
+		nameCol.setPrefWidth(GameApplication.convertToInt(0.449));
+		scoreCol.setPrefWidth(GameApplication.convertToInt(0.3));
 //		this.leaderboardTable.setMaxHeight(148);
 //		this.leaderboardTable.setMaxWidth(462);
 		//leaderboard container
