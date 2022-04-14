@@ -21,10 +21,13 @@ public class LaunchBuilder extends Application {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/test/fxml/builder/sceneBuilder.fxml"));
 		
+		//controller created here
 		BuilderController controller = new BuilderController();
 		loader.setController(controller);
 		
+		//controller created in fxml
 //		BuilderController controller = loader.getController();
+		
 		BorderPane root = loader.load();
 		
 //		BorderPane root = FXMLLoader.load(ClassLoader.getSystemResource("test/fxml/builder/sceneBuilder.fxml"));
