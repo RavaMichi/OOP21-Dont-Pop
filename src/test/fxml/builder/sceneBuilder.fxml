@@ -5,17 +5,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="scenebuilderstyles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="border-pane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="scenebuilderstyles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox id="layout" BorderPane.alignment="CENTER">
+      <VBox id="layout" fx:id="layout" BorderPane.alignment="CENTER">
          <children>
-            <VBox id="yourScore" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox id="your-score" fx:id="yourScore" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label id="yourScoreLabel" text="Your Score">
+                  <Label id="your-score-label" fx:id="yourScoreLabel" text="Your Score">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -23,11 +24,20 @@
                         <Insets top="50.0" />
                      </padding>
                   </Label>
-                  <TableView id="yourScoreTable" prefHeight="84.0" prefWidth="600.0" stylesheets="@scenebuilderstyles.css">
+                  <TableView id="your-score-table" fx:id="yourScoreTable" editable="true" prefHeight="84.0" prefWidth="600.0" stylesheets="@scenebuilderstyles.css">
                     <columns>
-                      <TableColumn id="rankCol" prefWidth="75.0" sortable="false" text="Rank" />
-                      <TableColumn id="nameCol" prefWidth="75.0" sortable="false" text="Name" />
-                        <TableColumn id="scoreCol" prefWidth="75.0" sortable="false" text="Score" />
+                      <TableColumn id="rank-col" fx:id="yourRankCol" prefWidth="75.0" sortable="false" text="Rank">
+                      	<cellValueFactory><PropertyValueFactory property="rank" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="name-col" fx:id="yourNameCol" prefWidth="150.0" sortable="false" text="Name">
+                      	<cellValueFactory><PropertyValueFactory property="name" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="score-col" fx:id="yourScoreCol" prefWidth="75.0" sortable="false" text="Score">
+                      	<cellValueFactory><PropertyValueFactory property="score" />
+                      	</cellValueFactory>
+                      </TableColumn>
                     </columns>
                      <VBox.margin>
                         <Insets />
@@ -35,18 +45,27 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox id="leaderboard" alignment="TOP_CENTER" prefHeight="346.0" prefWidth="600.0">
+            <VBox id="leaderboard" fx:id="leaderboard" alignment="TOP_CENTER" prefHeight="346.0" prefWidth="600.0">
                <children>
-                  <Label id="leaderboardLabel" text="Leaderboard">
+                  <Label id="leaderboard-label" fx:id="leaderboardLabel" text="Leaderboard">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TableView id="leaderboardTable" prefHeight="178.0" prefWidth="600.0">
+                  <TableView id="leaderboard-table" fx:id="leaderboardTable" editable="true" prefHeight="178.0" prefWidth="600.0">
                     <columns>
-                      <TableColumn id="rankCol" prefWidth="75.0" sortable="false" text="Rank" />
-                      <TableColumn id="nameCol" prefWidth="75.0" sortable="false" text="Name" />
-                        <TableColumn id="scoreCol" prefWidth="75.0" sortable="false" text="Score" />
+                      <TableColumn id="rank-col" fx:id="rankCol" prefWidth="75.0" sortable="false" text="Rank">
+                      	<cellValueFactory><PropertyValueFactory property="rank" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="name-col" fx:id="nameCol" prefWidth="150.0" sortable="false" text="Name">
+                      	<cellValueFactory><PropertyValueFactory property="name" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="score-col" fx:id="scoreCol" prefWidth="75.0" sortable="false" text="Score">
+                      	<cellValueFactory><PropertyValueFactory property="score" />
+                      	</cellValueFactory>
+                      </TableColumn>
                     </columns>
                      <VBox.margin>
                         <Insets />
@@ -54,9 +73,9 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox id="menu" alignment="TOP_CENTER" prefHeight="96.0" prefWidth="600.0">
+            <VBox id="menu" fx:id="menu" alignment="TOP_CENTER" prefHeight="96.0" prefWidth="600.0">
                <children>
-                  <Button id="menuButton" alignment="CENTER" mnemonicParsing="false" text="Home" textAlignment="CENTER">
+                  <Button id="menu-button" fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" text="Home" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

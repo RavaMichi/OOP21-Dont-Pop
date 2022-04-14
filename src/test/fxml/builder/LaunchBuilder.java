@@ -1,5 +1,6 @@
 package test.fxml.builder;
 
+import game.engine.GameApplication;
 import game.util.ScoreCalc;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,10 @@ public class LaunchBuilder extends Application {
 		
 //		BorderPane root = FXMLLoader.load(ClassLoader.getSystemResource("test/fxml/builder/sceneBuilder.fxml"));
 		Scene scene = new Scene(root);
+		stage.setTitle("Score Ranking");
+		stage.setWidth(GameApplication.screenSize * 0.90);
+		stage.setHeight(GameApplication.screenSize * 0.90);
+		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();
 	}
