@@ -10,78 +10,72 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="border-pane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="scenebuilderstyles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox id="layout" fx:id="layout" BorderPane.alignment="CENTER">
          <children>
-            <VBox id="your-score" fx:id="yourScore" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox id="your-score" fx:id="yourScore" alignment="TOP_CENTER">
                <children>
                   <Label id="your-score-label" fx:id="yourScoreLabel" text="Your Score">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TableView id="your-score-table" fx:id="yourScoreTable" editable="true" prefHeight="62.0" prefWidth="600.0" stylesheets="@scenebuilderstyles.css">
+                  <TableView id="your-score-table" fx:id="yourScoreTable" editable="true">
                     <columns>
-                      <TableColumn id="rank-col" fx:id="yourRankCol" prefWidth="75.0" sortable="false" text="Rank">
-                      	<cellValueFactory><PropertyValueFactory property="rank" />
+                      <TableColumn id="rank-col" fx:id="yourRankCol" reorderable="false" resizable="false" sortable="false" text="Rank">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="rank" />
                       	</cellValueFactory>
                       </TableColumn>
-                      <TableColumn id="name-col" fx:id="yourNameCol" prefWidth="150.0" sortable="false" text="Name">
-                      	<cellValueFactory><PropertyValueFactory property="name" />
+                      <TableColumn id="name-col" fx:id="yourNameCol" reorderable="false" resizable="false" sortable="false" text="Name">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="name" />
                       	</cellValueFactory>
                       </TableColumn>
-                      <TableColumn id="score-col" fx:id="yourScoreCol" prefWidth="75.0" sortable="false" text="Score">
-                      	<cellValueFactory><PropertyValueFactory property="score" />
+                      <TableColumn id="score-col" fx:id="yourScoreCol" reorderable="false" resizable="false" sortable="false" text="Score">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="score" />
                       	</cellValueFactory>
                       </TableColumn>
                     </columns>
-                     <VBox.margin>
-                        <Insets left="15.0" right="15.0" />
-                     </VBox.margin>
                   </TableView>
                </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
             </VBox>
-            <VBox id="leaderboard" fx:id="leaderboard" alignment="TOP_CENTER" prefHeight="346.0" prefWidth="600.0">
+            <VBox id="leaderboard" fx:id="leaderboard" alignment="TOP_CENTER">
                <children>
                   <Label id="leaderboard-label" fx:id="leaderboardLabel" text="Leaderboard">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <TableView id="leaderboard-table" fx:id="leaderboardTable" editable="true" prefHeight="178.0" prefWidth="600.0">
+                  <TableView id="leaderboard-table" fx:id="leaderboardTable" editable="true">
                     <columns>
-                      <TableColumn id="rank-col" fx:id="rankCol" prefWidth="75.0" sortable="false" text="Rank">
+                      <TableColumn id="rank-col" fx:id="rankCol" reorderable="false" resizable="false" sortable="false" text="Rank">
                       	<cellValueFactory>
-                              <PropertyValueFactory property="rank" />
+                           <PropertyValueFactory property="rank" />
                       	</cellValueFactory>
                       </TableColumn>
-                      <TableColumn id="name-col" fx:id="nameCol" prefWidth="150.0" sortable="false" text="Name">
+                      <TableColumn id="name-col" fx:id="nameCol" reorderable="false" resizable="false" sortable="false" text="Name">
                       	<cellValueFactory>
-                              <PropertyValueFactory property="name" />
+                           <PropertyValueFactory property="name" />
                       	</cellValueFactory>
                       </TableColumn>
-                      <TableColumn id="score-col" fx:id="scoreCol" prefWidth="75.0" sortable="false" text="Score">
+                      <TableColumn id="score-col" fx:id="scoreCol" reorderable="false" resizable="false" sortable="false" text="Score">
                       	<cellValueFactory>
-                              <PropertyValueFactory property="score" />
+                           <PropertyValueFactory property="score" />
                       	</cellValueFactory>
                       </TableColumn>
                     </columns>
-                     <VBox.margin>
-                        <Insets left="15.0" right="15.0" />
-                     </VBox.margin>
                   </TableView>
                </children>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </VBox>
-            <VBox id="menu" fx:id="menu" alignment="TOP_CENTER" prefHeight="96.0" prefWidth="600.0">
+            <VBox id="menu" fx:id="menu" alignment="TOP_CENTER">
                <children>
-                  <Button id="menu-button" fx:id="menuButton" alignment="TOP_CENTER" mnemonicParsing="false" text="Home" textAlignment="CENTER">
+                  <Button id="menu-button" fx:id="menuButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#menu" text="Home" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
