@@ -14,12 +14,12 @@ public class ScoreDisplayObj extends AbstractGameObject {
 	 */
 	public ScoreDisplayObj(Point2D position, ObjectType type, GameEngine ge) {
 		super(position, type, ge);
-		this.setRenderer((Renderer)new TextRenderer(this, "1x Score: 0", 0.1, Color.DARKBLUE));
+		this.setRenderer((Renderer)new TextRenderer(this, "1x Score: 0", 0.04, Color.WHITE, 0.0025, Color.BLACK));
 	}
 
 	@Override
 	public void update() {
-		// animazione ?
+		updateScore(this.getGameEngine().getScoreCalc().getScore());
 	}
 
 	public void updateScore(int score) {

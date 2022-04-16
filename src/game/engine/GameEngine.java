@@ -39,7 +39,7 @@ public class GameEngine implements Runnable {
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
     private static final double SCORE_POS_X = 0.1;
-    private static final double SCORE_POS_Y = 0.1;
+    private static final double SCORE_POS_Y = 0.03;
 
     private boolean hasShield;		//false
     private boolean hasMultiplier;	//false
@@ -54,15 +54,17 @@ public class GameEngine implements Runnable {
      * Creates a new GameEngine object and initializes its fields.
      */
     public GameEngine(final GameApplication application, final GameScene gameScene) {
+    	this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
+        this.enemies = new ArrayList<>(INITIAL_SIZE);
+        this.powerups = new ArrayList<>();   //default size: 10
+        this.destroyQueue = new ArrayList<>();
+        
         this.application = application;
         this.gameScene = gameScene;
         this.scoreCalc = new ScoreCalc();
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
-        this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
-        this.enemies = new ArrayList<>(INITIAL_SIZE);
-        this.powerups = new ArrayList<>();   //default size: 10
-        this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
+        
         //likely add fps in future
     }
 
@@ -81,8 +83,9 @@ public class GameEngine implements Runnable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	            		//advance spawnManager (enemy spawning)
-            this.updateAllGameObjects();
+            
             this.removeObjectsInDestroyQueue();
+            this.updateAllGameObjects();
             this.checkPowerupCollision();	            		//powerups
 
             //game over: breaking loop
@@ -108,10 +111,10 @@ public class GameEngine implements Runnable {
             //thread sleeps for remaining frame duration
             final long endTime = System.currentTimeMillis();
             this.putThreadToSleep(startTime, endTime);
-
+            
             //calculate frame duration
             final long endFrame = System.currentTimeMillis();
-            this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
+            this.deltaTime = (double)this.deltatime(startTime, endFrame) / 1000;
         }
     }
 
@@ -131,7 +134,7 @@ public class GameEngine implements Runnable {
      * @param endFrame frame time
      * @return time difference between two frames (in ms)
      */
-    public long deltaTime(final long startFrame, final long endFrame) {
+    public long deltatime(final long startFrame, final long endFrame) {
         return endFrame - startFrame;
     }
 
@@ -353,10 +356,13 @@ public class GameEngine implements Runnable {
 	 * If true, applies powerup and destroys it.
 	 */
 	private void checkPowerupCollision() {
-		this.powerups.forEach(powerup -> {
-			this.applyPwrUp(powerup.get1());
-			this.destroy(powerup.get1());
-		});
+		this.powerups.stream().filter(p -> p.get1().getCollider() != null && p.get1().getCollider().checkCollision((CircleCollider)player.getCollider()))
+				.forEach(powerup -> {
+					if (powerup.get1().getCollider().checkCollision((CircleCollider)player.getCollider())) {
+						this.applyPwrUp(powerup.get1());
+						this.destroy(powerup.get1());
+					}
+				});
 	}
 	
 	/**
@@ -366,8 +372,8 @@ public class GameEngine implements Runnable {
 		//for each --- render
 		final var renderList = new ArrayList<AbstractGameObject>();
 		renderList.addAll(this.enemies.stream().map(e -> e.get1()).collect(Collectors.toList()));
+		renderList.add(this.player);
         renderList.addAll(this.powerups.stream().map(e -> e.get1()).collect(Collectors.toList()));
-        renderList.add(this.player);
         renderList.add(this.scoreDisplay);
         
         this.gameScene.render(renderList);
