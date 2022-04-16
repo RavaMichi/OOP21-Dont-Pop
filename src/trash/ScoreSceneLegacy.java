@@ -1,4 +1,4 @@
-package game.ui;
+package trash;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
