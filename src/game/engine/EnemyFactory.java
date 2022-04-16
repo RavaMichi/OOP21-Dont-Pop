@@ -1,14 +1,17 @@
 package game.engine;
 
-import game.model.AbstractGameObject;
-import game.model.EnemyBallObj;
-import game.model.EnemyBombObj;
-import game.model.EnemyLineObj;
-import game.model.EnemyProjectileObj;
+import game.model.AbstractGameObject.ObjectType;
+
+import java.util.Random;
+
+import game.model.*;
 import game.util.Point2D;
 import game.util.WhereToSpawn;
 
 public class EnemyFactory {
+	
+	private static final float LASER_DETONATION_TIME = 1.2f; 
+	
 	/*
 	 * ATTENZIONE::::: AGGIUNGERE COSTRUTTORE DELLA THORNBALL CHE VARIA DA:
 	 * 
@@ -19,7 +22,6 @@ public class EnemyFactory {
 	GameEngine gameEngine; //= GameEngine.getGameEngine(); // uso del metodo dalla definizione di classe per avere il
 														// riferimento al game engine corrente
 	WhereToSpawn wheretospawn = new WhereToSpawn();
-	float timeToDetonate = 1; // sec che poi puoi randomizzare //TEMPO DI DETONAZIONE DELLE ESPLOSIONI
 	
 	public EnemyFactory(final GameEngine ge) {
 		this.gameEngine = ge;
@@ -34,8 +36,7 @@ public class EnemyFactory {
 		Point2D spawnBomb = wheretospawn.getPowerUPSpawnPoint();
 		
 		if (n == AbstractGameObject.ObjectType.BULLET.ordinal()) {
-			return new EnemyProjectileObj(spawnPosition, spawnDir, (float) 0.02 , AbstractGameObject.ObjectType.BULLET, gameEngine); // dir � di 0.due decimi di schermo a chiamata
-
+			return createBullet();
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
 			return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
 
@@ -44,12 +45,25 @@ public class EnemyFactory {
 			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perch� cos� spawna
 			// dentro
 
-			return new EnemyBombObj(spawnBomb, timeToDetonate, AbstractGameObject.ObjectType.EXPLOSION ,  gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO
+			//return new EnemyBombObj(spawnBomb, timeToDetonate, AbstractGameObject.ObjectType.EXPLOSION ,  gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO
 
 		} else if (n == AbstractGameObject.ObjectType.LASER.ordinal()) {
-			return new EnemyLineObj(spawnPosition, spawnDir,timeToDetonate, AbstractGameObject.ObjectType.LASER, gameEngine);// 5 � il tempo  di detonazione
+			return createLaser();
 		}
 		return null; //da cambiare immagino
 
+	}
+	
+	public AbstractGameObject createBullet() {
+		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
+		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
+		direction.sub(spawnPosition);
+		return new EnemyProjectileObj(spawnPosition, direction, (float) 0.02 , ObjectType.BULLET, gameEngine);
+	}
+	public AbstractGameObject createLaser() {
+		var r = new Random();
+		Point2D spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
+		Point2D direction = new Point2D(r.nextDouble()*2 - 1, r.nextDouble()*2 - 1); //(-1, -1) -> (1, 1)
+		return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
 	}
 }
