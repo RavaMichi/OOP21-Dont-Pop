@@ -19,6 +19,10 @@ public class ScoreManager {
 	
     /**
      * Creates & initializes this class.
+     * @param playerName
+     * @param score
+     * @param leaderboard
+     * @param application
      */
     public ScoreManager(final String playerName, final int score, final Leaderboard leaderboard, final GameApplication application) {
     	this.score = score;
@@ -30,6 +34,18 @@ public class ScoreManager {
     	this.leaderboard.addToRanking(this.playerName, this.score);
     	//save in file after adding current record
     	this.leaderboard.save();
+    }
+    
+    /**
+     * This constructor is useful when all you want to do is view current leaderboard, without editing it.
+     * @param leaderboard
+     * @param application
+     */
+    public ScoreManager(final Leaderboard leaderboard, final GameApplication application) {
+    	this.leaderboard = leaderboard;
+    	this.application = application;
+    	
+    	this.leaderboard.load();
     }
 
     /**
@@ -50,8 +66,9 @@ public class ScoreManager {
     
     /**
      * Returns to menu.
+     * @throws Exception 
      */
-    public void menu() {
+    public void menu() throws Exception {
     	//TODO: call menu method of application
     	this.application.menu();
     }

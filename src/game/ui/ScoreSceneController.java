@@ -93,8 +93,9 @@ public class ScoreSceneController {
 	/**
 	 * Go back to main menu.
 	 * Calls the relative ScoreManager function.
+	 * @throws Exception 
 	 */
-	public void menu() {
+	public void menu() throws Exception {
 		this.scoreManager.menu();
 	}
 	

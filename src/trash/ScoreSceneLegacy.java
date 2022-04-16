@@ -127,7 +127,8 @@ public class ScoreSceneLegacy {
 			@Override
 			public void handle(ActionEvent e) {
 		    	//Go to GameApplication menu
-				this.scoreManager.menu();
+//				this.scoreManager.menu();
+				//useless now: gives error because it's not handling an Exception (yeah, an Exception)
 			}
 			
 			//initialize scoreManager in this class

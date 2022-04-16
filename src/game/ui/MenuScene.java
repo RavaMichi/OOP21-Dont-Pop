@@ -2,6 +2,7 @@ package game.ui;
 
 import java.io.IOException;
 
+import game.engine.GameApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -18,12 +19,12 @@ public class MenuScene {
 	 * @param screenSize
 	 * @throws Exception (necessary to load files, esp. FXML)
 	 */
-	public MenuScene(final int screenSize) throws Exception {
+	public MenuScene(final GameApplication application, final int screenSize) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/game/fxml/menuscene.fxml"));
 		
 		//controller created here
-		MenuSceneController controller = new MenuSceneController();
+		MenuSceneController controller = new MenuSceneController(application);
 		loader.setController(controller);
 		
 		//load GUI from FXML

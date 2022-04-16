@@ -23,7 +23,7 @@ public class GameApplication extends Application {
 	private static final String SAVE_PATH = ".save";
 	
 	//guardare dove lo devo prendere
-	String playerName;
+	private String playerName;
 	private Leaderboard leaderboard;
 	private ScoreManager scoremanager;
 	public final static int screenSize;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
@@ -90,7 +90,7 @@ public class GameApplication extends Application {
 	 */
 	public void menu() throws Exception {
 		//menumanager non servirà a un cazzo, poi andrà tolto
-		MenuScene menuscene = new MenuScene(screenSize);	//manca la classe, aspetto per modificare il cosrtuttore
+		MenuScene menuscene = new MenuScene(this, screenSize);	//manca la classe, aspetto per modificare il cosrtuttore
 		this.setSceneM(menuscene.getScene());					//manca la classe, aspett il nome del metodo
 	}
 
@@ -112,8 +112,20 @@ public class GameApplication extends Application {
 	 */
 	public void score(final int score) throws Exception {
 		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
-		ScoreScene scoreScene = new ScoreScene(this.scoremanager, screenSize);//aggiungere il manager
+		ScoreScene scoreScene = new ScoreScene(scoremanager, screenSize);//aggiungere il manager
 	
+		this.setSceneM(scoreScene.getScene());
+	}
+	
+	/**
+	 * Launch score GUI without editing score list.
+	 * Useful when viewing leaderboard before playing the game.
+	 * @throws Exception 
+	 */
+	public void viewScoreNoEdit() throws Exception {
+		ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
+		ScoreScene scoreScene = new ScoreScene(scoreManager, screenSize);
+		
 		this.setSceneM(scoreScene.getScene());
 	}
 
