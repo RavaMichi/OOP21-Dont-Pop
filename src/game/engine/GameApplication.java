@@ -17,6 +17,8 @@ import javafx.scene.layout.BorderPane;
 
 public class GameApplication extends Application {
 	
+	private static final String SAVE_PATH = ".save";
+	
 	//guardare dove lo devo prendere
 	String playerName;
 	private Leaderboard leaderboard;
@@ -68,12 +70,15 @@ public class GameApplication extends Application {
 	 */
 	public void start(final Stage primaryStage) { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.leaderboard = new Leaderboard(this.playerName);
+		this.leaderboard = new Leaderboard(SAVE_PATH);
 		primaryStage.setWidth(screenSize);
 		primaryStage.setHeight(screenSize);
 		primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
-		 this.menu();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
-			
+		this.game();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
+		
+		this.primaryStage.setOnCloseRequest(e -> exit());
+		
+		this.primaryStage.show();
 	}
 
 	/**
@@ -92,8 +97,8 @@ public class GameApplication extends Application {
 	public void game() {
 		GameScene gamescene = new GameScene(screenSize);
 		GameEngine gameEngine = new GameEngine(this, gamescene);
-		gameEngine.run();
 		this.setSceneM(gamescene.getScene());
+		new Thread(gameEngine).start();
 
 	}
 
@@ -128,4 +133,8 @@ public class GameApplication extends Application {
 		launch(args);
 	}
 
+	private void exit() {
+		System.exit(0);
+	}
+	
 }

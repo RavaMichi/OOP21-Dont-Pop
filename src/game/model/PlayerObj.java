@@ -43,13 +43,13 @@ public class PlayerObj extends AbstractGameObject {
 		movement = gameEngine.getMousePosition();
 		movement.sub(this.getPosition());
 		if(movement.getMagnitude() <= speed) {
-			this.getPosition().set(movement);
+			this.getPosition().add(movement);
 		} else {
 			movement.normalize();
 			movement.mul(speed);
 			this.getPosition().add(movement);
 		}
-		if (movement.getX() > 0) {
+		if (movement.getX() < 0) {
 			rotation = -3;
 		} else if (movement.getX() == 0) {
 			rotation = 0;

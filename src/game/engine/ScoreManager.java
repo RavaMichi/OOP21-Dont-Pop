@@ -53,7 +53,7 @@ public class ScoreManager {
      */
     public void menu() {
     	//TODO: call menu method of application
-    	//ScoreScene will call this method
+    	this.application.menu();
     }
     
 }

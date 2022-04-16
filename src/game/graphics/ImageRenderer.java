@@ -24,14 +24,15 @@ public class ImageRenderer implements Renderer {
 		BULLET("/bullet.png"),
 		THORNBALL("/thornball.png"),
 		GOLDEN_PLAYER("/golden_baloon.png"),
-		POP_ANIMATION_1("/pop_1"),
-		POP_ANIMATION_2("/pop_2"),
-		POP_ANIMATION_3("/pop_3"),
-		POP_ANIMATION_4("/pop_4"),
+		SHIELD_PLAYER("/shield_baloon.png"),
+		POP_ANIMATION_1("/pop_1.png"),
+		POP_ANIMATION_2("/pop_2.png"),
+		POP_ANIMATION_3("/pop_3.png"),
+		POP_ANIMATION_4("/pop_4.png"),
 		//PNGs TO BE CREATED YET
-		PWRUP_SHIELD(""),
-		PWRUP_MULTIPLIER(""),
-		PWRUP_SWEEPER("");
+		PWRUP_SHIELD("/shield.png"),
+		PWRUP_MULTIPLIER("/multiplier.png"),
+		PWRUP_SWEEPER("/sweeper.png");
 		
 		
 		private final Image img;

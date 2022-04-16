@@ -19,7 +19,7 @@ import game.model.ScoreDisplayObj;
 /** 
  * GameEngine is the class that makes the game work.
 */
-public class GameEngine extends Thread {
+public class GameEngine implements Runnable {
 //or, extends Runnable - then call it from a thread
 	
     private double gameTime;	//game time, starting from 0
@@ -153,12 +153,20 @@ public class GameEngine extends Thread {
     
     public void instantiate(final AbstractGameObject obj, final int priority) {
     	if (obj.getType().isEnemy()) {
+    		if (this.enemies.isEmpty()) {
+    			this.enemies.add(new Pair<>(obj, priority));
+    			return;
+    		}
     		for (int i=0; i<this.enemies.size(); i++) {
     			if (this.enemies.get(i).get2() > priority) {
     	            this.enemies.add(i, new Pair<>(obj, priority));
     			}
     		}
         } else if (obj.getType().isPowerUp()) {
+        	if (this.powerups.isEmpty()) {
+    			this.powerups.add(new Pair<>(obj, priority));
+    			return;
+    		}
         	for (int i=0; i<this.powerups.size(); i++) {
     			if (this.powerups.get(i).get2() > priority) {
     	            this.powerups.add(i, new Pair<>(obj, priority));

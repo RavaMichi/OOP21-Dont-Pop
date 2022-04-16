@@ -1,6 +1,9 @@
 package game.engine;
 
 import game.model.AbstractGameObject;
+import game.model.AbstractGameObject.ObjectType;
+import game.model.StartTimerObj;
+import game.util.Point2D;
 import game.util.RandomInt;
 
 public class SpawnManager {
@@ -37,16 +40,22 @@ public class SpawnManager {
 
 	//
 	private GameEngine gameEngine;
-	private PoweupFactory powerUpfFactory = new PoweupFactory(this.gameEngine);
-	private EnemyFactory enemyFactory = new EnemyFactory();
+	private PoweupFactory powerUpfFactory;
+	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
 
 	public SpawnManager(final GameEngine gameEngine) {
-		super();
 		this.gameEngine = gameEngine;
+		this.powerUpfFactory = new PoweupFactory(this.gameEngine);
+		this.enemyFactory = new EnemyFactory(this.gameEngine);
+		
+		//Crea il countdown iniziale
+		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, gameEngine), 2);
 	}
 
 	public void advance() throws Exception {
+		double tempodasommare = gameEngine.getDeltaTime();
+		tempo_totale += tempodasommare;
 		if (tempo_totale >= FIRST_LOOP_LIMIT && tempo_totale <= FIRST_LOOP_LIMIT + tolleranza_frame) { // vuol dire che
 																										// // ha
 																										// aspettato //
@@ -56,9 +65,6 @@ public class SpawnManager {
 	}
 //TODO: METTERE LO SCORE CALC E USARE IL METODO PER CALCOLARE IL PUNTEGGIO NEL GAME-START E CREARE LO SCALC FUORI DA APPLICATTION.MENU
 	private void game_start() throws Exception {
-		double tempodasommare = gameEngine.getDeltaTime();
-	//	tempo_totale += tempodasommare;//valutare se usare il tempo con gettime
-		tempo_totale=gameEngine.getTime()+gameEngine.getDeltaTime();
 //BULLET		
 
 		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PIï¿½
