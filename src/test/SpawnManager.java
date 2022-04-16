@@ -16,10 +16,10 @@ public class SpawnManager {
 	private static final double POWERUP_SPAWN_TIME = 7;
 
 	private static final int LASER_SPAWN_LIMIT = 6;
-	private static final double LASER_INCREASE_TIME = 15;
+	private static final double LASER_CICLE_TIME = 15;
 	private static double LASER_SPAWN_TIME = 5;
 
-	private static final double BULLET_INCREASE_TIME = 10;
+	private static final double BULLET_CICLE_TIME = 10;
 	private static double BULLET_SPAWN_TIME = 2;
 	private static final double BULLET_DELTA_SPAWN_TIME = 0.1;
 	private static final double BULLET_MIN_SPAWN_TIME = 0.5;
@@ -32,9 +32,9 @@ public class SpawnManager {
 	
 	private int laserCount = 1;
 	private double bulletTimer = BULLET_SPAWN_TIME;
-	private double bulletCicleTimer = BULLET_INCREASE_TIME;  //tempo per aumentare la difficolta'
+	private double bulletCicleTimer = BULLET_CICLE_TIME;  //tempo per aumentare la difficolta'
 	private double laserTimer = LASER_SPAWN_TIME;
-	private double laserCicleTimer = LASER_INCREASE_TIME;  //..
+	private double laserCicleTimer = LASER_CICLE_TIME;  //..
 	private double pwrupTimer = POWERUP_SPAWN_TIME;
 	
 	public SpawnManager(final GameEngine gameEngine) {
@@ -56,16 +56,31 @@ public class SpawnManager {
 		//Power Up
 		checkCicle(pwrupTimer, () -> {
 			//spawna pwr up randomico//
-			pwrupTimer = POWERUP_SPAWN_TIME;
+			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		});
 		//Bullet spawn
 		checkCicle(bulletTimer, () -> {
 			//spawna bullet verso player//
-			bulletTimer = BULLET_SPAWN_TIME;
+			this.bulletTimer = BULLET_SPAWN_TIME;
 		});
 		//Bullet difficulty
 		checkCicle(bulletCicleTimer, () -> {
-			BULLET_SPAWN_TIME -= (BULLET_SPAWN_TIME <= BULLET_MIN_SPAWN_TIME) ? BULLET_DELTA_SPAWN_TIME : 0;
+			if (BULLET_SPAWN_TIME <= BULLET_MIN_SPAWN_TIME) {
+				BULLET_SPAWN_TIME -= BULLET_DELTA_SPAWN_TIME;
+			}
+			this.bulletCicleTimer = BULLET_CICLE_TIME;
+		});
+		//Laser spawn
+		checkCicle(laserTimer, () -> {
+			//spawna tot laser randomici
+			this.laserTimer = LASER_SPAWN_TIME;
+		});
+		//Laser difficulty
+		checkCicle(laserCicleTimer, () -> {
+			if (this.laserCount < LASER_SPAWN_LIMIT) {
+				this.laserCount++;
+			}
+			this.laserCicleTimer = LASER_CICLE_TIME;
 		});
 	}
 
