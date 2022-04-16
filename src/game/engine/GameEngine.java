@@ -62,6 +62,11 @@ public class GameEngine implements Runnable {
         this.application = application;
         this.gameScene = gameScene;
         this.scoreCalc = new ScoreCalc();
+        this.scoreCalc.onMultiplierEnd(() -> {
+        	if (!this.hasShield) {
+        		this.player.setBaloonImage();
+        	}
+        });
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
         
@@ -187,11 +192,15 @@ public class GameEngine implements Runnable {
         switch (pwrup.getType()) {
             case PWRUP_SHIELD:
                 this.hasShield = true;
+                this.player.setShieldImage();
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
                 //sets multiplier value (duration: 5 seconds)
                 this.scoreCalc.setMultiplier();
+                if (!this.hasShield) {
+                	this.player.setGoldenBaloonImage();
+                }
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();
@@ -268,7 +277,7 @@ public class GameEngine implements Runnable {
     private void incTime() {
         this.gameTime += this.deltaTime;
     }
-
+    
     /**
      * Updates all AbstractGameObjects.
      */
@@ -324,6 +333,7 @@ public class GameEngine implements Runnable {
 		        if (this.hasShield) {
 			        this.hasShield = false;
 			        this.destroy(enemy);
+			        this.player.setBaloonImage();
                 } else {
                     return true;
                 }

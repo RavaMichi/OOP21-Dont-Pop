@@ -16,7 +16,7 @@ public class SpawnManager {
 	private static final double LASER_CICLE_TIME = 15;
 	private static double LASER_SPAWN_TIME = 5;
 
-	private static final double BULLET_CICLE_TIME = 7;
+	private static final double BULLET_CICLE_TIME = 4;
 	private static double BULLET_SPAWN_TIME = 2;
 	private static final double BULLET_DELTA_SPAWN_TIME = 0.1;
 	private static final double BULLET_MIN_SPAWN_TIME = 0.3;
@@ -80,7 +80,7 @@ public class SpawnManager {
 		}
 		//Bullet difficulty
 		if (this.bulletCicleTimer <= 0) {
-			if (BULLET_SPAWN_TIME <= BULLET_MIN_SPAWN_TIME) {
+			if (BULLET_SPAWN_TIME > BULLET_MIN_SPAWN_TIME) {
 				BULLET_SPAWN_TIME -= BULLET_DELTA_SPAWN_TIME;
 			}
 			this.bulletCicleTimer = BULLET_CICLE_TIME;

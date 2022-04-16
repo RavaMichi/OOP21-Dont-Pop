@@ -1,5 +1,8 @@
 package game.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Manages final score, that will be displayed both during gameplay and after gameover.
  * Differs from ScoreManager, which manages GUI-related aspects of score displaying
@@ -16,7 +19,7 @@ public class ScoreCalc {
     private final static int MULTIPLIER_2X = 2;
     
     private boolean hasMultiplier;
-    
+    private List<Runnable> onMultiplierEndList = new ArrayList<>();
 
     /**
      * Creates class and sets multiplier to 1 by default.
@@ -63,12 +66,12 @@ public class ScoreCalc {
      * Manages multiplier time, decreasing it until it reaches 0.
      */
     private void manageMultiplierTime(final double deltaTime) {
+    	if (!this.hasMultiplier) return;
 	    //decrease multiplier time
         if (this.getMultiplierTime() > 0) {
             this.decMultiplierTime(deltaTime);
-        } else if (this.hasMultiplier) {
+        } else {
             //multiplier expired: restoring normal settings
-            this.hasMultiplier = false;
             this.resetMultiplier();
             //TODO: add score multiplier manager
         }
@@ -105,6 +108,7 @@ public class ScoreCalc {
     public void setMultiplier(final int multiplier) {
         this.multiplier = multiplier;
         this.multiplierTime = MULTIPLIER_TIME;
+        this.hasMultiplier = true;
     }
     
     /**
@@ -120,6 +124,9 @@ public class ScoreCalc {
      */
     public void resetMultiplier() {
         this.multiplier = 1;
+        this.hasMultiplier = false;
+        //on multiplier end event
+        this.onMultiplierEndList.forEach(r -> r.run());
     }
     
     /**
@@ -151,5 +158,12 @@ public class ScoreCalc {
      */
     private void resetFrameCounter() {
     	this.frameCounter -= SECONDS_PER_POINT;
+    }
+    /**
+     * Adds this action to the list of runnable to execute on multiplier end event
+     * @param action
+     */
+    public void onMultiplierEnd(Runnable action) {
+    	this.onMultiplierEndList.add(action);
     }
 }
