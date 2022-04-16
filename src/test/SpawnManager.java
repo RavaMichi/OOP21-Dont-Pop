@@ -60,7 +60,7 @@ public class SpawnManager {
 		});
 		//Bullet spawn
 		checkCicle(bulletTimer, () -> {
-			//spawna bullet verso player//
+			this.gameEngine.instantiate(this.enemyFactory.createBullet());
 			this.bulletTimer = BULLET_SPAWN_TIME;
 		});
 		//Bullet difficulty
@@ -72,7 +72,9 @@ public class SpawnManager {
 		});
 		//Laser spawn
 		checkCicle(laserTimer, () -> {
-			//spawna tot laser randomici
+			for (int i = 0; i < this.laserCount; i++) {
+				this.gameEngine.instantiate(this.enemyFactory.createLaser());
+			}
 			this.laserTimer = LASER_SPAWN_TIME;
 		});
 		//Laser difficulty

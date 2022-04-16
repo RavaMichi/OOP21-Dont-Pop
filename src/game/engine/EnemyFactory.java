@@ -29,16 +29,10 @@ public class EnemyFactory {
 
 	public AbstractGameObject GetEnemyObj(final int n) {
 		
-		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());// PUNTO RANDOM IN CUI
-		Point2D thornPosition=wheretospawn.getThornballSpawnPoint(wheretospawn.getThornballRandomSide());	
-		// SPAWNARE
-		Point2D spawnDir = gameEngine.getPlayerPosition();
-		Point2D spawnBomb = wheretospawn.getPowerUPSpawnPoint();
-		
 		if (n == AbstractGameObject.ObjectType.BULLET.ordinal()) {
 			return createBullet();
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
-			return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
+			//return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
 
 		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
 
