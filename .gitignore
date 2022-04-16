@@ -3,3 +3,4 @@ doc/
 .classpath
 *.pdf
 *.log
+/.save

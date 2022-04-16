@@ -53,37 +53,39 @@ public class SpawnManager {
 	}
 
 	private void spawnLoop() {
-		//Power Up
-		checkCicle(pwrupTimer, () -> {
+		updateTime();
+		
+		//Power up
+		if (this.pwrupTimer <= 0) {
 			//spawna pwr up randomico//
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
-		});
+		}
 		//Bullet spawn
-		checkCicle(bulletTimer, () -> {
+		if (this.bulletTimer <= 0) {
 			this.gameEngine.instantiate(this.enemyFactory.createBullet());
 			this.bulletTimer = BULLET_SPAWN_TIME;
-		});
+		}
 		//Bullet difficulty
-		checkCicle(bulletCicleTimer, () -> {
+		if (this.bulletCicleTimer <= 0) {
 			if (BULLET_SPAWN_TIME <= BULLET_MIN_SPAWN_TIME) {
 				BULLET_SPAWN_TIME -= BULLET_DELTA_SPAWN_TIME;
 			}
 			this.bulletCicleTimer = BULLET_CICLE_TIME;
-		});
+		}
 		//Laser spawn
-		checkCicle(laserTimer, () -> {
+		if (this.laserTimer <= 0) {
 			for (int i = 0; i < this.laserCount; i++) {
 				this.gameEngine.instantiate(this.enemyFactory.createLaser());
 			}
 			this.laserTimer = LASER_SPAWN_TIME;
-		});
+		}
 		//Laser difficulty
-		checkCicle(laserCicleTimer, () -> {
+		if (this.laserCicleTimer <= 0) {
 			if (this.laserCount < LASER_SPAWN_LIMIT) {
 				this.laserCount++;
 			}
 			this.laserCicleTimer = LASER_CICLE_TIME;
-		});
+		}
 	}
 
 	public AbstractGameObject getPowerUp() throws Exception {
@@ -95,11 +97,12 @@ public class SpawnManager {
 		return powerUP;
 	}
 
-	private void checkCicle(double timer, Runnable spawnAction) {
-		timer -= this.gameEngine.getDeltaTime();
-		if (timer <= 0) {
-			spawnAction.run();
-		}
+	private void updateTime() {
+		this.pwrupTimer -= this.gameEngine.getDeltaTime();
+		this.bulletTimer -= this.gameEngine.getDeltaTime();
+		this.bulletCicleTimer -= this.gameEngine.getDeltaTime();
+		this.laserTimer -= this.gameEngine.getDeltaTime();
+		this.laserCicleTimer -= this.gameEngine.getDeltaTime();
 	}
 	
 }

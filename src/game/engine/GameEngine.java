@@ -29,16 +29,16 @@ public class GameEngine implements Runnable {
     private final GameScene gameScene;
     private final GameApplication application;
     private final ScoreDisplayObj scoreDisplay;			//score overlay
-    private final List<Pair<AbstractGameObject, Integer>> enemies;
-    private final List<Pair<AbstractGameObject, Integer>> powerups;	//to change in PowerUpObject
-    private final List<Pair<AbstractGameObject, Integer>> destroyQueue;
+    private final List<AbstractGameObject> enemies;
+    private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
     private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
-    private static final double SCORE_POS_X = 0.1;
+    private static final double SCORE_POS_X = 0.5;
     private static final double SCORE_POS_Y = 0.03;
 
     private boolean hasShield;		//false
@@ -149,32 +149,12 @@ public class GameEngine implements Runnable {
     /**
      * Creates a game object.
      * @param obj
-     */
+     */   
     public void instantiate(final AbstractGameObject obj) {
-        this.instantiate(obj, 0);
-    }
-    
-    public void instantiate(final AbstractGameObject obj, final int priority) {
     	if (obj.getType().isEnemy()) {
-    		if (this.enemies.isEmpty()) {
-    			this.enemies.add(new Pair<>(obj, priority));
-    			return;
-    		}
-    		for (int i=0; i<this.enemies.size(); i++) {
-    			if (this.enemies.get(i).get2() > priority) {
-    	            this.enemies.add(i, new Pair<>(obj, priority));
-    			}
-    		}
+    		this.enemies.add(obj);
         } else if (obj.getType().isPowerUp()) {
-        	if (this.powerups.isEmpty()) {
-    			this.powerups.add(new Pair<>(obj, priority));
-    			return;
-    		}
-        	for (int i=0; i<this.powerups.size(); i++) {
-    			if (this.powerups.get(i).get2() > priority) {
-    	            this.powerups.add(i, new Pair<>(obj, priority));
-    			}
-    		}
+        	this.powerups.add(obj);
         }
         //player does not get instantiated
     }
@@ -186,13 +166,13 @@ public class GameEngine implements Runnable {
     public void destroy(final AbstractGameObject obj) {
         if (obj.getType().isEnemy()) {
         	this.enemies.forEach(e -> {
-        		if (e.get1().equals(obj)) {
+        		if (e.equals(obj)) {
         			this.destroyQueue.add(e);
         		}
         	});
         } else if (obj.getType().isPowerUp()) {
         	this.powerups.forEach(p -> {
-        		if (p.get1().equals(obj)) {
+        		if (p.equals(obj)) {
         			this.destroyQueue.add(p);
         		}
         	});
@@ -295,8 +275,9 @@ public class GameEngine implements Runnable {
     private void updateAllGameObjects() {
     	//for each --- update
         this.player.update();
-        this.enemies.forEach(enemy -> enemy.get1().update());
-        this.powerups.forEach(powerup -> powerup.get1().update());
+        this.enemies.forEach(enemy -> enemy.update());
+        this.powerups.forEach(powerup -> powerup.update());
+        this.scoreDisplay.update();
     }
 
     /**
@@ -305,7 +286,7 @@ public class GameEngine implements Runnable {
     private void removeObjectsInDestroyQueue() {
         //remove objects
         this.destroyQueue.forEach(obj -> {
-        	if (obj.get1().getType().isEnemy()) {
+        	if (obj.getType().isEnemy()) {
         		this.enemies.remove(obj);
         	} else {
         		this.powerups.remove(obj);
@@ -336,13 +317,13 @@ public class GameEngine implements Runnable {
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
-		var enemyList = this.enemies.stream().filter(e -> e.get1().getCollider() != null).collect(Collectors.toList());
+		var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
 		for (final var enemy: enemyList) {
-		    if (enemy.get1().getCollider().checkCollision(
+		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
 		        if (this.hasShield) {
 			        this.hasShield = false;
-			        this.destroy(enemy.get1());
+			        this.destroy(enemy);
                 } else {
                     return true;
                 }
@@ -356,11 +337,11 @@ public class GameEngine implements Runnable {
 	 * If true, applies powerup and destroys it.
 	 */
 	private void checkPowerupCollision() {
-		this.powerups.stream().filter(p -> p.get1().getCollider() != null && p.get1().getCollider().checkCollision((CircleCollider)player.getCollider()))
+		this.powerups.stream().filter(p -> p.getCollider() != null && p.getCollider().checkCollision((CircleCollider)player.getCollider()))
 				.forEach(powerup -> {
-					if (powerup.get1().getCollider().checkCollision((CircleCollider)player.getCollider())) {
-						this.applyPwrUp(powerup.get1());
-						this.destroy(powerup.get1());
+					if (powerup.getCollider().checkCollision((CircleCollider)player.getCollider())) {
+						this.applyPwrUp(powerup);
+						this.destroy(powerup);
 					}
 				});
 	}
@@ -371,9 +352,9 @@ public class GameEngine implements Runnable {
 	private void render() {
 		//for each --- render
 		final var renderList = new ArrayList<AbstractGameObject>();
-		renderList.addAll(this.enemies.stream().map(e -> e.get1()).collect(Collectors.toList()));
+		renderList.addAll(this.enemies);
 		renderList.add(this.player);
-        renderList.addAll(this.powerups.stream().map(e -> e.get1()).collect(Collectors.toList()));
+        renderList.addAll(this.powerups);
         renderList.add(this.scoreDisplay);
         
         this.gameScene.render(renderList);

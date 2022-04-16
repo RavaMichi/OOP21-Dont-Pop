@@ -52,7 +52,7 @@ public class EnemyFactory {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
 		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
 		direction.sub(spawnPosition);
-		return new EnemyProjectileObj(spawnPosition, direction, (float) 0.02 , ObjectType.BULLET, gameEngine);
+		return new EnemyProjectileObj(spawnPosition, direction, (float) 0.2 , ObjectType.BULLET, gameEngine);
 	}
 	public AbstractGameObject createLaser() {
 		var r = new Random();

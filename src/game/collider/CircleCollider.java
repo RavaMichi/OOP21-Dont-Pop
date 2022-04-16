@@ -9,14 +9,16 @@ public class CircleCollider implements Collider {
 
 	private double radius;
 	private AbstractGameObject object;
+	private Point2D offset;
 	/**
 	 * @param parent
 	 * @param radius
 	 * Creates a new CircleCollider with radius radius linked to the gameObject parent
 	 */
-	public CircleCollider(final AbstractGameObject parent, final double radius) {
+	public CircleCollider(final AbstractGameObject parent, final double radius, Point2D offset) {
 		this.radius = radius;
 		this.object = parent;
+		this.offset = offset;
 	}
 	
 	@Override
@@ -34,7 +36,9 @@ public class CircleCollider implements Collider {
 	 * @return the center of this circle
 	 */
 	public Point2D getCenter() {
-		return this.object.getPosition();
+		var p = Point2D.copyOf(this.offset);
+		p.add(this.object.getPosition());
+		return p;
 	}
 
 }

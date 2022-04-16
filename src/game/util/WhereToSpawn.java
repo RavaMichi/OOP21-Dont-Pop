@@ -43,17 +43,17 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 			
 			RandomInt randomInt= new RandomInt();
 			int sideOfSpawn= this.getRandomSide();
-			double randomNumber=randomInt.getRandomInt(0,100) / 100 ;
+			double randomNumber=(double)randomInt.getRandomInt(0,100) / 100 ;
 			//SPAWNANO FUORI FDAL GAMEBOARD CON UNA DIFFERENZA DI double n= 0.2 (sia in positivo che in negativo)
 		
 			
-			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
+			if (sideOfSpawn == 1 ) {
 				return new Point2D(-0.2,randomNumber);
-			} else if ( sideOfSpawn == SideOfSpawn.SUD.ordinal() ) {
+			} else if ( sideOfSpawn == 2 ) {
 				return new Point2D(randomNumber,1.2);
-			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
+			} else if ( sideOfSpawn == 3 ) {
 				return new Point2D(1.2 , randomNumber);
-			} else if (sideOfSpawn == SideOfSpawn.NORD.ordinal() ) {
+			} else if (sideOfSpawn == 4 ) {
 				return new Point2D(randomNumber,-0.2);
 			}
 			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)

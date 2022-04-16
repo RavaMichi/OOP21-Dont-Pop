@@ -23,6 +23,7 @@ public class ScoreCalc {
      */
     public ScoreCalc() {
         this.multiplier = 1;
+        setCalcStatus(false);
     }
 
     /**

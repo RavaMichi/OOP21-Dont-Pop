@@ -20,7 +20,7 @@ public class GameApplication extends Application {
 	private static final String SAVE_PATH = ".save";
 	
 	//guardare dove lo devo prendere
-	String playerName;
+	private String playerName;
 	private Leaderboard leaderboard;
 	private ScoreManager scoremanager;
 	public final static int screenSize;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
@@ -71,6 +71,7 @@ public class GameApplication extends Application {
 	public void start(final Stage primaryStage) { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.leaderboard = new Leaderboard(SAVE_PATH);
+		setPlayerName("Player123");
 		primaryStage.setWidth(screenSize);
 		primaryStage.setHeight(screenSize);
 		primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new

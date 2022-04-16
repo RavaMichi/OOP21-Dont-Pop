@@ -56,7 +56,7 @@ public class Leaderboard {
 		} else {
 			//check if already present
 			for (var p : this.ranking) {
-				if (p.get1().equals(playerName)) {
+				if (p.get1() == playerName) {
 					if (p.get2() < score) {
 						//replace player with new score
 						this.ranking.set(this.ranking.indexOf(p), new Pair<String, Integer>(playerName, score));
