@@ -31,6 +31,8 @@ public class SpawnManager {
 	private PoweupFactory powerUpfFactory;
 	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
+		
+	private double pwrupTimer = POWERUP_SPAWN_TIME;
 	
 	private double bulletTimer = BULLET_SPAWN_TIME;
 	private double bulletCicleTimer = BULLET_CICLE_TIME;  //tempo per aumentare la difficolta'
@@ -38,9 +40,7 @@ public class SpawnManager {
 	private int laserCount = 1;
 	private double laserTimer = LASER_SPAWN_TIME;
 	private double laserCicleTimer = LASER_CICLE_TIME;  //..
-	
-	private double pwrupTimer = POWERUP_SPAWN_TIME;
-	
+
 	private int thornballCount = 1;
 	private double thornballTimer = THORNBALL_SPAWN_TIME;
 	private double thornballCicleTimer = THORNBALL_CICLE_TIME;
@@ -70,7 +70,7 @@ public class SpawnManager {
 		
 		//Power up
 		if (this.pwrupTimer <= 0) {
-			//spawna pwr up randomico//
+			this.gameEngine.instantiate(this.enemyFactory.createRandomPowerUp());
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		}
 		//Bullet spawn

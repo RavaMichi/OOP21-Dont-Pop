@@ -58,4 +58,16 @@ public class PlayerObj extends AbstractGameObject {
 		}
 		((ImageRenderer)this.getRenderer()).setRotation(rotation);
 	}
+	
+	public void setBaloonImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.PLAYER);
+	}
+	
+	public void setGoldenBaloonImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_PLAYER);
+	}
+	
+	public void setShieldImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.SHIELD_PLAYER);
+	}
 }

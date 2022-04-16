@@ -48,6 +48,17 @@ public class EnemyFactory {
 		return null; //da cambiare immagino
 
 	}
+	public AbstractGameObject createRandomPowerUp() {
+		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
+		int i = new Random().nextInt(3);
+		if (i == 0) {
+			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
+		} else if (i == 1) {
+			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+		} else {
+			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
+		}
+	}
 	
 	public AbstractGameObject createBullet() {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
