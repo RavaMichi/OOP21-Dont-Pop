@@ -11,6 +11,7 @@ import game.util.WhereToSpawn;
 public class EnemyFactory {
 	
 	private static final float LASER_DETONATION_TIME = 1.2f; 
+	private static final float BULLET_VELOCITY = 0.3f;
 	
 	/*
 	 * ATTENZIONE::::: AGGIUNGERE COSTRUTTORE DELLA THORNBALL CHE VARIA DA:
@@ -52,7 +53,7 @@ public class EnemyFactory {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
 		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
 		direction.sub(spawnPosition);
-		return new EnemyProjectileObj(spawnPosition, direction, (float) 0.2 , ObjectType.BULLET, gameEngine);
+		return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY , ObjectType.BULLET, gameEngine);
 	}
 	public AbstractGameObject createLaser() {
 		var r = new Random();

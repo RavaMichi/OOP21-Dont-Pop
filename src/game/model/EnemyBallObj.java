@@ -15,7 +15,7 @@ public class EnemyBallObj extends AbstractGameObject {
 	public EnemyBallObj(Point2D position, ObjectType type, GameEngine ge) {
 		super(position, type, ge);
 		this.setRenderer((Renderer) new ImageRenderer(this, ImageRenderer.Sprite.THORNBALL, 0.1, 0));
-		this.setCollider((Collider)new CircleCollider(this, 0.1));
+		this.setCollider((Collider)new CircleCollider(this, 0.1, Point2D.of(0, 0)));
 		velocity = this.getGameEngine().getPlayerPosition();
 		velocity.sub(this.getPosition());
 		velocity.setY(velocity.getY() + this.getPosition().getY());

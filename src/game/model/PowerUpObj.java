@@ -24,7 +24,7 @@ public class PowerUpObj extends AbstractGameObject {
 		} else if (type == AbstractGameObject.ObjectType.PWRUP_SWEEPER) {
 			this.setRenderer((Renderer) new ImageRenderer(this, ImageRenderer.Sprite.PWRUP_SWEEPER, 0.1, 0));
 		}
-		this.setCollider((Collider)new CircleCollider(this, 0.1));
+		this.setCollider((Collider)new CircleCollider(this, 0.1, Point2D.of(0, 0)));
 	}
 
 	/**

@@ -31,7 +31,7 @@ public class EnemyBombObj extends AbstractGameObject {
 	private void explode() {
 		if (!hasExploded) {
 			hasExploded = true;
-			this.setCollider((Collider)new CircleCollider(this, 0.25));
+			this.setCollider((Collider)new CircleCollider(this, 0.25, Point2D.of(0, 0)));
 			((CircleRenderer) this.getRenderer()).setOpacity(1);
 		}
 	}
