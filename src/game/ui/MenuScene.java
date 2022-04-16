@@ -1,5 +1,13 @@
 package game.ui;
 
-public class MenuScene {
+import javafx.scene.Scene;
 
+public class MenuScene {
+	public MenuScene() {
+		
+	}
+	
+	public Scene getScene() {
+		
+	}
 }

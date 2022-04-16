@@ -4,6 +4,7 @@ package game.engine;
 //import java.awt.Toolkit;
 
 import game.ui.GameScene;
+import game.ui.MenuScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;
 import game.util.ScoreCalc;
@@ -86,9 +87,8 @@ public class GameApplication extends Application {
 	 */
 	public void menu() {
 		//menumanager non servirà a un cazzo, poi andrà tolto
-		MenuManager menumanager = new MenuManager();		//manca la classe, aspetto per modificare il cosrtuttore
-		MenuScene menuscene = new MenuScene(menumanager);	//manca la classe, aspetto per modificare il cosrtuttore
-		this.setSceneM(menuscene.get());					//manca la classe, aspett il nome del metodo
+		MenuScene menuscene = new MenuScene();	//manca la classe, aspetto per modificare il cosrtuttore
+		this.setSceneM(menuscene.getScene());					//manca la classe, aspett il nome del metodo
 	}
 
 	/**
@@ -105,8 +105,9 @@ public class GameApplication extends Application {
 	/**
 	 * Launch score GUI (view score ranking).
 	 * @param score
+	 * @throws Exception 
 	 */
-	public void score(final int score) {
+	public void score(final int score) throws Exception {
 		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
 		ScoreScene scoreScene = new ScoreScene(this.scoremanager, screenSize);//aggiungere il manager
 	

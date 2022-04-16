@@ -11,22 +11,22 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
    <top>
-      <Label prefHeight="230.0" prefWidth="579.0" text="Don't Pop" BorderPane.alignment="CENTER">
+      <Label text="Don't Pop" BorderPane.alignment="CENTER">
          <font>
             <Font size="96.0" />
          </font>
       </Label>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" >
                <children>
                   <Label text="Enter player name here: " />
                   <TextField />
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <VBox alignment="CENTER" >
                <children>
                   <Button mnemonicParsing="false" text="Play" />
                   <Button mnemonicParsing="false" text="Leaderboard" />
