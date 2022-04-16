@@ -70,8 +70,9 @@ public class GameEngine implements Runnable {
 
     /**
      * Starts the game loop (aka the engine).
+     * @throws Exception 
      */
-    public void startGameLoop() {
+    public void startGameLoop() throws Exception {
         while (true) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
@@ -121,7 +122,12 @@ public class GameEngine implements Runnable {
     @Override
     public void run() {
     	//start game loop
-    	this.startGameLoop();
+    	try {
+			this.startGameLoop();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	//on gameover, set score in application
 
     	//TODO: print score
@@ -224,8 +230,9 @@ public class GameEngine implements Runnable {
     /**
      * Ends the game on game over.
      * Prints the score and kills the player.
+     * @throws Exception 
      */
-    public void endGame() {
+    public void endGame() throws Exception {
     	this.application.score(this.scoreCalc.getScore());
     }
 
