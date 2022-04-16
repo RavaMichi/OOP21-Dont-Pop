@@ -109,7 +109,7 @@ public class SpawnManager {
 		//Thornball spawn
 		if (this.thornballTimer <= 0) {
 			for (int i = 0; i < this.thornballCount; i++) {
-				this.gameEngine.instantiate(this.enemyFactory.createLaser());
+				this.gameEngine.instantiate(this.enemyFactory.createThornball());
 			}
 			this.thornballTimer = THORNBALL_SPAWN_TIME;
 		}

@@ -8,19 +8,19 @@ import game.util.Point2D;
 public class EnemyBallObj extends AbstractGameObject {
 	
 	private double rotation = 0;
-	private double speed = 0.025;
-	private double gravity = 0.0008;
+	private double speed = 0.015;
+	private double gravity = 0.0004;
 	private Point2D velocity;
 	
 	public EnemyBallObj(Point2D position, ObjectType type, GameEngine ge) {
 		super(position, type, ge);
 		this.setRenderer((Renderer) new ImageRenderer(this, ImageRenderer.Sprite.THORNBALL, 0.1, 0));
-		this.setCollider((Collider)new CircleCollider(this, 0.1, Point2D.of(0, 0)));
-		velocity = this.getGameEngine().getPlayerPosition();
-		velocity.sub(this.getPosition());
-		velocity.setY(velocity.getY() + this.getPosition().getY());
-		velocity.normalize();
-		velocity.mul(speed);
+		this.setCollider((Collider)new CircleCollider(this, 0.05, Point2D.of(0, 0)));
+		
+		//velocity calculation
+		this.velocity = Point2D.of(ge.getPlayerPosition().getX() > position.getX() ? 1 : -1, -0.7);
+		this.velocity.normalize();
+		this.velocity.mul(speed);
 	}
 
 	@Override

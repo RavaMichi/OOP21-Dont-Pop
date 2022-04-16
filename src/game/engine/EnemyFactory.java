@@ -61,4 +61,8 @@ public class EnemyFactory {
 		Point2D direction = new Point2D(r.nextDouble()*2 - 1, r.nextDouble()*2 - 1); //(-1, -1) -> (1, 1)
 		return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
 	}
+	public AbstractGameObject createThornball() {
+		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
+		return new EnemyBallObj(spawnPosition, ObjectType.THORNBALL, gameEngine);
+	}
 }
