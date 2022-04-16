@@ -1,5 +1,7 @@
 package game.engine;
 
+import java.io.IOException;
+
 //import java.awt.Dimension;
 //import java.awt.Toolkit;
 
@@ -84,10 +86,11 @@ public class GameApplication extends Application {
 
 	/**
 	 * Launch menu GUI.
+	 * @throws Exception 
 	 */
-	public void menu() {
+	public void menu() throws Exception {
 		//menumanager non servirà a un cazzo, poi andrà tolto
-		MenuScene menuscene = new MenuScene();	//manca la classe, aspetto per modificare il cosrtuttore
+		MenuScene menuscene = new MenuScene(screenSize);	//manca la classe, aspetto per modificare il cosrtuttore
 		this.setSceneM(menuscene.getScene());					//manca la classe, aspett il nome del metodo
 	}
 

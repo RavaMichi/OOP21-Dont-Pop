@@ -51,7 +51,7 @@ public class ScoreScene {
 	}
 	
 	/**
-	 * Gets this class.
+	 * Gets this object.
 	 * @return ScoreScene
 	 */
 	public ScoreScene get() {
