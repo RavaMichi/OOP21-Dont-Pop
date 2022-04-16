@@ -14,7 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import test.ScoreManager;
 
-public class BuilderController {
+public class ScoreSceneController {
 	
 	private final ScoreManager scoreManager;
 	private final ScoreCalc scoreCalc;
@@ -24,7 +24,7 @@ public class BuilderController {
 	private final ObservableList<RankItem> yourScoreData = 
 			FXCollections.observableArrayList(new RankItem("", "Stocazzo", 3));
 	
-	public BuilderController() {
+	public ScoreSceneController() {
 		this.scoreCalc = new ScoreCalc();
 		this.scoreManager = new ScoreManager(this.scoreCalc);
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());

@@ -69,7 +69,7 @@
 .table-view {
     -fx-background-position: center;
     -fx-text-fill: red;
-    -fx-background-radius: 20;
+    /* -fx-background-radius: 20; */
     /* -fx-max-width: 600; */
 }
 
