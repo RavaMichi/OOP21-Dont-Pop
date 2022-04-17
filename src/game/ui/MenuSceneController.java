@@ -31,8 +31,8 @@ public class MenuSceneController {
 	 * Play game.
 	 */
 	public void play() {
-		this.application.game();
 		this.application.setPlayerName(this.namePrompt.getText());
+		this.application.game();
 	}
 	
 	/**

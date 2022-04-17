@@ -42,6 +42,8 @@ public class ScoreManager {
      * @param application
      */
     public ScoreManager(final Leaderboard leaderboard, final GameApplication application) {
+    	this.score = 0;
+    	this.playerName = "Viewing current leaderboard...";
     	this.leaderboard = leaderboard;
     	this.application = application;
     	
