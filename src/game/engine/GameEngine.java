@@ -1,19 +1,15 @@
 package game.engine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import game.util.Leaderboard;
 import game.util.Pair;
 import game.util.Point2D;
 import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
-import game.engine.GameApplication;
 import game.model.ScoreDisplayObj;
 
 /** 
