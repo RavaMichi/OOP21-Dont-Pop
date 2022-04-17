@@ -63,9 +63,8 @@ public class ImageRenderer implements Renderer {
 	 */
 	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
 		this.obj = obj;
-		setSprite(sprite);
 		this.size = size;
-		this.rotate(rotation, GameApplication.convertToInt(size));
+		setSprite(sprite, rotation);
 	}
 	
 	/**
@@ -73,8 +72,19 @@ public class ImageRenderer implements Renderer {
 	 * @param newSprite
 	 */
 	public void setSprite(Sprite newSprite) {
-		this.baseSprite = newSprite;
-		this.currentImg = newSprite.getImage();
+		setSprite(newSprite, 0);
+	}
+	/**
+	 * Sets the current image to the newSprite image. This method is executed in the JavaFX thread
+	 * @param newSprite
+	 * @param rotation angle
+	 */
+	private void setSprite(Sprite newSprite, double rotation) {
+		Platform.runLater(() -> {
+			this.baseSprite = newSprite;
+			this.currentImg = newSprite.getImage();
+			rotate(rotation, GameApplication.convertToInt(this.size));
+		});
 	}
 	
 	/**
@@ -83,18 +93,21 @@ public class ImageRenderer implements Renderer {
 	 */
 	@Override
 	public void paint(GraphicsContext gc) {
-		//incomplete
+		//images can be null, because they are loaded in a separated FX thread
+		if (this.currentImg == null) return;
 		double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
 		double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	
 	/**
-	 * Sets the current rotation in degrees of this image
+	 * Sets the current rotation in degrees of this image. This method is executed in the JavaFX thread
 	 * @param degrees
 	 */
 	public void setRotation(final double degrees) {
-		rotate(degrees, GameApplication.convertToInt(this.size));
+		Platform.runLater(() -> {
+			rotate(degrees, GameApplication.convertToInt(this.size));
+		});
 	}
 	
 	/**
@@ -103,18 +116,15 @@ public class ImageRenderer implements Renderer {
 	 * @param width - in pixels!
 	 */
 	private void rotate(final double degrees, final double width) {
-		//rotation is performed in the FX thread ( runLater() is used to achieve that )
-		Platform.runLater(() -> {
-			ImageView iv = new ImageView(this.baseSprite.getImage());
-			iv.setFitWidth(width);
-	        iv.setPreserveRatio(true);
-	        iv.setSmooth(true);
-	        iv.setCache(true);
-			iv.setRotate(degrees);
-			SnapshotParameters param = new SnapshotParameters();
-			param.setFill(Color.TRANSPARENT);
-			this.currentImg = iv.snapshot(param, null);
-		});
+		ImageView iv = new ImageView(this.baseSprite.getImage());
+		iv.setFitWidth(width);
+	iv.setPreserveRatio(true);
+    iv.setSmooth(true);
+    iv.setCache(true);
+		iv.setRotate(degrees);
+		SnapshotParameters param = new SnapshotParameters();
+		param.setFill(Color.TRANSPARENT);
+		this.currentImg = iv.snapshot(param, null);
 	}
 	
 	/**

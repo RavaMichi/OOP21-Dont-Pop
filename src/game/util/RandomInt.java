@@ -14,8 +14,8 @@ public class RandomInt {
 	 */
 	public int getRandomInt(int min, int max) {
 
-		double randomN = Math.random() * (min - max);
-		int randomInt = (int) randomN;
+		double randomN = Math.random() * (max - min);
+		int randomInt = (int) (Math.round(randomN) + min);
 
 		return randomInt;
 

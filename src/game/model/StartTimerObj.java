@@ -13,7 +13,6 @@ public class StartTimerObj extends AbstractGameObject {
 		super(position, type, gameEngine);
 		this.setRenderer((Renderer)new TextRenderer(this, " 3", size, Color.DARKRED));
 		timer = 3;
-//		System.out.println("Created Timer!");
 	}
 
 	@Override

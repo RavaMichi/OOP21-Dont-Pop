@@ -1,5 +1,8 @@
-package game.engine;
+package test;
 
+import game.engine.EnemyFactory;
+import game.engine.GameEngine;
+import game.engine.PoweupFactory;
 import game.model.*;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.Point2D;
@@ -16,14 +19,14 @@ public class SpawnManager {
 	private static final double LASER_CICLE_TIME = 15;
 	private static double LASER_SPAWN_TIME = 5;
 
-	private static final double BULLET_CICLE_TIME = 4;
+	private static final double BULLET_CICLE_TIME = 7;
 	private static double BULLET_SPAWN_TIME = 2;
 	private static final double BULLET_DELTA_SPAWN_TIME = 0.1;
 	private static final double BULLET_MIN_SPAWN_TIME = 0.3;
 
 	private static final double THORNBALL_START_TIME = 20;
 	private static double THORNBALL_SPAWN_TIME = 4;
-	private static final double THORNBALL_CICLE_TIME = 15;
+	private static final double THORNBALL_CICLE_TIME = 10;
 	private static final int THORNBALL_SPAWN_LIMIT = 5;
 
 	//
@@ -32,8 +35,6 @@ public class SpawnManager {
 	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
 
-	private double pwrupTimer = POWERUP_SPAWN_TIME;
-
 	private double bulletTimer = BULLET_SPAWN_TIME;
 	private double bulletCicleTimer = BULLET_CICLE_TIME;  //tempo per aumentare la difficolta'
 
@@ -41,17 +42,19 @@ public class SpawnManager {
 	private double laserTimer = LASER_SPAWN_TIME;
 	private double laserCicleTimer = LASER_CICLE_TIME;  //..
 
+	private double pwrupTimer = POWERUP_SPAWN_TIME;
+
 	private int thornballCount = 1;
 	private double thornballTimer = THORNBALL_SPAWN_TIME;
 	private double thornballCicleTimer = THORNBALL_CICLE_TIME;
 
 	private boolean started = false;
-	
+
 	public SpawnManager(final GameEngine gameEngine) {
 		this.gameEngine = gameEngine;
 		this.powerUpfFactory = new PoweupFactory(this.gameEngine);
 		this.enemyFactory = new EnemyFactory(this.gameEngine);
-		
+
 		//Crea il countdown (game object) iniziale
 		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, gameEngine));
 	}
@@ -70,7 +73,7 @@ public class SpawnManager {
 
 		//Power up
 		if (this.pwrupTimer <= 0) {
-			this.gameEngine.instantiate(this.enemyFactory.createRandomPowerUp());
+			//spawna pwr up randomico//
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		}
 		//Bullet spawn
@@ -80,7 +83,7 @@ public class SpawnManager {
 		}
 		//Bullet difficulty
 		if (this.bulletCicleTimer <= 0) {
-			if (BULLET_SPAWN_TIME > BULLET_MIN_SPAWN_TIME) {
+			if (BULLET_SPAWN_TIME <= BULLET_MIN_SPAWN_TIME) {
 				BULLET_SPAWN_TIME -= BULLET_DELTA_SPAWN_TIME;
 			}
 			this.bulletCicleTimer = BULLET_CICLE_TIME;
@@ -139,4 +142,4 @@ public class SpawnManager {
 		this.thornballTimer -= this.gameEngine.getDeltaTime();
 		this.thornballCicleTimer -= this.gameEngine.getDeltaTime();
 	}
-} 
+}

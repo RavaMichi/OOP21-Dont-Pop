@@ -75,6 +75,7 @@ public class GameApplication extends Application {
 	public void start(final Stage primaryStage) throws Exception { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.leaderboard = new Leaderboard(SAVE_PATH);
+		setPlayerName("Player123");
 		this.primaryStage.setWidth(screenSize);
 		this.primaryStage.setHeight(screenSize);
 		this.primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new

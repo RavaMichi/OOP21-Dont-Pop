@@ -10,7 +10,7 @@ public class PlayerObj extends AbstractGameObject {
 	private Point2D movement;
 	private GameEngine gameEngine;
 	private double rotation = 0; // In degrees
-	private static double radius = 0.075;
+	private static double radius = 0.037;
 	private static double size = 0.075;
 	
 	private static double speed = 0.075;
@@ -18,7 +18,7 @@ public class PlayerObj extends AbstractGameObject {
 	public PlayerObj(Point2D position, ObjectType type, GameEngine ge) {
 		super(position, type, ge);
 		gameEngine = ge;
-		this.setCollider(new CircleCollider(this, radius));
+		this.setCollider(new CircleCollider(this, radius, Point2D.of(0, -size / 3)));
 		this.setRenderer(new ImageRenderer(this, ImageRenderer.Sprite.PLAYER, size, 0));
 	}
 
@@ -58,5 +58,17 @@ public class PlayerObj extends AbstractGameObject {
 			rotation = 3;
 		}
 		((ImageRenderer)this.getRenderer()).setRotation(rotation);
+	}
+	
+	public void setBaloonImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.PLAYER);
+	}
+
+	public void setGoldenBaloonImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_PLAYER);
+	}
+
+	public void setShieldImage() {
+		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.SHIELD_PLAYER);
 	}
 }
