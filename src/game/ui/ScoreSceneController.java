@@ -1,9 +1,9 @@
-package test.fxml.builder;
+package game.ui;
 
 import game.engine.GameApplication;
+import game.engine.ScoreManager;
 import game.util.Pair;
 import game.util.RankItem;
-import game.util.ScoreCalc;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,24 +12,34 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
-import test.ScoreManager;
 
-public class BuilderController {
+/**
+ * This class is the FXML controller of ScoreScene class.
+ */
+public class ScoreSceneController {
 	
 	private final ScoreManager scoreManager;
-	private final ScoreCalc scoreCalc;
-	
+	private final int screenSize;
 	private final ObservableList<Pair<String, Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
-	private final ObservableList<RankItem> yourScoreData = 
-			FXCollections.observableArrayList(new RankItem("", "Stocazzo", 3));
+	private final ObservableList<RankItem> yourScoreData;
 	
-	public BuilderController() {
-		this.scoreCalc = new ScoreCalc();
-		this.scoreManager = new ScoreManager(this.scoreCalc);
+	/**
+	 * Initializes non-fxml fields of this class.
+	 * Then, returns control to ScoreScene which will build the layout as per the FXML file.
+	 * @param scoreManager
+	 * @param screenSize
+	 */
+	public ScoreSceneController(final ScoreManager scoreManager, final int screenSize) {
+		this.scoreManager = scoreManager;
+		this.screenSize = screenSize;
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
 		this.leaderboardData = FXCollections.observableArrayList();
-		
+		this.yourScoreData = FXCollections.observableArrayList(
+				new RankItem("", 
+						this.scoreManager.getPlayerName(), 
+						this.scoreManager.getScore()));
+
 		for(var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
 			this.leaderboardData.add(new RankItem(
@@ -39,6 +49,7 @@ public class BuilderController {
 		}
 	}
 	
+	//These fields are automatically injected by the FXML loader.
 	@FXML private VBox layout;
 	@FXML private VBox yourScore;
 	@FXML private Label yourScoreLabel;
@@ -55,30 +66,42 @@ public class BuilderController {
 	@FXML private VBox menu;
 	@FXML private Button menuButton;
 	
+	/**
+	 * Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).
+	 */
 	public void initialize() {
 		this.yourScoreTable.setItems(this.yourScoreData);
 		this.leaderboardTable.setItems(this.leaderboardData);
 		
 		//setting tables % width
-		this.yourScoreTable.setMaxWidth(GameApplication.convertToInt(0.85));
-		this.leaderboardTable.setMaxWidth(GameApplication.convertToInt(0.85));
+		this.yourScoreTable.setMaxWidth(this.screenSize * 0.85);
+		this.leaderboardTable.setMaxWidth(this.screenSize * 0.85);
 		
 		//setting columns % width
-		this.yourRankCol.setPrefWidth(GameApplication.convertToInt(0.1));
-		this.yourNameCol.setPrefWidth(GameApplication.convertToInt(0.449));
-		this.yourScoreCol.setPrefWidth(GameApplication.convertToInt(0.3));
-		this.rankCol.setPrefWidth(GameApplication.convertToInt(0.1));
-		this.nameCol.setPrefWidth(GameApplication.convertToInt(0.449));
-		this.scoreCol.setPrefWidth(GameApplication.convertToInt(0.3));
+		this.yourRankCol.setPrefWidth(this.screenSize * 0.1);
+		this.yourNameCol.setPrefWidth(this.screenSize * 0.449);
+		this.yourScoreCol.setPrefWidth(this.screenSize * 0.3);
+		this.rankCol.setPrefWidth(this.screenSize * 0.1);
+		this.nameCol.setPrefWidth(this.screenSize * 0.449);
+		this.scoreCol.setPrefWidth(this.screenSize * 0.3);
 		
 		//setting columns % height
-		this.yourScoreTable.setFixedCellSize(GameApplication.convertToInt(0.03));
-		this.leaderboardTable.setFixedCellSize(GameApplication.convertToInt(0.03));
+		this.yourScoreTable.setFixedCellSize(this.screenSize * 0.03);
+		this.leaderboardTable.setFixedCellSize(this.screenSize * 0.03);
 		
+		//doesn't show your current score if player views leaderboard from main menu
+		if (this.scoreManager.isReadOnly()) {
+			this.yourScore.setVisible(false);
+		}
 	}
 	
-	public void menu() {
-		this.menuButton.setText("Yamete Kudasai! ^_^");
+	/**
+	 * Go back to main menu.
+	 * Calls the relative ScoreManager function.
+	 * @throws Exception 
+	 */
+	public void menu() throws Exception {
+		this.scoreManager.menu();
 	}
 	
 }

@@ -9,7 +9,7 @@ import game.util.Point2D;
 public class EnemyProjectileObj extends AbstractGameObject {
 	
 	private static final double SIZE = 0.07;
-	
+
 	private Point2D velocity;
 	private Set<Point2D> points = new HashSet<Point2D>();
 	

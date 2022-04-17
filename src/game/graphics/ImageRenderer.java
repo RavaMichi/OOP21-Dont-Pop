@@ -38,9 +38,9 @@ public class ImageRenderer implements Renderer {
 		private final Image img;
 		
 		private Sprite(final String path) {
-			System.out.println("Loading sprite '" + path + "'...");
+//			System.out.println("Loading sprite '" + path + "'...");
 			this.img = new Image(path);
-			System.out.println("Done");
+//			System.out.println("Done");
 		}
 		
 		public Image getImage() {
@@ -101,7 +101,7 @@ public class ImageRenderer implements Renderer {
 	}
 	
 	/**
-	 * Sets the current rotation in degrees of this image. This method is executed in the JavaFX thread 
+	 * Sets the current rotation in degrees of this image. This method is executed in the JavaFX thread
 	 * @param degrees
 	 */
 	public void setRotation(final double degrees) {
@@ -118,9 +118,9 @@ public class ImageRenderer implements Renderer {
 	private void rotate(final double degrees, final double width) {
 		ImageView iv = new ImageView(this.baseSprite.getImage());
 		iv.setFitWidth(width);
-        iv.setPreserveRatio(true);
-        iv.setSmooth(true);
-        iv.setCache(true);
+	iv.setPreserveRatio(true);
+    iv.setSmooth(true);
+    iv.setCache(true);
 		iv.setRotate(degrees);
 		SnapshotParameters param = new SnapshotParameters();
 		param.setFill(Color.TRANSPARENT);

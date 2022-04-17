@@ -19,6 +19,7 @@ public class ScoreCalc {
     private final static int MULTIPLIER_2X = 2;
     
     private boolean hasMultiplier;
+    
     private List<Runnable> onMultiplierEndList = new ArrayList<>();
 
     /**

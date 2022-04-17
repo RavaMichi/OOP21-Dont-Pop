@@ -1,9 +1,12 @@
 package game.engine;
 
+import java.io.IOException;
+
 //import java.awt.Dimension;
 //import java.awt.Toolkit;
 
 import game.ui.GameScene;
+import game.ui.MenuScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;
 import game.util.ScoreCalc;
@@ -67,29 +70,30 @@ public class GameApplication extends Application {
 
 	/**
 	 * Start GUI, then launch the menu.
+	 * @throws Exception 
 	 */
-	public void start(final Stage primaryStage) { // public void start(final Stage primaryStage) {
+	public void start(final Stage primaryStage) throws Exception { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.leaderboard = new Leaderboard(SAVE_PATH);
 		setPlayerName("Player123");
-		primaryStage.setWidth(screenSize);
-		primaryStage.setHeight(screenSize);
-		primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
-		this.game();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
+		this.primaryStage.setWidth(screenSize);
+		this.primaryStage.setHeight(screenSize);
+		this.primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
+		this.menu();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
 		
-		this.primaryStage.setOnCloseRequest(e -> exit());
+		this.primaryStage.setOnCloseRequest(e -> this.exit());
 		
 		this.primaryStage.show();
 	}
 
 	/**
 	 * Launch menu GUI.
+	 * @throws Exception 
 	 */
-	public void menu() {
+	public void menu() throws Exception {
 		//menumanager non servirà a un cazzo, poi andrà tolto
-		MenuManager menumanager = new MenuManager();		//manca la classe, aspetto per modificare il cosrtuttore
-		MenuScene menuscene = new MenuScene(menumanager);	//manca la classe, aspetto per modificare il cosrtuttore
-		this.setSceneM(menuscene.get());					//manca la classe, aspett il nome del metodo
+		MenuScene menuscene = new MenuScene(this, screenSize);	//manca la classe, aspetto per modificare il cosrtuttore
+		this.switchScene(menuscene.getScene());					//manca la classe, aspett il nome del metodo
 	}
 
 	/**
@@ -98,7 +102,7 @@ public class GameApplication extends Application {
 	public void game() {
 		GameScene gamescene = new GameScene(screenSize);
 		GameEngine gameEngine = new GameEngine(this, gamescene);
-		this.setSceneM(gamescene.getScene());
+		this.switchScene(gamescene.getScene());
 		new Thread(gameEngine).start();
 
 	}
@@ -106,12 +110,25 @@ public class GameApplication extends Application {
 	/**
 	 * Launch score GUI (view score ranking).
 	 * @param score
+	 * @throws Exception 
 	 */
-	public void score(final int score) {
+	public void score(final int score) throws Exception {
 		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
-		ScoreScene scoreScene = new ScoreScene(this.scoremanager, screenSize);//aggiungere il manager
+		ScoreScene scoreScene = new ScoreScene(scoremanager, screenSize);//aggiungere il manager
 	
-		this.setSceneM(scoreScene.getScene());
+		this.switchScene(scoreScene.getScene());
+	}
+	
+	/**
+	 * Launch score GUI without editing score list.
+	 * Useful when viewing leaderboard before playing the game.
+	 * @throws Exception 
+	 */
+	public void viewScoreNoEdit() throws Exception {
+		ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
+		ScoreScene scoreScene = new ScoreScene(scoreManager, screenSize);
+		
+		this.switchScene(scoreScene.getScene());
 	}
 
 	// SETTA LA SCENA CHE GLI PASSO AL THREAD DEL JAVA FX
@@ -119,10 +136,12 @@ public class GameApplication extends Application {
 	 * Set JavaFX Thread scene to the scene passed as argument.
 	 * @param scene
 	 */
-	void setSceneM(Scene scene) {
+	void switchScene(Scene scene) {
 		Platform.runLater(() -> {
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			this.primaryStage.setScene(scene);
+			this.primaryStage.setWidth(screenSize);		//DO NOT TOUCH: doesn't work without width and height
+			this.primaryStage.setHeight(screenSize);
+			this.primaryStage.show();
 		});
 	}
 	

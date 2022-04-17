@@ -12,7 +12,7 @@ public class SpawnManager {
 
 	// COSTANTI E VARIBILI UTILIZZATE
 	private static final double LOOP_START_TIME = 3;// 3 secondi
-	
+
 	private static final double POWERUP_SPAWN_TIME = 7;
 
 	private static final int LASER_SPAWN_LIMIT = 10;
@@ -28,33 +28,33 @@ public class SpawnManager {
 	private static double THORNBALL_SPAWN_TIME = 4;
 	private static final double THORNBALL_CICLE_TIME = 10;
 	private static final int THORNBALL_SPAWN_LIMIT = 5;
-	
+
 	//
 	private GameEngine gameEngine;
 	private PoweupFactory powerUpfFactory;
 	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
-	
+
 	private double bulletTimer = BULLET_SPAWN_TIME;
 	private double bulletCicleTimer = BULLET_CICLE_TIME;  //tempo per aumentare la difficolta'
-	
+
 	private int laserCount = 1;
 	private double laserTimer = LASER_SPAWN_TIME;
 	private double laserCicleTimer = LASER_CICLE_TIME;  //..
-	
+
 	private double pwrupTimer = POWERUP_SPAWN_TIME;
-	
+
 	private int thornballCount = 1;
 	private double thornballTimer = THORNBALL_SPAWN_TIME;
 	private double thornballCicleTimer = THORNBALL_CICLE_TIME;
-	
+
 	private boolean started = false;
-	
+
 	public SpawnManager(final GameEngine gameEngine) {
 		this.gameEngine = gameEngine;
 		this.powerUpfFactory = new PoweupFactory(this.gameEngine);
 		this.enemyFactory = new EnemyFactory(this.gameEngine);
-		
+
 		//Crea il countdown (game object) iniziale
 		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, gameEngine));
 	}
@@ -70,7 +70,7 @@ public class SpawnManager {
 	}
 	private void spawnLoop() {
 		updateTime();
-		
+
 		//Power up
 		if (this.pwrupTimer <= 0) {
 			//spawna pwr up randomico//
@@ -102,9 +102,9 @@ public class SpawnManager {
 			}
 			this.laserCicleTimer = LASER_CICLE_TIME;
 		}
-		
+
 		if (this.gameEngine.getTime() < THORNBALL_START_TIME) return;
-		
+
 		updateThornballTime();
 		//Thornball spawn
 		if (this.thornballTimer <= 0) {

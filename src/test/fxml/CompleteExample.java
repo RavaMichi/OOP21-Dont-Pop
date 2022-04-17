@@ -1,8 +1,11 @@
 package test.fxml;
 
+import game.util.Pair;
+import game.util.RankItem;
 import game.util.ScoreCalc;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -12,12 +15,6 @@ import test.ScoreManager;
 
 public class CompleteExample extends Application {
 
-	private final ScoreManager scoreManager;
-	private final ScoreCalc scoreCalc;
-	
-	private final ObservableList<Pair<String, Integer>> ranking;
-	private final ObservableList<RankItem> yourScoreData;
-	
 	@Override
 	public void start(Stage stage) throws Exception {
 		VBox root = FXMLLoader.load(ClassLoader.getSystemResource("test/fxml/GUI.fxml"));

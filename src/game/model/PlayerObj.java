@@ -32,8 +32,9 @@ public class PlayerObj extends AbstractGameObject {
 	
 	/**
 	 * Kills the player and ends the game
+	 * @throws Exception 
 	 */
-	public void die() {
+	public void die() throws Exception {
 		//this.setRenderer(new AnimationRenderer(null, 0, false)); animation renderer è un mistero
 		this.getGameEngine().endGame();
 	}
@@ -62,11 +63,11 @@ public class PlayerObj extends AbstractGameObject {
 	public void setBaloonImage() {
 		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.PLAYER);
 	}
-	
+
 	public void setGoldenBaloonImage() {
 		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_PLAYER);
 	}
-	
+
 	public void setShieldImage() {
 		((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.SHIELD_PLAYER);
 	}

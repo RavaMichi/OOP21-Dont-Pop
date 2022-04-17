@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label id="title" fx:id="title" text="Don't Pop" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox id="game-controls" fx:id="gameControls" BorderPane.alignment="CENTER">
+         <children>
+            <HBox id="name-box" fx:id="nameBox" alignment="CENTER">
+               <children>
+                  <Label id="name-label" fx:id="nameLabel" text="Enter player name here: " />
+                  <TextField id="name-prompt" fx:id="namePrompt" promptText="Nickname" />
+               </children>
+            </HBox>
+            <VBox id="buttons" fx:id="buttons" alignment="CENTER">
+               <children>
+                  <Button id="play-button" fx:id="playButton" mnemonicParsing="false" onAction="#play" text="Play" />
+                  <Button id="leaderboard-button" fx:id="leaderboardButton" mnemonicParsing="false" onAction="#leaderboard" text="Leaderboard" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

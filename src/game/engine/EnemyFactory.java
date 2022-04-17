@@ -10,7 +10,7 @@ import game.util.WhereToSpawn;
 
 public class EnemyFactory {
 	
-	private static final float LASER_DETONATION_TIME = 1.2f; 
+	private static final float LASER_DETONATION_TIME = 1.2f;
 	private static final float BULLET_VELOCITY = 0.3f;
 	
 	/*
@@ -34,7 +34,7 @@ public class EnemyFactory {
 			return createBullet();
 		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
 			//return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
-
+		
 		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
 
 			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perch� cos� spawna
@@ -59,7 +59,7 @@ public class EnemyFactory {
 			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
 		}
 	}
-	
+
 	public AbstractGameObject createBullet() {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
 		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());

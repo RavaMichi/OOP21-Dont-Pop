@@ -16,7 +16,7 @@ public class EnemyBallObj extends AbstractGameObject {
 		super(position, type, ge);
 		this.setRenderer((Renderer) new ImageRenderer(this, ImageRenderer.Sprite.THORNBALL, 0.1, 0));
 		this.setCollider((Collider)new CircleCollider(this, 0.05, Point2D.of(0, 0)));
-		
+
 		//velocity calculation
 		this.velocity = Point2D.of(ge.getPlayerPosition().getX() > position.getX() ? 1 : -1, -0.7);
 		this.velocity.normalize();
