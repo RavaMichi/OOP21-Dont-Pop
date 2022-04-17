@@ -89,6 +89,10 @@ public class ScoreSceneController {
 		this.yourScoreTable.setFixedCellSize(this.screenSize * 0.03);
 		this.leaderboardTable.setFixedCellSize(this.screenSize * 0.03);
 		
+		//doesn't show your current score if player views leaderboard from main menu
+		if (this.scoreManager.isReadOnly()) {
+			this.yourScore.setVisible(false);
+		}
 	}
 	
 	/**

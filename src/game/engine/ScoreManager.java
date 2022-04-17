@@ -16,6 +16,7 @@ public class ScoreManager {
 	private String playerName;
 	private Leaderboard leaderboard;
 	private GameApplication application;
+	private boolean readOnly;
 	
     /**
      * Creates & initializes this class.
@@ -42,8 +43,7 @@ public class ScoreManager {
      * @param application
      */
     public ScoreManager(final Leaderboard leaderboard, final GameApplication application) {
-    	this.score = 0;
-    	this.playerName = "Viewing current leaderboard...";
+    	this.readOnly = true;
     	this.leaderboard = leaderboard;
     	this.application = application;
     	
@@ -73,6 +73,10 @@ public class ScoreManager {
     public void menu() throws Exception {
     	//TODO: call menu method of application
     	this.application.menu();
+    }
+    
+    public boolean isReadOnly() {
+    	return this.readOnly;
     }
     
 }
