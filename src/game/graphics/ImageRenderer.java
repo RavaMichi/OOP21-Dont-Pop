@@ -38,9 +38,9 @@ public class ImageRenderer implements Renderer {
 		private final Image img;
 		
 		private Sprite(final String path) {
-			System.out.println("Loading sprite '" + path + "'...");
+//			System.out.println("Loading sprite '" + path + "'...");
 			this.img = new Image(path);
-			System.out.println("Done");
+//			System.out.println("Done");
 		}
 		
 		public Image getImage() {
