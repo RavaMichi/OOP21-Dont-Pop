@@ -20,7 +20,7 @@ public class Test {
 			
 		};
 		//circle of radius 0.2
-		player.setCollider(new CircleCollider(player, 0.1));
+		player.setCollider(new CircleCollider(player, 0.1, Point2D.of(0, 0)));
 	}
 	
 	@org.junit.Test
@@ -31,7 +31,7 @@ public class Test {
 			public void update() {
 			}
 		};
-		circle.setCollider(new CircleCollider(circle, 0.05));
+		circle.setCollider(new CircleCollider(circle, 0.05, Point2D.of(0, 0)));
 		
 		//they don't touch
 		assertFalse(circle.getCollider().checkCollision((CircleCollider)player.getCollider()));
