@@ -23,26 +23,28 @@ public class AnimationRenderer implements Renderer {
 	 * @param loop - enables the looping of the animation
 	 */
 	public AnimationRenderer(final List<ImageRenderer> images, double speed, boolean loop) {
-		if (images == null || images.size() == 0) throw new IllegalArgumentException("images can't be null or empty.");
+		if (images == null || images.size() == 0) {
+			throw new IllegalArgumentException("images can't be null or empty.");
+		}
 		this.frames = images;
-		setSpeed(speed);
-		enableLoop(loop);
-		this.ge = images.get(0).getGameObject().getGameEngine();
+		this.setSpeed(speed);
+		this.enableLoop(loop);
+		this.ge = this.frames.get(0).getGameObject().getGameEngine();
 	}
 	
 	@Override
 	public void paint(GraphicsContext gc) {
-		var imgR = frames.get(index);
+		var imgR = this.frames.get(index);
 		if (imgR != null) {
 			imgR.paint(gc);
 		}
-		incIndex();
+		this.incIndex();
 	}
 	/**
 	 * Used to update the sequence
 	 */
 	private void incIndex() {
-		this.timer += ge.getDeltaTime();
+		this.timer += this.ge.getDeltaTime();
 		//index increment condition
 		if (this.timer >= this.animationTime) {
 			this.timer -= this.animationTime;
