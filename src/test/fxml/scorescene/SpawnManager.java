@@ -78,7 +78,7 @@ public class SpawnManager {
 		}
 		//Bullet spawn
 		if (this.bulletTimer <= 0) {
-			this.gameEngine.instantiate(this.enemyFactory.createBullet());
+//			this.gameEngine.instantiate(this.enemyFactory.createBullet());
 			this.bulletTimer = BULLET_SPAWN_TIME;
 		}
 		//Bullet difficulty
@@ -91,7 +91,7 @@ public class SpawnManager {
 		//Laser spawn
 		if (this.laserTimer <= 0) {
 			for (int i = 0; i < this.laserCount; i++) {
-				this.gameEngine.instantiate(this.enemyFactory.createLaser());
+//				this.gameEngine.instantiate(this.enemyFactory.createLaser());
 			}
 			this.laserTimer = LASER_SPAWN_TIME;
 		}
@@ -109,7 +109,7 @@ public class SpawnManager {
 		//Thornball spawn
 		if (this.thornballTimer <= 0) {
 			for (int i = 0; i < this.thornballCount; i++) {
-				this.gameEngine.instantiate(this.enemyFactory.createThornball());
+//				this.gameEngine.instantiate(this.enemyFactory.createThornball());
 			}
 			this.thornballTimer = THORNBALL_SPAWN_TIME;
 		}
@@ -127,8 +127,9 @@ public class SpawnManager {
 		 * I POWER UP SONO: PWRUP_SHIELD, //6 PWRUP_MULTIPLIER, //7 PWRUP_SWEEPER //8
 		 */
 		Integer typeOfPowerUp = randomInt.getRandomInt(6, 8);
-		AbstractGameObject powerUP = powerUpfFactory.GetPowerUpObj(typeOfPowerUp);
-		return powerUP;
+//		AbstractGameObject powerUP = powerUpfFactory.GetPowerUpObj(typeOfPowerUp);
+//		return powerUP;
+		return null;
 	}
 
 	private void updateTime() {
