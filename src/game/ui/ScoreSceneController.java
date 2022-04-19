@@ -98,6 +98,8 @@ public class ScoreSceneController {
 		if (this.scoreManager.isReadOnly()) {
 			this.yourScore.setVisible(false);
 			this.playButton.setText("Play");
+		} else {
+			this.yourScoreTable.setSelectionModel(null);
 		}
 	}
 	
