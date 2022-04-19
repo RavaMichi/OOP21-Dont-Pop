@@ -1,25 +1,20 @@
 package game.engine;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import game.util.Leaderboard;
-import game.util.Pair;
 import game.util.Point2D;
 import game.collider.CircleCollider;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
-import game.engine.GameApplication;
 import game.model.ScoreDisplayObj;
 
 /** 
  * GameEngine is the class that makes the game work.
 */
-public class GameEngine extends Thread {
+public class GameEngine implements Runnable {
 //or, extends Runnable - then call it from a thread
 	
     private double gameTime;	//game time, starting from 0
@@ -29,20 +24,23 @@ public class GameEngine extends Thread {
     private final GameScene gameScene;
     private final GameApplication application;
     private final ScoreDisplayObj scoreDisplay;			//score overlay
-    private final List<Pair<AbstractGameObject, Integer>> enemies;
-    private final List<Pair<AbstractGameObject, Integer>> powerups;	//to change in PowerUpObject
-    private final List<Pair<AbstractGameObject, Integer>> destroyQueue;
+    private final List<AbstractGameObject> enemies;
+    private final List<AbstractGameObject> powerups;	//to change in PowerUpObject
+    private final List<AbstractGameObject> destroyQueue;
 
     private static final int INITIAL_SIZE = 50;
     ////private static final int MULTIPLIER_TIME = 5;       //five seconds of multiplier
     private static final long TIME_CONST_60_HZ_MS = 1000 / 60;
     private static final double START_X = 0.5;
     private static final double START_Y = 0.5;
-    private static final double SCORE_POS_X = 0.1;
-    private static final double SCORE_POS_Y = 0.1;
+    private static final double SCORE_POS_X = 0.5;
+    private static final double SCORE_POS_Y = 0.03;
 
     private boolean hasShield;		//false
-    private boolean hasMultiplier;	//false
+    @SuppressWarnings("unused")
+	private boolean hasMultiplier;	//false
+    
+    private boolean executeLoop = true;
     ////private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
     /**
@@ -54,52 +52,53 @@ public class GameEngine extends Thread {
      * Creates a new GameEngine object and initializes its fields.
      */
     public GameEngine(final GameApplication application, final GameScene gameScene) {
+    	this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
+        this.enemies = new ArrayList<>(INITIAL_SIZE);
+        this.powerups = new ArrayList<>();   //default size: 10
+        this.destroyQueue = new ArrayList<>();
+        
         this.application = application;
         this.gameScene = gameScene;
         this.scoreCalc = new ScoreCalc();
+        this.scoreCalc.onMultiplierStart(() -> {
+        	if (!this.hasShield) {
+        		this.player.setGoldenBaloonImage();
+        	}
+        });
+        this.scoreCalc.onMultiplierEnd(() -> {
+        	if (!this.hasShield) {
+        		this.player.setBaloonImage();
+        	}
+        });
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
-        this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
-        this.enemies = new ArrayList<>(INITIAL_SIZE);
-        this.powerups = new ArrayList<>();   //default size: 10
-        this.destroyQueue = new ArrayList<>(INITIAL_SIZE);
+        
         //likely add fps in future
     }
 
     /**
      * Starts the game loop (aka the engine).
+     * @throws Exception 
      */
-    public void startGameLoop() {
-        while (true) {
+    public void startGameLoop() throws Exception {
+        while (executeLoop) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
 
             this.incTime();					     	            //updates game time
             this.scoreCalc.calculateScore(deltaTime);   		//multiplier time management
-            try {
-				this.spawnManager.advance();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	            		//advance spawnManager (enemy spawning)
-            this.updateAllGameObjects();
+            
+            this.spawnManager.advance();                        //advance spawnManager (enemy spawning)
+            
             this.removeObjectsInDestroyQueue();
+            this.updateAllGameObjects();
             this.checkPowerupCollision();	            		//powerups
 
             //game over: breaking loop
             if (this.checkEnemyCollision()) {
-            	//TODO: consider changing everything to a continue loop, 
-            	//putting powerups in an if statement (if (!gameOver)) and 
-            	//setting a flag like while(!gameOver) at the beginning of the loop
+            	/*The player dies*/
                 this.player.die();
                 this.scoreCalc.setCalcStatus(false);
-            	
-            	//////thread sleeps for remaining frame duration
-            	////final long endTime = System.currentTimeMillis();
-                ////this.putThreadToSleep(startTime, endTime);
-                
-                //////calculate frame duration
-                ////final long endFrame = System.currentTimeMillis();
-                ////this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
             }
             
             ////this.scoreCalc.incScore();		//score increment
@@ -108,21 +107,25 @@ public class GameEngine extends Thread {
             //thread sleeps for remaining frame duration
             final long endTime = System.currentTimeMillis();
             this.putThreadToSleep(startTime, endTime);
-
+            
             //calculate frame duration
             final long endFrame = System.currentTimeMillis();
-            this.deltaTime = this.deltaTime(endFrame, startTime) / 1000;
+            this.deltaTime = (double)this.deltatime(startTime, endFrame) / 1000;
         }
+        
+        /* After the game loop ends, the scene is changed */
+        this.application.score(this.scoreCalc.getScore());
     }
 
     @Override
     public void run() {
     	//start game loop
-    	this.startGameLoop();
-    	//on gameover, set score in application
-
-    	//TODO: print score
-        //TODO: go back to menu
+    	try {
+			this.startGameLoop();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     /**
@@ -131,7 +134,7 @@ public class GameEngine extends Thread {
      * @param endFrame frame time
      * @return time difference between two frames (in ms)
      */
-    public long deltaTime(final long startFrame, final long endFrame) {
+    public long deltatime(final long startFrame, final long endFrame) {
         return endFrame - startFrame;
     }
 
@@ -146,24 +149,12 @@ public class GameEngine extends Thread {
     /**
      * Creates a game object.
      * @param obj
-     */
+     */   
     public void instantiate(final AbstractGameObject obj) {
-        this.instantiate(obj, 0);
-    }
-    
-    public void instantiate(final AbstractGameObject obj, final int priority) {
     	if (obj.getType().isEnemy()) {
-    		for (int i=0; i<this.enemies.size(); i++) {
-    			if (this.enemies.get(i).get2() > priority) {
-    	            this.enemies.add(i, new Pair<>(obj, priority));
-    			}
-    		}
+    		this.enemies.add(obj);
         } else if (obj.getType().isPowerUp()) {
-        	for (int i=0; i<this.powerups.size(); i++) {
-    			if (this.powerups.get(i).get2() > priority) {
-    	            this.powerups.add(i, new Pair<>(obj, priority));
-    			}
-    		}
+        	this.powerups.add(obj);
         }
         //player does not get instantiated
     }
@@ -175,13 +166,13 @@ public class GameEngine extends Thread {
     public void destroy(final AbstractGameObject obj) {
         if (obj.getType().isEnemy()) {
         	this.enemies.forEach(e -> {
-        		if (e.get1().equals(obj)) {
+        		if (e.equals(obj)) {
         			this.destroyQueue.add(e);
         		}
         	});
         } else if (obj.getType().isPowerUp()) {
         	this.powerups.forEach(p -> {
-        		if (p.get1().equals(obj)) {
+        		if (p.equals(obj)) {
         			this.destroyQueue.add(p);
         		}
         	});
@@ -196,6 +187,7 @@ public class GameEngine extends Thread {
         switch (pwrup.getType()) {
             case PWRUP_SHIELD:
                 this.hasShield = true;
+                this.player.setShieldImage();
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
@@ -211,11 +203,11 @@ public class GameEngine extends Thread {
     }
     
     /**
-     * Ends the game on game over.
-     * Prints the score and kills the player.
+     * Ends the game on game over. Stops the game loop
      */
     public void endGame() {
-    	this.application.score(this.scoreCalc.getScore());
+    	this.executeLoop = false;
+    	//this.application.score(this.scoreCalc.getScore());
     }
 
     /**
@@ -277,15 +269,16 @@ public class GameEngine extends Thread {
     private void incTime() {
         this.gameTime += this.deltaTime;
     }
-
+    
     /**
      * Updates all AbstractGameObjects.
      */
     private void updateAllGameObjects() {
     	//for each --- update
-        this.player.update();
-        this.enemies.forEach(enemy -> enemy.get1().update());
-        this.powerups.forEach(powerup -> powerup.get1().update());
+    	this.player.update();
+        this.enemies.forEach(AbstractGameObject::update);
+        this.powerups.forEach(AbstractGameObject::update);
+        this.scoreDisplay.update();
     }
 
     /**
@@ -294,7 +287,7 @@ public class GameEngine extends Thread {
     private void removeObjectsInDestroyQueue() {
         //remove objects
         this.destroyQueue.forEach(obj -> {
-        	if (obj.get1().getType().isEnemy()) {
+        	if (obj.getType().isEnemy()) {
         		this.enemies.remove(obj);
         	} else {
         		this.powerups.remove(obj);
@@ -325,13 +318,14 @@ public class GameEngine extends Thread {
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
-		var enemyList = this.enemies.stream().filter(e -> e.get1().getCollider() != null).collect(Collectors.toList());
+		var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
 		for (final var enemy: enemyList) {
-		    if (enemy.get1().getCollider().checkCollision(
+		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
 		        if (this.hasShield) {
 			        this.hasShield = false;
-			        this.destroy(enemy.get1());
+			        this.destroy(enemy);
+			        this.player.setBaloonImage();
                 } else {
                     return true;
                 }
@@ -345,10 +339,13 @@ public class GameEngine extends Thread {
 	 * If true, applies powerup and destroys it.
 	 */
 	private void checkPowerupCollision() {
-		this.powerups.forEach(powerup -> {
-			this.applyPwrUp(powerup.get1());
-			this.destroy(powerup.get1());
-		});
+		this.powerups.stream().filter(p -> p.getCollider() != null && p.getCollider().checkCollision((CircleCollider)player.getCollider()))
+				.forEach(powerup -> {
+					if (powerup.getCollider().checkCollision((CircleCollider)player.getCollider())) {
+						this.applyPwrUp(powerup);
+						this.destroy(powerup);
+					}
+				});
 	}
 	
 	/**
@@ -357,9 +354,9 @@ public class GameEngine extends Thread {
 	private void render() {
 		//for each --- render
 		final var renderList = new ArrayList<AbstractGameObject>();
-		renderList.addAll(this.enemies.stream().map(e -> e.get1()).collect(Collectors.toList()));
-        renderList.addAll(this.powerups.stream().map(e -> e.get1()).collect(Collectors.toList()));
-        renderList.add(this.player);
+		renderList.addAll(this.enemies);
+		renderList.add(this.player);
+        renderList.addAll(this.powerups);
         renderList.add(this.scoreDisplay);
         
         this.gameScene.render(renderList);
