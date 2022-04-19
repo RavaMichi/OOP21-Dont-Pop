@@ -21,9 +21,9 @@ public class PoweupFactory {
 		
 		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
 		Integer typeOfPowerUp = randomInt.getRandomInt(6, 8);
-		if (n == 6) {
+		if (typeOfPowerUp == 6) {
 			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
-		} else if (n == 7) {
+		} else if (typeOfPowerUp == 7) {
 			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
 		} else {
 			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
