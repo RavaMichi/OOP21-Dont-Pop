@@ -69,7 +69,7 @@ public class GameScene {
 	 * @return the in-game coordinates of the mouse
 	 */
 	public Point2D getMouseWorldPosition() {
-		return this.mousePosition; 
+		return Point2D.copyOf(mousePosition); 
 	}
 	
 	/**
