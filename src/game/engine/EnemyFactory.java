@@ -61,7 +61,7 @@ public class EnemyFactory {
 		}
 	}
 
-	public AbstractGameObject createBullet() {
+public AbstractGameObject createBullet() {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
 		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
 		direction.sub(spawnPosition);
@@ -81,5 +81,5 @@ public class EnemyFactory {
 		var r = new Random();
 		Point2D spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
 		return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
-	}
+	}	
 }

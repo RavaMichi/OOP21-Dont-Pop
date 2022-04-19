@@ -17,16 +17,16 @@ public class PoweupFactory {
 	}
 
 	public AbstractGameObject GetPowerUpObj(int n) throws Exception {//per evitare il ritorno di un nul
-		//modifica da fare AbstractGameObject
 		
-				if (n == AbstractGameObject.ObjectType.PWRUP_SHIELD.ordinal() ) {
-					return new PowerUpObj(spawnPosition, AbstractGameObject.ObjectType.PWRUP_SHIELD, this.gameEngine );		
-				} else if ( n == AbstractGameObject.ObjectType.PWRUP_MULTIPLIER.ordinal() ) {
-					return new PowerUpObj(spawnPosition, AbstractGameObject.ObjectType.PWRUP_MULTIPLIER, this.gameEngine );	
-				} else if ( n == AbstractGameObject.ObjectType.PWRUP_SWEEPER.ordinal() ) {
-					return new PowerUpObj(spawnPosition, AbstractGameObject.ObjectType.PWRUP_SWEEPER, this.gameEngine );
-				}
-				else throw new Exception("powerup non creato per indice sbagliato");
+		
+			var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
+		int i = new Random().nextInt(3);
+		if (i == 0) {
+			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
+		} else if (i == 1) {
+			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+		} else {
+			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
+		}
 	}
-	
 }
