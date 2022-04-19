@@ -44,7 +44,7 @@ public abstract class AbstractGameObject {
          * @return true if object is a powerup
          */
         public boolean isPowerUp() {
-            return this == PWRUP_SHIELD || this == PWRUP_MULTIPLIER || this == PWRUP_SWEEPER;
+            return this == PWRUP_SHIELD || this == PWRUP_MULTIPLIER || this == PWRUP_SWEEPER || this == SCORE;
         }
     }
 
