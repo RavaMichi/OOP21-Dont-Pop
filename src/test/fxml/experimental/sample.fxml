@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<VBox 
+	xmlns="http://javafx.com/javafx"
+	xmlns:fx="http://javafx.com/fxml"
+	fx:controller="test.fxml.experimental.UIController">
+	<Button
+		fx:id="btn"
+		alignment="CENTER"
+		text="Say Hello!"
+		onMouseClicked="#btnOnClickHandler" />
+	<Label
+		fx:id="lbl"
+		alignment="CENTER_LEFT"
+		text="Label Text Here!" />
+</VBox>
+
