@@ -19,7 +19,7 @@ public class EnemyLineObj extends AbstractGameObject {
 		super(position, type, ge);
 		timer = timeToActivation;
 		direction = dir;
-		this.setRenderer((Renderer)new LineRenderer(this, dir, Color.color(1, 0, 0, 0.5), 0.03));
+		this.setRenderer((Renderer)new LineRenderer(this, dir, Color.color(1, 0, 0, 0.5), 0.01));
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class EnemyLineObj extends AbstractGameObject {
 		if (!hasActivated) {
 			hasActivated = true;
 			this.setCollider((Collider)new RayCollider(this, direction));
-			this.setRenderer((Renderer)new LineRenderer(this, direction, Color.color(1, 0, 0, 1), 0.075));
+			this.setRenderer((Renderer)new LineRenderer(this, direction, Color.color(1, 0, 0, 1), 0.02));
 		}
 		
 	}
