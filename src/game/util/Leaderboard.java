@@ -89,13 +89,13 @@ public class Leaderboard {
 	 * @return the rank
 	 */
 	public int getRank(final String playerName, final int score) {
-		for (int i = 0; i < RANKING_LENGTH; i++) {
+		for (int i = 0; i < this.ranking.size(); i++) {
 			if (this.ranking.get(i).get1().equals(playerName) && 
 					this.ranking.get(i).get2().equals(score)) {
 				return i + 1;
 			}
 		}
-		return RANKING_LENGTH + 1;
+		return this.ranking.size();
 	}
 	
 	/**
@@ -111,6 +111,8 @@ public class Leaderboard {
 			e2.printStackTrace();
 		} catch (ClassNotFoundException e3) {
 			e3.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -124,6 +126,8 @@ public class Leaderboard {
 			e1.printStackTrace();
 		} catch (IOException e2) {
 			e2.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
