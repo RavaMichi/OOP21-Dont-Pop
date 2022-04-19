@@ -50,20 +50,24 @@ public class Leaderboard {
 	 * @param score
 	 */
 	public void addToRanking(final String playerName, final int score) {
+		//System.out.println(playerName);
 		final var entry = new Pair<String,Integer>(playerName, score);
 		if (this.ranking.isEmpty()) {
 			this.ranking.add(entry);
 		} else {
 			//check if already present
-			for (var p : this.ranking) {
-				if (p.get1().equals(playerName)) {
-					if (p.get2() < score) {
-						//replace player with new score
-						this.ranking.set(this.ranking.indexOf(p), new Pair<String, Integer>(playerName, score));
-					}
-					return;
-				}
-			}
+//			for (int i = 0; i < this.ranking.size(); i++) {
+//				//System.out.println(this.ranking.get(i).get1());
+//				if (this.ranking.get(i).get1().equals(playerName)) {
+//					if (this.ranking.get(i).get2() < score) {
+//						//removes the lowest score
+//						this.ranking.remove(i);
+//						break;
+//					} else {
+//						return;
+//					}	
+//				}
+//			}
 			//sorting during insertion
 			int index = 0;
 			while (index < this.ranking.size()) {
@@ -84,13 +88,14 @@ public class Leaderboard {
 	 * @param playerName - the player name
 	 * @return the rank
 	 */
-	public int getRank(final String playerName) {
+	public int getRank(final String playerName, final int score) {
 		for (int i = 0; i < RANKING_LENGTH; i++) {
-			if (this.ranking.get(i).get1().equals(playerName)) {
+			if (this.ranking.get(i).get1().equals(playerName) && 
+					this.ranking.get(i).get2().equals(score)) {
 				return i + 1;
 			}
 		}
-		return -1;
+		return RANKING_LENGTH + 1;
 	}
 	
 	/**
