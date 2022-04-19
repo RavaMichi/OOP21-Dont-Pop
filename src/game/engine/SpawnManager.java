@@ -1,109 +1,147 @@
 package game.engine;
 
-import game.model.AbstractGameObject;
+import game.model.*;
+import game.model.AbstractGameObject.ObjectType;
+import game.util.Point2D;
 import game.util.RandomInt;
 
 public class SpawnManager {
 
 	// COSTANTI E VARIBILI UTILIZZATE
+	private static final double LOOP_START_TIME = 3;// 3 secondi
 
-	private static final int BULLET_ID = 2;
-	private static final int LASER_ID = 3;
-
-	private static final int POWERUP_SPAWN_TIME = 4; // OGNI 4 SECONDI
+	private static final double POWERUP_SPAWN_TIME = 7;
 
 	private static final int LASER_SPAWN_LIMIT = 10;
-	private static final double LASER_CHANGE_SPAWN_TIME = 35; // ogni 35 sec
+	private static final double LASER_CICLE_TIME = 15;
+	private static double LASER_SPAWN_TIME = 5;
 
-	private static final double BULLET_CHANGE_SPAWN_TIME = 15; // ogni 15 sec
-	private static final double BULLET_MIN_TIME_SPAWN = 0.5; // 0.5 sec
+	private static final double BULLET_CICLE_TIME = 4;
+	private double BULLET_SPAWN_TIME = 2;
+	private static final double BULLET_DELTA_SPAWN_TIME = 0.1;
+	private static final double BULLET_MIN_SPAWN_TIME = 0.3;
 
-	private static final double TIME_SPAWN_LASER = 10; // ogni 10 sec
-	private double tSpawnBullet = 2.5; // INIZIALMENTE ogni 2.5 sec
-	private double bulletSpawnati = 1; // mi serve per moltipllicare la costante di tempo (quante volte ha
-	// spawnato)//counter sballato di uno per iniziare il primo ciclo
-
-	private int laserSpawnati = 1; // counter sballato di uno per iniziare il primo ciclo
-	private int quantilaser = 2;
-	private double counterCicloLaser = 0;
-
-	// cambiare deltatime in double
-	private double tempo_totale = 0; // + gameEngine.getCurrentTime();
-	private final double tolleranza_frame = (1 / 60);// 1 frame: a volte un frame dura piï¿½ di 1/60 di secondo ma non
-														// credo ci possa
-	// mettere il doppio del tempo per eseguirsi
-
-	private double FIRST_LOOP_LIMIT = 3;// 3 secondi
+	private static final double THORNBALL_START_TIME = 20;
+	private static double THORNBALL_SPAWN_TIME = 4;
+	private static final double THORNBALL_CICLE_TIME = 15;
+	private static final int THORNBALL_SPAWN_LIMIT = 5;
+	
+	private static final double EXPLOSION_START_TIME = 60;
+	private double EXPLOSION_SPAWN_TIME = 8;
+	private static final double EXPLOSION_CICLE_TIME = 15;
+	private static final double EXPLOSION_DELTA_SPAWN_TIME = 0.5;
+	private static final double EXPLOSION_MIN_SPAWN_TIME = 1;
 
 	//
 	private GameEngine gameEngine;
-	private PoweupFactory powerUpfFactory = new PoweupFactory(this.gameEngine);
-	private EnemyFactory enemyFactory = new EnemyFactory();
+	private PoweupFactory powerUpfFactory;
+	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
 
+	private double pwrupTimer = POWERUP_SPAWN_TIME;
+
+	private double bulletTimer = BULLET_SPAWN_TIME;
+	private double bulletCicleTimer = BULLET_CICLE_TIME;  //tempo per aumentare la difficolta'
+
+	private int laserCount = 1;
+	private double laserTimer = LASER_SPAWN_TIME;
+	private double laserCicleTimer = LASER_CICLE_TIME;  //..
+
+	private int thornballCount = 1;
+	private double thornballTimer = THORNBALL_SPAWN_TIME;
+	private double thornballCicleTimer = THORNBALL_CICLE_TIME;
+	
+	private double explosionTimer = EXPLOSION_SPAWN_TIME;
+	private double explosionCicleTimer = EXPLOSION_CICLE_TIME;
+
+	private boolean started = false;
+	
 	public SpawnManager(final GameEngine gameEngine) {
-		super();
 		this.gameEngine = gameEngine;
+		this.powerUpfFactory = new PoweupFactory(this.gameEngine);
+		this.enemyFactory = new EnemyFactory(this.gameEngine);
+		
+		//Crea il countdown (game object) iniziale
+		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, gameEngine));
 	}
 
-	public void advance() throws Exception {
-		if (tempo_totale >= FIRST_LOOP_LIMIT && tempo_totale <= FIRST_LOOP_LIMIT + tolleranza_frame) { // vuol dire che
-																										// // ha
-																										// aspettato //
-																										// i tot secondi
-			this.game_start();
-		}
-	}
-//TODO: METTERE LO SCORE CALC E USARE IL METODO PER CALCOLARE IL PUNTEGGIO NEL GAME-START E CREARE LO SCALC FUORI DA APPLICATTION.MENU
-	private void game_start() throws Exception {
-		double tempodasommare = gameEngine.getDeltaTime();
-	//	tempo_totale += tempodasommare;//valutare se usare il tempo con gettime
-		tempo_totale=gameEngine.getTime()+gameEngine.getDeltaTime();
-//BULLET		
-
-		if (tempo_totale == tSpawnBullet * bulletSpawnati // AGGIUNGENDO UN FOR NE POSSO CREARE ANCHE DI PIï¿½
-				|| ((tSpawnBullet * bulletSpawnati + tolleranza_frame) <= tempo_totale
-						&& tempo_totale >= (tSpawnBullet * bulletSpawnati + tolleranza_frame)
-						&& (tempo_totale > BULLET_MIN_TIME_SPAWN))) {
-
-			AbstractGameObject enemy = enemyFactory.GetEnemyObj(BULLET_ID); // NE HO CREATO UNO
-			gameEngine.instantiate(enemy);
-			bulletSpawnati++;
-		}
-		// SE NEL TEMPO + O - LA TOLLERANZA(0.25 SECONDI) //AL MASSIMO OGNI 0.25 SEC
-		if (((BULLET_CHANGE_SPAWN_TIME + tolleranza_frame) >= tempo_totale
-				&& tempo_totale <= (BULLET_CHANGE_SPAWN_TIME + tolleranza_frame)) && (tSpawnBullet > 0.25)) {
-			// DEVO CAMPBIARE IL TEMPO DI SPAWN e lo diminuisco di 0.1 sec // CONTROLLARE LA
-			// TOLLERANZA
-			tSpawnBullet -= 0.1;
-		}
-//LASER	
-		if (((tempo_totale <= ((TIME_SPAWN_LASER * counterCicloLaser) + tolleranza_frame)
-				&& (tempo_totale >= ((TIME_SPAWN_LASER * counterCicloLaser) - tolleranza_frame)))
-				&& laserSpawnati <= LASER_SPAWN_LIMIT)) { // faccio spawnare uno/due bullet ora sono 2
-
-			counterCicloLaser++;
-			for (int i = 0; i < quantilaser; i++) { // cosï¿½ spawna quanti laser voglio
-				laserSpawnati++;
-				AbstractGameObject enemy = enemyFactory.GetEnemyObj(LASER_ID); // NE HO CREATO UNO
-				gameEngine.instantiate(enemy);
+	public void advance() {
+		if (this.gameEngine.getTime() >= LOOP_START_TIME) {
+			this.spawnLoop();
+			if (!started) {
+				this.gameEngine.getScoreCalc().setCalcStatus(true);
+				started = true;
 			}
+		}
+	}
+	private void spawnLoop() {
+		updateTime();
 
-			if ((tempo_totale >= LASER_CHANGE_SPAWN_TIME - tolleranza_frame)
-					&& (tempo_totale <= LASER_CHANGE_SPAWN_TIME + tolleranza_frame)) {
-				if (quantilaser < LASER_SPAWN_LIMIT) {
-					quantilaser++;
-				} else {
-					quantilaser = LASER_SPAWN_LIMIT;
+		//Power up
+		if (this.pwrupTimer <= 0) {
+			this.gameEngine.instantiate(this.enemyFactory.createRandomPowerUp());
+			this.pwrupTimer = POWERUP_SPAWN_TIME;
+		}
+		//Bullet spawn
+		if (this.bulletTimer <= 0) {
+			this.gameEngine.instantiate(this.enemyFactory.createBullet());
+			this.bulletTimer = BULLET_SPAWN_TIME;
+		}
+		//Bullet difficulty
+		if (this.bulletCicleTimer <= 0) {
+			if (BULLET_SPAWN_TIME > BULLET_MIN_SPAWN_TIME) {
+				BULLET_SPAWN_TIME -= BULLET_DELTA_SPAWN_TIME;
+			}
+			this.bulletCicleTimer = BULLET_CICLE_TIME;
+		}
+		//Laser spawn
+		if (this.laserTimer <= 0) {
+			for (int i = 0; i < this.laserCount; i++) {
+				this.gameEngine.instantiate(this.enemyFactory.createLaser());
+			}
+			this.laserTimer = LASER_SPAWN_TIME;
+		}
+		//Laser difficulty
+		if (this.laserCicleTimer <= 0) {
+			if (this.laserCount < LASER_SPAWN_LIMIT) {
+				this.laserCount++;
+			}
+			this.laserCicleTimer = LASER_CICLE_TIME;
+		}
+
+		/*Thornball*/
+		if (this.gameEngine.getTime() >= THORNBALL_START_TIME) {
+			updateThornballTime();
+			//Thornball spawn
+			if (this.thornballTimer <= 0) {
+				for (int i = 0; i < this.thornballCount; i++) {
+					this.gameEngine.instantiate(this.enemyFactory.createThornball());
 				}
+				this.thornballTimer = THORNBALL_SPAWN_TIME;
 			}
-//FATTI LASER			
-//POWERUP			randomici
-			if ((tempo_totale >= POWERUP_SPAWN_TIME - tolleranza_frame)
-					&& (tempo_totale <= POWERUP_SPAWN_TIME + tolleranza_frame)) {
-				AbstractGameObject pwr = this.getPowerUp();
-				// gameEngine.pwr.add(pwr);
-				gameEngine.instantiate(pwr);
+			//Thornball difficulty
+			if (this.thornballCicleTimer <= 0) {
+				if (this.thornballCount < THORNBALL_SPAWN_LIMIT) {
+					this.thornballCount++;
+				}
+				this.thornballCicleTimer = THORNBALL_CICLE_TIME;
+			}
+		}
+
+		/*Explosion*/
+		if (this.gameEngine.getTime() >= EXPLOSION_START_TIME) {
+			updateExplosionTime();
+			//Explosion spawn
+			if (this.explosionTimer <= 0) {
+				this.gameEngine.instantiate(this.enemyFactory.createExplosion());
+				this.explosionTimer = THORNBALL_SPAWN_TIME;
+			}
+			//Explosion difficulty
+			if (this.explosionCicleTimer <= 0) {
+				if (EXPLOSION_SPAWN_TIME > EXPLOSION_MIN_SPAWN_TIME) {
+					EXPLOSION_SPAWN_TIME -= EXPLOSION_DELTA_SPAWN_TIME;
+				}
+				this.explosionCicleTimer = EXPLOSION_CICLE_TIME;
 			}
 		}
 	}
@@ -117,4 +155,19 @@ public class SpawnManager {
 		return powerUP;
 	}
 
-}
+	private void updateTime() {
+		this.pwrupTimer -= this.gameEngine.getDeltaTime();
+		this.bulletTimer -= this.gameEngine.getDeltaTime();
+		this.bulletCicleTimer -= this.gameEngine.getDeltaTime();
+		this.laserTimer -= this.gameEngine.getDeltaTime();
+		this.laserCicleTimer -= this.gameEngine.getDeltaTime();
+	}
+	private void updateThornballTime() {
+		this.thornballTimer -= this.gameEngine.getDeltaTime();
+		this.thornballCicleTimer -= this.gameEngine.getDeltaTime();
+	}
+	private void updateExplosionTime() {
+		this.explosionTimer -= this.gameEngine.getDeltaTime();
+		this.explosionCicleTimer -= this.gameEngine.getDeltaTime();
+	}
+} 
