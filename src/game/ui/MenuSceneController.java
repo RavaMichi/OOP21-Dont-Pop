@@ -3,10 +3,13 @@ package game.ui;
 import java.util.Random;
 
 import game.engine.GameApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -67,6 +70,16 @@ public class MenuSceneController {
 	 */
 	public void leaderboard() throws Exception {
 		this.application.viewScoreNoEdit();
+	}
+	
+	/**
+	 * Starts game when user presses ENTER key.
+	 * @param keyPressed (starts game if ENTER)
+	 */
+	public void onEnter(final KeyEvent keyPressed) {
+		if(keyPressed.getCode() == KeyCode.ENTER) {
+			this.play();
+		}
 	}
 	
 	//get player name box text and set it as player name in game application

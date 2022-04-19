@@ -22,7 +22,7 @@
             <HBox id="name-box" fx:id="nameBox" alignment="CENTER">
                <children>
                   <Label id="name-label" fx:id="nameLabel" text="What's your name? " />
-                  <TextField id="name-prompt" fx:id="namePrompt" promptText="Nickname" />
+                  <TextField id="name-prompt" fx:id="namePrompt" onKeyPressed="#onEnter" promptText="Nickname" />
                </children>
             </HBox>
             <VBox id="buttons" fx:id="buttons" alignment="CENTER">
