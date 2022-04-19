@@ -1,25 +1,24 @@
 package game.engine;
 
-//import java.awt.Dimension;
-//import java.awt.Toolkit;
-
 import game.ui.GameScene;
+import game.ui.MenuScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;
-import game.util.ScoreCalc;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 public class GameApplication extends Application {
 	
+	private static final String SAVE_PATH = ".save";
+	
 	//guardare dove lo devo prendere
-	String playerName;
+	private String playerName;
 	private Leaderboard leaderboard;
+	@SuppressWarnings("unused")
 	private ScoreManager scoremanager;
 	public final static int screenSize;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
 										// la percentuale dello schermo. ergo ho i valori da 0 a 1
@@ -32,6 +31,21 @@ public class GameApplication extends Application {
 	static {
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		screenSize = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
+	}
+	
+	/**
+	 * Class constructor.
+	 */
+	public GameApplication() {
+		this.playerName = "";
+	}
+	
+	/**
+	 * Gets the player's name
+	 * @return playerName
+	 */
+	public String getPlayerName() {
+		return this.playerName;
 	}
 
 	/**
@@ -65,25 +79,32 @@ public class GameApplication extends Application {
 
 	/**
 	 * Start GUI, then launch the menu.
+	 * @throws Exception 
 	 */
-	public void start(final Stage primaryStage) { // public void start(final Stage primaryStage) {
+	public void start(final Stage primaryStage) throws Exception { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.leaderboard = new Leaderboard(this.playerName);
-		primaryStage.setWidth(screenSize);
-		primaryStage.setHeight(screenSize);
-		primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
-		 this.menu();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
-			
+		this.leaderboard = new Leaderboard(SAVE_PATH);
+		this.primaryStage.setWidth(screenSize);
+		this.primaryStage.setHeight(screenSize);
+		this.primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
+		this.menu();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
+		
+		this.primaryStage.setOnCloseRequest(e -> this.exit());
+		
+		this.primaryStage.show();
 	}
 
 	/**
 	 * Launch menu GUI.
+	 * @throws Exception 
 	 */
 	public void menu() {
-		//menumanager non servirà a un cazzo, poi andrà tolto
-		MenuManager menumanager = new MenuManager();		//manca la classe, aspetto per modificare il cosrtuttore
-		MenuScene menuscene = new MenuScene(menumanager);	//manca la classe, aspetto per modificare il cosrtuttore
-		this.setSceneM(menuscene.get());					//manca la classe, aspett il nome del metodo
+		try {
+			MenuScene menuscene = new MenuScene(this, screenSize);
+			this.switchScene(menuscene.getScene());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -92,20 +113,36 @@ public class GameApplication extends Application {
 	public void game() {
 		GameScene gamescene = new GameScene(screenSize);
 		GameEngine gameEngine = new GameEngine(this, gamescene);
-		gameEngine.run();
-		this.setSceneM(gamescene.getScene());
+		this.switchScene(gamescene.getScene());
+		new Thread(gameEngine).start();
 
 	}
 
 	/**
 	 * Launch score GUI (view score ranking).
 	 * @param score
+	 * @throws Exception 
 	 */
-	public void score(final int score) {
+	public void score(final int score){
 		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
-		ScoreScene scoreScene = new ScoreScene(this.scoremanager, screenSize);//aggiungere il manager
+		try {
+			ScoreScene scoreScene = new ScoreScene(scoremanager, this, screenSize);
+			this.switchScene(scoreScene.getScene());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
 	
-		this.setSceneM(scoreScene.getScene());
+	/**
+	 * Launch score GUI without editing score list.
+	 * Useful when viewing leaderboard before playing the game.
+	 * @throws Exception 
+	 */
+	public void viewScoreNoEdit() throws Exception {
+		ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
+		ScoreScene scoreScene = new ScoreScene(scoreManager, this, screenSize);
+		
+		this.switchScene(scoreScene.getScene());
 	}
 
 	// SETTA LA SCENA CHE GLI PASSO AL THREAD DEL JAVA FX
@@ -113,10 +150,12 @@ public class GameApplication extends Application {
 	 * Set JavaFX Thread scene to the scene passed as argument.
 	 * @param scene
 	 */
-	void setSceneM(Scene scene) {
+	void switchScene(Scene scene) {
 		Platform.runLater(() -> {
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			this.primaryStage.setScene(scene);
+			this.primaryStage.setWidth(screenSize);		//DO NOT TOUCH: doesn't work without width and height
+			this.primaryStage.setHeight(screenSize);
+			this.primaryStage.show();
 		});
 	}
 	
@@ -128,4 +167,8 @@ public class GameApplication extends Application {
 		launch(args);
 	}
 
+	private void exit() {
+		System.exit(0);
+	}
+	
 }
