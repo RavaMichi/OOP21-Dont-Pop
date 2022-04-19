@@ -34,7 +34,7 @@ public class SpawnManager {
 
 	//
 	private GameEngine gameEngine;
-	private PoweupFactory powerUpfFactory;
+	private PoweupFactory powerUpFactory;
 	private EnemyFactory enemyFactory;
 	private RandomInt randomInt = new RandomInt();
 
@@ -58,7 +58,7 @@ public class SpawnManager {
 	
 	public SpawnManager(final GameEngine gameEngine) {
 		this.gameEngine = gameEngine;
-		this.powerUpfFactory = new PoweupFactory(this.gameEngine);
+		this.powerUpFactory = new PoweupFactory(this.gameEngine);
 		this.enemyFactory = new EnemyFactory(this.gameEngine);
 		
 		//Crea il countdown (game object) iniziale

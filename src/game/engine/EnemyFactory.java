@@ -54,7 +54,7 @@ public class EnemyFactory {
 			return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
 		}
 		
-
+		return null; //is not an enemy
 	}
 	
 /*
