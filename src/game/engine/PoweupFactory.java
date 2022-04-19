@@ -3,6 +3,7 @@ import game.util.Point2D;
 import game.model.PowerUpObj; //classe power up da mettere public
 
 import game.model.AbstractGameObject;
+import game.model.AbstractGameObject.ObjectType;
 import game.util.WhereToSpawn;
 
 public class PoweupFactory {
@@ -16,14 +17,13 @@ public class PoweupFactory {
 		this.gameEngine=gameEngine2;
 	}
 
-	public AbstractGameObject GetPowerUpObj(int n) throws Exception {//per evitare il ritorno di un nul
+	public AbstractGameObject GetPowerUpObj()  {
 		
-		
-			var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
-		int i = new Random().nextInt(3);
-		if (i == 0) {
+		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
+		Integer typeOfPowerUp = randomInt.getRandomInt(6, 8);
+		if (n == 6) {
 			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
-		} else if (i == 1) {
+		} else if (n == 7) {
 			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
 		} else {
 			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);

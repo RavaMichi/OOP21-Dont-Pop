@@ -13,54 +13,51 @@ public class EnemyFactory {
 	private static final float LASER_DETONATION_TIME = 1.2f;
 	private static final float BULLET_VELOCITY = 0.3f;
 	private static final float EXPLOSION_DETONATION_TIME = 2f;
-	
-	/*
-	 * ATTENZIONE::::: AGGIUNGERE COSTRUTTORE DELLA THORNBALL CHE VARIA DA:
-	 * 
-	 * THORNBALL CE L'HANNO GIA
-	 *
-	 * 
-	 */
-	GameEngine gameEngine; //= GameEngine.getGameEngine(); // uso del metodo dalla definizione di classe per avere il
-														// riferimento al game engine corrente
+
+	Point2D spawnPosition;
+	Point2D direction;
+	GameEngine gameEngine; 
 	WhereToSpawn wheretospawn = new WhereToSpawn();
 	
 	public EnemyFactory(final GameEngine ge) {
+		
 		this.gameEngine = ge;
 	}
 
-	public AbstractGameObject GetEnemyObj(final int n) {
+	public AbstractGameObject GetEnemyObj(final ObjectType type) {
 		
-		if (n == AbstractGameObject.ObjectType.BULLET.ordinal()) {
-			return createBullet();
-		} else if (n == AbstractGameObject.ObjectType.THORNBALL.ordinal()) {
-			//return new EnemyBallObj(thornPosition, AbstractGameObject.ObjectType.THORNBALL, gameEngine); // APETTARE CREAZIONE CLASSE
+		ObjectType objectTyper=type;
 		
-		} else if (n == AbstractGameObject.ObjectType.EXPLOSION.ordinal()) {
+		if (objectTyper == ObjectType.BULLET) {
+			
+			spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
+			direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
+			direction.sub(spawnPosition);
+			return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY , ObjectType.BULLET, gameEngine);
+			
+		} else if (objectTyper == ObjectType.THORNBALL) {
+			
+			spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
+			return new EnemyBallObj(spawnPosition, ObjectType.THORNBALL, gameEngine);
+		
+		} else if (objectTyper == ObjectType.EXPLOSION) {
 
-			// UTULIZZO DEL METODO wheretospawn.getPowerUPSpawnPoint(); perch� cos� spawna
-			// dentro
-
-			//return new EnemyBombObj(spawnBomb, timeToDetonate, AbstractGameObject.ObjectType.EXPLOSION ,  gameEngine); // DA CAMBIARE PER SPAWNARE NELLO SCHERMO
-
-		} else if (n == AbstractGameObject.ObjectType.LASER.ordinal()) {
-			return createLaser();
+			var r = new Random();
+			Point2D spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
+			return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
+			
+		} else if (objectTyper == ObjectType.LASER) {
+			
+			var r = new Random();
+			spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
+			direction = new Point2D(r.nextDouble()*2 - 1, r.nextDouble()*2 - 1); //(-1, -1) -> (1, 1)
+			return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
 		}
-		return null; //da cambiare immagino
+		
 
 	}
-	public AbstractGameObject createRandomPowerUp() {
-		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
-		int i = new Random().nextInt(3);
-		if (i == 0) {
-			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
-		} else if (i == 1) {
-			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
-		} else {
-			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
-		}
-	}
-
+	
+/*
 public AbstractGameObject createBullet() {
 		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
 		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
@@ -82,4 +79,5 @@ public AbstractGameObject createBullet() {
 		Point2D spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
 		return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
 	}	
+	*/
 }

@@ -79,12 +79,12 @@ public class SpawnManager {
 
 		//Power up
 		if (this.pwrupTimer <= 0) {
-			this.gameEngine.instantiate(this.PoweupFactory.GetPowerUpObj());
+			this.gameEngine.instantiate(this.powerUpFactory.GetPowerUpObj());
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		}
 		//Bullet spawn
 		if (this.bulletTimer <= 0) {
-			this.gameEngine.instantiate(this.enemyFactory.createBullet());
+			this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.BULLET));		//(this.enemyFactory.createBullet());
 			this.bulletTimer = BULLET_SPAWN_TIME;
 		}
 		//Bullet difficulty
@@ -97,7 +97,7 @@ public class SpawnManager {
 		//Laser spawn
 		if (this.laserTimer <= 0) {
 			for (int i = 0; i < this.laserCount; i++) {
-				this.gameEngine.instantiate(this.enemyFactory.createLaser());
+				this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.LASER));
 			}
 			this.laserTimer = LASER_SPAWN_TIME;
 		}
@@ -115,7 +115,7 @@ public class SpawnManager {
 			//Thornball spawn
 			if (this.thornballTimer <= 0) {
 				for (int i = 0; i < this.thornballCount; i++) {
-					this.gameEngine.instantiate(this.enemyFactory.createThornball());
+					this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.THORNBALL));
 				}
 				this.thornballTimer = THORNBALL_SPAWN_TIME;
 			}
@@ -133,7 +133,7 @@ public class SpawnManager {
 			updateExplosionTime();
 			//Explosion spawn
 			if (this.explosionTimer <= 0) {
-				this.gameEngine.instantiate(this.enemyFactory.createExplosion());
+				this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.EXPLOSION));
 				this.explosionTimer = THORNBALL_SPAWN_TIME;
 			}
 			//Explosion difficulty
@@ -145,16 +145,17 @@ public class SpawnManager {
 			}
 		}
 	}
-
+	
+/*
 	public AbstractGameObject getPowerUp() throws Exception {
 		/*
 		 * I POWER UP SONO: PWRUP_SHIELD, //6 PWRUP_MULTIPLIER, //7 PWRUP_SWEEPER //8
-		 */
+		 *
 		Integer typeOfPowerUp = randomInt.getRandomInt(6, 8);
 		AbstractGameObject powerUP = powerUpfFactory.GetPowerUpObj(typeOfPowerUp);
 		return powerUP;
 	}
-
+*/
 	private void updateTime() {
 		this.pwrupTimer -= this.gameEngine.getDeltaTime();
 		this.bulletTimer -= this.gameEngine.getDeltaTime();
