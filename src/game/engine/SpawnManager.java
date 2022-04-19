@@ -79,7 +79,7 @@ public class SpawnManager {
 
 		//Power up
 		if (this.pwrupTimer <= 0) {
-			this.gameEngine.instantiate(this.enemyFactory.createRandomPowerUp());
+			this.gameEngine.instantiate(this.PoweupFactory.GetPowerUpObj());
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		}
 		//Bullet spawn
