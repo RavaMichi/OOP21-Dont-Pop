@@ -13,10 +13,10 @@ public class CircleRenderer implements Renderer {
 	private double radius;
 	private Color color;
 	/**
+	 * Creates a new Renderer at parent position, representing a circle of radius radius and color color
 	 * @param parent - the GameObject
 	 * @param radius - the circle radius
 	 * @param color - the circle color
-	 * Creates a new Renderer at parent position, representing a circle of radius radius and color color
 	 */
 	public CircleRenderer(final AbstractGameObject parent, double radius, Color color) {
 		this.parent = parent;
@@ -24,8 +24,8 @@ public class CircleRenderer implements Renderer {
 		this.color = color;
 	}
 	/**
+	 * Changes the circle color opacity. It's a number between 0 and 1
      * @param opacity
-     * Changes the circle color opacity. It's a number between 0 and 1
      */
 	public void setOpacity(double opacity) {
 		opacity = Math.min(Math.max(opacity, 0), 1);

@@ -15,11 +15,11 @@ public class LineRenderer implements Renderer {
 	private Color color;
 	private double width;
 	/**
+	 * Creates a new LineRenderer at obj position, pointing direction, with customizable color and width
 	 * @param obj - the GameObject
 	 * @param direction - in world coordinates
 	 * @param color - the line color
 	 * @param width - the line width
-	 * Creates a new LineRenderer at obj position, pointing direction, with customizable color and width
 	 */
 	public LineRenderer(final AbstractGameObject obj, Point2D direction, Color color, double width) {
 		double m = direction.getY()/direction.getX();
@@ -39,18 +39,19 @@ public class LineRenderer implements Renderer {
 		gc.strokeLine(GameApplication.convertToInt(p1.getX()), GameApplication.convertToInt(p1.getY()), GameApplication.convertToInt(p2.getX()), GameApplication.convertToInt(p2.getY()));
 	}
     /**
-     * @param opacity
      * Changes the line color opacity. It's a number between 0 and 1
+     * @param opacity
      */
 	public void setOpacity(double opacity) {
 		opacity = Math.min(Math.max(opacity, 0), 1);
 		this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), opacity);
 	}
 	/**
+	 * Gets the projection of the line y-y0=m(x-x0) on the xLimit border of the in-game world
 	 * @param origin
 	 * @param m
 	 * @param xLimit
-	 * @return the projection of the line y-y0=m(x-x0) on the xLimit border of the in-game world
+	 * @return the projection
 	 */
 	private Point2D getLimit(Point2D origin, double m, double xLimit) {
 		double y = m*(xLimit - origin.getX()) + origin.getY();
