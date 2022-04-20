@@ -11,8 +11,10 @@ This game belongs to the category of Survival Games: the player must resist as m
 The player can meet different types of enemies and power-ups like lasers, bullets and even thornballs. Are you smart enough 
 to survive lasers and get a power up?  
 If you survive just try to take powerups like the point multiplier or the shield to make your ballon invincible for one hit.  
+
 You can move the ballon using the mouse (the game takes the current mouse position).  
 The game colors are peaceful and relaxing making the game enjoiable to play with friends.  
+
 Survive and gain enough points to be ranked in the top 50 players of the Leaderboard.  
 Who will win the game? Who will be the Game Master?  
 Play, survive and enjoy our game.
