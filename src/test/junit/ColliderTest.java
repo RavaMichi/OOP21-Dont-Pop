@@ -5,7 +5,7 @@ import game.collider.*;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
 
-public class Test {
+public class ColliderTest {
 	
 	private AbstractGameObject player;
 	
