@@ -26,9 +26,8 @@ public class GameScene {
 	private int size;
 	
 	/**
-	 * @param sizeX
-	 * @param sizeY
-	 * Creates a new GameScene of size (in pixels) sizeX*sizeY
+	 * Creates a new GameScene of size (in pixels) size*size
+	 * @param size
 	 */
 	public GameScene(final int size) {
 		Group gr = new Group();
@@ -61,7 +60,8 @@ public class GameScene {
 	}
 	
 	/**
-	 * @return the GraphicsContext where to draw the objects
+	 * Gets the current buffer where to draw the objects
+	 * @return the GraphicsContext buffer
 	 */
 	public GraphicsContext getGraphics() {
 		//images are drawn into the buffer first, then displayed
@@ -69,15 +69,16 @@ public class GameScene {
 	}
 	
 	/**
-	 * @return the in-game coordinates of the mouse
+	 * Gets the in-game coordinates of the mouse
+	 * @return the mouse position
 	 */
 	public Point2D getMouseWorldPosition() {
 		return Point2D.copyOf(mousePosition); 
 	}
 	
 	/**
-	 * @param objects - List of game objects
 	 * Displays all the elements in objects which have a renderer
+	 * @param objects - List of game objects
 	 */
 	public void render(List<AbstractGameObject> objects) {
 		clear();
