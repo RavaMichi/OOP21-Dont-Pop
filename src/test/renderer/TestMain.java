@@ -15,7 +15,8 @@ import javafx.application.Application;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 /**
- * This class is used to test the renderers and the game scene
+ * This class is used to test the renderers and the game scene.
+ * Its execution is manual: click on the screen and the display will change randomically
  */
 public class TestMain extends Application {
 
