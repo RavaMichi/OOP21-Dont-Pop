@@ -17,12 +17,12 @@ Play, survive and enjoy our game.
 
 ## Tecnhology:
 
-##### This game has been coded in Java language using JavaFX18 for the grafic part.  
+This game has been coded in Java language using JavaFX18 for the grafic part.  
 The use of CSS has been fundamental the grafic style.
-============================================================================================================================================
+
 ## Installation:
 
-##### The game comes in a jar file format. You can use it with java command line.  
+The game comes in a jar file format. You can use it with java command line.  
 Move in the folder where you downloaded the game whith the terminal or bash and use the form:
   
 java -jar Dont-Pop.jar
