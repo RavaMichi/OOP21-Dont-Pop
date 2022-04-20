@@ -53,7 +53,7 @@ public class TestMain extends Application {
 				testTextRenderer();
 				break;
 			}
-			System.out.println("clicked");
+			System.out.println("clicked at: " + this.gameScene.getMouseWorldPosition());
 			});
 		
 		stage.show();
