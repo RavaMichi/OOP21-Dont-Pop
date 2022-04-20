@@ -1,9 +1,9 @@
-Dont-Pop
-========
+# Dont-Pop
 
-## 1.0 Release Don't Pop
 
-# Description:
+### 1.0 Release Don't Pop
+
+## Description:
 
 Ever wondered how a baloon feels in a dangerous place? Now you know.  
 This game belongs to the category of Survival Games, the player must resist as much as possible fighting different enemies.  
@@ -16,12 +16,12 @@ Survive and gain enough point to get ranked on the top 50 of the Leader Board.
 Who will win the game? Who will be the Game Master?  
 Play, survive and enjoy our game.
 
-# Tecnhology:
+## Tecnhology:
 
 This game has been coded in Java language using JavaFX18 for the grafic part.  
 The use of CSS has been fundamental the grafic style.
 
-# Installation:
+## Installation:
 
 The game comes in a jar file format. You can use it with java command line.  
 Move in the folder where you downloaded the game whith the terminal or bash and use the form:
