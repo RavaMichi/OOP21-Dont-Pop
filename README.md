@@ -1,9 +1,10 @@
 # Dont-Pop
-## 1.0 Release Don't Pop  
-============================================================================================================================================
+==========
+## 1.0 Release Don't Pop
+------------------------
 ## Description:
 
-##### Ever wondered how a baloon feels in a dangerous place? Now you know.  
+Ever wondered how a baloon feels in a dangerous place? Now you know.  
 This game belongs to the category of Survival Games, the player must resist as much as possible fighting different enemies.  
 The player can meets different type of enemies and power-ups like lasers, bullets and some thornball. Are you smart enough 
 to survive the laser and take a power up?  
@@ -13,7 +14,7 @@ The game colors are peaceful and relaxing making the game enjoiable to play with
 Survive and gain enough point to get ranked on the top 50 of the Leader Board.  
 Who will win the game? Who will be the Game Master?  
 Play, survive and enjoy our game.
-============================================================================================================================================
+
 ## Tecnhology:
 
 ##### This game has been coded in Java language using JavaFX18 for the grafic part.  
