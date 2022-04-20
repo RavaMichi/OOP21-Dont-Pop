@@ -16,7 +16,7 @@ Play, survive and enjoy our game.
 ============================================================================================================================================
 ## Tecnhology:
 
-##### This game has been coded in Java language using JavaFX18 for the grafic part.  
+This game has been coded in Java language using JavaFX18 for the grafic part.  
 The use of CSS has been fundamental the grafic style.
 ============================================================================================================================================
 ## Installation:
