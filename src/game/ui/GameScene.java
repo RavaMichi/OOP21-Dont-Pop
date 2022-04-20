@@ -48,6 +48,9 @@ public class GameScene {
 		
 		this.size = size;
 		this.scene = new Scene(gr);
+		
+		//initialize the canvases
+		render(List.of());
 	}
 	
 	/**
