@@ -1,13 +1,14 @@
 package game.engine;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import game.ui.GameScene;
 import game.ui.MenuScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.geometry.Rectangle2D;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -29,8 +30,10 @@ public class GameApplication extends Application {
 	 * Static initializer: gets screen size.
 	 */
 	static {
-		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		screenSize = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
+//		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+//		screenSize = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		screenSize = (int) Math.min(size.getWidth(), size.getHeight());
 	}
 	
 	/**
