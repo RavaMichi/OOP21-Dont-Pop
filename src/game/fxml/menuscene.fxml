@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <top>
       <Label id="title" fx:id="title" text="Don't Pop" BorderPane.alignment="CENTER">
          <font>
-            <Font size="96.0" />
+            <Font name="System Bold" />
          </font>
       </Label>
    </top>
@@ -29,12 +29,14 @@
                <children>
                   <Button id="play-button" fx:id="playButton" mnemonicParsing="false" onAction="#play" prefHeight="44.0" prefWidth="175.0" text="Play">
                      <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font></Button>
+                        <Font name="System Bold" />
+                     </font>
+                  </Button>
                   <Button id="leaderboard-button" fx:id="leaderboardButton" mnemonicParsing="false" onAction="#leaderboard" prefHeight="44.0" prefWidth="175.0" text="Leaderboard">
                      <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font></Button>
+                        <Font name="System Bold" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children>
