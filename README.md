@@ -19,7 +19,7 @@ Survive and gain enough points to be ranked in the top 50 players of the Leaderb
 Who will win the game? Who will be the Game Master?  
 Play, survive and enjoy our game.
 
-## Tecnhology
+## Technology
 
 This game has been coded in Java language using JavaFX18 for the graphic part.  
 The use of CSS has been fundamental for the grafic style.
