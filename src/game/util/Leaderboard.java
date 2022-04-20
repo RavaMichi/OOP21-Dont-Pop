@@ -89,13 +89,13 @@ public class Leaderboard {
 	 * @return the rank
 	 */
 	public int getRank(final String playerName, final int score) {
-		for (int i = 0; i < RANKING_LENGTH; i++) {
+		for (int i = 0; i < this.ranking.size(); i++) {
 			if (this.ranking.get(i).get1().equals(playerName) && 
 					this.ranking.get(i).get2().equals(score)) {
 				return i + 1;
 			}
 		}
-		return RANKING_LENGTH + 1;
+		return this.ranking.size() + 1;
 	}
 	
 	/**
