@@ -20,11 +20,13 @@ public class AudioManager {
 	 * It's used for long audio files.
 	 */
 	public static enum Music {
-		BALOON_GROOVE("");
+		BALOON_GROOVE("audio/BaloonGroove.mp3");
 		
 		private Music(String path) {
 			Media media = new Media(getResPath(path));
-			MUSICS.put(this, new MediaPlayer(media));
+			MediaPlayer mp = new MediaPlayer(media);
+			mp.setCycleCount(AudioClip.INDEFINITE);
+			MUSICS.put(this, mp);	
 		}
 	}
 	/**
@@ -47,44 +49,37 @@ public class AudioManager {
 		return AudioManager.class.getClassLoader().getResource(path).toExternalForm();
 	}
 	
-	private Map<Music, MediaPlayer> musics;
-	private Map<Sound, AudioClip> sounds;
-	
-	public AudioManager() {
-		this.musics = Map.copyOf(MUSICS);
-		this.sounds = Map.copyOf(SOUNDS);
-	}
-	
 	/**
 	 * Plays a sound using given volume. Volume is a number between 0.0 (muted) and 1.0 (full volume)
 	 * @param sound
 	 * @param volume
 	 */
 	public void playSound(final Sound sound, double volume) {
-		this.sounds.get(sound).play(volume);
+		SOUNDS.get(sound).play(volume);
 	}
 	/**
 	 * Plays a music using given volume. Volume is a number between 0.0 (muted) and 1.0 (full volume).
-	 * An AudioManager can play only one music at time.
+	 * An AudioManager can play only one music at time and is looped.
 	 * @param music
 	 * @param volume
 	 */
 	public void playMusic(final Music music, double volume) {
+		//System.out.println(this.musics.get(music) + " >> " + MUSICS.get(music));
 		stopMusics();
-		this.musics.get(music).setVolume(volume);
-		this.musics.get(music).play();
+		MUSICS.get(music).setVolume(volume);
+		MUSICS.get(music).play();
 	}
 	/**
 	 * Stops all the playing sounds
 	 */
 	public void stopSounds() {
-		this.sounds.forEach((s, a) -> a.stop());
+		SOUNDS.forEach((s, a) -> a.stop());
 	}
 	/**
 	 * Stops all the playing musics
 	 */
 	public void stopMusics() {
-		this.musics.forEach((s, m) -> m.stop());
+		MUSICS.forEach((s, m) -> m.stop());
 	}
 	/**
 	 * Stops every audio playing

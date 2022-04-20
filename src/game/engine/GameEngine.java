@@ -212,6 +212,7 @@ public class GameEngine implements Runnable {
      */
     public void endGame() {
     	this.executeLoop = false;
+    	this.audioManager.stopAll();
     	//this.application.score(this.scoreCalc.getScore());
     }
 
