@@ -95,7 +95,7 @@ public class Leaderboard {
 				return i + 1;
 			}
 		}
-		return this.ranking.size() + 1;
+		return this.ranking.size();
 	}
 	
 	/**
@@ -111,6 +111,8 @@ public class Leaderboard {
 			e2.printStackTrace();
 		} catch (ClassNotFoundException e3) {
 			e3.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -124,6 +126,8 @@ public class Leaderboard {
 			e1.printStackTrace();
 		} catch (IOException e2) {
 			e2.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

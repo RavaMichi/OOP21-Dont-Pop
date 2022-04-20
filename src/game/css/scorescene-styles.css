@@ -4,7 +4,7 @@
     -fx-text-fill: #fe6198;
 }
 
-/*Your Score*/
+/* YOUR SCORE */
 #your-score-label {
     -fx-font-size: 40px;
     -fx-padding:80 0 0 0;
@@ -18,7 +18,7 @@
     -fx-alignment: center;
 }
 
-/*Leaderboard*/
+/* LEADERBOARD */
 #leaderboard-label {
     -fx-font-size: 40px;
     -fx-font-family: fantasy;
@@ -39,7 +39,7 @@
     -fx-font: normal bold 15 sans-serif;
 }
 
-/*Table Columns*/
+/* TABLE COLUMNS*/
 #rank-col {
     /* -fx-pref-width: 10%; */
     -fx-alignment: center;
@@ -53,7 +53,7 @@
     -fx-alignment: center;
 }
 
-/*Menu*/
+/* MENU */
 .button {
     -fx-text-fill: white;
     -fx-background-color: #fe6198;
@@ -80,6 +80,8 @@
     -fx-border-radius: 12;
     -fx-background-radius: 12; */
     /* -fx-max-width: 600; */
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
 }
 /* HEADER */
 .table-view .column-header {
@@ -133,7 +135,7 @@
 }
 /* Each row in the table is a table-row-cell. Inside a table-row-cell is any
    number of table-cell. */
-   .table-row-cell {
+.table-row-cell {
     -fx-background-color: transparent; 
     -fx-border-width: 0.0;
     -fx-padding: 10.0 0.0 10.0 0.0;  
@@ -148,29 +150,29 @@
 .table-view:row-selection .table-row-cell:filled:hover {
     /*-fx-background-color: red;*/
 }
-.table-view:row-selection .table-row-cell:filled:hover .text{
+.table-view:row-selection .table-row-cell:filled:hover .text {
     /*-fx-fill: white;*/     
 }
 .table-row-cell:filled:focused {
     -fx-background-color: #e1e2e3;         
     -fx-background-insets: 0.0;
 }
-.table-row-cell:filled:focused .text{  
+.table-row-cell:filled:focused .text {  
 }
 .table-row-cell .table-column{
     -fx-border-width: 0.0;  
     -fx-padding: 0.0 0.0 0.0 5.0;   
 }
-/*TESTO DELLE CELLE */
+/* CELL TEXT */
 .table-row-cell .text{
     -fx-font-size: 1.1em;
     -fx-fill: #6F7B8A;
 }
-/*SCROLL BAR VERTICALE */
+/* VERTICAL SCROLL BAR */
 .table-view .scroll-bar:vertical{      
     -fx-padding: 0.0 0.0 0.0 0.0;
 }
-/*SCROLL BAR ORIZZONTALE */
+/* HORIZONTAL SCROLL BAR */
 .table-view .scroll-bar:horizontal {
     -fx-padding: 0.0 0.0 0.0 0.0;
 }

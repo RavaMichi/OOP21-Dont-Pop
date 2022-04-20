@@ -79,17 +79,17 @@ public class ScoreSceneController {
 		this.leaderboardTable.setItems(this.leaderboardData);
 		
 		//setting tables % width
-		this.yourScoreTable.setMaxWidth(this.screenSize * 0.85);
-		this.leaderboardTable.setMaxWidth(this.screenSize * 0.85);
+		double tableWidth = this.screenSize * 0.85;
+		this.yourScoreTable.setMaxWidth(tableWidth);
+		this.leaderboardTable.setMaxWidth(tableWidth);
 		
 		//setting columns % width
-		this.yourRankCol.setPrefWidth(0.85 * this.screenSize * 0.2);
-		this.yourNameCol.setPrefWidth(0.85 * this.screenSize * 0.450);
-		this.yourScoreCol.setPrefWidth(0.85 * this.screenSize * 0.2);
-		this.rankCol.setPrefWidth(0.85 * this.screenSize * 0.2);
-		this.nameCol.setPrefWidth(0.85 * this.screenSize * 0.450);
-		this.scoreCol.setPrefWidth(0.85 * this.screenSize * 0.2);
-		
+		this.yourRankCol.setPrefWidth(tableWidth * 0.230);
+		this.yourNameCol.setPrefWidth(tableWidth * 0.515);
+		this.yourScoreCol.setPrefWidth(tableWidth * 0.230);
+		this.rankCol.setPrefWidth(tableWidth * 0.230);
+		this.nameCol.setPrefWidth(tableWidth * 0.515);
+		this.scoreCol.setPrefWidth(tableWidth * 0.230);
 		//setting columns % height
 //		this.yourScoreTable.setFixedCellSize(this.screenSize * 0.03);
 //		this.leaderboardTable.setFixedCellSize(this.screenSize * 0.03);
@@ -98,6 +98,8 @@ public class ScoreSceneController {
 		if (this.scoreManager.isReadOnly()) {
 			this.yourScore.setVisible(false);
 			this.playButton.setText("Play");
+		} else {
+			this.yourScoreTable.setSelectionModel(null);
 		}
 	}
 	
