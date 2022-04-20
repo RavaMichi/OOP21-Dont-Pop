@@ -19,7 +19,7 @@
                <children>
                   <Label id="your-score-label" fx:id="yourScoreLabel" text="Your Score">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" />
                      </font>
                   </Label>
                   <TableView id="your-score-table" fx:id="yourScoreTable" editable="true">
@@ -47,7 +47,7 @@
                <children>
                   <Label id="leaderboard-label" fx:id="leaderboardLabel" text="Leaderboard">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" />
                      </font>
                   </Label>
                   <TableView id="leaderboard-table" fx:id="leaderboardTable" editable="true">
@@ -78,7 +78,7 @@
                <children>
                   <Button id="play-button" fx:id="playButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#play" text="Play again" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" />
                      </font>
                      <HBox.margin>
                         <Insets right="10.0" />
@@ -86,7 +86,7 @@
                   </Button>
                   <Button id="menu-button" fx:id="menuButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#menu" text="Home" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="System Bold" />
                      </font>
                      <HBox.margin>
                         <Insets left="10.0" />
