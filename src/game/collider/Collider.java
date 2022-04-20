@@ -5,7 +5,8 @@ package game.collider;
  */
 public interface Collider {
 	/**
-	 * @param player
+	 * Method used for detecting the collisions with the player
+	 * @param player collider
 	 * @return whether this collider has collided with player
 	 */
 	boolean checkCollision(CircleCollider player);

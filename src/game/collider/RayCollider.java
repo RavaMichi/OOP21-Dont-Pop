@@ -10,9 +10,9 @@ public class RayCollider implements Collider {
 	private AbstractGameObject origin;
 	private Point2D direction;
 	/**
+	 * Creates a new RayCollider of direction direction and origin at origin's position
 	 * @param origin
 	 * @param direction
-	 * Creates a new RayCollider of direction direction and origin at origin's position
 	 */
 	public RayCollider(final AbstractGameObject origin, final Point2D direction) {
 		this.origin = origin;
@@ -34,13 +34,15 @@ public class RayCollider implements Collider {
 		}
 	}
 	/**
-	 * @return the direction of this ray
+	 * Gets the direction of this ray
+	 * @return the direction
 	 */
 	public Point2D getDirection() {
 		return this.direction;
 	}
 	/**
-	 * @return the origin of the ray
+	 * Gets the origin of the ray
+	 * @return the origin
 	 */
 	public Point2D getOrigin() {
 		return this.origin.getPosition();

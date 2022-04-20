@@ -15,10 +15,10 @@ public class PointsCollider implements Collider {
 	private AbstractGameObject object;
 	
 	/**
-	 * @param parent
-	 * @param points - in world coordinates
 	 * Creates a new Collider for parent, using points.
 	 * The points are their relative position from the position of the parent
+	 * @param parent
+	 * @param points - in world coordinates
 	 */
 	public PointsCollider(final AbstractGameObject parent, Set<Point2D> points) {
 		this.object = parent;
