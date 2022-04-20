@@ -1,6 +1,9 @@
 package test.junit;
 import static org.junit.Assert.*;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import game.collider.*;
 import game.model.AbstractGameObject;
 import game.util.Point2D;
@@ -9,6 +12,7 @@ public class ColliderTest {
 	
 	private AbstractGameObject player;
 	
+	@Before
 	private void initPlayer() {
 		//creates a game object at the center
 		player = new AbstractGameObject(Point2D.of(0.5, 0.5), null, null) {
@@ -23,7 +27,7 @@ public class ColliderTest {
 		player.setCollider(new CircleCollider(player, 0.1, Point2D.of(0, 0)));
 	}
 	
-	@org.junit.Test
+	@Test
 	public void testCircleCollider() {
 		initPlayer();
 		var circle = new AbstractGameObject(Point2D.of(1, 0.5), null, null) {
@@ -44,7 +48,7 @@ public class ColliderTest {
 		assertTrue(circle.getCollider().checkCollision((CircleCollider)player.getCollider()));
 	}
 	
-	@org.junit.Test
+	@Test
 	public void testRayCollider() {
 		initPlayer();
 		var ray = new AbstractGameObject(Point2D.of(0, 0), null, null) {
