@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import game.collider.CircleCollider;
 import game.engine.GameEngine;
+import game.engine.AudioManager.Sound;
 import game.graphics.*;
 import game.util.Point2D;
 
@@ -47,6 +48,7 @@ public class PlayerObj extends AbstractGameObject {
 	 */
 	public void die() {
 		if (!this.isDead) {
+			this.getGameEngine().play(Sound.POP, 0.8);
 			this.setRenderer(new AnimationRenderer(this.animationFrames, 20, false));
 			this.isDead = true;
 		}

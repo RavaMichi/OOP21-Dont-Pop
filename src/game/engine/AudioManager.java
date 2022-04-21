@@ -34,7 +34,7 @@ public class AudioManager {
 	 * It's used for short audio clips.
 	 */
 	public static enum Sound {
-		POP("");
+		POP("audio/pop.mp3");
 		
 		private Sound(String path) {
 			SOUNDS.put(this, new AudioClip(getResPath(path)));
