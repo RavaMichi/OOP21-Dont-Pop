@@ -92,14 +92,14 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		public  Point2D getThornballSpawnPoint(int side) {
 			
 			RandomInt randomInt= new RandomInt();
-			int sideOfSpawn= this.getRandomSide();
+			int sideOfSpawn= this.getThornballRandomSide();
 			double randomNumber=randomInt.getRandomInt(1,100) / 100 ;
 			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
 				return new Point2D(-0.2,randomNumber);
 			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
 				return new Point2D(1.2 , randomNumber);			
 		}
-			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
+			return new Point2D(0.2,-0.2); //default spawn point
   }
 	
 }
