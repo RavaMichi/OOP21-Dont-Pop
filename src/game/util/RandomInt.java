@@ -1,7 +1,7 @@
 package game.util;
 
 /**
- * The Class RandomInt.
+ * The Class RandomInt that provide a rand integer number
  */
 public class RandomInt {
 
