@@ -13,10 +13,10 @@ import game.util.WhereToSpawn;
  */
 public class PoweupFactory {
 	
-	GameEngine gameEngine; //da passare al costruttore
-	WhereToSpawn wheretospawn = new WhereToSpawn();
+	private GameEngine gameEngine; //da passare al costruttore
+	private WhereToSpawn wheretospawn = new WhereToSpawn();
 	
-	Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
+	private Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
 	
 	/**
 	 * Instantiates a new poweup factory.
