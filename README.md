@@ -26,7 +26,8 @@ The use of CSS has been fundamental for the grafic style.
 
 ## Installation
 
-The game comes in a jar file format. You can use it with java command line.  
+The game comes in a jar file format. You can use it with java command line. 
+You can use in different type of Operative System like window, macOs, linux...etc
 Move in the folder where you downloaded the game whith the terminal or bash and use the following command:
   
 ``java -jar Dont-Pop.jar``
