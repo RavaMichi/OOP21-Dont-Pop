@@ -25,16 +25,16 @@ public class EnemyFactory {
 	private static final float EXPLOSION_DETONATION_TIME = 2f;
 
 	/** The spawn position. */
-	Point2D spawnPosition;
+	private Point2D spawnPosition;
 	
 	/** The direction. */
-	Point2D direction;
+	private Point2D direction;
 	
 	/** The game engine. */
-	GameEngine gameEngine; 
+	private GameEngine gameEngine; 
 	
 	/** The wheretospawn. */
-	WhereToSpawn wheretospawn = new WhereToSpawn();
+	private WhereToSpawn wheretospawn = new WhereToSpawn();
 	
 	/**
 	 * Instantiates a new enemy factory.
@@ -58,27 +58,27 @@ public class EnemyFactory {
 		
 		if (objectTyper == ObjectType.BULLET) {
 			
-			spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
-			direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
-			direction.sub(spawnPosition);
+			this.spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
+			this.direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
+			this.direction.sub(spawnPosition);
 			return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY , ObjectType.BULLET, gameEngine);
 			
 		} else if (objectTyper == ObjectType.THORNBALL) {
 			
-			spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
+			this.spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
 			return new EnemyBallObj(spawnPosition, ObjectType.THORNBALL, gameEngine);
 		
 		} else if (objectTyper == ObjectType.EXPLOSION) {
 
 			var r = new Random();
-			Point2D spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
+			this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
 			return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
 			
 		} else if (objectTyper == ObjectType.LASER) {
 			
 			var r = new Random();
-			spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
-			direction = new Point2D(r.nextDouble()*2 - 1, r.nextDouble()*2 - 1); //(-1, -1) -> (1, 1)
+			this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); //(0, 0) -> (1, 1)
+			this.direction = new Point2D(r.nextDouble()*2 - 1, r.nextDouble()*2 - 1); //(-1, -1) -> (1, 1)
 			return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
 		}
 		//mettere new exception e creare classe per il test 
