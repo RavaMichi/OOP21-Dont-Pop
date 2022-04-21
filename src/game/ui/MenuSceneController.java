@@ -3,7 +3,6 @@ package game.ui;
 import java.util.Random;
 
 import game.engine.GameApplication;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -44,7 +43,7 @@ public class MenuSceneController {
 			//generate random name
 			playerName = this.generateRandomName();
 			this.application.setPlayerName(playerName);
-//			this.namePrompt.setText(playerName);
+			this.namePrompt.setText(playerName);
 		}
 	}
 	
@@ -69,6 +68,12 @@ public class MenuSceneController {
 	 * @throws Exception 
 	 */
 	public void leaderboard() throws Exception {
+		String playerName = this.namePrompt.getText();
+		if (playerName.startsWith(" ")) {
+			//do nothing when player name starts with a whitespace
+		} else if (!playerName.isEmpty()) {
+			this.application.setPlayerName(playerName);
+		}
 		this.application.viewScoreNoEdit();
 	}
 	
