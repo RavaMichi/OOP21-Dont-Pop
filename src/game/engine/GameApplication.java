@@ -11,6 +11,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+
 public class GameApplication extends Application {
 	
 	private static final String SAVE_PATH = ".save";
@@ -23,16 +24,12 @@ public class GameApplication extends Application {
 	public final static int screenSize;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
 										// la percentuale dello schermo. ergo ho i valori da 0 a 1
 	private Stage primaryStage;
-//	ScoreCalc scoreCalc = new ScoreCalc();
-
 	/**
 	 * Static initializer: gets screen size.
 	 */
 	static {
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		screenSize = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
-//		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-//		screenSize = (int) Math.min(size.getWidth(), size.getHeight());
 	}
 	
 	/**
@@ -58,7 +55,7 @@ public class GameApplication extends Application {
 		this.playerName = playerName;
 	}
 	
-	// prende un int che va da zero a 1
+	
 	/**
 	 * Convert pizel size to percentage size.
 	 * @param num
@@ -69,7 +66,6 @@ public class GameApplication extends Application {
 									// (50% della lunghezza dello schermo)
 	}
 
-	// fa l'opposto di quello sopra
 	/**
 	 * Convert percentage size to pixel size.
 	 * @param num
@@ -147,7 +143,6 @@ public class GameApplication extends Application {
 		this.switchScene(scoreScene.getScene());
 	}
 
-	// SETTA LA SCENA CHE GLI PASSO AL THREAD DEL JAVA FX
 	/**
 	 * Set JavaFX Thread scene to the scene passed as argument.
 	 * @param scene
@@ -168,7 +163,11 @@ public class GameApplication extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
+	
+	/**
+	 * Exit function: exit from the program.
+	 * @param args
+	 */
 	private void exit() {
 		System.exit(0);
 	}
