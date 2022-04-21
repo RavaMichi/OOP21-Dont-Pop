@@ -1,7 +1,9 @@
 package game.util;
 
 /**
- * The Class WhereToSpawn.
+ * The Class WhereToSpawn. Provide a Point 2D where spawn an enemy or a powerup.
+ * The enemies will be spawned outside the game window. The  Powerups will spawn inside the
+ * game windows
  */
 public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO ELEMENTO DI GIOCO 
 			
