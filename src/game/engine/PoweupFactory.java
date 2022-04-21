@@ -7,6 +7,10 @@ import game.model.AbstractGameObject;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.WhereToSpawn;
 
+/**
+ * A factory for creating powerup objects using Factory method where it use a random type of powerup
+ * and the class creates it.
+ */
 public class PoweupFactory {
 	
 	GameEngine gameEngine; //da passare al costruttore
@@ -14,10 +18,22 @@ public class PoweupFactory {
 	
 	Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
 	
+	/**
+	 * Instantiates a new poweup factory.
+	 *
+	 * @param gameEngine2 the game engine
+	 */
 	public PoweupFactory(GameEngine gameEngine2) {
 		this.gameEngine=gameEngine2;
 	}
 
+	/**
+	 * Instantiates a new poweup factory.
+	 *
+	 * @param gameEngine2 the game engine
+	 * @return the abstract game object
+	 */
+	
 	public AbstractGameObject GetPowerUpObj()  {
 		
 		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
