@@ -9,6 +9,7 @@ import game.util.Point2D;
 public class EnemyProjectileObj extends AbstractGameObject {
 	
 	private static final double SIZE = 0.07;
+	private static final double speedMultiplier = 1.5;
 
 	private Point2D velocity;
 	private Set<Point2D> points = new HashSet<Point2D>();
@@ -20,7 +21,7 @@ public class EnemyProjectileObj extends AbstractGameObject {
 		super(position, type, ge);
 		velocity = dir;
 		velocity.normalize();
-		velocity.mul(speed / 60);
+		velocity.mul(speed / 60 * speedMultiplier);
 		generatePoints();
 		this.setCollider((Collider)new PointsCollider(this, points));
 		double angle = (Math.atan(velocity.getY()/velocity.getX())) * (180/Math.PI);
