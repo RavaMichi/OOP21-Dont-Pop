@@ -193,14 +193,17 @@ public class GameEngine implements Runnable {
             case PWRUP_SHIELD:
                 this.hasShield = true;
                 this.player.setShieldImage();
+            	audioManager.playSound(Sound.SHIELD_GET, 0.5);
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
                 //sets multiplier value (duration: 5 seconds)
                 this.scoreCalc.setMultiplier();
+            	audioManager.playSound(Sound.MULTIPLIER_GET, 0.75);
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();
+            	audioManager.playSound(Sound.SWEEPER_GET, 1);
                 break;
             default:
                 //does nothing
@@ -312,9 +315,9 @@ public class GameEngine implements Runnable {
     	try {
             Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
         } catch (IllegalArgumentException e1) { 
-            e1.printStackTrace();
+            //e1.printStackTrace();
         } catch (InterruptedException e2) {
-            e2.printStackTrace();
+            //e2.printStackTrace();
         }
     }
 	
@@ -332,6 +335,7 @@ public class GameEngine implements Runnable {
 			        this.hasShield = false;
 			        this.destroy(enemy);
 			        this.player.setBaloonImage();
+	            	audioManager.playSound(Sound.SHIELD_HIT, 0.75);
                 } else {
                     return true;
                 }
