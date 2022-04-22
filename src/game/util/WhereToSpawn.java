@@ -68,10 +68,7 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		 * @return the power UP spawn point
 		 */
 		public Point2D getPowerUPSpawnPoint() {
-			RandomInt randomInt= new RandomInt();
-			double x = randomInt.getRandomInt(0,100)/100;
-			double y = randomInt.getRandomInt(0,100)/100;
-			return new Point2D(x , y);
+			return new Point2D(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
 			}
 		
 		/**

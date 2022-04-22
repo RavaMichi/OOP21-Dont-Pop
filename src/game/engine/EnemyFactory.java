@@ -57,22 +57,22 @@ public class EnemyFactory {
 
 		if (objectTyper == ObjectType.BULLET) {
 
-			createBullet();
+			return createBullet();
 
 		} else if (objectTyper == ObjectType.THORNBALL) {
 
-			createThornball();
+			return createThornball();
 
 		} else if (objectTyper == ObjectType.EXPLOSION) {
 
-			createExplosion();
+			return createExplosion();
 
 		} else if (objectTyper == ObjectType.LASER) {
 
-			createLaser();
+			return createLaser();
 		}
 		// default enemy
-		createBullet();
+		return createBullet();
 	}
 
 	/**

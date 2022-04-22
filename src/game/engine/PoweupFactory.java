@@ -20,9 +20,6 @@ public class PoweupFactory {
 	/** The wheretospawn. */
 	private WhereToSpawn wheretospawn = new WhereToSpawn();
 	
-	/** The spawn position. */
-	private Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
-	
 	/**
 	 * Instantiates a new poweup factory.
 	 *
@@ -40,44 +37,44 @@ public class PoweupFactory {
 	
 	public AbstractGameObject GetPowerUpObj()  {
 		
-		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
+		var pos = this.wheretospawn.getPowerUPSpawnPoint();
 		Integer typeOfPowerUp = new RandomInt().getRandomInt(6, 8);
 		if (typeOfPowerUp == 6) {
-			createShield();
+			return createShield(pos);
 		} else if (typeOfPowerUp == 7) {
-		    createMultiplier();
+		    return createMultiplier(pos);
 		} else {
-			createSweeper();
+			return createSweeper(pos);
 		}
 	}
 	
 	/**
 	 * Creates a new Poweup object Shield.
-	 *
+	 * @param position
 	 * @return the power up obj
 	 */
-	public PowerUpObj createShield() {
+	public PowerUpObj createShield(Point2D position) {
 		
-		returnnew PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
+		return new PowerUpObj(position, ObjectType.PWRUP_SHIELD, gameEngine);
 		}
 	
 /**
  * Creates a new Poweup object Multiplier.
- *
+ * @param position
  * @return the power up obj
  */
-public PowerUpObj createMultiplier() {
+public PowerUpObj createMultiplier(Point2D position) {
 		
-	return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+	return new PowerUpObj(position, ObjectType.PWRUP_MULTIPLIER, gameEngine);
 		}
 
 /**
  * Creates a new Poweup object Sweeper.
- *
+ * @param position
  * @return the power up obj
  */
-public PowerUpObj createSweeper() {
-	return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
+public PowerUpObj createSweeper(Point2D position) {
+	return new PowerUpObj(position, ObjectType.PWRUP_SWEEPER, gameEngine);
 		}
 
 }
