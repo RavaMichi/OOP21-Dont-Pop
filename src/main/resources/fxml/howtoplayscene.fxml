@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import game.ui>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="pane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #fcdee9;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <children>
+      <TextArea id="textarea" editable="false" layoutX="159.0" layoutY="122.0" prefHeight="80.0" prefWidth="419.0" text="ENEMY: This ball is very fast and travels in an arc. Predicting its trajectory&#10;is key to surviving its deadly attack." wrapText="true"/>
+      <ImageView id="image" fitHeight="67.0" fitWidth="66.0" layoutX="40.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/shield.png" />
+         </image>
+      </ImageView>
+      <TextArea  id="textarea2" editable="false" layoutX="159.0" layoutY="15.0" prefHeight="80.0" prefWidth="419.0" text="ENEMY: The dart is the most common enemy. It will be launched towards the player, so staying on the move is the best way to avoid them." wrapText="true" />
+      <ImageView id="image1" fitHeight="74.0" fitWidth="96.0" layoutX="34.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/sweeper.png" />
+         </image>
+      </ImageView>
+      <Button id="goBackButton" alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #a53f63;" text="Go back" />
+      <ImageView id="image2" fitHeight="67.0" fitWidth="72.0" layoutX="36.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/thornball.png" />
+         </image>
+      </ImageView>
+      <TextArea  id="textarea3" editable="false" layoutX="159.0" layoutY="334.0" prefHeight="80.0" prefWidth="419.0" text="POWERUP: The shield powerup will block one hit before breaking. Lasts for a limited duration." wrapText="true"/>
+      <TextArea  id="textarea4" editable="false" layoutX="159.0" layoutY="445.0" prefHeight="80.0" prefWidth="419.0" text="POWERUP: The sweeper powerup will instantly remove all enemies from the screen. Waiting for the best opportunity to use it is recommended. Lasts for a limited duration." wrapText="true"/>
+      <ImageView id="image3" fitHeight="74.0" fitWidth="84.0" layoutX="34.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/multiplier.png" />
+         </image>
+      </ImageView>
+      <ImageView id="image4" fitHeight="76.0" fitWidth="96.0" layoutX="38.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/bullet.png" />
+         </image>
+      </ImageView>
+      <TextArea  id="textarea5" editable="false" layoutX="159.0" layoutY="223.0" prefHeight="80.0" prefWidth="419.0" text="POWERUP: The muliplier powerup makes you earn double points for surviving. The effect remains active for a short duration." wrapText="true"/>
+   </children>
+</AnchorPane>

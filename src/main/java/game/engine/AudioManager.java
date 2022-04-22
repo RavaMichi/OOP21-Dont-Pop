@@ -6,7 +6,6 @@ import java.util.Map;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 /**
  * The class that controls all sounds and music
@@ -21,7 +20,7 @@ public class AudioManager {
 	 * It's used for long audio files.
 	 */
 	public static enum Music {
-		BALOON_GROOVE("/audio/BaloonGroove.mp3");
+		BALOON_GROOVE("audio/BaloonGroove.mp3");
 		
 		private Music(String path) {
 			Media media = new Media(getResPath(path));
@@ -35,7 +34,11 @@ public class AudioManager {
 	 * It's used for short audio clips.
 	 */
 	public static enum Sound {
-		POP("/audio/pop.mp3");
+		POP("audio/pop.mp3"),
+		SHIELD_GET("audio/shield_equip.wav"),
+		SHIELD_HIT("audio/shield_hit.wav"),
+		MULTIPLIER_GET("audio/2x_equip.wav"),
+		SWEEPER_GET("audio/sweeper_use.wav");
 		
 		private Sound(String path) {
 			SOUNDS.put(this, new AudioClip(getResPath(path)));
@@ -47,7 +50,7 @@ public class AudioManager {
 	 * @return correct path
 	 */
 	private static String getResPath(String path) {
-		return AudioManager.class.getResource(path).toExternalForm();
+		return AudioManager.class.getClassLoader().getResource(path).toExternalForm();
 	}
 	
 	/**

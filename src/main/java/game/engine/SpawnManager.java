@@ -3,7 +3,6 @@ package game.engine;
 import game.model.*;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.Point2D;
-import game.util.RandomInt;
 
 
 /**
@@ -75,9 +74,6 @@ public class SpawnManager {
 	
 	/** The enemy factory. */
 	private EnemyFactory enemyFactory;
-	
-	/** The random int. */
-	private RandomInt randomInt = new RandomInt();
 
 	/** The pwrup timer. */
 	private double pwrupTimer = POWERUP_SPAWN_TIME;

@@ -48,7 +48,6 @@ public class PlayerObj extends AbstractGameObject {
 	 */
 	public void die() {
 		if (!this.isDead) {
-			this.getGameEngine().stopMusic();
 			this.getGameEngine().play(Sound.POP, 0.8);
 			this.setRenderer(new AnimationRenderer(this.animationFrames, 20, false));
 			this.isDead = true;
@@ -98,6 +97,12 @@ public class PlayerObj extends AbstractGameObject {
 	public void setGoldenBaloonImage() {
 		if (!this.isDead) {
 			((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_PLAYER);
+		}	
+	}
+	
+	public void setGoldenShieldBaloonImage() {
+		if (!this.isDead) {
+			((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_SHIELD_PLAYER);
 		}	
 	}
 

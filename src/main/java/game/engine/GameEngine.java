@@ -65,17 +65,21 @@ public class GameEngine implements Runnable {
         this.scoreCalc.onMultiplierStart(() -> {
         	if (!this.hasShield) {
         		this.player.setGoldenBaloonImage();
+        	} else {
+        		this.player.setGoldenShieldBaloonImage();
         	}
         });
         this.scoreCalc.onMultiplierEnd(() -> {
+        	this.hasMultiplier = false;
         	if (!this.hasShield) {
         		this.player.setBaloonImage();
+        	} else {
+        		this.player.setShieldImage();
         	}
         });
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
         this.audioManager = new AudioManager();
-        
         //likely add fps in future
     }
 
@@ -193,15 +197,22 @@ public class GameEngine implements Runnable {
         switch (pwrup.getType()) {
             case PWRUP_SHIELD:
                 this.hasShield = true;
-                this.player.setShieldImage();
+                if (this.hasMultiplier) {
+                	this.player.setGoldenShieldBaloonImage();
+                } else {
+                	this.player.setShieldImage();
+                }
+			audioManager.playSound(Sound.SHIELD_GET, 0.4);
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
                 //sets multiplier value (duration: 5 seconds)
                 this.scoreCalc.setMultiplier();
+            	audioManager.playSound(Sound.MULTIPLIER_GET, 0.4);
                 break;
             case PWRUP_SWEEPER: 
                 this.enemies.clear();
+            	audioManager.playSound(Sound.SWEEPER_GET, 0.5);
                 break;
             default:
                 //does nothing
@@ -213,6 +224,7 @@ public class GameEngine implements Runnable {
      */
     public void endGame() {
     	this.executeLoop = false;
+    	this.audioManager.stopAll();
     	//this.application.score(this.scoreCalc.getScore());
     }
 
@@ -332,6 +344,7 @@ public class GameEngine implements Runnable {
 			        this.hasShield = false;
 			        this.destroy(enemy);
 			        this.player.setBaloonImage();
+	            	audioManager.playSound(Sound.SHIELD_HIT, 0.5);
                 } else {
                     return true;
                 }
@@ -367,13 +380,13 @@ public class GameEngine implements Runnable {
         
         this.gameScene.render(renderList);
 	}
-
-	public void stopMusic() {
-		this.audioManager.stopAll();
-	}
-
-	public void play(final Sound pop, final double d) {
-		this.audioManager.playSound(pop, d);
+	/**
+	 * Plays a sound using given volume
+	 * @param sound
+	 * @param volume
+	 */
+	public void play(final Sound sound, double volume) {
+		this.audioManager.playSound(sound, volume);
 	}
 }
 

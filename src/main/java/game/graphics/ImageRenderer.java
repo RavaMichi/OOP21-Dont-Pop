@@ -20,19 +20,19 @@ public class ImageRenderer implements Renderer {
 	 */
 	public static enum Sprite {
 		//...sprites to add...//
-		PLAYER("/imgs/baloon.png"),
-		BULLET("/imgs/bullet.png"),
-		THORNBALL("/imgs/thornball.png"),
-		GOLDEN_PLAYER("/imgs/golden_baloon.png"),
-		SHIELD_PLAYER("/imgs/shield_baloon.png"),
-		POP_ANIMATION_1("/imgs/pop_1.png"),
-		POP_ANIMATION_2("/imgs/pop_2.png"),
-		POP_ANIMATION_3("/imgs/pop_3.png"),
-		POP_ANIMATION_4("/imgs/pop_4.png"),
-		//PNGs TO BE CREATED YET
-		PWRUP_SHIELD("/imgs/shield.png"),
-		PWRUP_MULTIPLIER("/imgs/multiplier.png"),
-		PWRUP_SWEEPER("/imgs/sweeper.png");
+		PLAYER("/baloon.png"),
+		BULLET("/bullet.png"),
+		THORNBALL("/thornball.png"),
+		GOLDEN_PLAYER("/golden_baloon.png"),
+		SHIELD_PLAYER("/shield_baloon.png"),
+		GOLDEN_SHIELD_PLAYER("/golden_shield_baloon.png"),
+		POP_ANIMATION_1("/pop_1.png"),
+		POP_ANIMATION_2("/pop_2.png"),
+		POP_ANIMATION_3("/pop_3.png"),
+		POP_ANIMATION_4("/pop_4.png"),
+		PWRUP_SHIELD("/shield.png"),
+		PWRUP_MULTIPLIER("/multiplier.png"),
+		PWRUP_SWEEPER("/sweeper.png");
 		
 		
 		private final Image img;

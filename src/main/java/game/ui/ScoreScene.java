@@ -21,7 +21,7 @@ public class ScoreScene {
 	 */
 	public ScoreScene(final ScoreManager scoreManager, final GameApplication application, final int screenSize) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/fxml/scorescene.fxml"));
+		loader.setLocation(getClass().getResource("/game/fxml/scorescene.fxml"));
 		
 		//controller created here
 		ScoreSceneController controller = new ScoreSceneController(scoreManager, application, screenSize);
@@ -34,7 +34,7 @@ public class ScoreScene {
 		BorderPane root = loader.load();
 
 		this.scene = new Scene(root, screenSize, screenSize);
-		this.scene.getStylesheets().add(getClass().getResource("/css/scorescene-styles.css").toExternalForm());
+		this.scene.getStylesheets().add(getClass().getResource("/game/css/scorescene-styles.css").toExternalForm());
 //		stage.setTitle("Score Ranking");
 //		stage.setWidth(GameApplication.screenSize * 0.90);
 //		stage.setHeight(GameApplication.screenSize * 0.90);

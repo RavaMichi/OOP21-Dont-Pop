@@ -27,12 +27,17 @@
             </HBox>
             <VBox id="buttons" fx:id="buttons" alignment="CENTER">
                <children>
-                  <Button id="play-button" fx:id="playButton" mnemonicParsing="false" onAction="#play" prefHeight="50.0" prefWidth="175.0" text="Play">
+                  <Button id="play-button" fx:id="playButton" mnemonicParsing="false" onAction="#play" prefHeight="44.0" prefWidth="175.0" text="Play">
                      <font>
                         <Font name="System Bold" />
                      </font>
                   </Button>
                   <Button id="leaderboard-button" fx:id="leaderboardButton" mnemonicParsing="false" onAction="#leaderboard" prefHeight="44.0" prefWidth="175.0" text="Leaderboard">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                  </Button>
+                  <Button id="leaderboard-button" fx:id="leaderboardButton1" mnemonicParsing="false" onAction="#howToPlay" prefHeight="44.0" prefWidth="175.0" text="How to play">
                      <font>
                         <Font name="System Bold" />
                      </font>
