@@ -65,11 +65,16 @@ public class GameEngine implements Runnable {
         this.scoreCalc.onMultiplierStart(() -> {
         	if (!this.hasShield) {
         		this.player.setGoldenBaloonImage();
+        	} else {
+        		this.player.setGoldenShieldBaloonImage();
         	}
         });
         this.scoreCalc.onMultiplierEnd(() -> {
+        	this.hasMultiplier = false;
         	if (!this.hasShield) {
         		this.player.setBaloonImage();
+        	} else {
+        		this.player.setShieldImage();
         	}
         });
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
@@ -192,8 +197,12 @@ public class GameEngine implements Runnable {
         switch (pwrup.getType()) {
             case PWRUP_SHIELD:
                 this.hasShield = true;
-                this.player.setShieldImage();
-            	audioManager.playSound(Sound.SHIELD_GET, 0.4);
+                if (this.hasMultiplier) {
+                	this.player.setGoldenShieldBaloonImage();
+                } else {
+                	this.player.setShieldImage();
+                }
+			audioManager.playSound(Sound.SHIELD_GET, 0.4);
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;

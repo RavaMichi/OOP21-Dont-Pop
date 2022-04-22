@@ -99,6 +99,12 @@ public class PlayerObj extends AbstractGameObject {
 			((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_PLAYER);
 		}	
 	}
+	
+	public void setGoldenShieldBaloonImage() {
+		if (!this.isDead) {
+			((ImageRenderer)this.getRenderer()).setSprite(ImageRenderer.Sprite.GOLDEN_SHIELD_PLAYER);
+		}	
+	}
 
 	public void setShieldImage() {
 		if (!this.isDead) {
