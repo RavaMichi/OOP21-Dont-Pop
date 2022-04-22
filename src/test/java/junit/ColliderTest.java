@@ -1,8 +1,7 @@
-package test.junit;
-import static org.junit.Assert.*;
+package junit;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import game.collider.*;
 import game.model.AbstractGameObject;
@@ -12,7 +11,6 @@ public class ColliderTest {
 	
 	private AbstractGameObject player;
 	
-	@Before
 	private void initPlayer() {
 		//creates a game object at the center
 		player = new AbstractGameObject(Point2D.of(0.5, 0.5), null, null) {

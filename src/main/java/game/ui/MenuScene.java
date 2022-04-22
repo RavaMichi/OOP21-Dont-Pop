@@ -19,7 +19,7 @@ public class MenuScene {
 	 */
 	public MenuScene(final GameApplication application, final int screenSize) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/game/fxml/menuscene.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/menuscene.fxml"));
 		
 		//controller created here
 		MenuSceneController controller = new MenuSceneController(application);
@@ -29,7 +29,7 @@ public class MenuScene {
 		BorderPane root = loader.load();
 		
 		this.scene = new Scene(root, screenSize, screenSize);
-		this.scene.getStylesheets().add(getClass().getResource("/game/css/menuscene-styles.css").toExternalForm());
+		this.scene.getStylesheets().add(getClass().getResource("/css/menuscene-styles.css").toExternalForm());
 	}
 	
 	/**
