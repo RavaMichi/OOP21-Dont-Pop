@@ -1,6 +1,4 @@
 bin/
 doc/
-shade/
-target/
 *.pdf
 *.log
