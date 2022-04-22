@@ -34,7 +34,11 @@ public class AudioManager {
 	 * It's used for short audio clips.
 	 */
 	public static enum Sound {
-		POP("audio/pop.mp3");
+		POP("audio/pop.mp3"),
+		SHIELD_GET("audio/shield_equip.wav"),
+		SHIELD_HIT("audio/shield_hit.wav"),
+		MULTIPLIER_GET("audio/2x_equip.wav"),
+		SWEEPER_GET("audio/sweeper_use.wav");
 		
 		private Sound(String path) {
 			SOUNDS.put(this, new AudioClip(getResPath(path)));
