@@ -4,6 +4,7 @@ import game.engine.GameApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 
 
 /**
@@ -11,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class HowToPlayScene {
 
+	private static final int DEFAULT_SIZE = 650; //when scaling factor is 1, screen size = default size.
 	/** The scene. */
 	private final Scene scene;
 
@@ -30,7 +32,13 @@ public class HowToPlayScene {
 		loader.setController(controller);
 
 		// load GUI from FXML
-		AnchorPane root = loader.load();
+		AnchorPane root = loader.<AnchorPane>load();
+		
+		//scaling
+		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+		
+		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+		root.getTransforms().add(scaleTransformation);
 
 		this.scene = new Scene(root, screenSize, screenSize);
 	}
