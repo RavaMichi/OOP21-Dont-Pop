@@ -39,15 +39,4 @@ public class HowToPlaySceneController {
 	}
 	
 	
-	/**
-	 * Starts game when user presses ENTER key.
-	 * @param keyPressed (starts game if ENTER)
-	 */
-	public void onEnter(final KeyEvent keyPressed) {
-		if(keyPressed.getCode() == KeyCode.ENTER) {
-			this.goToTheMenu();
-		}
-	}
-	
-	
 }
