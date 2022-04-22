@@ -77,6 +77,10 @@ public class MenuSceneController {
 		this.application.viewScoreNoEdit();
 	}
 	
+	public void howToPlay() {
+		this.application.howToPlay();
+	}
+	
 	/**
 	 * Starts game when user presses ENTER key.
 	 * @param keyPressed (starts game if ENTER)
