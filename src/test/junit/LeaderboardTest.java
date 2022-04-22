@@ -27,13 +27,33 @@ public class LeaderboardTest {
 		this.leaderboard.addToRanking("Test1", 5);
 //		this.leaderboard.save();
 //		this.leaderboard.load();
-		list.add(new Pair<>("Test1", 5));
-		assertEquals(list, leaderboard.getRanking());
+		this.list.add(new Pair<>("Test1", 5));
+		assertEquals(this.list, this.leaderboard.getRanking());
 	}
 	
 	@Test
 	public void testAddToRanking2() {
-		leaderboard.addToRanking("Test2", 10);
-		
+		this.leaderboard.addToRanking("Test2", 10);
+		this.list.add(0, new Pair<>("Test2", 10));
+		assertEquals(this.list, this.leaderboard.getRanking());
+	}
+	
+	@Test
+	public void testAddToRanking3() {
+	    this.leaderboard.addToRanking("Test3", 1);
+	    this.list.add(new Pair<>("Test3", 1));
+	    assertEquals(this.list, this.leaderboard.getRanking());
+	}
+	
+	@Test
+	public void testGetRanking() {
+	    assertEquals(this.list, this.leaderboard.getRanking());
+	}
+	
+	@Test
+	public void testGetRank() {
+	    assertEquals(1, this.leaderboard.getRank("Test2", 10));
+	    assertEquals(2, this.leaderboard.getRank("Test1", 5));
+	    assertEquals(3, this.leaderboard.getRank("Test3", 1));
 	}
 }

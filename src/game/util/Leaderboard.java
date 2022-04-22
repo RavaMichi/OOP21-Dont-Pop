@@ -91,7 +91,7 @@ public class Leaderboard {
 	public int getRank(final String playerName, final int score) {
 		for (int i = 0; i < this.ranking.size(); i++) {
 			if (this.ranking.get(i).get1().equals(playerName) && 
-					this.ranking.get(i).get2().equals(score)) {
+			    this.ranking.get(i).get2().equals(score)) {
 				return i + 1;
 			}
 		}
