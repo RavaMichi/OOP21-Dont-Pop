@@ -70,7 +70,7 @@ public class GameApplication extends Application {
 	/**
 	 * Launch howTPlay GUI (run the game).
 	 */
-	public void hoWToPlay() {
+	public void howToPlay() {
 		try {
 			HowToPlayScene howtoplayscene = new HowToPlayScene(this, screenSize);
 			this.switchScene(howtoplayscene.getScene());
