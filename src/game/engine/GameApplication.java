@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 
 public class GameApplication extends Application {
 	
-	private static final String SAVE_PATH = "Dont-Pop/res/.save";
+	private static final String SAVE_PATH = ".save";
 	
 	//guardare dove lo devo prendere
 	private String playerName;
