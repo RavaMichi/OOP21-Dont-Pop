@@ -23,9 +23,13 @@ public class HowToPlaySceneController {
 	@FXML private TextArea textarea2;
 	@FXML private TextArea textarea3;
 	@FXML private TextArea textarea4;
+	@FXML private TextArea textarea5;
 	@FXML private Button goBackButton;
-
-	
+	@FXML private ImageView image;
+	@FXML private ImageView image2;
+	@FXML private ImageView image3;
+	@FXML private ImageView image4;
+	@FXML private ImageView image5;
 	/**
 	 * Go to the menu scene
 	 */
