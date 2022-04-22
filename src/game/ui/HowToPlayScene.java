@@ -23,14 +23,14 @@ public class HowToPlayScene {
 	 */
 	public HowToPlayScene(final GameApplication application, final int screenSize) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("src/game/fxml/howtoplay.fxml"));
+		loader.setLocation(getClass().getResource("/game/fxml/howtoplayscene.fxml"));
 
 		// controller created here
 		HowToPlaySceneController controller = new HowToPlaySceneController(application);
 		loader.setController(controller);
 
 		// load GUI from FXML
-		AnchorPane root = (AnchorPane) loader.load();
+		AnchorPane root = loader.load();
 
 		this.scene = new Scene(root, screenSize, screenSize);
 	}

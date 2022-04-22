@@ -4,6 +4,7 @@ import game.engine.GameApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -17,7 +18,7 @@ public class HowToPlaySceneController {
 		this.application = application;
 	}
 
-	@FXML private Pane pane;
+	@FXML private AnchorPane pane;
 	@FXML private TextArea textarea;
 	@FXML private Button goBackButton;
 

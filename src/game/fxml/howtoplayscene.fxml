@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #fcdee9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #fcdee9;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <children>
       <TextArea editable="false" layoutX="159.0" layoutY="122.0" prefHeight="80.0" prefWidth="419.0" text="This type of enemy are very bad and strong. Use your &#10;brain and avoid these enemies." />
       <ImageView fitHeight="67.0" fitWidth="66.0" layoutX="40.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
