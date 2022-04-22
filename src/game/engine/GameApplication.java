@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 
 public class GameApplication extends Application {
 	
-	private static final String SAVE_PATH = "Dont-Pop/res/.save";
+	private static final String SAVE_PATH = ".save";
 	
 	//guardare dove lo devo prendere
 	private String playerName;
@@ -29,8 +29,7 @@ public class GameApplication extends Application {
 	 */
 	static {
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		screenSize = (int) Math.min(screenBounds.getWidth(), screenBounds.getHeight());
-		screenSize= (int) (0.95) * screenSize;
+		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
 	}
 	
 	/**
@@ -66,7 +65,21 @@ public class GameApplication extends Application {
 		return num / screenSize;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 
 									// (50% della lunghezza dello schermo)
 	}
-
+	
+	
+	/**
+	 * Launch howTPlay GUI (run the game).
+	 */
+	public void howToPlay() {
+		try {
+			HowToPlayScene howtoplayscene = new HowToPlayScene(this, screenSize);
+			this.switchScene(howtoplayscene.getScene());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * Convert percentage size to pixel size.
 	 * @param num

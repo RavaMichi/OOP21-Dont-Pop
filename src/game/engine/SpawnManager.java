@@ -75,9 +75,6 @@ public class SpawnManager {
 	
 	/** The enemy factory. */
 	private EnemyFactory enemyFactory;
-	
-	/** The random int. */
-	private RandomInt randomInt = new RandomInt();
 
 	/** The pwrup timer. */
 	private double pwrupTimer = POWERUP_SPAWN_TIME;

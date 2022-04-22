@@ -1,5 +1,7 @@
 bin/
 doc/
+target/
+shade/
 .classpath
 *.pdf
 *.log
