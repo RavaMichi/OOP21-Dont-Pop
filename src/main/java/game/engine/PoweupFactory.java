@@ -7,16 +7,18 @@ import game.model.AbstractGameObject;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.WhereToSpawn;
 
+// TODO: Auto-generated Javadoc
 /**
  * A factory for creating powerup objects using Factory method where it use a random type of powerup
  * and the class creates it.
  */
 public class PoweupFactory {
 	
+	/** The game engine. */
 	private GameEngine gameEngine; //da passare al costruttore
-	private WhereToSpawn wheretospawn = new WhereToSpawn();
 	
-	private Point2D spawnPosition = wheretospawn.getPowerUPSpawnPoint();//PUNTO RANDOM ALL'INTERNO DELLA MAPPA 
+	/** The wheretospawn. */
+	private WhereToSpawn wheretospawn = new WhereToSpawn();
 	
 	/**
 	 * Instantiates a new poweup factory.
@@ -30,20 +32,49 @@ public class PoweupFactory {
 	/**
 	 * Instantiates a new poweup factory.
 	 *
-	 * @param gameEngine2 the game engine
 	 * @return the abstract game object
 	 */
 	
 	public AbstractGameObject GetPowerUpObj()  {
 		
-		var pos = Point2D.of(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
+		var pos = this.wheretospawn.getPowerUPSpawnPoint();
 		Integer typeOfPowerUp = new RandomInt().getRandomInt(6, 8);
 		if (typeOfPowerUp == 6) {
-			return new PowerUpObj(pos, ObjectType.PWRUP_SHIELD, gameEngine);
+			return createShield(pos);
 		} else if (typeOfPowerUp == 7) {
-			return new PowerUpObj(pos, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+		    return createMultiplier(pos);
 		} else {
-			return new PowerUpObj(pos, ObjectType.PWRUP_SWEEPER, gameEngine);
+			return createSweeper(pos);
 		}
 	}
+	
+	/**
+	 * Creates a new Poweup object Shield.
+	 * @param position
+	 * @return the power up obj
+	 */
+	public PowerUpObj createShield(Point2D position) {
+		
+		return new PowerUpObj(position, ObjectType.PWRUP_SHIELD, gameEngine);
+		}
+	
+/**
+ * Creates a new Poweup object Multiplier.
+ * @param position
+ * @return the power up obj
+ */
+public PowerUpObj createMultiplier(Point2D position) {
+		
+	return new PowerUpObj(position, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+		}
+
+/**
+ * Creates a new Poweup object Sweeper.
+ * @param position
+ * @return the power up obj
+ */
+public PowerUpObj createSweeper(Point2D position) {
+	return new PowerUpObj(position, ObjectType.PWRUP_SWEEPER, gameEngine);
+		}
+
 }

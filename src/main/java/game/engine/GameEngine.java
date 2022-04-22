@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import game.util.Point2D;
 import game.collider.CircleCollider;
-import game.engine.AudioManager.Sound;
 import game.ui.GameScene;
 import game.model.*;
 import game.util.ScoreCalc;
@@ -21,7 +20,6 @@ public class GameEngine implements Runnable {
     private double gameTime;	//game time, starting from 0
     private final PlayerObj player;
     private final SpawnManager spawnManager;
-    private final AudioManager audioManager;
     private final ScoreCalc scoreCalc;
     private final GameScene gameScene;
     private final GameApplication application;
@@ -74,7 +72,7 @@ public class GameEngine implements Runnable {
         });
         this.scoreDisplay = new ScoreDisplayObj(new Point2D(SCORE_POS_X, SCORE_POS_Y), AbstractGameObject.ObjectType.SCORE, this);
         this.spawnManager = new SpawnManager(this);
-        this.audioManager = new AudioManager();
+        
         //likely add fps in future
     }
 
@@ -83,9 +81,6 @@ public class GameEngine implements Runnable {
      * @throws Exception 
      */
     public void startGameLoop() throws Exception {
-    	//start music
-    	this.audioManager.playMusic(AudioManager.Music.BALOON_GROOVE, 0.6);
-    	//start loop
         while (executeLoop) {
             //interval between "frames"
             final long startTime = System.currentTimeMillis();
@@ -212,7 +207,6 @@ public class GameEngine implements Runnable {
      */
     public void endGame() {
     	this.executeLoop = false;
-    	this.audioManager.stopAll();
     	//this.application.score(this.scoreCalc.getScore());
     }
 
@@ -312,9 +306,9 @@ public class GameEngine implements Runnable {
     	try {
             Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
         } catch (IllegalArgumentException e1) { 
-            //e1.printStackTrace();
+            e1.printStackTrace();
         } catch (InterruptedException e2) {
-            //e2.printStackTrace();
+            e2.printStackTrace();
         }
     }
 	
@@ -366,20 +360,6 @@ public class GameEngine implements Runnable {
         renderList.add(this.scoreDisplay);
         
         this.gameScene.render(renderList);
-	}
-	/**
-	 * Plays a sound using given volume
-	 * @param sound
-	 * @param volume
-	 */
-	public void play(final Sound sound, double volume) {
-		this.audioManager.playSound(sound, volume);
-	}
-	/**
-	 * Stops the music
-	 */
-	public void stopMusic() {
-		this.audioManager.stopMusics();
 	}
 }
 

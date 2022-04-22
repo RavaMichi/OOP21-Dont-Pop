@@ -68,10 +68,7 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		 * @return the power UP spawn point
 		 */
 		public Point2D getPowerUPSpawnPoint() {
-			RandomInt randomInt= new RandomInt();
-			double x = randomInt.getRandomInt(0,100)/100;
-			double y = randomInt.getRandomInt(0,100)/100;
-			return new Point2D(x , y);
+			return new Point2D(Math.random()*0.6 + 0.2, Math.random()*0.6 + 0.2);
 			}
 		
 		/**
@@ -92,14 +89,14 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		public  Point2D getThornballSpawnPoint(int side) {
 			
 			RandomInt randomInt= new RandomInt();
-			int sideOfSpawn= this.getRandomSide();
+			int sideOfSpawn= this.getThornballRandomSide();
 			double randomNumber=randomInt.getRandomInt(1,100) / 100 ;
 			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
 				return new Point2D(-0.2,randomNumber);
 			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
 				return new Point2D(1.2 , randomNumber);			
 		}
-			return new Point2D(0.2,-0.2); //IN CASO DI ERRORE SPAWN IN (0.2,-0.2)
+			return new Point2D(0.2,-0.2); //default spawn point
   }
 	
 }
