@@ -21,7 +21,7 @@
             <Image url="/sweeper.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#goToTheMenu" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #a53f63;" text="Go back" />
+      <Button alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #a53f63;" text="Go back" />
       <ImageView fitHeight="67.0" fitWidth="72.0" layoutX="36.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/thornball.png" />
