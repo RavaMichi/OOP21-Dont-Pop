@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #fcdee9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea editable="false" layoutX="159.0" layoutY="122.0" prefHeight="80.0" prefWidth="419.0" text="This type of enemy are very bad and strong. Use your &#10;brain and avoid these enemies." />
+      <ImageView fitHeight="67.0" fitWidth="66.0" layoutX="40.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/shield.png" />
+         </image>
+      </ImageView>
+      <TextArea editable="false" layoutX="159.0" layoutY="15.0" prefHeight="80.0" prefWidth="419.0" text="They are fast and angry. They are thee principal enemy in game. Warning they are everywhere. You will meet more and more bullets going on." wrapText="true" />
+      <ImageView fitHeight="74.0" fitWidth="96.0" layoutX="34.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/sweeper.png" />
+         </image>
+      </ImageView>
+      <Button alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#goToTheMenu" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #a53f63;" text="Go back" />
+      <ImageView fitHeight="67.0" fitWidth="72.0" layoutX="36.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/thornball.png" />
+         </image>
+      </ImageView>
+      <TextArea editable="false" layoutX="159.0" layoutY="334.0" prefHeight="80.0" prefWidth="419.0" text="Take that shield and you will be invincible for one hit. &#10;Warning the shield is temporary." />
+      <TextArea editable="false" layoutX="159.0" layoutY="445.0" prefHeight="80.0" prefWidth="419.0" text="Clean the screen by deleting all of  bad guys. It's the biggest&#10;powerup." />
+      <ImageView fitHeight="74.0" fitWidth="84.0" layoutX="34.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/multiplier.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="76.0" fitWidth="96.0" layoutX="38.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/bullet.png" />
+         </image>
+      </ImageView>
+      <TextArea editable="false" layoutX="159.0" layoutY="223.0" prefHeight="80.0" prefWidth="419.0" text="The multiplier makes you gaining double points for a&#10; limited time." />
+   </children>
+</AnchorPane>
