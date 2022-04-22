@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <top>
+      <Label id="title" fx:id="title" text="Don't Pop" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox id="game-controls" fx:id="gameControls" BorderPane.alignment="CENTER">
+         <children>
+            <HBox id="name-box" fx:id="nameBox" alignment="CENTER">
+               <children>
+                  <Label id="name-label" fx:id="nameLabel" text="What's your name? " />
+                  <TextField id="name-prompt" fx:id="namePrompt" onKeyPressed="#onEnter" promptText="Nickname" />
+               </children>
+            </HBox>
+            <VBox id="buttons" fx:id="buttons" alignment="CENTER">
+               <children>
+                  <Button id="play-button" fx:id="playButton" mnemonicParsing="false" onAction="#play" prefHeight="44.0" prefWidth="175.0" text="Play">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                  </Button>
+                  <Button id="leaderboard-button" fx:id="leaderboardButton" mnemonicParsing="false" onAction="#leaderboard" prefHeight="44.0" prefWidth="175.0" text="Leaderboard">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

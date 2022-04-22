@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="border-pane" fx:id="borderPane" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <center>
+      <VBox id="layout" fx:id="layout" BorderPane.alignment="CENTER">
+         <children>
+            <VBox id="your-score" fx:id="yourScore" alignment="TOP_CENTER">
+               <children>
+                  <Label id="your-score-label" fx:id="yourScoreLabel" text="Your Score">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                  </Label>
+                  <TableView id="your-score-table" fx:id="yourScoreTable" editable="true">
+                    <columns>
+                      <TableColumn id="rank-col" fx:id="yourRankCol" reorderable="false" resizable="false" sortable="false" text="Rank">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="rank" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="name-col" fx:id="yourNameCol" reorderable="false" resizable="false" sortable="false" text="Name">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="name" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="score-col" fx:id="yourScoreCol" reorderable="false" resizable="false" sortable="false" text="Score">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="score" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox id="leaderboard" fx:id="leaderboard" alignment="TOP_CENTER">
+               <children>
+                  <Label id="leaderboard-label" fx:id="leaderboardLabel" text="Leaderboard">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                  </Label>
+                  <TableView id="leaderboard-table" fx:id="leaderboardTable" editable="true">
+                    <columns>
+                      <TableColumn id="rank-col" fx:id="rankCol" reorderable="false" resizable="false" sortable="false" text="Rank">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="rank" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="name-col" fx:id="nameCol" reorderable="false" resizable="false" sortable="false" text="Name">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="name" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                      <TableColumn id="score-col" fx:id="scoreCol" reorderable="false" resizable="false" sortable="false" text="Score">
+                      	<cellValueFactory>
+                           <PropertyValueFactory property="score" />
+                      	</cellValueFactory>
+                      </TableColumn>
+                    </columns>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+            <HBox id="menu" fx:id="menu" alignment="TOP_CENTER">
+               <children>
+                  <Button id="play-button" fx:id="playButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#play" text="Play again" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button id="menu-button" fx:id="menuButton" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#menu" text="Home" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
