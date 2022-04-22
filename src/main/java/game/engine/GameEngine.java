@@ -312,9 +312,9 @@ public class GameEngine implements Runnable {
     	try {
             Thread.sleep(TIME_CONST_60_HZ_MS - (endTime - startTime));
         } catch (IllegalArgumentException e1) { 
-            e1.printStackTrace();
+            //e1.printStackTrace();
         } catch (InterruptedException e2) {
-            e2.printStackTrace();
+            //e2.printStackTrace();
         }
     }
 	
