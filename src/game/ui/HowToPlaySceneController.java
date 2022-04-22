@@ -33,7 +33,7 @@ public class HowToPlaySceneController {
 	/**
 	 * Go to the menu scene
 	 */
-	public void goToTheMenu() {
+	public void menu() {
 
 		this.application.menu();
 	}
