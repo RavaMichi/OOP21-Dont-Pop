@@ -20,6 +20,9 @@ public class HowToPlaySceneController {
 
 	@FXML private AnchorPane pane;
 	@FXML private TextArea textarea;
+	@FXML private TextArea textarea2;
+	@FXML private TextArea textarea3;
+	@FXML private TextArea textarea4;
 	@FXML private Button goBackButton;
 
 	
