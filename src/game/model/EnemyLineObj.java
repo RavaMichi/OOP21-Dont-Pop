@@ -25,10 +25,10 @@ public class EnemyLineObj extends AbstractGameObject {
 	@Override
 	public void update() {
 		timer -= this.getGameEngine().getDeltaTime();
-		if (timer <= 0) {
+		if (timer <= 0.15) {
 			activate();
 		}
-		if (timer <= -1) {
+		if (timer <= -0.65) {
 			this.destroy();
 		}
 		
