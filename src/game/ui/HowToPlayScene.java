@@ -30,7 +30,7 @@ public class HowToPlayScene {
 		loader.setController(controller);
 
 		// load GUI from FXML
-		Pane root = (Pane) loader.load();
+		AnchorPane root = (Pane) loader.load();
 
 		this.scene = new Scene(root, screenSize, screenSize);
 	}
