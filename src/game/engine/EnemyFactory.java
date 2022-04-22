@@ -57,31 +57,22 @@ public class EnemyFactory {
 
 		if (objectTyper == ObjectType.BULLET) {
 
-			this.spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
-			this.direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
-			this.direction.sub(spawnPosition);
-			return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY, ObjectType.BULLET, gameEngine);
+			createBullet();
 
 		} else if (objectTyper == ObjectType.THORNBALL) {
 
-			this.spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
-			return new EnemyBallObj(spawnPosition, ObjectType.THORNBALL, gameEngine);
+			createThornball();
 
 		} else if (objectTyper == ObjectType.EXPLOSION) {
 
-			var r = new Random();
-			this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
-			return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
+			createExplosion();
 
 		} else if (objectTyper == ObjectType.LASER) {
 
-			var r = new Random();
-			this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
-			this.direction = new Point2D(r.nextDouble() * 2 - 1, r.nextDouble() * 2 - 1); // (-1, -1) -> (1, 1)
-			return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
+			createLaser();
 		}
-		// mettere new exception e creare classe per il test
-		return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY, ObjectType.BULLET, gameEngine);
+		// default enemy
+		createBullet();
 	}
 
 	/**
@@ -90,8 +81,8 @@ public class EnemyFactory {
 	 * @return the abstract game object
 	 */
 	public AbstractGameObject createBullet() {
-		Point2D spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
-		Point2D direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
+		spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
+		direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
 		direction.sub(spawnPosition);
 		return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY, ObjectType.BULLET, gameEngine);
 	}
