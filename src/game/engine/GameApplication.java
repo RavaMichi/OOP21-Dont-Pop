@@ -1,6 +1,7 @@
 package game.engine;
 
 import game.ui.GameScene;
+import game.ui.HowToPlayScene;
 import game.ui.MenuScene;
 import game.ui.ScoreScene;
 import game.util.Leaderboard;

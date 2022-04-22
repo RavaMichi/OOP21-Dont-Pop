@@ -3,7 +3,6 @@ package game.engine;
 import game.model.*;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.Point2D;
-import game.util.RandomInt;
 
 
 /**

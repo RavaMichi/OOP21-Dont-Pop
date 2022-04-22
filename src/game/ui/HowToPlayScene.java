@@ -3,7 +3,7 @@ package game.ui;
 import game.engine.GameApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -30,7 +30,7 @@ public class HowToPlayScene {
 		loader.setController(controller);
 
 		// load GUI from FXML
-		AnchorPane root = (Pane) loader.load();
+		AnchorPane root = (AnchorPane) loader.load();
 
 		this.scene = new Scene(root, screenSize, screenSize);
 	}
