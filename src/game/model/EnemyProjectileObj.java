@@ -46,7 +46,7 @@ public class EnemyProjectileObj extends AbstractGameObject {
 		Point2D p2 = Point2D.copyOf(p1);
 		Point2D offset = Point2D.copyOf(p2);
 		p2.mul(-1);
-		offset.mul(0.5);
+		offset.mul(0.3);
 		offset.set(new Point2D(-offset.getY(), offset.getX()));
 		p2.add(offset);
 		
