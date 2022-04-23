@@ -3,13 +3,16 @@ package game.ui;
 import game.engine.GameApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.transform.Scale;
 
 /**
  * MenuScene displays the Main Menu GUI.
  */
 public class MenuScene {
 	
+	private static final double DEFAULT_SIZE = 300;
 	private final Scene scene;
 	
 	/**
@@ -24,9 +27,13 @@ public class MenuScene {
 		//controller created here
 		MenuSceneController controller = new MenuSceneController(application);
 		loader.setController(controller);
-		
 		//load GUI from FXML
-		BorderPane root = loader.load();
+		AnchorPane root = loader.load();
+		
+
+		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+		root.getTransforms().add(scaleTransformation);
 		
 		this.scene = new Scene(root, screenSize, screenSize);
 		this.scene.getStylesheets().add(getClass().getResource("/game/css/menuscene-styles.css").toExternalForm());
