@@ -18,13 +18,13 @@ public class MenuSceneController {
 	
 	private final GameApplication application;
 	
-	//@FXML private AnchorPane anchorPane;
-	//@FXML private Label title;
+	@FXML private AnchorPane anchorPane;
+	@FXML private Label title;
 	@FXML private Label nameLabel;
 	@FXML private TextField namePrompt;
-	//@FXML private Button playButton;
-	//@FXML private Button leaderboardButton;
-	//@FXML private Button howtoplayButton;
+	@FXML private Button playButton;
+	@FXML private Button leaderboardButton;
+	@FXML private Button howtoplayButton;
 	
 	public MenuSceneController(final GameApplication application) {
 		this.application = application;
