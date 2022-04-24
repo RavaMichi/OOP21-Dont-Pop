@@ -5,3 +5,4 @@ shade/
 .classpath
 *.pdf
 *.log
+src/test/fxml/

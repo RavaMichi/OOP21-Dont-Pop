@@ -19,13 +19,13 @@ public class MenuSceneController {
 		this.application = application;
 	}
 
-	@FXML private AnchorPane anchorPane;
-	@FXML private Label title;
+	//@FXML private AnchorPane anchorPane;
+	//@FXML private Label title;
 	@FXML private Label nameLabel;
 	@FXML private TextField namePrompt;
-	@FXML private Button playButton;
-	@FXML private Button leaderboardButton;
-	@FXML private Button howtoplayButton;
+	//@FXML private Button playButton;
+	//@FXML private Button leaderboardButton;
+	//@FXML private Button howtoplayButton;
 	
 	/**
 	 * Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).
