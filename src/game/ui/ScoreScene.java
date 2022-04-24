@@ -22,22 +22,22 @@ public class ScoreScene {
 	 * @throws Exception (necessary to load files, esp. FXML)
 	 */
 	public ScoreScene(final ScoreManager scoreManager, final GameApplication application, final int screenSize) throws Exception {
-		FXMLLoader loader = new FXMLLoader();
+		final FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/game/fxml/scorescene.fxml"));
 		
 		//controller created here
-		ScoreSceneController controller = new ScoreSceneController(scoreManager, application, screenSize);
+		final ScoreSceneController controller = new ScoreSceneController(scoreManager, application, screenSize);
 		loader.setController(controller);
 		
 		//controller created in fxml
 //		BuilderController controller = loader.getController();
 		
 		//load GUI from FXML
-		AnchorPane root = loader.load();
+		final AnchorPane root = loader.load();
 
-		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
-                Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
-                root.getTransforms().add(scaleTransformation);
+		final double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+        final Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+        root.getTransforms().add(scaleTransformation);
 		
 		this.scene = new Scene(root, screenSize, screenSize);
 		this.scene.getStylesheets().add(getClass().getResource("/game/css/scorescene-styles.css").toExternalForm());

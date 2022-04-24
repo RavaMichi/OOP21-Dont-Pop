@@ -28,6 +28,21 @@ public class ScoreSceneController {
 	private final ObservableList<RankItem> yourScoreData;
 	private final static int DEFAULT_SIZE = 300;
 	
+	//These fields are automatically injected by the FXML loader.
+	@FXML private AnchorPane anchorPane;
+	@FXML private Label yourScoreLabel;
+	@FXML private TableView<RankItem> yourScoreTable;		//your score table
+	@FXML private TableColumn<RankItem, String> yourRankCol;
+	@FXML private TableColumn<RankItem, String> yourNameCol;
+	@FXML private TableColumn<RankItem, Integer> yourScoreCol;
+	@FXML private Label leaderboardLabel;
+	@FXML private TableView<RankItem> leaderboardTable;		//leaderboard table
+	@FXML private TableColumn<RankItem, String> rankCol;
+	@FXML private TableColumn<RankItem, String> nameCol;
+	@FXML private TableColumn<RankItem, Integer> scoreCol;
+	@FXML private Button playButton;
+	@FXML private Button menuButton;
+	
 	/**
 	 * Initializes non-fxml fields of this class.
 	 * Then, returns control to ScoreScene which will build the layout as per the FXML file.
@@ -46,7 +61,7 @@ public class ScoreSceneController {
 						this.scoreManager.getPlayerName(), 
 						this.scoreManager.getScore()));
 
-		for(var i: this.ranking) {
+		for(final var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
 			this.leaderboardData.add(new RankItem(
 					Integer.toString(index + 1),
@@ -54,21 +69,6 @@ public class ScoreSceneController {
 					i.get2()));
 		}
 	}
-	
-	//These fields are automatically injected by the FXML loader.
-	@FXML private AnchorPane anchorPane;
-	@FXML private Label yourScoreLabel;
-	@FXML private TableView<RankItem> yourScoreTable;		//your score table
-	@FXML private TableColumn<RankItem, String> yourRankCol;
-	@FXML private TableColumn<RankItem, String> yourNameCol;
-	@FXML private TableColumn<RankItem, Integer> yourScoreCol;
-	@FXML private Label leaderboardLabel;
-	@FXML private TableView<RankItem> leaderboardTable;		//leaderboard table
-	@FXML private TableColumn<RankItem, String> rankCol;
-	@FXML private TableColumn<RankItem, String> nameCol;
-	@FXML private TableColumn<RankItem, Integer> scoreCol;
-	@FXML private Button playButton;
-	@FXML private Button menuButton;
 	
 	/**
 	 * Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).
@@ -78,7 +78,7 @@ public class ScoreSceneController {
 		this.leaderboardTable.setItems(this.leaderboardData);
 		
 		//setting tables % width
-		double tableWidth = DEFAULT_SIZE * 0.85;
+		final double tableWidth = DEFAULT_SIZE * 0.85;
 		this.yourScoreTable.setMaxWidth(tableWidth);
 		this.leaderboardTable.setMaxWidth(tableWidth);
 		
