@@ -22,7 +22,7 @@
             <Image url="/sweeper.png" />
          </image>
       </ImageView>
-      <Button id="goBackButton" alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" text="Go back">
+      <Button id="goBackButton" alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" text="Back">
          <font>
             <Font name="System Bold" />
          </font>

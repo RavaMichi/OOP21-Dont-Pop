@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * The Class HowToPlaySceneController. A controller for HowToPlayScene about enemies and power up
+ * The Class HowToPlaySceneController. A controller for HowToPlayScene about enemies and power up.
  */
 public class HowToPlaySceneController {
 	
@@ -32,10 +32,9 @@ public class HowToPlaySceneController {
 	}
 
 	/**
-	 * Go to the menu scene
+	 * Go to the menu scene.
 	 */
 	public void menu() {
-
 		this.application.menu();
 	}
 	

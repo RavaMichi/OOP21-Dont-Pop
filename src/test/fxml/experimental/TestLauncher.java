@@ -3,7 +3,10 @@ package test.fxml.experimental;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class Launcher extends Application {
+/**
+ * Test class.
+ */
+public class TestLauncher extends Application {
 	
 	
 	

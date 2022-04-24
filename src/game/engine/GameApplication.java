@@ -95,6 +95,7 @@ public class GameApplication extends Application {
 
 	/**
 	 * Start GUI, then launch the menu.
+	 * @param primaryStage
 	 * @throws Exception 
 	 */
 	public void start(final Stage primaryStage) throws Exception { // public void start(final Stage primaryStage) {
@@ -104,9 +105,9 @@ public class GameApplication extends Application {
 		this.primaryStage.setHeight(SCREEN_SIZE);
 		this.primaryStage.setResizable(false); 			//ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new ScoreManager(this.scolreCalc);
 		this.menu();									// prende score e il player dal game engine
-		
+
 		this.primaryStage.setOnCloseRequest(e -> this.exit());
-		
+
 		this.primaryStage.show();
 	}
 
@@ -139,8 +140,8 @@ public class GameApplication extends Application {
 	 * @param score
 	 * @throws Exception 
 	 */
-	public void score(final int score){
-		final ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
+	public void score(final int score) {
+		final ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);   // prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
 		try {
 			final ScoreScene scoreScene = new ScoreScene(scoremanager, this, SCREEN_SIZE);
 			this.switchScene(scoreScene.getScene());
@@ -157,7 +158,7 @@ public class GameApplication extends Application {
 	public void viewScoreNoEdit() throws Exception {
 		final ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
 		final ScoreScene scoreScene = new ScoreScene(scoreManager, this, SCREEN_SIZE);
-		
+
 		this.switchScene(scoreScene.getScene());
 	}
 
@@ -184,7 +185,6 @@ public class GameApplication extends Application {
 	
 	/**
 	 * Exit function: exit from the program.
-	 * @param args
 	 */
 	private void exit() {
 		System.exit(0);

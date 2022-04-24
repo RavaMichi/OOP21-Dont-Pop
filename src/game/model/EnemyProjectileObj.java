@@ -6,6 +6,9 @@ import java.util.*;
 import game.collider.*;
 import game.util.Point2D;
 
+/**
+ * This class models a bullet.
+ */
 public class EnemyProjectileObj extends AbstractGameObject {
 	
 	private static final double SIZE = 0.07;
@@ -14,8 +17,13 @@ public class EnemyProjectileObj extends AbstractGameObject {
 	private final Point2D velocity;
 	private final Set<Point2D> points = new HashSet<>();
 	
-	/*
-	 * Requires initial position, direction and speed of projectile
+	/**
+	 * Requires initial position, direction and speed of bullet.
+	 * @param position
+	 * @param dir
+	 * @param speed
+	 * @param type
+	 * @param ge
 	 */
 	public EnemyProjectileObj(final Point2D position, final Point2D dir, final float speed, final ObjectType type, final GameEngine ge) {
 		super(position, type, ge);
@@ -23,8 +31,8 @@ public class EnemyProjectileObj extends AbstractGameObject {
 		this.velocity.normalize();
 		this.velocity.mul(speed / 60 * SPEED_MULTIPLIER);
 		this.generatePoints();
-		this.setCollider((Collider)new PointsCollider(this, this.points));
-		double angle = (Math.atan(this.velocity.getY()/this.velocity.getX())) * (180/Math.PI);
+		this.setCollider((Collider) new PointsCollider(this, this.points));
+		double angle = (Math.atan(this.velocity.getY() / this.velocity.getX())) * (180 / Math.PI);
 		if (this.velocity.getX() < 0) {
 			angle += 180;
 		}
@@ -33,7 +41,7 @@ public class EnemyProjectileObj extends AbstractGameObject {
 	}
 	
 	/**
-	 * Calculate the positions of the collion points of the bullet, appropriately rotated to match the bullet's trajectory
+	 * Calculate the positions of the collion points of the bullet, appropriately rotated to match the bullet's trajectory.
 	 * 
 	 * Involves some simple vector math
 	 */
@@ -41,8 +49,8 @@ public class EnemyProjectileObj extends AbstractGameObject {
 		// POINT 1 = same direction as velocity, length 0.015
 		final Point2D p1 = Point2D.copyOf(velocity);
 		p1.normalize();
-		p1.mul(SIZE/2);
-		
+		p1.mul(SIZE / 2);
+
 		// POINT 2 = sum of 2 vectors, one is the opposite of p1 and the other is the p2 offset, equal to p1/2 rotated by 90°
 		final Point2D p2 = Point2D.copyOf(p1);
 		final Point2D offset = Point2D.copyOf(p2);
@@ -50,19 +58,22 @@ public class EnemyProjectileObj extends AbstractGameObject {
 		offset.mul(0.3);
 		offset.set(new Point2D(-offset.getY(), offset.getX()));
 		p2.add(offset);
-		
+
 		// POINT 3 = sum of 2 vectors, one is the opposite of p1 and the other is the p3 offset, equal to p1/2 rotated by -90° ( = p2 offset * -1)
 		final Point2D p3 = Point2D.copyOf(offset);
 		p3.mul(-1);
 		offset.mul(-1);
 		p3.add(offset);
-		
+
 		// ADD the points to set
 		this.points.add(p1);
 		this.points.add(p2);
 		this.points.add(p3);
 	}
 
+	/**
+	 * Updates bullet position.
+	 */
 	@Override
 	public void update() {
 		this.getPosition().add(this.velocity);

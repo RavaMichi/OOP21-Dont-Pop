@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_dc9O4MMWEeyi_sSD1HsbUw" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_dc9O4cMWEeyi_sSD1HsbUw" source="codegen">
         <details xmi:id="_dc9O4sMWEeyi_sSD1HsbUw" key="codegenDirectory" value="/Dont-Pop/src"/>
-        <details xmi:id="_fVF1MMMWEeyi_sSD1HsbUw" key="AssociatedSourceCode" value="/Dont-Pop/src/game/collider/CircleCollider.java;771339464/1;/Dont-Pop/src/game/collider/Collider.java;1138965815/1;/Dont-Pop/src/game/collider/PointsCollider.java;1679806222/1;/Dont-Pop/src/game/collider/RayCollider.java;499210647/1;/Dont-Pop/src/game/engine/AudioManager.java;1219090783/1;/Dont-Pop/src/game/engine/EnemyFactory.java;2786163405/1;/Dont-Pop/src/game/engine/GameApplication.java;2945282959/1;/Dont-Pop/src/game/engine/GameEngine.java;1611641877/1;/Dont-Pop/src/game/engine/Launcher.java;1876031522/1;/Dont-Pop/src/game/engine/PoweupFactory.java;3769667800/1;/Dont-Pop/src/game/engine/ScoreManager.java;1722224427/1;/Dont-Pop/src/game/engine/SpawnManager.java;128430435/1;/Dont-Pop/src/game/graphics/AnimationRenderer.java;703546384/1;/Dont-Pop/src/game/graphics/CircleRenderer.java;3180036274/1;/Dont-Pop/src/game/graphics/ImageRenderer.java;2165099684/1;/Dont-Pop/src/game/graphics/LineRenderer.java;1221152972/1;/Dont-Pop/src/game/graphics/Renderer.java;3806536100/1;/Dont-Pop/src/game/graphics/TextRenderer.java;4203755346/1;/Dont-Pop/src/game/model/AbstractGameObject.java;768446453/1;/Dont-Pop/src/game/model/EnemyBallObj.java;1402258607/1;/Dont-Pop/src/game/model/EnemyBombObj.java;2245119045/1;/Dont-Pop/src/game/model/EnemyLineObj.java;2889035504/1;/Dont-Pop/src/game/model/EnemyProjectileObj.java;3355040737/1;/Dont-Pop/src/game/model/PlayerObj.java;3936948844/1;/Dont-Pop/src/game/model/PowerUpObj.java;2731792758/1;/Dont-Pop/src/game/model/ScoreDisplayObj.java;3623582661/1;/Dont-Pop/src/game/model/StartTimerObj.java;52229449/1;/Dont-Pop/src/game/ui/GameScene.java;2535846326/1;/Dont-Pop/src/game/ui/HowToPlayScene.java;3051975328/1;/Dont-Pop/src/game/ui/HowToPlaySceneController.java;1842060909/1;/Dont-Pop/src/game/ui/MenuScene.java;2709432032/1;/Dont-Pop/src/game/ui/MenuSceneController.java;3463030706/1;/Dont-Pop/src/game/ui/ScoreScene.java;4035590486/1;/Dont-Pop/src/game/ui/ScoreSceneController.java;947117583/1;/Dont-Pop/src/game/util/Leaderboard.java;1884815315/1;/Dont-Pop/src/game/util/Pair.java;3310953378/1;/Dont-Pop/src/game/util/Point2D.java;2590205655/1;/Dont-Pop/src/game/util/RandomInt.java;568896150/1;/Dont-Pop/src/game/util/RankItem.java;2079110920/1;/Dont-Pop/src/test/junit/ScoreManagerTest.java;3024860627/1;/Dont-Pop/src/game/util/WhereToSpawn.java;618917696/1;/Dont-Pop/src/test/fxml/addressbook/FXMLTableView.java;259591008/1;/Dont-Pop/src/test/fxml/addressbook/FXMLTableViewController.java;180412199/1;/Dont-Pop/src/test/fxml/builder/LaunchScoreSceneBuilder.java;3635040995/1;/Dont-Pop/src/test/fxml/builder/ScoreSceneController.java;482313571/1;/Dont-Pop/src/test/fxml/completeexample/CompleteExample.java;1307058537/1;/Dont-Pop/src/test/fxml/completeexample/UIController.java;3508593072/1;/Dont-Pop/src/test/fxml/experimental/Controller.java;4141899058/1;/Dont-Pop/src/test/fxml/experimental/Launcher.java;2286234001/1;/Dont-Pop/src/test/fxml/experimental/UIController.java;1987129660/1;/Dont-Pop/src/test/fxml/scorescene/LaunchScoreScene.java;2751068884/1;/Dont-Pop/src/test/fxml/scorescene/ScoreManager.java;1106340628/1;/Dont-Pop/src/test/fxml/scorescene/SpawnManager.java;2422228785/1;/Dont-Pop/src/test/fxml/scorescene/TestScoreScene.java;3058024362/1;/Dont-Pop/src/test/fxml/scorescene/TestScoreSceneWithoutFXML.java;1572490561/1;/Dont-Pop/src/test/junit/ColliderTest.java;2514352969/1;/Dont-Pop/src/test/junit/GameEngineTest.java;1336351381/1;/Dont-Pop/src/test/junit/LeaderboardTest.java;3439518026/1;/Dont-Pop/src/game/util/ScoreCalc.java;4008832440/1;/Dont-Pop/src/test/renderer/TestMain.java;1077703694/1;"/>
+        <details xmi:id="_fVF1MMMWEeyi_sSD1HsbUw" key="AssociatedSourceCode" value="/Dont-Pop/src/game/collider/CircleCollider.java;771339464/1;/Dont-Pop/src/game/collider/Collider.java;1138965815/1;/Dont-Pop/src/game/collider/PointsCollider.java;1679806222/1;/Dont-Pop/src/game/collider/RayCollider.java;499210647/1;/Dont-Pop/src/game/engine/AudioManager.java;1219090783/1;/Dont-Pop/src/game/engine/EnemyFactory.java;2786163405/1;/Dont-Pop/src/game/engine/GameApplication.java;1314968014/1;/Dont-Pop/src/game/engine/GameEngine.java;1611641877/1;/Dont-Pop/src/game/engine/Launcher.java;1876031522/1;/Dont-Pop/src/game/engine/PoweupFactory.java;3769667800/1;/Dont-Pop/src/game/engine/ScoreManager.java;1722224427/1;/Dont-Pop/src/game/engine/SpawnManager.java;128430435/1;/Dont-Pop/src/game/graphics/AnimationRenderer.java;703546384/1;/Dont-Pop/src/game/graphics/CircleRenderer.java;3180036274/1;/Dont-Pop/src/game/graphics/ImageRenderer.java;2165099684/1;/Dont-Pop/src/game/graphics/LineRenderer.java;1221152972/1;/Dont-Pop/src/game/graphics/Renderer.java;3806536100/1;/Dont-Pop/src/game/graphics/TextRenderer.java;4203755346/1;/Dont-Pop/src/game/model/AbstractGameObject.java;768446453/1;/Dont-Pop/src/game/model/EnemyBallObj.java;1402258607/1;/Dont-Pop/src/game/model/EnemyBombObj.java;2245119045/1;/Dont-Pop/src/game/model/EnemyLineObj.java;2889035504/1;/Dont-Pop/src/game/model/EnemyProjectileObj.java;3355040737/1;/Dont-Pop/src/game/model/PlayerObj.java;3936948844/1;/Dont-Pop/src/game/model/PowerUpObj.java;2731792758/1;/Dont-Pop/src/game/model/ScoreDisplayObj.java;3623582661/1;/Dont-Pop/src/game/model/StartTimerObj.java;52229449/1;/Dont-Pop/src/game/ui/GameScene.java;2535846326/1;/Dont-Pop/src/game/ui/HowToPlayScene.java;1512890188/1;/Dont-Pop/src/game/ui/HowToPlaySceneController.java;1353357662/1;/Dont-Pop/src/game/ui/MenuScene.java;1948505539/1;/Dont-Pop/src/game/ui/MenuSceneController.java;567698068/1;/Dont-Pop/src/game/ui/ScoreScene.java;114936022/1;/Dont-Pop/src/game/ui/ScoreSceneController.java;2711195900/1;/Dont-Pop/src/game/util/Leaderboard.java;1884815315/1;/Dont-Pop/src/game/util/Pair.java;3310953378/1;/Dont-Pop/src/game/util/Point2D.java;2590205655/1;/Dont-Pop/src/game/util/RandomInt.java;568896150/1;/Dont-Pop/src/game/util/RankItem.java;2079110920/1;/Dont-Pop/src/test/junit/ScoreManagerTest.java;3024860627/1;/Dont-Pop/src/game/util/WhereToSpawn.java;618917696/1;/Dont-Pop/src/test/fxml/addressbook/FXMLTableView.java;259591008/1;/Dont-Pop/src/test/fxml/addressbook/FXMLTableViewController.java;180412199/1;/Dont-Pop/src/test/fxml/builder/LaunchScoreSceneBuilder.java;3635040995/1;/Dont-Pop/src/test/fxml/builder/ScoreSceneController.java;482313571/1;/Dont-Pop/src/test/fxml/completeexample/CompleteExample.java;1307058537/1;/Dont-Pop/src/test/fxml/completeexample/UIController.java;3508593072/1;/Dont-Pop/src/test/fxml/experimental/Controller.java;4141899058/1;/Dont-Pop/src/test/fxml/experimental/Launcher.java;2286234001/1;/Dont-Pop/src/test/fxml/experimental/UIController.java;1987129660/1;/Dont-Pop/src/test/fxml/scorescene/LaunchScoreScene.java;2751068884/1;/Dont-Pop/src/test/fxml/scorescene/ScoreManager.java;1106340628/1;/Dont-Pop/src/test/fxml/scorescene/SpawnManager.java;2422228785/1;/Dont-Pop/src/test/fxml/scorescene/TestScoreScene.java;3058024362/1;/Dont-Pop/src/test/fxml/scorescene/TestScoreSceneWithoutFXML.java;1572490561/1;/Dont-Pop/src/test/junit/ColliderTest.java;2514352969/1;/Dont-Pop/src/test/junit/GameEngineTest.java;1336351381/1;/Dont-Pop/src/test/junit/LeaderboardTest.java;3439518026/1;/Dont-Pop/src/game/util/ScoreCalc.java;4008832440/1;/Dont-Pop/src/test/renderer/TestMain.java;1077703694/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_d_f7QMMWEeyi_sSD1HsbUw">
@@ -2735,11 +2735,14 @@ select the enemy type and the class creates it.</body>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_eO_v0MMWEeyi_sSD1HsbUw" name="_initializer1" specification="_d_480MMWEeyi_sSD1HsbUw">
             <language>java</language>
             <body>Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
+//		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
+		screenSize = 300;
 	</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_eO_v0cMWEeyi_sSD1HsbUw" name="GameApplication" specification="_d_6K8MMWEeyi_sSD1HsbUw">
-            <ownedParameter xmi:id="_eO_v0sMWEeyi_sSD1HsbUw" type="_d_3usMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_eO_v0sMWEeyi_sSD1HsbUw" type="_d_3usMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>this.playerName = &quot;&quot;;
 	</body>
@@ -2752,11 +2755,12 @@ select the enemy type and the class creates it.</body>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <ownedParameter xmi:id="_eO_v18MWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
             </ownedParameter>
             <language>java</language>
             <body>// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
-		return num / screenSize;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 
+		return num / screenSize;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione Ã¨ 700 lui mi tira fuori 0.5 
 									// (50% della lunghezza dello schermo)
 	</body>
           </ownedBehavior>
@@ -2778,6 +2782,7 @@ select the enemy type and the class creates it.</body>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
             </ownedParameter>
             <ownedParameter xmi:id="_ePAW5MMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <language>java</language>
@@ -2882,13 +2887,13 @@ select the enemy type and the class creates it.</body>
             <eAnnotations xmi:id="_d_6K8cMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
               <details xmi:id="_d_6K8sMWEeyi_sSD1HsbUw" key="create"/>
             </eAnnotations>
-            <ownedComment xmi:id="_ePh7U8MWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf8WUcPeEeyi_sSD1HsbUw">
               <body>Class constructor.</body>
             </ownedComment>
             <ownedParameter xmi:id="_d_6K88MWEeyi_sSD1HsbUw" type="_d_3usMMWEeyi_sSD1HsbUw" direction="return"/>
           </ownedOperation>
           <ownedOperation xmi:id="_d_6K9MMWEeyi_sSD1HsbUw" name="convertToDouble" isStatic="true" method="_eO_v08MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7VMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf8WUsPeEeyi_sSD1HsbUw">
               <body>Convert pizel size to percentage size.
 	 * @param num
 	 * @return percentage size</body>
@@ -2904,12 +2909,12 @@ select the enemy type and the class creates it.</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_d_6yA8MWEeyi_sSD1HsbUw" name="howToPlay" method="_eO_v2MMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7VcMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89YMPeEeyi_sSD1HsbUw">
               <body>Launch howTPlay GUI (run the game).</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_d_6yBMMWEeyi_sSD1HsbUw" name="convertToInt" isStatic="true" method="_ePAW4MMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7VsMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89YcPeEeyi_sSD1HsbUw">
               <body>Convert percentage size to pixel size.
 	 * @param num
 	 * @return pixel size</body>
@@ -2925,18 +2930,18 @@ select the enemy type and the class creates it.</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_d_7ZE8MWEeyi_sSD1HsbUw" name="menu" method="_ePAW6cMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7WMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89Y8PeEeyi_sSD1HsbUw">
               <body>Launch menu GUI.
 	 * @throws Exception</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_d_7ZFMMWEeyi_sSD1HsbUw" name="game" method="_ePAW6sMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7WcMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89ZMPeEeyi_sSD1HsbUw">
               <body>Launch game GUI (run the game).</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_d_8AIMMWEeyi_sSD1HsbUw" name="score" method="_ePAW68MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7WsMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89ZcPeEeyi_sSD1HsbUw">
               <body>Launch score GUI (view score ranking).
 	 * @param score
 	 * @throws Exception</body>
@@ -2949,14 +2954,14 @@ select the enemy type and the class creates it.</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_d_8AJMMWEeyi_sSD1HsbUw" name="viewScoreNoEdit" method="_ePA98MMWEeyi_sSD1HsbUw" raisedException="_eL_fIcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7W8MWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89ZsPeEeyi_sSD1HsbUw">
               <body>Launch score GUI without editing score list.
 	 * Useful when viewing leaderboard before playing the game.
 	 * @throws Exception</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_d_8nMMMWEeyi_sSD1HsbUw" name="main" isStatic="true" method="_ePA988MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePiiYMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89aMPeEeyi_sSD1HsbUw">
               <body>Main function: launch the program.
 	 * @param args</body>
             </ownedComment>
@@ -2966,13 +2971,13 @@ select the enemy type and the class creates it.</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_d_9OQMMWEeyi_sSD1HsbUw" name="exit" visibility="private" method="_ePA99sMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePiiYcMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89acPeEeyi_sSD1HsbUw">
               <body>Exit function: exit from the program.
 	 * @param args</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_eMAGMcMWEeyi_sSD1HsbUw" name="start" method="_ePAW5cMWEeyi_sSD1HsbUw" raisedException="_eL_fIcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7V8MWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89YsPeEeyi_sSD1HsbUw">
               <body>Start GUI, then launch the menu.
 	 * @throws Exception</body>
             </ownedComment>
@@ -2983,7 +2988,7 @@ select the enemy type and the class creates it.</body>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:id="_eMAtQMMWEeyi_sSD1HsbUw" name="switchScene" visibility="package" method="_ePA98cMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePh7XMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_vf89Z8PeEeyi_sSD1HsbUw">
               <body>Set JavaFX Thread scene to the scene passed as argument.
 	 * @param scene</body>
             </ownedComment>
@@ -4405,7 +4410,7 @@ It is managed by the GameEngine</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBYKkMMWEeyi_sSD1HsbUw" name="HowToPlayScene">
-          <ownedComment xmi:id="_ePoB9MMWEeyi_sSD1HsbUw">
+          <ownedComment xmi:id="_bN9NMMPFEeyi_sSD1HsbUw">
             <body>The Class HowToPlayScene.</body>
           </ownedComment>
           <ownedAttribute xmi:id="_eNvLlMMWEeyi_sSD1HsbUw" name="DEFAULT_SIZE" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
@@ -4425,7 +4430,9 @@ It is managed by the GameEngine</body>
               </eAnnotations>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePQ1nsMWEeyi_sSD1HsbUw" type="_eBYKkMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePQ1nsMWEeyi_sSD1HsbUw" type="_eBYKkMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(&quot;/game/fxml/howtoplayscene.fxml&quot;));
@@ -4439,21 +4446,23 @@ It is managed by the GameEngine</body>
 		
 		//scaling
 		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
-		
 		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
 		root.getTransforms().add(scaleTransformation);
 
 		this.scene = new Scene(root, screenSize, screenSize);
+		this.scene.getStylesheets().add(getClass().getResource(&quot;/game/css/howtoplayscene-styles.css&quot;).toExternalForm());
 	</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePQ1n8MWEeyi_sSD1HsbUw" name="get" specification="_eBYxoMMWEeyi_sSD1HsbUw">
-            <ownedParameter xmi:id="_ePQ1oMMWEeyi_sSD1HsbUw" type="_eBYKkMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePQ1oMMWEeyi_sSD1HsbUw" type="_eBYKkMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>return this;
 	</body>
           </ownedBehavior>
           <ownedOperation xmi:id="_eBYxoMMWEeyi_sSD1HsbUw" name="get" method="_ePQ1n8MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB9sMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_bN9NMsPFEeyi_sSD1HsbUw">
               <body>Gets the.
 	 *
 	 * @return the how to play scene</body>
@@ -4464,7 +4473,7 @@ It is managed by the GameEngine</body>
             <eAnnotations xmi:id="_eK56AMMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
               <details xmi:id="_eK56AcMWEeyi_sSD1HsbUw" key="create"/>
             </eAnnotations>
-            <ownedComment xmi:id="_ePoB9cMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_bN9NMcPFEeyi_sSD1HsbUw">
               <body>Instantiates a new how to play scene.
 	 *
 	 * @param application the application
@@ -4486,7 +4495,7 @@ It is managed by the GameEngine</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBZ_wMMWEeyi_sSD1HsbUw" name="HowToPlaySceneController">
-          <ownedComment xmi:id="_ePoB98MWEeyi_sSD1HsbUw">
+          <ownedComment xmi:id="_7J5lYMPFEeyi_sSD1HsbUw">
             <body>The Class HowToPlaySceneController. A controller for HowToPlayScene about enemies and power up</body>
           </ownedComment>
           <ownedAttribute xmi:id="_eNwZsMMWEeyi_sSD1HsbUw" name="application" visibility="private" type="_d_3usMMWEeyi_sSD1HsbUw" association="_eQVMk8MWEeyi_sSD1HsbUw"/>
@@ -4508,7 +4517,9 @@ It is managed by the GameEngine</body>
                 <details xmi:id="_ePRco8MWEeyi_sSD1HsbUw" key="final"/>
               </eAnnotations>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePRcpMMWEeyi_sSD1HsbUw" type="_eBZ_wMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePRcpMMWEeyi_sSD1HsbUw" type="_eBZ_wMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>this.application = application;
 	</body>
@@ -4519,7 +4530,7 @@ It is managed by the GameEngine</body>
 	</body>
           </ownedBehavior>
           <ownedOperation xmi:id="_eBam0MMWEeyi_sSD1HsbUw" name="menu" method="_ePRcpcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB-MMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_7J6McMPFEeyi_sSD1HsbUw">
               <body>Go to the menu scene</body>
             </ownedComment>
           </ownedOperation>
@@ -4536,10 +4547,14 @@ It is managed by the GameEngine</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBdDEMMWEeyi_sSD1HsbUw" name="MenuScene">
-          <ownedComment xmi:id="_ePoB-cMWEeyi_sSD1HsbUw">
+          <ownedComment xmi:id="_5IPsIMPEEeyi_sSD1HsbUw">
             <body>MenuScene displays the Main Menu GUI.</body>
           </ownedComment>
-          <ownedAttribute xmi:id="_eN1SMMMWEeyi_sSD1HsbUw" name="scene" isLeaf="true" type="_eKRA0cMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQasIcMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_eN1SMMMWEeyi_sSD1HsbUw" name="scene" visibility="private" isLeaf="true" type="_eKRA0cMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQasIcMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_TBg3kMPCEeyi_sSD1HsbUw" name="DEFAULT_SIZE" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_TBheoMPCEeyi_sSD1HsbUw" value="300"/>
+          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePRcqMMWEeyi_sSD1HsbUw" name="MenuScene" specification="_eLAnscMWEeyi_sSD1HsbUw">
             <ownedParameter xmi:id="_ePRcqcMWEeyi_sSD1HsbUw" name="application" type="_d_3usMMWEeyi_sSD1HsbUw">
               <eAnnotations xmi:id="_ePRcqsMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -4552,7 +4567,9 @@ It is managed by the GameEngine</body>
               </eAnnotations>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePRcr8MWEeyi_sSD1HsbUw" type="_eBdDEMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePRcr8MWEeyi_sSD1HsbUw" type="_eBdDEMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(&quot;/game/fxml/menuscene.fxml&quot;));
@@ -4560,22 +4577,35 @@ It is managed by the GameEngine</body>
 		//controller created here
 		MenuSceneController controller = new MenuSceneController(application);
 		loader.setController(controller);
-		
 		//load GUI from FXML
-		BorderPane root = loader.load();
+		AnchorPane root = loader.load();
+		
+		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+		root.getTransforms().add(scaleTransformation);
 		
 		this.scene = new Scene(root, screenSize, screenSize);
 		this.scene.getStylesheets().add(getClass().getResource(&quot;/game/css/menuscene-styles.css&quot;).toExternalForm());
 	</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePRcsMMWEeyi_sSD1HsbUw" name="get" specification="_eBdqIMMWEeyi_sSD1HsbUw">
-            <ownedParameter xmi:id="_ePRcscMWEeyi_sSD1HsbUw" type="_eBdDEMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePRcscMWEeyi_sSD1HsbUw" type="_eBdDEMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>return this;
 	</body>
           </ownedBehavior>
+          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_TBiswMPCEeyi_sSD1HsbUw" name="getScene" specification="_TBdNMMPCEeyi_sSD1HsbUw">
+            <ownedParameter xmi:id="_TBiswcPCEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
+            <language>java</language>
+            <body>return this.scene;
+	</body>
+          </ownedBehavior>
           <ownedOperation xmi:id="_eBdqIMMWEeyi_sSD1HsbUw" name="get" method="_ePRcsMMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB-8MWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_5IPsI8PEEeyi_sSD1HsbUw">
               <body>Gets this object.
 	 * @return MenuScene</body>
             </ownedComment>
@@ -4585,7 +4615,7 @@ It is managed by the GameEngine</body>
             <eAnnotations xmi:id="_eLBOwsMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
               <details xmi:id="_eLBOw8MWEeyi_sSD1HsbUw" key="create"/>
             </eAnnotations>
-            <ownedComment xmi:id="_ePoB-sMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_5IPsIcPEEeyi_sSD1HsbUw">
               <body>Creates &amp; initializes a MenuScene.
 	 * @param screenSize
 	 * @throws Exception (necessary to load files, esp. FXML)</body>
@@ -4603,25 +4633,32 @@ It is managed by the GameEngine</body>
             </ownedParameter>
             <ownedParameter xmi:id="_eLBOxMMWEeyi_sSD1HsbUw" type="_eBdDEMMWEeyi_sSD1HsbUw" direction="return"/>
           </ownedOperation>
+          <ownedOperation xmi:id="_TBdNMMPCEeyi_sSD1HsbUw" name="getScene" method="_TBiswMPCEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_5IPsIsPEEeyi_sSD1HsbUw">
+              <body>Gets the Scene inside MenuScene
+	 * @return this.scene</body>
+            </ownedComment>
+            <ownedParameter xmi:id="_TBdNMcPCEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
+          </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBe4QMMWEeyi_sSD1HsbUw" name="MenuSceneController">
           <ownedAttribute xmi:id="_eN15QMMWEeyi_sSD1HsbUw" name="application" visibility="private" type="_d_3usMMWEeyi_sSD1HsbUw" association="_eQasJMMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN15QsMWEeyi_sSD1HsbUw" name="borderPane" visibility="private" type="_eLAAoMMWEeyi_sSD1HsbUw" association="_eQbTMcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN2gUsMWEeyi_sSD1HsbUw" name="title" visibility="private" type="_eLB10MMWEeyi_sSD1HsbUw" association="_eQb6QcMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN2gVsMWEeyi_sSD1HsbUw" name="gameControls" visibility="private" type="_eLDrA8MWEeyi_sSD1HsbUw" association="_eQb6RMMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN3HY8MWEeyi_sSD1HsbUw" name="nameBox" visibility="private" type="_eLDrAcMWEeyi_sSD1HsbUw" association="_eQchUcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN3HZ8MWEeyi_sSD1HsbUw" name="nameLabel" visibility="private" type="_eLB10MMWEeyi_sSD1HsbUw" association="_eQchVMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN3uc8MWEeyi_sSD1HsbUw" name="namePrompt" visibility="private" type="_eLCc4cMWEeyi_sSD1HsbUw" association="_eQdIYcMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN4VgcMWEeyi_sSD1HsbUw" name="buttons" visibility="private" type="_eLDrA8MWEeyi_sSD1HsbUw" association="_eQdvccMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN4VhcMWEeyi_sSD1HsbUw" name="playButton" visibility="private" type="_eK7IIcMWEeyi_sSD1HsbUw" association="_eQdvdMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN48ksMWEeyi_sSD1HsbUw" name="leaderboardButton" visibility="private" type="_eK7IIcMWEeyi_sSD1HsbUw" association="_eQeWgcMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_JRmnQMPDEeyi_sSD1HsbUw" name="anchorPane" visibility="private" type="_eK4r4cMWEeyi_sSD1HsbUw" association="_JRpqkMPDEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_ayFmAMPEEeyi_sSD1HsbUw" name="howtoplayButton" visibility="private" type="_eK7IIcMWEeyi_sSD1HsbUw" association="_ayHbMMPEEeyi_sSD1HsbUw"/>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePSDsMMWEeyi_sSD1HsbUw" name="MenuSceneController" specification="_eLESEcMWEeyi_sSD1HsbUw">
             <ownedParameter xmi:id="_ePSDscMWEeyi_sSD1HsbUw" name="application" type="_d_3usMMWEeyi_sSD1HsbUw">
               <eAnnotations xmi:id="_ePSDssMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
                 <details xmi:id="_ePSDs8MWEeyi_sSD1HsbUw" key="final"/>
               </eAnnotations>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePSDtMMWEeyi_sSD1HsbUw" type="_eBe4QMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePSDtMMWEeyi_sSD1HsbUw" type="_eBe4QMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>this.application = application;
 	</body>
@@ -4683,6 +4720,7 @@ It is managed by the GameEngine</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePSDvcMWEeyi_sSD1HsbUw" name="generateRandomName" specification="_eBgtcMMWEeyi_sSD1HsbUw">
             <ownedParameter xmi:id="_ePSDvsMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <language>java</language>
@@ -4697,18 +4735,18 @@ It is managed by the GameEngine</body>
 	</body>
           </ownedBehavior>
           <ownedOperation xmi:id="_eBgGYMMWEeyi_sSD1HsbUw" name="initialize" method="_ePSDtcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB_MMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_b_-8gMPEEeyi_sSD1HsbUw">
               <body>Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_eBgGYcMWEeyi_sSD1HsbUw" name="play" method="_ePSDtsMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB_cMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_b_-8gcPEEeyi_sSD1HsbUw">
               <body>Play game.
 	 * If namePrompt TextField is empty, the game will use a default nickname.</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_eBgGYsMWEeyi_sSD1HsbUw" name="leaderboard" method="_ePSDt8MWEeyi_sSD1HsbUw" raisedException="_eL_fIcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePoB_sMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_b_-8gsPEEeyi_sSD1HsbUw">
               <body>Show leaderboard.
 	 * @throws Exception</body>
             </ownedComment>
@@ -4731,7 +4769,7 @@ It is managed by the GameEngine</body>
             <ownedParameter xmi:id="_eLESFcMWEeyi_sSD1HsbUw" type="_eBe4QMMWEeyi_sSD1HsbUw" direction="return"/>
           </ownedOperation>
           <ownedOperation xmi:id="_eMeAQMMWEeyi_sSD1HsbUw" name="onEnter" method="_ePSDucMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopAMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_b_-8g8PEEeyi_sSD1HsbUw">
               <body>Starts game when user presses ENTER key.
 	 * @param keyPressed (starts game if ENTER)</body>
             </ownedComment>
@@ -4743,10 +4781,17 @@ It is managed by the GameEngine</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBjJsMMWEeyi_sSD1HsbUw" name="ScoreScene">
-          <ownedComment xmi:id="_ePopAcMWEeyi_sSD1HsbUw">
+          <ownedComment xmi:id="_1WYasMPdEeyi_sSD1HsbUw">
             <body>ScoreScene displays a GUI showing your current score in a beautiful table.</body>
           </ownedComment>
-          <ownedAttribute xmi:id="_eN5joMMWEeyi_sSD1HsbUw" name="scene" visibility="private" isLeaf="true" type="_eKRA0cMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQeWhMMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_eN5joMMWEeyi_sSD1HsbUw" name="scene" visibility="public" isLeaf="true" type="_eKRA0cMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQeWhMMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_zafVwMPdEeyi_sSD1HsbUw" name="DEFAULT_SIZE" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+            <eAnnotations xmi:id="_zafVwcPdEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+              <details xmi:id="_zafVwsPdEeyi_sSD1HsbUw" key="ConstantWithGetter"/>
+            </eAnnotations>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_zafVw8PdEeyi_sSD1HsbUw" value="300"/>
+          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePSqwMMWEeyi_sSD1HsbUw" name="ScoreScene" specification="_eLGuUMMWEeyi_sSD1HsbUw">
             <ownedParameter xmi:id="_ePSqwcMWEeyi_sSD1HsbUw" name="scoreManager" type="_eATMgMMWEeyi_sSD1HsbUw">
               <eAnnotations xmi:id="_ePSqwsMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -4764,7 +4809,9 @@ It is managed by the GameEngine</body>
               </eAnnotations>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePSqysMWEeyi_sSD1HsbUw" type="_eBjJsMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePSqysMWEeyi_sSD1HsbUw" type="_eBjJsMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(&quot;/game/fxml/scorescene.fxml&quot;));
@@ -4777,39 +4824,26 @@ It is managed by the GameEngine</body>
 //		BuilderController controller = loader.getController();
 		
 		//load GUI from FXML
-		BorderPane root = loader.load();
+		AnchorPane root = loader.load();
 
+		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+             Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+             root.getTransforms().add(scaleTransformation);
+		
 		this.scene = new Scene(root, screenSize, screenSize);
 		this.scene.getStylesheets().add(getClass().getResource(&quot;/game/css/scorescene-styles.css&quot;).toExternalForm());
-//		stage.setTitle(&quot;Score Ranking&quot;);
-//		stage.setWidth(GameApplication.screenSize * 0.90);
-//		stage.setHeight(GameApplication.screenSize * 0.90);
-//		stage.setResizable(false);
-//		stage.setScene(scene);
-//		stage.show();
-	</body>
-          </ownedBehavior>
-          <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePSqy8MWEeyi_sSD1HsbUw" name="getScene" specification="_eBjwwMMWEeyi_sSD1HsbUw">
-            <ownedParameter xmi:id="_ePSqzMMWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
-            <language>java</language>
-            <body>return this.scene;
 	</body>
           </ownedBehavior>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePSqzcMWEeyi_sSD1HsbUw" name="get" specification="_eBjwwcMWEeyi_sSD1HsbUw">
-            <ownedParameter xmi:id="_ePSqzsMWEeyi_sSD1HsbUw" type="_eBjJsMMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePSqzsMWEeyi_sSD1HsbUw" type="_eBjJsMMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>return this;
 	</body>
           </ownedBehavior>
-          <ownedOperation xmi:id="_eBjwwMMWEeyi_sSD1HsbUw" name="getScene" method="_ePSqy8MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopA8MWEeyi_sSD1HsbUw">
-              <body>Gets the Scene inside ScoreScene.
-     * @return this.scene</body>
-            </ownedComment>
-            <ownedParameter xmi:id="_eMfOYMMWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
-          </ownedOperation>
           <ownedOperation xmi:id="_eBjwwcMWEeyi_sSD1HsbUw" name="get" method="_ePSqzcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopBMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_1WZBwcPdEeyi_sSD1HsbUw">
               <body>Gets this object.
 	 * @return ScoreScene</body>
             </ownedComment>
@@ -4819,7 +4853,7 @@ It is managed by the GameEngine</body>
             <eAnnotations xmi:id="_eLGuVMMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
               <details xmi:id="_eLGuVcMWEeyi_sSD1HsbUw" key="create"/>
             </eAnnotations>
-            <ownedComment xmi:id="_ePopAsMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_1WZBwMPdEeyi_sSD1HsbUw">
               <body>Creates &amp; initializes a ScoreScene.
 	 * @param scoreManager
 	 * @param screenSize
@@ -4845,7 +4879,7 @@ It is managed by the GameEngine</body>
           </ownedOperation>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_eBk-4MMWEeyi_sSD1HsbUw" name="ScoreSceneController">
-          <ownedComment xmi:id="_ePopBcMWEeyi_sSD1HsbUw">
+          <ownedComment xmi:id="_Tv3zkMPcEeyi_sSD1HsbUw">
             <body>This class is the FXML controller of ScoreScene class.</body>
           </ownedComment>
           <ownedAttribute xmi:id="_eN5josMWEeyi_sSD1HsbUw" name="scoreManager" visibility="private" isLeaf="true" type="_eATMgMMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQe9kcMWEeyi_sSD1HsbUw"/>
@@ -4856,22 +4890,23 @@ It is managed by the GameEngine</body>
           <ownedAttribute xmi:id="_eN6KtcMWEeyi_sSD1HsbUw" name="ranking" visibility="private" isLeaf="true" type="_eLIjgcMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQgLscMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN6xwsMWEeyi_sSD1HsbUw" name="leaderboardData" visibility="private" isLeaf="true" type="_eLIjgcMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQgLtMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN7Y0sMWEeyi_sSD1HsbUw" name="yourScoreData" visibility="private" isLeaf="true" type="_eLIjgcMWEeyi_sSD1HsbUw" isReadOnly="true" association="_eQgywcMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN7_4sMWEeyi_sSD1HsbUw" name="layout" visibility="private" type="_eLDrA8MWEeyi_sSD1HsbUw" association="_eQhZ0cMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eN8m8MMWEeyi_sSD1HsbUw" name="yourScore" visibility="private" type="_eLDrA8MWEeyi_sSD1HsbUw" association="_eQhZ1MMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN8m9MMWEeyi_sSD1HsbUw" name="yourScoreLabel" visibility="private" type="_eLB10MMWEeyi_sSD1HsbUw" association="_eQiA4cMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN9OAsMWEeyi_sSD1HsbUw" name="yourScoreTable" visibility="private" type="_eLJxocMWEeyi_sSD1HsbUw" association="_eQin8MMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN91EsMWEeyi_sSD1HsbUw" name="yourRankCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQin88MWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN-cI8MWEeyi_sSD1HsbUw" name="yourNameCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQjPAcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eN_qQsMWEeyi_sSD1HsbUw" name="yourScoreCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQj2EcMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eOARU8MWEeyi_sSD1HsbUw" name="leaderboard" visibility="private" type="_eLDrA8MWEeyi_sSD1HsbUw" association="_eQkdIMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOARV8MWEeyi_sSD1HsbUw" name="leaderboardLabel" visibility="private" type="_eLB10MMWEeyi_sSD1HsbUw" association="_eQkdI8MWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOA4Y8MWEeyi_sSD1HsbUw" name="leaderboardTable" visibility="private" type="_eLJxocMWEeyi_sSD1HsbUw" association="_eQlEMcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOBfc8MWEeyi_sSD1HsbUw" name="rankCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQlENMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOCGhMMWEeyi_sSD1HsbUw" name="nameCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQlrQcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOCtlMMWEeyi_sSD1HsbUw" name="scoreCol" visibility="private" type="_eLJKkcMWEeyi_sSD1HsbUw" association="_eQlrRMMWEeyi_sSD1HsbUw"/>
-          <ownedAttribute xmi:id="_eODUpMMWEeyi_sSD1HsbUw" name="menu" visibility="private" type="_eLDrAcMWEeyi_sSD1HsbUw" association="_eQmSUcMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOD7s8MWEeyi_sSD1HsbUw" name="playButton" visibility="private" type="_eK7IIcMWEeyi_sSD1HsbUw" association="_eQmSVMMWEeyi_sSD1HsbUw"/>
           <ownedAttribute xmi:id="_eOEiwMMWEeyi_sSD1HsbUw" name="menuButton" visibility="private" type="_eK7IIcMWEeyi_sSD1HsbUw" association="_eQm5YcMWEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_qj7McMPXEeyi_sSD1HsbUw" name="anchorPane" visibility="private" type="_eK4r4cMWEeyi_sSD1HsbUw" association="_qj-PwMPXEeyi_sSD1HsbUw"/>
+          <ownedAttribute xmi:id="_rhq8MMPZEeyi_sSD1HsbUw" name="DEFAULT_SIZE" isLeaf="true" isStatic="true" isReadOnly="true">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <defaultValue xmi:type="uml:LiteralString" xmi:id="_rhq8MsPZEeyi_sSD1HsbUw" value="300"/>
+          </ownedAttribute>
           <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_ePTR0MMWEeyi_sSD1HsbUw" name="ScoreSceneController" specification="_eLKYsMMWEeyi_sSD1HsbUw">
             <ownedParameter xmi:id="_ePTR0cMWEeyi_sSD1HsbUw" name="scoreManager" type="_eATMgMMWEeyi_sSD1HsbUw">
               <eAnnotations xmi:id="_ePTR0sMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -4889,7 +4924,9 @@ It is managed by the GameEngine</body>
               </eAnnotations>
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
-            <ownedParameter xmi:id="_ePTR2sMWEeyi_sSD1HsbUw" type="_eBk-4MMWEeyi_sSD1HsbUw" direction="return"/>
+            <ownedParameter xmi:id="_ePTR2sMWEeyi_sSD1HsbUw" type="_eBk-4MMWEeyi_sSD1HsbUw" direction="return">
+              <name xsi:nil="true"/>
+            </ownedParameter>
             <language>java</language>
             <body>this.scoreManager = scoreManager;
 		this.application = application;
@@ -4917,15 +4954,15 @@ It is managed by the GameEngine</body>
 		this.leaderboardTable.setItems(this.leaderboardData);
 		
 		//setting tables % width
-		double tableWidth = this.screenSize * 0.85;
+		double tableWidth = DEFAULT_SIZE * 0.85;
 		this.yourScoreTable.setMaxWidth(tableWidth);
 		this.leaderboardTable.setMaxWidth(tableWidth);
 		
 		//setting columns % width
-		this.yourRankCol.setPrefWidth(tableWidth * 0.230);
+		this.yourRankCol.setPrefWidth(tableWidth * 0.191);
 		this.yourNameCol.setPrefWidth(tableWidth * 0.515);
 		this.yourScoreCol.setPrefWidth(tableWidth * 0.230);
-		this.rankCol.setPrefWidth(tableWidth * 0.230);
+		this.rankCol.setPrefWidth(tableWidth * 0.191);
 		this.nameCol.setPrefWidth(tableWidth * 0.515);
 		this.scoreCol.setPrefWidth(tableWidth * 0.230);
 		//setting columns % height
@@ -4934,7 +4971,8 @@ It is managed by the GameEngine</body>
 		
 		//doesn't show your current score if player views leaderboard from main menu
 		if (this.scoreManager.isReadOnly()) {
-			this.yourScore.setVisible(false);
+			this.yourScoreLabel.setVisible(false);
+			this.yourScoreTable.setVisible(false);
 			this.playButton.setText(&quot;Play&quot;);
 		} else {
 			this.yourScoreTable.setSelectionModel(null);
@@ -4952,19 +4990,19 @@ It is managed by the GameEngine</body>
 	</body>
           </ownedBehavior>
           <ownedOperation xmi:id="_eBmNAMMWEeyi_sSD1HsbUw" name="initialize" method="_ePTR28MWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopB8MWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_Tv3zksPcEeyi_sSD1HsbUw">
               <body>Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_eBmNAcMWEeyi_sSD1HsbUw" name="menu" method="_ePTR3MMWEeyi_sSD1HsbUw" raisedException="_eL_fIcMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopCMMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_Tv3zk8PcEeyi_sSD1HsbUw">
               <body>Go back to main menu.
 	 * Calls the relative ScoreManager function.
 	 * @throws Exception</body>
             </ownedComment>
           </ownedOperation>
           <ownedOperation xmi:id="_eBm0EMMWEeyi_sSD1HsbUw" name="play" method="_ePTR3cMWEeyi_sSD1HsbUw">
-            <ownedComment xmi:id="_ePopCcMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_Tv3zlMPcEeyi_sSD1HsbUw">
               <body>Play game (again).
 	 * Calls the relative GameApplication function.</body>
             </ownedComment>
@@ -4973,7 +5011,7 @@ It is managed by the GameEngine</body>
             <eAnnotations xmi:id="_eLK_wsMWEeyi_sSD1HsbUw" source="http://www.eclipse.org/uml2/2.0.0/UML">
               <details xmi:id="_eLK_w8MWEeyi_sSD1HsbUw" key="create"/>
             </eAnnotations>
-            <ownedComment xmi:id="_ePopBsMWEeyi_sSD1HsbUw">
+            <ownedComment xmi:id="_Tv3zkcPcEeyi_sSD1HsbUw">
               <body>Initializes non-fxml fields of this class.
 	 * Then, returns control to ScoreScene which will build the layout as per the FXML file.
 	 * @param scoreManager
@@ -5058,26 +5096,14 @@ It is managed by the GameEngine</body>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQasJMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQasJcMWEeyi_sSD1HsbUw _eN15QMMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQasJcMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQasJMMWEeyi_sSD1HsbUw"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQbTMcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQbTMsMWEeyi_sSD1HsbUw _eN15QsMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQbTMsMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQbTMcMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQb6QcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQb6QsMWEeyi_sSD1HsbUw _eN2gUsMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQb6QsMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQb6QcMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQb6RMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQb6RcMWEeyi_sSD1HsbUw _eN2gVsMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQb6RcMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQb6RMMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQchUcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQchUsMWEeyi_sSD1HsbUw _eN3HY8MWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQchUsMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQchUcMWEeyi_sSD1HsbUw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQchVMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQchVcMWEeyi_sSD1HsbUw _eN3HZ8MWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQchVcMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQchVMMWEeyi_sSD1HsbUw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQdIYcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQdIYsMWEeyi_sSD1HsbUw _eN3uc8MWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQdIYsMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQdIYcMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQdvccMWEeyi_sSD1HsbUw" name="" memberEnd="_eQdvcsMWEeyi_sSD1HsbUw _eN4VgcMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQdvcsMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQdvccMWEeyi_sSD1HsbUw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQdvdMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQdvdcMWEeyi_sSD1HsbUw _eN4VhcMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQdvdcMWEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_eQdvdMMWEeyi_sSD1HsbUw"/>
@@ -5103,12 +5129,6 @@ It is managed by the GameEngine</body>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQgywcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQgywsMWEeyi_sSD1HsbUw _eN7Y0sMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQgywsMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQgywcMWEeyi_sSD1HsbUw"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQhZ0cMWEeyi_sSD1HsbUw" name="" memberEnd="_eQhZ0sMWEeyi_sSD1HsbUw _eN7_4sMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQhZ0sMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQhZ0cMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQhZ1MMWEeyi_sSD1HsbUw" name="" memberEnd="_eQhZ1cMWEeyi_sSD1HsbUw _eN8m8MMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQhZ1cMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQhZ1MMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQiA4cMWEeyi_sSD1HsbUw" name="" memberEnd="_eQiA4sMWEeyi_sSD1HsbUw _eN8m9MMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQiA4sMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQiA4cMWEeyi_sSD1HsbUw"/>
         </packagedElement>
@@ -5123,9 +5143,6 @@ It is managed by the GameEngine</body>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQj2EcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQj2EsMWEeyi_sSD1HsbUw _eN_qQsMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQj2EsMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQj2EcMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQkdIMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQkdIcMWEeyi_sSD1HsbUw _eOARU8MWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQkdIcMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQkdIMMWEeyi_sSD1HsbUw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQkdI8MWEeyi_sSD1HsbUw" name="" memberEnd="_eQkdJMMWEeyi_sSD1HsbUw _eOARV8MWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQkdJMMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQkdI8MWEeyi_sSD1HsbUw"/>
@@ -5142,14 +5159,21 @@ It is managed by the GameEngine</body>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQlrRMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQlrRcMWEeyi_sSD1HsbUw _eOCtlMMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQlrRcMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQlrRMMWEeyi_sSD1HsbUw"/>
         </packagedElement>
-        <packagedElement xmi:type="uml:Association" xmi:id="_eQmSUcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQmSUsMWEeyi_sSD1HsbUw _eODUpMMWEeyi_sSD1HsbUw">
-          <ownedEnd xmi:id="_eQmSUsMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQmSUcMWEeyi_sSD1HsbUw"/>
-        </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQmSVMMWEeyi_sSD1HsbUw" name="" memberEnd="_eQmSVcMWEeyi_sSD1HsbUw _eOD7s8MWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQmSVcMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQmSVMMWEeyi_sSD1HsbUw"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Association" xmi:id="_eQm5YcMWEeyi_sSD1HsbUw" name="" memberEnd="_eQm5YsMWEeyi_sSD1HsbUw _eOEiwMMWEeyi_sSD1HsbUw">
           <ownedEnd xmi:id="_eQm5YsMWEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_eQm5YcMWEeyi_sSD1HsbUw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_JRpqkMPDEeyi_sSD1HsbUw" name="" memberEnd="_JRpqkcPDEeyi_sSD1HsbUw _JRmnQMPDEeyi_sSD1HsbUw">
+          <ownedEnd xmi:id="_JRpqkcPDEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_JRpqkMPDEeyi_sSD1HsbUw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_ayHbMMPEEeyi_sSD1HsbUw" name="" memberEnd="_ayHbMcPEEeyi_sSD1HsbUw _ayFmAMPEEeyi_sSD1HsbUw">
+          <ownedEnd xmi:id="_ayHbMcPEEeyi_sSD1HsbUw" name="" type="_eBe4QMMWEeyi_sSD1HsbUw" association="_ayHbMMPEEeyi_sSD1HsbUw"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qj5XQMPXEeyi_sSD1HsbUw" name="AnchorPane"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_qj-PwMPXEeyi_sSD1HsbUw" name="" memberEnd="_qj-PwcPXEeyi_sSD1HsbUw _qj7McMPXEeyi_sSD1HsbUw">
+          <ownedEnd xmi:id="_qj-PwcPXEeyi_sSD1HsbUw" name="" type="_eBk-4MMWEeyi_sSD1HsbUw" association="_qj-PwMPXEeyi_sSD1HsbUw"/>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_d7-tMMMWEeyi_sSD1HsbUw" name="graphics">
@@ -7897,7 +7921,7 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Annotations xmi:id="_eNMZA8MWEeyi_sSD1HsbUw" base_Element="_eNMZAcMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eNMZBMMWEeyi_sSD1HsbUw" name="SuppressWarnings">
       <annotationParameters xmi:id="_eNMZBcMWEeyi_sSD1HsbUw" skipName="true" skipArray="true">
-        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_ePh7UsMWEeyi_sSD1HsbUw" value="&quot;unused&quot;"/>
+        <valueSpecifications xmi:type="uml:LiteralString" xmi:id="_vf8WUMPeEeyi_sSD1HsbUw" value="&quot;unused&quot;"/>
       </annotationParameters>
     </annotations>
   </UMLLabProfile:Annotations>
@@ -8064,27 +8088,11 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Annotations xmi:id="_eN0rJcMWEeyi_sSD1HsbUw" base_Element="_eN0rI8MWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN0rJsMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN1SMcMWEeyi_sSD1HsbUw" base_Element="_eN1SMMMWEeyi_sSD1HsbUw">
-    <associatedElement xmi:type="uml:Operation" xmi:id="_eN1SMsMWEeyi_sSD1HsbUw" name="getScene" method="_ePRcpsMWEeyi_sSD1HsbUw">
-      <ownedParameter xmi:id="_eN1SM8MWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
-    </associatedElement>
-  </UMLLabProfile:LegacyStyledElement>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_eN1SMcMWEeyi_sSD1HsbUw" base_Element="_eN1SMMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN15QcMWEeyi_sSD1HsbUw" base_Element="_eN15QMMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN15Q8MWEeyi_sSD1HsbUw" base_Element="_eN15QsMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN2gUMMWEeyi_sSD1HsbUw" base_Element="_eN15QsMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN2gUcMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN2gU8MWEeyi_sSD1HsbUw" base_Element="_eN2gUsMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eN2gVMMWEeyi_sSD1HsbUw" base_Element="_eN2gUsMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN2gVcMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN3HYMMWEeyi_sSD1HsbUw" base_Element="_eN2gVsMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN3HYcMWEeyi_sSD1HsbUw" base_Element="_eN2gVsMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN3HYsMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN3HZMMWEeyi_sSD1HsbUw" base_Element="_eN3HY8MWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN3HZcMWEeyi_sSD1HsbUw" base_Element="_eN3HY8MWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN3HZsMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN3ucMMWEeyi_sSD1HsbUw" base_Element="_eN3HZ8MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eN3uccMWEeyi_sSD1HsbUw" base_Element="_eN3HZ8MWEeyi_sSD1HsbUw">
@@ -8094,10 +8102,6 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Annotations xmi:id="_eN3udcMWEeyi_sSD1HsbUw" base_Element="_eN3uc8MWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN4VgMMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN4VgsMWEeyi_sSD1HsbUw" base_Element="_eN4VgcMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN4Vg8MWEeyi_sSD1HsbUw" base_Element="_eN4VgcMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN4VhMMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN4VhsMWEeyi_sSD1HsbUw" base_Element="_eN4VhcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eN48kMMWEeyi_sSD1HsbUw" base_Element="_eN4VhcMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN48kcMWEeyi_sSD1HsbUw" name="FXML"/>
@@ -8106,7 +8110,11 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Annotations xmi:id="_eN48lMMWEeyi_sSD1HsbUw" base_Element="_eN48ksMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN48lcMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN5jocMWEeyi_sSD1HsbUw" base_Element="_eN5joMMWEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_eN5jocMWEeyi_sSD1HsbUw" base_Element="_eN5joMMWEeyi_sSD1HsbUw">
+    <associatedElement xmi:type="uml:Operation" xmi:id="_ta7AAMPdEeyi_sSD1HsbUw" name="getScene" method="_ta7nEMPdEeyi_sSD1HsbUw">
+      <ownedParameter xmi:id="_ta7AAcPdEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
+    </associatedElement>
+  </UMLLabProfile:LegacyStyledElement>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN6KsMMWEeyi_sSD1HsbUw" base_Element="_eN5josMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN6KssMWEeyi_sSD1HsbUw" base_Element="_eN6KscMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN6KtMMWEeyi_sSD1HsbUw" base_Element="_eN6Ks8MWEeyi_sSD1HsbUw"/>
@@ -8116,14 +8124,6 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN7Y0cMWEeyi_sSD1HsbUw" base_Element="_eN6xwsMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Generics xmi:id="_eN7_4MMWEeyi_sSD1HsbUw" genericsValue="RankItem" base_Element="_eN7Y0sMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN7_4cMWEeyi_sSD1HsbUw" base_Element="_eN7Y0sMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN7_48MWEeyi_sSD1HsbUw" base_Element="_eN7_4sMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN7_5MMWEeyi_sSD1HsbUw" base_Element="_eN7_4sMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN7_5cMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eN8m8cMWEeyi_sSD1HsbUw" base_Element="_eN8m8MMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eN8m8sMWEeyi_sSD1HsbUw" base_Element="_eN8m8MMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eN8m88MWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eN8m9cMWEeyi_sSD1HsbUw" base_Element="_eN8m9MMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eN9OAMMWEeyi_sSD1HsbUw" base_Element="_eN8m9MMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eN9OAcMWEeyi_sSD1HsbUw" name="FXML"/>
@@ -8148,10 +8148,6 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Annotations xmi:id="_eOARUcMWEeyi_sSD1HsbUw" base_Element="_eN_qQsMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eOARUsMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eOARVMMWEeyi_sSD1HsbUw" base_Element="_eOARU8MWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eOARVcMWEeyi_sSD1HsbUw" base_Element="_eOARU8MWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eOARVsMWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eOA4YMMWEeyi_sSD1HsbUw" base_Element="_eOARV8MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eOA4YcMWEeyi_sSD1HsbUw" base_Element="_eOARV8MWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eOA4YsMWEeyi_sSD1HsbUw" name="FXML"/>
@@ -8175,10 +8171,6 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:LegacyStyledElement xmi:id="_eODUocMWEeyi_sSD1HsbUw" base_Element="_eOCtlMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eODUosMWEeyi_sSD1HsbUw" base_Element="_eOCtlMMWEeyi_sSD1HsbUw">
     <annotations xmi:id="_eODUo8MWEeyi_sSD1HsbUw" name="FXML"/>
-  </UMLLabProfile:Annotations>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_eOD7sMMWEeyi_sSD1HsbUw" base_Element="_eODUpMMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Annotations xmi:id="_eOD7scMWEeyi_sSD1HsbUw" base_Element="_eODUpMMWEeyi_sSD1HsbUw">
-    <annotations xmi:id="_eOD7ssMWEeyi_sSD1HsbUw" name="FXML"/>
   </UMLLabProfile:Annotations>
   <UMLLabProfile:LegacyStyledElement xmi:id="_eOD7tMMWEeyi_sSD1HsbUw" base_Element="_eOD7s8MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Annotations xmi:id="_eOD7tcMWEeyi_sSD1HsbUw" base_Element="_eOD7s8MWEeyi_sSD1HsbUw">
@@ -8531,13 +8523,9 @@ Its execution is manual: click on the screen and the display will change randomi
  </body>
   </uml:OpaqueBehavior>
   <uml:OpaqueBehavior xmi:id="_ePQ1lcMWEeyi_sSD1HsbUw" name="getScene" specification="_eNvyo8MWEeyi_sSD1HsbUw">
-    <ownedParameter xmi:id="_ePQ1lsMWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
-    <language>java</language>
-    <body>return this.scene;
-	</body>
-  </uml:OpaqueBehavior>
-  <uml:OpaqueBehavior xmi:id="_ePRcpsMWEeyi_sSD1HsbUw" name="getScene" specification="_eN1SMsMWEeyi_sSD1HsbUw">
-    <ownedParameter xmi:id="_ePRcp8MWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return"/>
+    <ownedParameter xmi:id="_ePQ1lsMWEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return">
+      <name xsi:nil="true"/>
+    </ownedParameter>
     <language>java</language>
     <body>return this.scene;
 	</body>
@@ -8642,13 +8630,9 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Reference xmi:id="_eQasIMMWEeyi_sSD1HsbUw" base_Element="_eQaFFMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQasI8MWEeyi_sSD1HsbUw" base_Element="_eQasIcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQbTMMMWEeyi_sSD1HsbUw" base_Element="_eQasJMMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQb6QMMWEeyi_sSD1HsbUw" base_Element="_eQbTMcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQb6Q8MWEeyi_sSD1HsbUw" base_Element="_eQb6QcMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQchUMMWEeyi_sSD1HsbUw" base_Element="_eQb6RMMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQchU8MWEeyi_sSD1HsbUw" base_Element="_eQchUcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQdIYMMWEeyi_sSD1HsbUw" base_Element="_eQchVMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQdvcMMWEeyi_sSD1HsbUw" base_Element="_eQdIYcMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQdvc8MWEeyi_sSD1HsbUw" base_Element="_eQdvccMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQeWgMMWEeyi_sSD1HsbUw" base_Element="_eQdvdMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQeWg8MWEeyi_sSD1HsbUw" base_Element="_eQeWgcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQe9kMMWEeyi_sSD1HsbUw" base_Element="_eQeWhMMWEeyi_sSD1HsbUw"/>
@@ -8657,20 +8641,16 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Reference xmi:id="_eQgLs8MWEeyi_sSD1HsbUw" base_Element="_eQgLscMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQgywMMWEeyi_sSD1HsbUw" base_Element="_eQgLtMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQhZ0MMWEeyi_sSD1HsbUw" base_Element="_eQgywcMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQhZ08MWEeyi_sSD1HsbUw" base_Element="_eQhZ0cMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQiA4MMWEeyi_sSD1HsbUw" base_Element="_eQhZ1MMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQiA48MWEeyi_sSD1HsbUw" base_Element="_eQiA4cMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQin8sMWEeyi_sSD1HsbUw" base_Element="_eQin8MMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQjPAMMWEeyi_sSD1HsbUw" base_Element="_eQin88MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQj2EMMWEeyi_sSD1HsbUw" base_Element="_eQjPAcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQj2E8MWEeyi_sSD1HsbUw" base_Element="_eQj2EcMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQkdIsMWEeyi_sSD1HsbUw" base_Element="_eQkdIMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQlEMMMWEeyi_sSD1HsbUw" base_Element="_eQkdI8MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQlEM8MWEeyi_sSD1HsbUw" base_Element="_eQlEMcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQlrQMMWEeyi_sSD1HsbUw" base_Element="_eQlENMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQlrQ8MWEeyi_sSD1HsbUw" base_Element="_eQlrQcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQmSUMMWEeyi_sSD1HsbUw" base_Element="_eQlrRMMWEeyi_sSD1HsbUw"/>
-  <UMLLabProfile:Reference xmi:id="_eQmSU8MWEeyi_sSD1HsbUw" base_Element="_eQmSUcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQm5YMMWEeyi_sSD1HsbUw" base_Element="_eQmSVMMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQm5Y8MWEeyi_sSD1HsbUw" base_Element="_eQm5YcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eQngcsMWEeyi_sSD1HsbUw" base_Element="_eQngcMMWEeyi_sSD1HsbUw"/>
@@ -8751,4 +8731,30 @@ Its execution is manual: click on the screen and the display will change randomi
   <UMLLabProfile:Reference xmi:id="_eRMvQMMWEeyi_sSD1HsbUw" base_Element="_eRMIM8MWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eRNWUMMWEeyi_sSD1HsbUw" base_Element="_eRMvQcMWEeyi_sSD1HsbUw"/>
   <UMLLabProfile:Reference xmi:id="_eRN9YMMWEeyi_sSD1HsbUw" base_Element="_eRNWUcMWEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_JRmnQcPDEeyi_sSD1HsbUw" base_Element="_JRmnQMPDEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:Annotations xmi:id="_JRnOUMPDEeyi_sSD1HsbUw" base_Element="_JRmnQMPDEeyi_sSD1HsbUw">
+    <annotations xmi:id="_JRnOUcPDEeyi_sSD1HsbUw" name="FXML"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_JRq4sMPDEeyi_sSD1HsbUw" base_Element="_JRpqkMPDEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_ayFmAcPEEeyi_sSD1HsbUw" base_Element="_ayFmAMPEEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:Annotations xmi:id="_ayGNEMPEEeyi_sSD1HsbUw" base_Element="_ayFmAMPEEeyi_sSD1HsbUw">
+    <annotations xmi:id="_ayGNEcPEEeyi_sSD1HsbUw" name="FXML"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_ayICQMPEEeyi_sSD1HsbUw" base_Element="_ayHbMMPEEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:Reference xmi:id="_qj5-UMPXEeyi_sSD1HsbUw" base_Element="_qj5XQMPXEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_qj7MccPXEeyi_sSD1HsbUw" base_Element="_qj7McMPXEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:Annotations xmi:id="_qj7McsPXEeyi_sSD1HsbUw" base_Element="_qj7McMPXEeyi_sSD1HsbUw">
+    <annotations xmi:id="_qj7zgMPXEeyi_sSD1HsbUw" name="FXML"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_qj-20MPXEeyi_sSD1HsbUw" base_Element="_qj-PwMPXEeyi_sSD1HsbUw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_rhq8McPZEeyi_sSD1HsbUw" base_Element="_rhq8MMPZEeyi_sSD1HsbUw"/>
+  <uml:OpaqueBehavior xmi:id="_ta7nEMPdEeyi_sSD1HsbUw" name="getScene" specification="_ta7AAMPdEeyi_sSD1HsbUw">
+    <ownedParameter xmi:id="_ta7nEcPdEeyi_sSD1HsbUw" type="_eKRA0cMWEeyi_sSD1HsbUw" direction="return">
+      <name xsi:nil="true"/>
+    </ownedParameter>
+    <language>java</language>
+    <body>return this.scene;
+	</body>
+  </uml:OpaqueBehavior>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_1WXzoMPdEeyi_sSD1HsbUw" base_Element="_zafVwMPdEeyi_sSD1HsbUw"/>
 </xmi:XMI>

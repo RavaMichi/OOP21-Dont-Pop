@@ -8,6 +8,9 @@ import javafx.scene.control.TableView;
 
 import game.util.RankItem;
 
+/**
+ * Test class.
+ */
 public class UIController {
 //	@FXML
 //	private Label lbl;

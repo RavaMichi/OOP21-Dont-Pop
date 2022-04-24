@@ -12,7 +12,7 @@ public class SpawnManager {
 
 	/** The Constant LOOP_START_TIME. */
 
-	private static final double LOOP_START_TIME = 3;// 3 secondi
+	private static final double LOOP_START_TIME = 3;   // 3 secondi
 
 	/** The Constant POWERUP_SPAWN_TIME. */
 	private static final double POWERUP_SPAWN_TIME = 7;
@@ -120,7 +120,7 @@ public class SpawnManager {
 		this.gameEngine = gameEngine;
 		this.powerUpFactory = new PoweupFactory(this.gameEngine);
 		this.enemyFactory = new EnemyFactory(this.gameEngine);
-		
+
 		//Crea il countdown (game object) iniziale
 		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, this.gameEngine));
 	}

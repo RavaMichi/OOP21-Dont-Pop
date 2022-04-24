@@ -23,6 +23,9 @@ import game.engine.GameApplication;
 import game.util.Pair;
 import game.util.RankItem;
 
+/**
+ * Test class.
+ */
 public class TestScoreSceneWithoutFXML extends Application {
 
 	private final ScoreManager scoreManager;
@@ -32,7 +35,7 @@ public class TestScoreSceneWithoutFXML extends Application {
 	private TableView<RankItem> leaderboardTable = new TableView<>();
 	private TableView<RankItem> yourScoreTable = new TableView<>();
 	//data to put in tables
-	private final ObservableList<Pair<String,Integer>> ranking;
+	private final ObservableList<Pair<String, Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
 	private final ObservableList<RankItem> yourScoreData = 
 			FXCollections.observableArrayList(new RankItem("", "Stocazzo", 3));
@@ -67,14 +70,14 @@ public class TestScoreSceneWithoutFXML extends Application {
 		//get screen size and choose the smallest axis
 		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		final double screenSize = Math.min(screenBounds.getWidth(), screenBounds.getHeight());
-		
+
 		//create a non-resizable scene
 //		final Scene scene = new Scene(new Group());
 		stage.setTitle("Score Ranking");
-		stage.setWidth(screenSize-50);
-		stage.setHeight(screenSize-50);
+		stage.setWidth(screenSize - 50);
+		stage.setHeight(screenSize - 50);
 		stage.setResizable(false);
-		
+
 		//create your rank label (vbox)
 		final Label yourScoreLabel = new Label("Your Score");
 		yourScoreLabel.setId("your-score-label");
@@ -108,7 +111,6 @@ public class TestScoreSceneWithoutFXML extends Application {
 		this.yourScoreTable.setMaxWidth(GameApplication.convertToInt(0.85));
 		this.yourScoreTable.setFixedCellSize(GameApplication.convertToInt(0.03));
 		//set minimum width & table bounds
-		//TODO: set these values with CSS only
 		yourRankCol.setPrefWidth(GameApplication.convertToInt(0.1));
 		yourNameCol.setPrefWidth(GameApplication.convertToInt(0.449));
 		yourScoreCol.setPrefWidth(GameApplication.convertToInt(0.3));
@@ -153,7 +155,6 @@ public class TestScoreSceneWithoutFXML extends Application {
 		this.leaderboardTable.setMaxWidth(GameApplication.convertToInt(0.85));
 		this.leaderboardTable.setFixedCellSize(GameApplication.convertToInt(0.03));
 		//set minimum width & table bounds
-		//TODO: set these values with CSS only
 		rankCol.setPrefWidth(GameApplication.convertToInt(0.1));
 		nameCol.setPrefWidth(GameApplication.convertToInt(0.449));
 		scoreCol.setPrefWidth(GameApplication.convertToInt(0.3));

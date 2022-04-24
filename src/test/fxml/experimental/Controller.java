@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Controller extends Application{
+/**
+ * Test class.
+ */
+public class Controller extends Application {
 	
 	public void start(Stage stage) throws Exception {
 		VBox root = FXMLLoader.load(ClassLoader.getSystemResource("test/fxml/experimental/sample.fxml"));

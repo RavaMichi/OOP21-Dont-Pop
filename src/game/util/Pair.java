@@ -5,6 +5,8 @@ import java.util.Objects;
 
 /**
  * A standard generic Pair<E1, E2> with getters, hashCode, equals, and toString well implemented.
+ * @param <E1>
+ * @param <E2>
  */
 public class Pair<E1, E2> implements Serializable {
 
@@ -64,8 +66,8 @@ public class Pair<E1, E2> implements Serializable {
 		}
 		@SuppressWarnings("rawtypes")
 		final Pair other = (Pair) obj;
-		return Objects.equals(e1, other.e1) &&
-			   Objects.equals(e2, other.e2);
+		return Objects.equals(e1, other.e1) 
+		        && Objects.equals(e2, other.e2);
 	}
 	
 	/**

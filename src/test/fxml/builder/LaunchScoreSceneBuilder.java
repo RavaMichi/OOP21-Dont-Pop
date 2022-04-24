@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Test class.
+ */
 public class LaunchScoreSceneBuilder extends Application {
 	
 //	private final ScoreManager scoreManager;
@@ -31,8 +34,8 @@ public class LaunchScoreSceneBuilder extends Application {
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/game/css/scorescene-styles.css").toExternalForm());
 		stage.setTitle("Score Ranking");
-		stage.setWidth(GameApplication.screenSize * 0.90);
-		stage.setHeight(GameApplication.screenSize * 0.90);
+		stage.setWidth(GameApplication.SCREEN_SIZE * 0.90);
+		stage.setHeight(GameApplication.SCREEN_SIZE * 0.90);
 		stage.setResizable(false);
 		stage.setScene(scene);
 		stage.show();

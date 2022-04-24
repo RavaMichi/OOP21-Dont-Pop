@@ -14,7 +14,7 @@ public class ScoreCalc {
     private double multiplierTime;
     private double frameCounter;
     private final static double MULTIPLIER_TIME = 5;	//five seconds of multiplier
-    private final static int POINTS_PER_SECOND= 15;
+    private final static int POINTS_PER_SECOND = 15;
     private final static double SECONDS_PER_POINT = 1 / (double)POINTS_PER_SECOND;
     private final static int MULTIPLIER_2X = 2;
     
@@ -46,7 +46,7 @@ public class ScoreCalc {
     public boolean isCalculable() {
     	return this.calcStatus;
     }
-    
+
     /**
      * Sets whether ScoreCalc shall calculate the score (true) or not (false)
      * @param status
@@ -58,7 +58,7 @@ public class ScoreCalc {
     /**
      * Increments score by an arbitrary amount.
      * Can choose to ignore multiplier (default: apply current multiplier).
-     * @param delta
+     * @param deltaScore
      */
     public void incScore(final int deltaScore) {
         this.score += deltaScore * this.getMultiplier();

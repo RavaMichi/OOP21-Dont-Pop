@@ -11,15 +11,18 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class tests the leaderboard with JUnit.
+ */
 public class LeaderboardTest {
 
 	private Leaderboard leaderboard;
-	private List<Pair<String,Integer>> list;
+	private List<Pair<String, Integer>> list;
 	
 	@Before
 	public void init() {
 		this.leaderboard = new Leaderboard("src/test/junit/.save-test");
-		this.list = new ArrayList<Pair<String,Integer>>();
+		this.list = new ArrayList<Pair<String, Integer>>();
 	}
 	
 	@Test

@@ -22,13 +22,13 @@ public class TextRenderer implements Renderer {
 	private final boolean onlyFill;
 	
 	/**
-	 * Creates a new Renderer which displays a text at parent's position
+	 * Creates a new Renderer which displays a text at parent's position.
 	 * @param parent - the parent gameObject
 	 * @param text
 	 * @param size - in-game size of the text
-	 * @param color of the text
-	 * @param border size - the width of the border
-	 * @param border color of the text
+	 * @param fillColor - color of the text
+	 * @param borderSize - the width of the border
+	 * @param borderColor - color of the text border
 	 */
 	public TextRenderer(final AbstractGameObject parent, final String text, final double size, final Color fillColor, final double borderSize, final Color borderColor) {
 		this.parent = parent;
@@ -41,16 +41,19 @@ public class TextRenderer implements Renderer {
 	}
 	
 	/**
-	 * Creates a new Renderer which displays a text at parent's position (without outline)
+	 * Creates a new Renderer which displays a text at parent's position (without outline).
 	 * @param parent - the parent gameObject
 	 * @param text
 	 * @param size - in-game size of the text
-	 * @param color of the text
+	 * @param fillColor - color of the text
 	 */
 	public TextRenderer(final AbstractGameObject parent, final String text, final double size, final Color fillColor) {
 		this(parent, text, size, fillColor, 0, Color.TRANSPARENT);
 	}
 	
+	/**
+	 * Paints text on screen.
+	 */
 	@Override
 	public void paint(final GraphicsContext gc) {
 		gc.setFont(this.font);

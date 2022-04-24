@@ -22,7 +22,7 @@ public class GameScene {
 	private Canvas activeCanvas;
 	private Canvas bufferCanvas;
 	
-	private final Point2D mousePosition = new Point2D(0.5,0.5);
+	private final Point2D mousePosition = new Point2D(0.5, 0.5);
 	private final int size;
 	
 	/**
@@ -41,8 +41,8 @@ public class GameScene {
 		
 		//Updates the mouse position
 		gr.setOnMouseMoved(event -> {
-			this.mousePosition.setX(event.getSceneX()/size);
-			this.mousePosition.setY(event.getSceneY()/size);
+			this.mousePosition.setX(event.getSceneX() / size);
+			this.mousePosition.setY(event.getSceneY() / size);
 		});
 		
 		this.size = size;

@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Test class.
+ */
 public class CompleteExample extends Application {
 
 	@Override

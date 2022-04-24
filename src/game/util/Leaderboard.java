@@ -18,7 +18,7 @@ public class Leaderboard {
 
 	private static final int RANKING_LENGTH = 50;
 	
-    private List<Pair<String,Integer>> ranking = new ArrayList<>();
+    private List<Pair<String, Integer>> ranking = new ArrayList<>();
     private final File saveFile;
 	
     /**
@@ -39,7 +39,7 @@ public class Leaderboard {
 	/**
 	 * @return the current ranking
 	 */
-	public List<Pair<String,Integer>> getRanking() {
+	public List<Pair<String, Integer>> getRanking() {
 		return List.copyOf(this.ranking);
 	}
 	
@@ -50,7 +50,7 @@ public class Leaderboard {
 	 */
 	public void addToRanking(final String playerName, final int score) {
 		//System.out.println(playerName);
-		final var entry = new Pair<String,Integer>(playerName, score);
+		final var entry = new Pair<String, Integer>(playerName, score);
 		if (this.ranking.isEmpty()) {
 			this.ranking.add(entry);
 		} else {
@@ -90,8 +90,8 @@ public class Leaderboard {
 	 */
 	public int getRank(final String playerName, final int score) {
 		for (int i = 0; i < this.ranking.size(); i++) {
-			if (this.ranking.get(i).get1().equals(playerName) && 
-			    this.ranking.get(i).get2().equals(score)) {
+			if (this.ranking.get(i).get1().equals(playerName) 
+			        && this.ranking.get(i).get2().equals(score)) {
 				return i + 1;
 			}
 		}
@@ -104,7 +104,7 @@ public class Leaderboard {
 	@SuppressWarnings("unchecked")
 	public void load() {
 		try (var ois = new ObjectInputStream(new FileInputStream(saveFile))) {	
-			this.ranking = (ArrayList<Pair<String,Integer>>)ois.readObject();
+			this.ranking = (ArrayList<Pair<String, Integer>>)ois.readObject();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e2) {

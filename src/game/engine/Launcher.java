@@ -6,6 +6,10 @@ import javafx.application.Application;
  */
 public class Launcher {
 
+    /**
+     * Launch the game.
+     * @param args
+     */
 	public static void main(String[] args) {
 		Application.launch(GameApplication.class);
 	}

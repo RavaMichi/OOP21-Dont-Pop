@@ -6,6 +6,9 @@ import game.graphics.*;
 import game.util.Point2D;
 import javafx.scene.paint.Color;
 
+/**
+ * This class models a laser.
+ */
 public class EnemyLineObj extends AbstractGameObject {
 	
 	private double timer;	//0
@@ -22,6 +25,9 @@ public class EnemyLineObj extends AbstractGameObject {
 		this.setRenderer((Renderer)new LineRenderer(this, dir, Color.color(1, 0, 0, 0.5), 0.01));
 	}
 
+	/**
+	 * Updates laser status, activating or destroying it.
+	 */
 	@Override
 	public void update() {
 		this.timer -= this.getGameEngine().getDeltaTime();
@@ -31,7 +37,7 @@ public class EnemyLineObj extends AbstractGameObject {
 		if (this.timer <= -0.65) {
 			this.destroy();
 		}
-		
+
 	}
 
 	private void activate() {
@@ -40,7 +46,7 @@ public class EnemyLineObj extends AbstractGameObject {
 			this.setCollider((Collider)new RayCollider(this, this.direction));
 			this.setRenderer((Renderer)new LineRenderer(this, this.direction, Color.color(1, 0, 0, 1), 0.02));
 		}
-		
+
 	}
 	
 }

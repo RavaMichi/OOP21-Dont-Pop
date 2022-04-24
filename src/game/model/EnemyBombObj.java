@@ -6,6 +6,9 @@ import game.collider.*;
 import game.util.Point2D;
 import javafx.scene.paint.Color;
 
+/**
+ * This class models an explosion.
+ */
 public class EnemyBombObj extends AbstractGameObject {
 	
 	private double timer;	//0
@@ -26,13 +29,13 @@ public class EnemyBombObj extends AbstractGameObject {
 		if (this.timer <= -0.25) {
 			this.destroy();
 		}
-		
+
 	}
 
 	private void explode() {
 		if (!this.hasExploded) {
 			this.hasExploded = true;
-			this.setCollider((Collider)new CircleCollider(this, 0.25, Point2D.of(0, 0)));
+			this.setCollider((Collider) new CircleCollider(this, 0.25, Point2D.of(0, 0)));
 			((CircleRenderer) this.getRenderer()).setOpacity(1);
 		}
 	}

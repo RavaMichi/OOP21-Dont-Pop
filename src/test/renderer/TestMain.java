@@ -23,7 +23,7 @@ public class TestMain extends Application {
 	GameScene gameScene;
 	//create an object at the center of the screen
 	AbstractGameObject obj = new AbstractGameObject(Point2D.of(0.5, 0.5), ObjectType.PLAYER, null) {
-		public void update() {}
+		public void update() { }
 	};;
 	RandomInt rand = new RandomInt();
 	

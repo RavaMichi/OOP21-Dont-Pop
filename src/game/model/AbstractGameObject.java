@@ -15,7 +15,7 @@ public abstract class AbstractGameObject {
 	
     /**
      * Represents the type of the game object Has functions to check the type of a
-     * game object (AbstractGameObject)
+     * game object (AbstractGameObject).
      */
     public enum ObjectType {
         PLAYER,                                         // player
@@ -135,7 +135,7 @@ public abstract class AbstractGameObject {
     public void destroy() {
         this.gameEngine.destroy(this);
     }
-    
+
     /**
      * Gets GameEngine object (which instantiated this object).
      * @return game engine

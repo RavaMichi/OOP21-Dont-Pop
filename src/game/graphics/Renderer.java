@@ -8,8 +8,8 @@ import javafx.scene.canvas.GraphicsContext;
 public interface Renderer {
 	
 	/**
-	 * Draws on gc this rendering information
-	 * @param The GraphicsContext instance where to draw
+	 * Draws on gc this rendering information.
+	 * @param gc - The GraphicsContext instance where to draw
 	 */
 	void paint(GraphicsContext gc);
 }

@@ -1,18 +1,18 @@
 package test.junit;
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import game.engine.GameApplication;
 import game.engine.GameEngine;
 import game.model.AbstractGameObject;
 import game.model.PlayerObj;
 import game.model.ScoreDisplayObj;
-import game.ui.GameScene;
 import game.util.Point2D;
 import game.util.ScoreCalc;
 
+/**
+ * This class tests game engine with JUnit.
+ */
 public class GameEngineTest {
 
 	private GameEngine gameEngine;
@@ -22,7 +22,7 @@ public class GameEngineTest {
 		this.gameEngine = new GameEngine(null, null);
 		final PlayerObj player = new PlayerObj(new Point2D(0.5, 0.5), AbstractGameObject.ObjectType.PLAYER, null);
 		assertEquals(player, player);
-		
+
 	}
 	
 	@Test

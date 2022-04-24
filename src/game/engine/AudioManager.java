@@ -21,7 +21,7 @@ public class AudioManager {
 	 */
 	public static enum Music {
 		BALOON_GROOVE("audio/BaloonGroove.mp3");
-		
+
 		private Music(final String path) {
 			final Media media = new Media(getResPath(path));
 			final MediaPlayer mp = new MediaPlayer(media);
@@ -40,7 +40,7 @@ public class AudioManager {
 		SHIELD_HIT("audio/shield_hit.wav"),
 		MULTIPLIER_GET("audio/2x_equip.wav"),
 		SWEEPER_GET("audio/sweeper_use.wav");
-		
+
 		private Sound(final String path) {
 			SOUNDS.put(this, new AudioClip(getResPath(path)));
 		}

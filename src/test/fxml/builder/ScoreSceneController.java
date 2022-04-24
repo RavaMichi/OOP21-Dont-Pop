@@ -14,6 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import test.fxml.scorescene.ScoreManager;
 
+/**
+ * Controller class for ScoreScene.
+ */
 public class ScoreSceneController {
 	
 	private final ScoreManager scoreManager;

@@ -11,6 +11,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Test class.
+ */
 public class MenuSceneController {
 	
 	private final GameApplication application;
@@ -55,7 +58,7 @@ public class MenuSceneController {
 		} else if (!playerName.isEmpty()) {
 			this.application.setPlayerName(playerName);
 		}
-		
+
 		this.application.game();
 	}
 	
@@ -93,10 +96,10 @@ public class MenuSceneController {
 		String playerName = "Player";
 		final Random rand = new Random();
 		final int upperBound = 10;
-		for(int i=0; i<3; i++) {
+		for(int i = 0; i < 3; i++) {
 			playerName += rand.nextInt(upperBound);
 		}
-		
+
 		return playerName;
 	}
 }

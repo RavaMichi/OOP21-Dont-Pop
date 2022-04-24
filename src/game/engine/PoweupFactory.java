@@ -7,7 +7,6 @@ import game.model.AbstractGameObject;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.WhereToSpawn;
 
-// TODO: Auto-generated Javadoc
 /**
  * A factory for creating powerup objects using Factory method where it use a random type of powerup
  * and the class creates it.
@@ -36,7 +35,7 @@ public class PoweupFactory {
 	 */
 	
 	public AbstractGameObject getPowerUpObj()  {
-		
+
 		final var pos = this.wheretospawn.getPowerUPSpawnPoint();
 		final Integer typeOfPowerUp = new RandomInt().getRandomInt(6, 8);
 		if (typeOfPowerUp == 6) {
@@ -54,7 +53,7 @@ public class PoweupFactory {
 	 * @return the power up obj
 	 */
 	public PowerUpObj createShield(final Point2D position) {
-		
+
 		return new PowerUpObj(position, ObjectType.PWRUP_SHIELD, this.gameEngine);
 		}
 	
@@ -64,7 +63,7 @@ public class PoweupFactory {
  * @return the power up obj
  */
 public PowerUpObj createMultiplier(final Point2D position) {
-		
+
 	return new PowerUpObj(position, ObjectType.PWRUP_MULTIPLIER, this.gameEngine);
 		}
 

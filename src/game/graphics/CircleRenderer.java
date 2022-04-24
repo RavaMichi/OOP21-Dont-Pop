@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- * Renderer of a circle
+ * Renderer of a circle.
  */
 public class CircleRenderer implements Renderer {
 
@@ -15,7 +15,7 @@ public class CircleRenderer implements Renderer {
 	private Color color;
 	
 	/**
-	 * Creates a new Renderer at parent position, representing a circle of radius radius and color color
+	 * Creates a new Renderer at parent position, representing a circle of radius radius and color color.
 	 * @param parent - the GameObject
 	 * @param radius - the circle radius
 	 * @param color - the circle color
@@ -36,7 +36,7 @@ public class CircleRenderer implements Renderer {
 	}
 	
 	/**
-	 * Set the radius of the circle
+	 * Set the radius of the circle.
 	 * @param radius
 	 */
 	public void setRadius(final double radius) {
@@ -45,7 +45,7 @@ public class CircleRenderer implements Renderer {
 	
 	/**
 	 * Paints a circle.
-	 * @param GraphicsContext gc
+	 * @param gc
 	 */
 	@Override
 	public void paint(final GraphicsContext gc) {

@@ -41,7 +41,7 @@ public class GameEngine implements Runnable {
     private boolean hasShield;		//false
     @SuppressWarnings("unused")
 	private boolean hasMultiplier;	//false
-    
+
     private boolean executeLoop = true;
     ////private double multiplierTime; //mette il tempo in secondi della durata del multiplier (time goes down over time)
 
@@ -52,13 +52,15 @@ public class GameEngine implements Runnable {
 
     /**
      * Creates a new GameEngine object and initializes its fields.
+     * @param application
+     * @param gameScene
      */
     public GameEngine(final GameApplication application, final GameScene gameScene) {
     	this.player = new PlayerObj(new Point2D(START_X, START_Y), AbstractGameObject.ObjectType.PLAYER, this);
         this.enemies = new ArrayList<>(INITIAL_SIZE);
         this.powerups = new ArrayList<>();   //default size: 10
         this.destroyQueue = new ArrayList<>();
-        
+
         this.application = application;
         this.gameScene = gameScene;
         this.scoreCalc = new ScoreCalc();
@@ -97,9 +99,9 @@ public class GameEngine implements Runnable {
 
             this.incTime();					     	            //updates game time
             this.scoreCalc.calculateScore(deltaTime);   		//multiplier time management
-            
+
             this.spawnManager.advance();                        //advance spawnManager (enemy spawning)
-            
+
             this.removeObjectsInDestroyQueue();
             this.updateAllGameObjects();
             this.checkPowerupCollision();	            		//powerups
@@ -110,23 +112,26 @@ public class GameEngine implements Runnable {
                 this.player.die();
                 this.scoreCalc.setCalcStatus(false);
             }
-            
+
             ////this.scoreCalc.incScore();		//score increment
             this.render();					//rendering changes
-            
+
             //thread sleeps for remaining frame duration
             final long endTime = System.currentTimeMillis();
             this.putThreadToSleep(startTime, endTime);
-            
+
             //calculate frame duration
             final long endFrame = System.currentTimeMillis();
-            this.deltaTime = (double)this.deltatime(startTime, endFrame) / 1000;
+            this.deltaTime = (double) this.deltatime(startTime, endFrame) / 1000;
         }
-        
+
         /* After the game loop ends, the scene is changed */
         this.application.score(this.scoreCalc.getScore());
     }
 
+    /**
+     * Starts game loop in another thread.
+     */
     @Override
     public void run() {
     	//start game loop
@@ -136,7 +141,7 @@ public class GameEngine implements Runnable {
 			e.printStackTrace();
 		}
     }
-    
+
     /**
      * Calculates the time that passes between two frames, given that frames will not always be computed in the same time.
      * @param startFrame frame time
@@ -158,7 +163,7 @@ public class GameEngine implements Runnable {
     /**
      * Creates a game object.
      * @param obj
-     */   
+     */
     public void instantiate(final AbstractGameObject obj) {
     	if (obj.getType().isEnemy()) {
     		this.enemies.add(obj);
@@ -217,7 +222,7 @@ public class GameEngine implements Runnable {
                 //does nothing
         }
     }
-    
+
     /**
      * Ends the game on game over. Stops the game loop
      */
@@ -286,7 +291,7 @@ public class GameEngine implements Runnable {
     private void incTime() {
         this.gameTime += this.deltaTime;
     }
-    
+
     /**
      * Updates all AbstractGameObjects.
      */
@@ -313,7 +318,7 @@ public class GameEngine implements Runnable {
         //clear queue
         this.destroyQueue.clear();
     }
-    
+
     /**
      * Puts thread to sleep for the remaining duration of the frame.
      * @param startTime
@@ -338,7 +343,7 @@ public class GameEngine implements Runnable {
 		final var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
 		for (final var enemy: enemyList) {
 		    if (enemy.getCollider().checkCollision(
-		    		(CircleCollider)this.player.getCollider())) {
+		    		(CircleCollider) this.player.getCollider())) {
 		        if (this.hasShield) {
 			        this.hasShield = false;
 			        this.destroy(enemy);
@@ -357,9 +362,9 @@ public class GameEngine implements Runnable {
 	 * If true, applies powerup and destroys it.
 	 */
 	private void checkPowerupCollision() {
-		this.powerups.stream().filter(p -> p.getCollider() != null && p.getCollider().checkCollision((CircleCollider)player.getCollider()))
+		this.powerups.stream().filter(p -> p.getCollider() != null && p.getCollider().checkCollision((CircleCollider) player.getCollider()))
 				.forEach(powerup -> {
-					if (powerup.getCollider().checkCollision((CircleCollider)player.getCollider())) {
+					if (powerup.getCollider().checkCollision((CircleCollider) player.getCollider())) {
 						this.applyPwrUp(powerup);
 						this.destroy(powerup);
 					}
@@ -376,11 +381,12 @@ public class GameEngine implements Runnable {
 		renderList.add(this.player);
         renderList.addAll(this.powerups);
         renderList.add(this.scoreDisplay);
-        
+
         this.gameScene.render(renderList);
 	}
+	
 	/**
-	 * Plays a sound using given volume
+	 * Plays a sound using given volume.
 	 * @param sound
 	 * @param volume
 	 */
@@ -388,11 +394,3 @@ public class GameEngine implements Runnable {
 		this.audioManager.playSound(sound, volume);
 	}
 }
-
-/*
- * Aggiungi:
- * Calcolo punteggio (dal gameengine)
- * Salvataggio record punteggi di ogni singolo giocatore (il gameengine li calcola)
- * ScoreDisplay: score.update() ???
- * Metodo di Manu nello SpawnManager prima di fare la render()
- */

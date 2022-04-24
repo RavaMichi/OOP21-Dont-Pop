@@ -6,7 +6,7 @@ import game.engine.GameEngine;
 import javafx.scene.canvas.GraphicsContext;
 
 /**
- * Renderer of an animation - a sequence of image renderers
+ * Renderer of an animation - a sequence of image renderers.
  */
 public class AnimationRenderer implements Renderer {
 
@@ -36,7 +36,7 @@ public class AnimationRenderer implements Renderer {
 	
 	/**
 	 * Renders an animation.
-	 * @param GraphicsContext gc
+	 * @param gc
 	 */
 	@Override
 	public void paint(final GraphicsContext gc) {
@@ -48,14 +48,14 @@ public class AnimationRenderer implements Renderer {
 	}
 	
 	/**
-	 * Used to update the sequence
+	 * Used to update the sequence.
 	 */
 	private void incIndex() {
 		this.timer += this.ge.getDeltaTime();
 		//index increment condition
 		if (this.timer >= this.animationTime) {
 			this.timer -= this.animationTime;
-			
+
 			this.index++;
 			if (this.index >= this.frames.size()) {
 				this.index = this.loop ? 0 : this.frames.size() - 1;
@@ -64,7 +64,7 @@ public class AnimationRenderer implements Renderer {
 	}
 	
 	/**
-	 * Sets the speed of the animation
+	 * Sets the speed of the animation.
 	 * @param speed
 	 */
 	public void setSpeed(final double speed) {
@@ -72,7 +72,7 @@ public class AnimationRenderer implements Renderer {
 	}
 	
 	/**
-	 * Enables/disables the looping of the animation
+	 * Enables/disables the looping of the animation.
 	 * @param loop
 	 */
 	public void enableLoop(final boolean loop) {
@@ -80,7 +80,7 @@ public class AnimationRenderer implements Renderer {
 	}
 	
 	/**
-	 * Sets the current frame to index frame
+	 * Sets the current frame to index frame.
 	 * @param index - must be within range, or it will be ignored
 	 */
 	public void goToFrame(final int index) {

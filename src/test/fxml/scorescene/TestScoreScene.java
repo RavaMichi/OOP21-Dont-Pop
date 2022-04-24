@@ -19,6 +19,9 @@ import game.util.ScoreCalc;
 import game.util.Pair;
 import game.util.RankItem;
 
+/**
+ * Test class.
+ */
 public class TestScoreScene extends Application {
 
 	private final ScoreManager scoreManager;
@@ -28,10 +31,10 @@ public class TestScoreScene extends Application {
 //	private TableView<RankItem> leaderboardTable = new TableView<>();
 //	private TableView<RankItem> yourScoreTable = new TableView<>();
 	//data to put in tables
-	private final ObservableList<Pair<String,Integer>> ranking;
+	private final ObservableList<Pair<String, Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
 	private final ObservableList<RankItem> yourScoreData;
-		
+
 	@FXML
 	private Label yourScoreLabel;
 	@FXML
@@ -65,7 +68,7 @@ public class TestScoreScene extends Application {
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
 		this.leaderboardData = FXCollections.observableArrayList();
 		this.yourScoreData = FXCollections.observableArrayList(new RankItem("NaN", "Stocazzo", 3));
-		
+
 		//add ranking data to data
 		for (var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
@@ -95,20 +98,20 @@ public class TestScoreScene extends Application {
 		//get screen size and choose the smallest axis
 		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
 		final double screenSize = Math.min(screenBounds.getWidth(), screenBounds.getHeight());
-		
+
 		//create a non-resizable scene
 //		FXMLLoader loader = new FXMLLoader();
 //		URL xmlURL = getClass().getResource("/home/francesco/OOP-Project/Dont-Pop/src/test/ScoreSceneFXML.fxml");
 //		loader.setLocation(xmlURL);
 //		loader.setController(this);		//this class also acts as FXML controller
 //		final Parent root = loader.load();
-		
-		
-		
+
+
+
 //		FXMLLoader loader = new FXMLLoader(TestScoreScene.class.getResource("/home/francesco/OOP-Project/Dont-Pop/src/test/ScoreSceneFXML.fxml"));
 //		VBox root = (VBox) loader.load();
 //		final Scene scene = new Scene(root);
-		
+
 //		FXMLLoader loader = new FXMLLoader();
 //		URL fxmllocation = getClass().getResource("/fxml/ScoreSceneFXML.fxml");
 //		loader.setLocation(fxmllocation);
@@ -116,11 +119,11 @@ public class TestScoreScene extends Application {
 //		loader.setResources(ResourceBundle.getBundle("i18n/Text", new Locale("en", "US")));
 //		Group root = loader.<Group>load();
 //		Scene scene = new Scene(root);
-		
+
 		Parent root = FXMLLoader.load(getClass().getResource("ScoreSceneFXML.fxml"));
-		
-		
-		
+
+
+
 		stage.setTitle("Score Ranking");
 //		stage.setWidth(screenSize);
 //		stage.setHeight(screenSize);
@@ -128,7 +131,7 @@ public class TestScoreScene extends Application {
 //		stage.setScene(scene);
 		stage.setScene(new Scene(root, screenSize, screenSize));
 		stage.show();
-		
+
 		//----------------------------------------//
 
 		//create leaderboard label (vbox)
@@ -144,7 +147,7 @@ public class TestScoreScene extends Application {
 		this.leaderboardTable.setItems(this.leaderboardData);
 		this.leaderboardTable.setMaxHeight(148);
 		this.leaderboardTable.setMaxWidth(462);
-		
+
 		//create your rank label (vbox)
 //		yourScoreLabel.setFont(new Font("Verdana", 20));
 		//make table editable
@@ -159,7 +162,7 @@ public class TestScoreScene extends Application {
 		//set minimum width & table bounds
 		this.yourScoreTable.setMaxHeight(52);
 		this.yourScoreTable.setMaxWidth(462);
-		
+
 	}
 	
 	/*

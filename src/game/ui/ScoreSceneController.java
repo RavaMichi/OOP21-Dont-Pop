@@ -12,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * This class is the FXML controller of ScoreScene class.
@@ -61,7 +59,7 @@ public class ScoreSceneController {
 						this.scoreManager.getPlayerName(), 
 						this.scoreManager.getScore()));
 
-		for(final var i: this.ranking) {
+		for (final var i: this.ranking) {
 			final int index = this.ranking.indexOf(i);
 			this.leaderboardData.add(new RankItem(
 					Integer.toString(index + 1),
@@ -76,12 +74,12 @@ public class ScoreSceneController {
 	public void initialize() {
 		this.yourScoreTable.setItems(this.yourScoreData);
 		this.leaderboardTable.setItems(this.leaderboardData);
-		
+
 		//setting tables % width
 		final double tableWidth = DEFAULT_SIZE * 0.85;
 		this.yourScoreTable.setMaxWidth(tableWidth);
 		this.leaderboardTable.setMaxWidth(tableWidth);
-		
+
 		//setting columns % width
 		this.yourRankCol.setPrefWidth(tableWidth * 0.191);
 		this.yourNameCol.setPrefWidth(tableWidth * 0.515);
@@ -92,7 +90,7 @@ public class ScoreSceneController {
 		//setting columns % height
 //		this.yourScoreTable.setFixedCellSize(this.screenSize * 0.03);
 //		this.leaderboardTable.setFixedCellSize(this.screenSize * 0.03);
-		
+
 		//doesn't show your current score if player views leaderboard from main menu
 		if (this.scoreManager.isReadOnly()) {
 			this.yourScoreLabel.setVisible(false);

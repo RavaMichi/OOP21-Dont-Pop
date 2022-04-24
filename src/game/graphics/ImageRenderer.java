@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 /**
- * Renderer of an image
+ * Renderer of an image.
  */
 public class ImageRenderer implements Renderer {
 
@@ -33,16 +33,16 @@ public class ImageRenderer implements Renderer {
 		PWRUP_SHIELD("/shield.png"),
 		PWRUP_MULTIPLIER("/multiplier.png"),
 		PWRUP_SWEEPER("/sweeper.png");
-		
-		
+
+
 		private final Image img;
-		
+
 		private Sprite(final String path) {
 //			System.out.println("Loading sprite '" + path + "'...");
 			this.img = new Image(path);
 //			System.out.println("Done");
 		}
-		
+
 		public Image getImage() {
 			return this.img;
 		}
@@ -68,7 +68,7 @@ public class ImageRenderer implements Renderer {
 	}
 	
 	/**
-	 * Sets the current image to the newSprite image
+	 * Sets the current image to the newSprite image.
 	 * @param newSprite
 	 */
 	public void setSprite(final Sprite newSprite) {
@@ -90,7 +90,7 @@ public class ImageRenderer implements Renderer {
 	
 	/**
 	 * Paints an image on the screen.
-	 * @param GraphicsContext gc
+	 * @param gc
 	 */
 	@Override
 	public void paint(final GraphicsContext gc) {
@@ -98,8 +98,8 @@ public class ImageRenderer implements Renderer {
 		if (this.currentImg == null) {
 			return;
 		}
-		final double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
-		final double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
+		final double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth() / 2;
+		final double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight() / 2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	
@@ -114,7 +114,7 @@ public class ImageRenderer implements Renderer {
 	}
 	
 	/**
-	 * Rotates this image by degrees angle and scales it to fit in a box of size width
+	 * Rotates this image by degrees angle and scales it to fit in a box of size width.
 	 * @param degrees
 	 * @param width - in pixels!
 	 */

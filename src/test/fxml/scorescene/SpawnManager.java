@@ -8,10 +8,13 @@ import game.model.AbstractGameObject.ObjectType;
 import game.util.Point2D;
 import game.util.RandomInt;
 
+/**
+ * Manages spawning time and position of enemies and powerups.
+ */
 public class SpawnManager {
 
 	// COSTANTI E VARIBILI UTILIZZATE
-	private static final double LOOP_START_TIME = 3;// 3 secondi
+	private static final double LOOP_START_TIME = 3;   // 3 secondi
 
 	private static final double POWERUP_SPAWN_TIME = 7;
 
@@ -103,7 +106,9 @@ public class SpawnManager {
 			this.laserCicleTimer = LASER_CICLE_TIME;
 		}
 
-		if (this.gameEngine.getTime() < THORNBALL_START_TIME) return;
+		if (this.gameEngine.getTime() < THORNBALL_START_TIME) {
+		    return;
+		}
 
 		updateThornballTime();
 		//Thornball spawn
