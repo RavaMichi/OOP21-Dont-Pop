@@ -8,16 +8,16 @@ import javafx.scene.paint.Color;
 
 public class ScoreDisplayObj extends AbstractGameObject {
 	
-	private ScoreCalc calc;
+	private final ScoreCalc calc;
 	private String prefix = "";
 	/*
 	 * Requires position, direction and time to activation
 	 */
-	public ScoreDisplayObj(Point2D position, ObjectType type, GameEngine ge) {
+	public ScoreDisplayObj(final Point2D position, final ObjectType type, final GameEngine ge) {
 		super(position, type, ge);
 		this.calc = ge.getScoreCalc();
 		
-		var t = new TextRenderer(this, "1x Score: 0", 0.04, Color.WHITE, 0.0025, Color.BLACK);
+		final var t = new TextRenderer(this, "1x Score: 0", 0.04, Color.WHITE, 0.0025, Color.BLACK);
 		this.setRenderer(t);
 		this.calc.onMultiplierStart(() -> {
 			t.setFillColor(Color.GOLD);
@@ -31,7 +31,7 @@ public class ScoreDisplayObj extends AbstractGameObject {
 
 	@Override
 	public void update() {
-		var t = (TextRenderer)this.getRenderer();
+		final var t = (TextRenderer)this.getRenderer();
 		t.setText(this.prefix + calc.getScore());
 	}
 	

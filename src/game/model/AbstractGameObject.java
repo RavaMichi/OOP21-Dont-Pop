@@ -50,8 +50,8 @@ public abstract class AbstractGameObject {
 
     private Point2D position;
     private final ObjectType type;
-    private Collider collider = null;
-    private Renderer renderer = null;
+    private Collider collider;
+    private Renderer renderer;
     private final GameEngine gameEngine;
 
     /**
@@ -135,6 +135,7 @@ public abstract class AbstractGameObject {
     public void destroy() {
         this.gameEngine.destroy(this);
     }
+    
     /**
      * Gets GameEngine object (which instantiated this object).
      * @return game engine

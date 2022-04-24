@@ -16,7 +16,7 @@ public class StartTimerObj extends AbstractGameObject {
 	 * @param type
 	 * @param gameEngine
 	 */
-	public StartTimerObj(Point2D position, double size, ObjectType type, GameEngine gameEngine) {
+	public StartTimerObj(final Point2D position, final double size, final ObjectType type, final GameEngine gameEngine) {
 		super(position, type, gameEngine);
 		this.setRenderer((Renderer)new TextRenderer(this, "3", size, Color.web("#E60707")));
 		timer = 3;

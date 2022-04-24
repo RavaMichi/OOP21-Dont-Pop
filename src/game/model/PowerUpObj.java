@@ -9,7 +9,7 @@ public class PowerUpObj extends AbstractGameObject {
 
 	private static final double SIZE = 0.1;
 	
-	private double timer = 0;
+	private double timer;	//0
 	
 	/**
 	 * Creates a new powerup object of the type specified in its proper argument.
@@ -17,7 +17,7 @@ public class PowerUpObj extends AbstractGameObject {
 	 * @param type
 	 * @param gameEngine
 	 */
-	public PowerUpObj(Point2D position, ObjectType type, GameEngine gameEngine) {
+	public PowerUpObj(final Point2D position, final ObjectType type, final GameEngine gameEngine) {
 		super(position, type, gameEngine);
 		if (type == AbstractGameObject.ObjectType.PWRUP_SHIELD) {
 			this.setRenderer((Renderer) new ImageRenderer(this, ImageRenderer.Sprite.PWRUP_SHIELD, SIZE, 0));
