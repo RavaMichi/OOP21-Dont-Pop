@@ -36,11 +36,11 @@ public class HowToPlayScene {
 		
 		//scaling
 		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
-		
 		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
 		root.getTransforms().add(scaleTransformation);
 
 		this.scene = new Scene(root, screenSize, screenSize);
+		this.scene.getStylesheets().add(getClass().getResource("/game/css/howtoplayscene-styles.css").toExternalForm());
 	}
 
 	/**

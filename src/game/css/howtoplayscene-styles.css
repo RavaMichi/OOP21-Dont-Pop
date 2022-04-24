@@ -1,0 +1,25 @@
+#anchor-pane {
+    -fx-background-color: #fcdee9;
+}
+.button {
+    -fx-text-fill: white;
+    -fx-background-color: #fe6198;
+    /* -fx-label-padding: 10 20 10 20; */
+    -fx-background-radius: 5 5 5 5;
+    /* -fx-background-color: #a53f63; */
+}
+.button:hover {
+    -fx-background-color: #a53f63;
+}
+.button:armed {
+    -fx-background-color: #6f2c42;
+}
+.text-area {
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-radius: 5 5 5 5;
+    -fx-highlight-fill: #fe6198;
+}
+.text-area:focused {
+    -fx-focus-color: #fe6198;
+    -fx-faint-focus-color: #fc93bb;
+}

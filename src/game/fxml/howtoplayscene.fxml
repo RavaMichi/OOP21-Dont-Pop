@@ -6,8 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="pane" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: #fcdee9;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane id="anchor-pane" prefHeight="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <children>
       <TextArea id="textarea" editable="false" layoutX="159.0" layoutY="122.0" prefHeight="80.0" prefWidth="419.0" text="ENEMY: This ball is very fast and travels in an arc. Predicting its trajectory&#10;is key to surviving its deadly attack." wrapText="true"/>
       <ImageView id="image" fitHeight="67.0" fitWidth="66.0" layoutX="40.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +22,11 @@
             <Image url="/sweeper.png" />
          </image>
       </ImageView>
-      <Button id="goBackButton" alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #a53f63;" text="Go back" />
+      <Button id="goBackButton" alignment="CENTER" layoutX="256.0" layoutY="554.0" mnemonicParsing="false" onAction="#menu" prefHeight="60.0" prefWidth="155.0" text="Go back">
+         <font>
+            <Font name="System Bold" />
+         </font>
+      </Button>
       <ImageView id="image2" fitHeight="67.0" fitWidth="72.0" layoutX="36.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="/thornball.png" />
