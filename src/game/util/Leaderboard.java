@@ -12,9 +12,8 @@ import java.util.List;
 
 /**
  * Class used to store the scores of the best players.
+ * First, logs leaderboard length, then adds elements.
  */
-
-//prima salva la lunghezza della classifica, poi gli elementi
 public class Leaderboard {
 
 	private static final int RANKING_LENGTH = 50;
@@ -83,6 +82,7 @@ public class Leaderboard {
 			}
 		}
 	}
+	
 	/**
 	 * Get the rank position of the player playerName
 	 * @param playerName - the player name

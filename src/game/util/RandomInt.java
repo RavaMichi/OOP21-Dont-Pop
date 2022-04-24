@@ -12,9 +12,9 @@ public class RandomInt {
 	 * @param max the max
 	 * @return the random int returned
 	 */
-	public int getRandomInt(int min, int max) {
+	public int getRandomInt(final int min, final int max) {
 
-		double randomN = Math.random() * (max - min);
+		final double randomN = Math.random() * (max - min);
 		return (int) Math.round(randomN) + min;
 
 	}

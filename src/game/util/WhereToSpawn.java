@@ -12,8 +12,8 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		* @return the random side
 		*/
 		public int getRandomSide() {
-			RandomInt randomInt= new RandomInt();
-			int side = randomInt.getRandomInt(1,4);
+			final RandomInt randomInt= new RandomInt();
+			final int side = randomInt.getRandomInt(1,4);
 			return side;
 		}
 		
@@ -26,11 +26,10 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 			WEST,
 			/** The east. */
 			EAST,
-			/** The sud. */
-			SUD ,
-			
-			/** The nord. */
-			NORD
+			/** The south. */
+			SOUTH,
+			/** The north. */
+			NORTH
 		}
 		
 		
@@ -40,11 +39,11 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		 * @param side the side where to spawn
 		 * @return the enemy spawn point
 		 */
-		public  Point2D getEnemySpawnPoint(int side) {
+		public  Point2D getEnemySpawnPoint(final int side) {
 			
-			RandomInt randomInt= new RandomInt();
+			final RandomInt randomInt= new RandomInt();
 			//int sideOfSpawn= this.getRandomSide();
-			double randomNumber=(double)randomInt.getRandomInt(0,100) / 100 ;
+			final double randomNumber=(double)randomInt.getRandomInt(0,100) / 100 ;
 			//SPAWNANO FUORI FDAL GAMEBOARD CON UNA DIFFERENZA DI double n= 0.2 (sia in positivo che in negativo)
 		
 			
@@ -86,11 +85,11 @@ public class WhereToSpawn { //RITORNA UN POINT 2D IN CUI FAR SPAWNARE IL NOSTRO 
 		 * @param side the side where to spawn
 		 * @return the thornball spawn point
 		 */
-		public  Point2D getThornballSpawnPoint(int side) {
+		public  Point2D getThornballSpawnPoint(final int side) {
 			
-			RandomInt randomInt= new RandomInt();
-			int sideOfSpawn= this.getThornballRandomSide();
-			double randomNumber=randomInt.getRandomInt(1,100) / 100 ;
+			final RandomInt randomInt= new RandomInt();
+			final int sideOfSpawn= this.getThornballRandomSide();
+			final double randomNumber=randomInt.getRandomInt(1,100) / 100 ;
 			if (sideOfSpawn == SideOfSpawn.WEST.ordinal() ) {
 				return new Point2D(-0.2,randomNumber);
 			} else if ( sideOfSpawn == SideOfSpawn.EAST.ordinal() ) {
