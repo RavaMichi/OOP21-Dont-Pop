@@ -11,6 +11,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 /**
  * This class runs the entire game, switching scenes when needed.
@@ -104,6 +105,7 @@ public class GameApplication extends Application {
 		this.primaryStage.setWidth(SCREEN_SIZE);
 		this.primaryStage.setHeight(SCREEN_SIZE);
 		this.primaryStage.setResizable(false); 			//ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new ScoreManager(this.scolreCalc);
+		this.primaryStage.getIcons().add(new Image("/icon.png"));
 		this.menu();									// prende score e il player dal game engine
 
 		this.primaryStage.setOnCloseRequest(e -> this.exit());

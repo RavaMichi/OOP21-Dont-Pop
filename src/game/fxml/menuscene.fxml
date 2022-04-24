@@ -6,25 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchor-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <children>
+      <!-- TITLE -->
       <Label id="title" fx:id="title" alignment="CENTER" layoutX="12.0" layoutY="10.0" prefHeight="37.0" prefWidth="277.0" text="Don't Pop!" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Label>
+
+      <!-- NICKNAME INPUT BOX -->
       <Label id="name-label" fx:id="nameLabel" layoutX="23.0" layoutY="66.0" text="What's your name? " />
       <TextField id="name-prompt" fx:id="namePrompt" layoutX="128.0" layoutY="62.0" onKeyPressed="#onEnter" promptText="Nickname" />
+
+      <!-- PLAY GAME -->
       <Button id="play-button" fx:id="playButton" layoutX="95.0" layoutY="106.0" mnemonicParsing="false" onAction="#play" prefHeight="17.0" prefWidth="112.0" text="Play">
          <font>
             <Font name="System Bold" />
          </font>
       </Button>
+
+      <!--SHOW LEADERBOARD -->
       <Button id="leaderboard-button" fx:id="leaderboardButton" layoutX="94.0" layoutY="150.0" mnemonicParsing="false" onAction="#leaderboard" prefHeight="17.0" prefWidth="112.0" text="Leaderboard">
          <font>
             <Font name="System Bold" />
          </font>
       </Button>
+
+      <!-- HOW TO PLAY GAME -->
       <Button id="howtoplay-button" fx:id="howtoplayButton" layoutX="94.0" layoutY="193.0" mnemonicParsing="false" onAction="#howToPlay" prefHeight="17.0" prefWidth="112.0" text="How to play">
          <font>
             <Font name="System Bold" />

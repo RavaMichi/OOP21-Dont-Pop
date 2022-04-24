@@ -8,7 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchor-pane" fx:id="anchorPane" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchor-pane" fx:id="anchorPane" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+   <children>
+      <!-- YOUR SCORE -->
       <Label id="your-score-label" fx:id="yourScoreLabel" layoutX="119.0" layoutY="5.0" text="Your Score" textAlignment="CENTER" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -33,6 +35,8 @@
           </TableColumn>
         </columns>
       </TableView>
+
+      <!-- LEADERBOARD -->
       <Label id="leaderboard-label" fx:id="leaderboardLabel" layoutX="114.0" layoutY="83.0" text="Leaderboard" textAlignment="CENTER" AnchorPane.leftAnchor="114.0" AnchorPane.topAnchor="83.0">
          <font>
             <Font name="System Bold" />
@@ -57,14 +61,19 @@
           </TableColumn>
         </columns>
       </TableView>
+
+      <!-- PLAY (AGAIN) -->
       <Button id="play-button" fx:id="playButton" alignment="TOP_CENTER" layoutX="77.0" layoutY="249.0" mnemonicParsing="false" onAction="#play" text="Play again" textAlignment="CENTER" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="249.0">
          <font>
             <Font name="System Bold" />
          </font>
       </Button>
+
+      <!-- MAIN MENU -->
       <Button id="menu-button" fx:id="menuButton" alignment="TOP_CENTER" layoutX="161.0" layoutY="249.0" mnemonicParsing="false" onAction="#menu" text="Home" textAlignment="CENTER" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="249.0">
          <font>
             <Font name="System Bold" />
          </font>
       </Button>
+   </children>
 </AnchorPane>
