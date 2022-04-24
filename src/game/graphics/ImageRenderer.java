@@ -61,7 +61,7 @@ public class ImageRenderer implements Renderer {
 	 * @param size
 	 * @param rotation - in degrees
 	 */
-	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
+	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, final double size, final double rotation) {
 		this.obj = obj;
 		this.size = size;
 		setSprite(sprite, rotation);
@@ -71,15 +71,16 @@ public class ImageRenderer implements Renderer {
 	 * Sets the current image to the newSprite image
 	 * @param newSprite
 	 */
-	public void setSprite(Sprite newSprite) {
+	public void setSprite(final Sprite newSprite) {
 		setSprite(newSprite, 0);
 	}
+	
 	/**
 	 * Sets the current image to the newSprite image. This method is executed in the JavaFX thread
 	 * @param newSprite
 	 * @param rotation angle
 	 */
-	private void setSprite(Sprite newSprite, double rotation) {
+	private void setSprite(final Sprite newSprite, final double rotation) {
 		Platform.runLater(() -> {
 			this.baseSprite = newSprite;
 			this.currentImg = newSprite.getImage();
@@ -92,11 +93,13 @@ public class ImageRenderer implements Renderer {
 	 * @param GraphicsContext gc
 	 */
 	@Override
-	public void paint(GraphicsContext gc) {
+	public void paint(final GraphicsContext gc) {
 		//images can be null, because they are loaded in a separated FX thread
-		if (this.currentImg == null) return;
-		double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
-		double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
+		if (this.currentImg == null) {
+			return;
+		}
+		final double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
+		final double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	
@@ -116,13 +119,13 @@ public class ImageRenderer implements Renderer {
 	 * @param width - in pixels!
 	 */
 	private void rotate(final double degrees, final double width) {
-		ImageView iv = new ImageView(this.baseSprite.getImage());
+		final ImageView iv = new ImageView(this.baseSprite.getImage());
 		iv.setFitWidth(width);
-	iv.setPreserveRatio(true);
-    iv.setSmooth(true);
-    iv.setCache(true);
+		iv.setPreserveRatio(true);
+		iv.setSmooth(true);
+		iv.setCache(true);
 		iv.setRotate(degrees);
-		SnapshotParameters param = new SnapshotParameters();
+		final SnapshotParameters param = new SnapshotParameters();
 		param.setFill(Color.TRANSPARENT);
 		this.currentImg = iv.snapshot(param, null);
 	}
