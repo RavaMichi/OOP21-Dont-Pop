@@ -20,7 +20,6 @@ public class ScoreSceneController {
 	
 	private final ScoreManager scoreManager;
 	private final GameApplication application;
-	private final int screenSize;
 	private final ObservableList<Pair<String, Integer>> ranking;
 	private final ObservableList<RankItem> leaderboardData;
 	private final ObservableList<RankItem> yourScoreData;
@@ -47,10 +46,9 @@ public class ScoreSceneController {
 	 * @param scoreManager
 	 * @param screenSize
 	 */
-	public ScoreSceneController(final ScoreManager scoreManager, final GameApplication application, final int screenSize) {
+	public ScoreSceneController(final ScoreManager scoreManager, final GameApplication application) {
 		this.scoreManager = scoreManager;
 		this.application = application;
-		this.screenSize = screenSize;
 		this.ranking = FXCollections.observableArrayList(this.scoreManager.getRanking());
 		this.leaderboardData = FXCollections.observableArrayList();
 		this.yourScoreData = FXCollections.observableArrayList(

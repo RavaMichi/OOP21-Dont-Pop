@@ -26,7 +26,7 @@ public class ScoreScene {
 		loader.setLocation(getClass().getResource("/fxml/scorescene.fxml"));
 		
 		//controller created here
-		final ScoreSceneController controller = new ScoreSceneController(scoreManager, application, screenSize);
+		final ScoreSceneController controller = new ScoreSceneController(scoreManager, application);
 		loader.setController(controller);
 		
 		//controller created in fxml
