@@ -1,6 +1,5 @@
 package game.collider;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import game.model.AbstractGameObject;
@@ -11,7 +10,7 @@ import game.util.Point2D;
  */
 public class PointsCollider implements Collider {
 
-	private Set<Point2D> points = new HashSet<>();
+	private final Set<Point2D> points;
 	private final AbstractGameObject object;
 	
 	/**

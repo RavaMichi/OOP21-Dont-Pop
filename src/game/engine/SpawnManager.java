@@ -67,13 +67,13 @@ public class SpawnManager {
 
 	
 	/** The game engine. */
-	private GameEngine gameEngine;
+	private final GameEngine gameEngine;
 	
 	/** The power up factory. */
-	private PoweupFactory powerUpFactory;
+	private final PoweupFactory powerUpFactory;
 	
 	/** The enemy factory. */
-	private EnemyFactory enemyFactory;
+	private final EnemyFactory enemyFactory;
 
 	/** The pwrup timer. */
 	private double pwrupTimer = POWERUP_SPAWN_TIME;
@@ -109,7 +109,7 @@ public class SpawnManager {
 	private double explosionCicleTimer = EXPLOSION_CICLE_TIME;
 
 	/** The started. */
-	private boolean started = false;
+	private boolean started;	//false
 	
 	/**
 	 * Instantiates a new spawn manager.
@@ -122,7 +122,7 @@ public class SpawnManager {
 		this.enemyFactory = new EnemyFactory(this.gameEngine);
 		
 		//Crea il countdown (game object) iniziale
-		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, gameEngine));
+		this.gameEngine.instantiate(new StartTimerObj(Point2D.of(0.5, 0.5), 0.25, ObjectType.SCORE, this.gameEngine));
 	}
 
 	/**
@@ -132,9 +132,9 @@ public class SpawnManager {
 	public void advance() {
 		if (this.gameEngine.getTime() >= LOOP_START_TIME) {
 			this.spawnLoop();
-			if (!started) {
+			if (!this.started) {
 				this.gameEngine.getScoreCalc().setCalcStatus(true);
-				started = true;
+				this.started = true;
 			}
 		}
 	}
@@ -143,16 +143,16 @@ public class SpawnManager {
 	 * Spawn loop where the spawnmanager spawns enemy and powerup using different timer.
 	 */
 	private void spawnLoop() {
-		updateTime();
+		this.updateTime();
 
 		//Power up
 		if (this.pwrupTimer <= 0) {
-			this.gameEngine.instantiate(this.powerUpFactory.GetPowerUpObj());
+			this.gameEngine.instantiate(this.powerUpFactory.getPowerUpObj());
 			this.pwrupTimer = POWERUP_SPAWN_TIME;
 		}
 		//Bullet spawn
 		if (this.bulletTimer <= 0) {
-			this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.BULLET));		//(this.enemyFactory.createBullet());
+			this.gameEngine.instantiate(this.enemyFactory.getEnemyObj(ObjectType.BULLET));		//(this.enemyFactory.createBullet());
 			this.bulletTimer = BULLET_SPAWN_TIME;
 		}
 		//Bullet difficulty
@@ -165,7 +165,7 @@ public class SpawnManager {
 		//Laser spawn
 		if (this.laserTimer <= 0) {
 			for (int i = 0; i < this.laserCount; i++) {
-				this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.LASER));
+				this.gameEngine.instantiate(this.enemyFactory.getEnemyObj(ObjectType.LASER));
 			}
 			this.laserTimer = LASER_SPAWN_TIME;
 		}
@@ -179,11 +179,11 @@ public class SpawnManager {
 
 		/*Thornball*/
 		if (this.gameEngine.getTime() >= THORNBALL_START_TIME) {
-			updateThornballTime();
+			this.updateThornballTime();
 			//Thornball spawn
 			if (this.thornballTimer <= 0) {
 				for (int i = 0; i < this.thornballCount; i++) {
-					this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.THORNBALL));
+					this.gameEngine.instantiate(this.enemyFactory.getEnemyObj(ObjectType.THORNBALL));
 				}
 				this.thornballTimer = THORNBALL_SPAWN_TIME;
 			}
@@ -198,10 +198,10 @@ public class SpawnManager {
 
 		/*Explosion*/
 		if (this.gameEngine.getTime() >= EXPLOSION_START_TIME) {
-			updateExplosionTime();
+			this.updateExplosionTime();
 			//Explosion spawn
 			if (this.explosionTimer <= 0) {
-				this.gameEngine.instantiate(this.enemyFactory.GetEnemyObj(ObjectType.EXPLOSION));
+				this.gameEngine.instantiate(this.enemyFactory.getEnemyObj(ObjectType.EXPLOSION));
 				this.explosionTimer = THORNBALL_SPAWN_TIME;
 			}
 			//Explosion difficulty

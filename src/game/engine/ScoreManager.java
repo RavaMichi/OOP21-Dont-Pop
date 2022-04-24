@@ -13,8 +13,8 @@ public class ScoreManager {
     
 	private int score;
 	private String playerName;
-	private Leaderboard leaderboard;
-	private GameApplication application;
+	private final Leaderboard leaderboard;
+	private final GameApplication application;
 	private boolean readOnly;
 	
     /**
@@ -86,7 +86,6 @@ public class ScoreManager {
      * @throws Exception 
      */
     public void menu() throws Exception {
-    	//TODO: call menu method of application
     	this.application.menu();
     }
     

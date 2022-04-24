@@ -133,7 +133,6 @@ public class GameEngine implements Runnable {
     	try {
 			this.startGameLoop();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -336,7 +335,7 @@ public class GameEngine implements Runnable {
      * @return true if gameover, false otherwise
      */
 	private boolean checkEnemyCollision() {
-		var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
+		final var enemyList = this.enemies.stream().filter(e -> e.getCollider() != null).collect(Collectors.toList());
 		for (final var enemy: enemyList) {
 		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider)this.player.getCollider())) {
@@ -385,7 +384,7 @@ public class GameEngine implements Runnable {
 	 * @param sound
 	 * @param volume
 	 */
-	public void play(final Sound sound, double volume) {
+	public void play(final Sound sound, final double volume) {
 		this.audioManager.playSound(sound, volume);
 	}
 }

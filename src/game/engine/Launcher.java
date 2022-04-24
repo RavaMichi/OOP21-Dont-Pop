@@ -2,7 +2,7 @@ package game.engine;
 
 import javafx.application.Application;
 /**
- * The application launcher
+ * The application launcher.
  */
 public class Launcher {
 
