@@ -4,7 +4,6 @@ import game.engine.GameApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Scale;
 
 /**
@@ -30,7 +29,6 @@ public class MenuScene {
 		//load GUI from FXML
 		AnchorPane root = loader.load();
 		
-
 		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
 		Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
 		root.getTransforms().add(scaleTransformation);

@@ -9,9 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
 public class MenuSceneController {
 	
@@ -21,15 +19,13 @@ public class MenuSceneController {
 		this.application = application;
 	}
 
-	@FXML private BorderPane borderPane;
+	@FXML private AnchorPane anchorPane;
 	@FXML private Label title;
-	@FXML private VBox gameControls;
-	@FXML private HBox nameBox;
 	@FXML private Label nameLabel;
 	@FXML private TextField namePrompt;
-	@FXML private VBox buttons;
 	@FXML private Button playButton;
 	@FXML private Button leaderboardButton;
+	@FXML private Button howtoplayButton;
 	
 	/**
 	 * Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).
