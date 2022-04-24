@@ -105,7 +105,7 @@ public class GameApplication extends Application {
 		this.primaryStage.setWidth(SCREEN_SIZE);
 		this.primaryStage.setHeight(SCREEN_SIZE);
 		this.primaryStage.setResizable(false); 			//ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new ScoreManager(this.scolreCalc);
-		this.primaryStage.getIcons().add(new Image("/icon.png"));
+		this.primaryStage.getIcons().add(new Image("/imgs/icon.png"));
 		this.menu();									// prende score e il player dal game engine
 
 		this.primaryStage.setOnCloseRequest(e -> this.exit());

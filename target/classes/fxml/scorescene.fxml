@@ -16,7 +16,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TableView id="your-score-table" fx:id="yourScoreTable" editable="true" layoutX="22.0" layoutY="26.0" prefHeight="49.0" prefWidth="255.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="26.0">
+      <TableView id="your-score-table" fx:id="yourScoreTable" editable="true" layoutX="22.0" layoutY="26.0" prefHeight="50.0" prefWidth="255.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="26.0">
         <columns>
           <TableColumn id="rank-col" fx:id="yourRankCol" prefWidth="58.0" reorderable="false" resizable="false" sortable="false" text="Rank">
           	<cellValueFactory>

@@ -25,7 +25,7 @@ public class HowToPlayScene {
 	 */
 	public HowToPlayScene(final GameApplication application, final int screenSize) throws Exception {
 		final FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/game/fxml/howtoplayscene.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/howtoplayscene.fxml"));
 
 		// controller created here
 		final HowToPlaySceneController controller = new HowToPlaySceneController(application);
@@ -40,7 +40,7 @@ public class HowToPlayScene {
 		root.getTransforms().add(scaleTransformation);
 
 		this.scene = new Scene(root, screenSize, screenSize);
-		this.scene.getStylesheets().add(getClass().getResource("/game/css/howtoplayscene-styles.css").toExternalForm());
+		this.scene.getStylesheets().add(getClass().getResource("/css/howtoplayscene-styles.css").toExternalForm());
 	}
 
 	/**
