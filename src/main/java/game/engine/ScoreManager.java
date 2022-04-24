@@ -10,11 +10,11 @@ import game.util.Pair;
  * Modifica i valori della tabella
  */
 public class ScoreManager {
-    
+
 	private int score;
 	private String playerName;
-	private Leaderboard leaderboard;
-	private GameApplication application;
+	private final Leaderboard leaderboard;
+	private final GameApplication application;
 	private boolean readOnly;
 	
     /**
@@ -29,13 +29,13 @@ public class ScoreManager {
     	this.playerName = playerName;
     	this.leaderboard = leaderboard;
     	this.application = application;
-    	
+
     	this.leaderboard.load();
     	this.leaderboard.addToRanking(this.playerName, this.score);
     	//save in file after adding current record
     	this.leaderboard.save();
     }
-    
+
     /**
      * This constructor is useful when all you want to do is view current leaderboard, without editing it.
      * @param leaderboard
@@ -45,7 +45,7 @@ public class ScoreManager {
     	this.readOnly = true;
     	this.leaderboard = leaderboard;
     	this.application = application;
-    	
+
     	this.leaderboard.load();
     }
 
@@ -53,10 +53,10 @@ public class ScoreManager {
      * Gets a copy of the ranking list inside Leaderboard.
      * @return current ranking
      */
-    public List<Pair<String,Integer>> getRanking() {
+    public List<Pair<String, Integer>> getRanking() {
     	return this.leaderboard.getRanking();
     }
-    
+
     /**
      * Gets current player name.
      * @return player name
@@ -64,7 +64,7 @@ public class ScoreManager {
     public String getPlayerName() {
     	return this.playerName;
     }
-    
+
     /**
      * Gets current player's score (at gameover).
      * @return score
@@ -72,7 +72,7 @@ public class ScoreManager {
     public int getScore() {
     	return this.score;
     }
-    
+
     /**
      * Gets current player's rank (at gameover).
      * @return rank
@@ -80,16 +80,15 @@ public class ScoreManager {
     public String getRank() {
     	return String.valueOf(this.leaderboard.getRank(this.getPlayerName(), this.getScore()));
     }
-    
+
     /**
      * Returns to menu.
      * @throws Exception 
      */
     public void menu() throws Exception {
-    	//TODO: call menu method of application
     	this.application.menu();
     }
-    
+
     /**
      * Checks whether the leaderboard should be read-only or not.
      * @return true if read-only, false if leaderboard shall be edited
@@ -97,5 +96,5 @@ public class ScoreManager {
     public boolean isReadOnly() {
     	return this.readOnly;
     }
-    
+
 }

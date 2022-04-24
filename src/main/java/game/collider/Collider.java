@@ -1,11 +1,11 @@
 package game.collider;
 
 /**
- * Interface containing the collision detection system
+ * Interface containing the collision detection system.
  */
 public interface Collider {
 	/**
-	 * Method used for detecting the collisions with the player
+	 * Method used for detecting the collisions with the player.
 	 * @param player collider
 	 * @return whether this collider has collided with player
 	 */

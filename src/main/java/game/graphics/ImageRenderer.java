@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 /**
- * Renderer of an image
+ * Renderer of an image.
  */
 public class ImageRenderer implements Renderer {
 
@@ -20,29 +20,29 @@ public class ImageRenderer implements Renderer {
 	 */
 	public static enum Sprite {
 		//...sprites to add...//
-		PLAYER("/imgs/baloon.png"),
-		BULLET("/imgs/bullet.png"),
-		THORNBALL("/imgs/thornball.png"),
-		GOLDEN_PLAYER("/imgs/golden_baloon.png"),
-		SHIELD_PLAYER("/imgs/shield_baloon.png"),
-		GOLDEN_SHIELD_PLAYER("/imgs/golden_shield_baloon.png"),
-		POP_ANIMATION_1("/imgs/pop_1.png"),
-		POP_ANIMATION_2("/imgs/pop_2.png"),
-		POP_ANIMATION_3("/imgs/pop_3.png"),
-		POP_ANIMATION_4("/imgs/pop_4.png"),
-		PWRUP_SHIELD("/imgs/shield.png"),
-		PWRUP_MULTIPLIER("/imgs/multiplier.png"),
-		PWRUP_SWEEPER("/imgs/sweeper.png");
-		
-		
+		PLAYER("/baloon.png"),
+		BULLET("/bullet.png"),
+		THORNBALL("/thornball.png"),
+		GOLDEN_PLAYER("/golden_baloon.png"),
+		SHIELD_PLAYER("/shield_baloon.png"),
+		GOLDEN_SHIELD_PLAYER("/golden_shield_baloon.png"),
+		POP_ANIMATION_1("/pop_1.png"),
+		POP_ANIMATION_2("/pop_2.png"),
+		POP_ANIMATION_3("/pop_3.png"),
+		POP_ANIMATION_4("/pop_4.png"),
+		PWRUP_SHIELD("/shield.png"),
+		PWRUP_MULTIPLIER("/multiplier.png"),
+		PWRUP_SWEEPER("/sweeper.png");
+
+
 		private final Image img;
-		
+
 		private Sprite(final String path) {
 //			System.out.println("Loading sprite '" + path + "'...");
 			this.img = new Image(path);
 //			System.out.println("Done");
 		}
-		
+
 		public Image getImage() {
 			return this.img;
 		}
@@ -61,25 +61,26 @@ public class ImageRenderer implements Renderer {
 	 * @param size
 	 * @param rotation - in degrees
 	 */
-	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, double size, double rotation) {
+	public ImageRenderer(final AbstractGameObject obj, final Sprite sprite, final double size, final double rotation) {
 		this.obj = obj;
 		this.size = size;
 		setSprite(sprite, rotation);
 	}
 	
 	/**
-	 * Sets the current image to the newSprite image
+	 * Sets the current image to the newSprite image.
 	 * @param newSprite
 	 */
-	public void setSprite(Sprite newSprite) {
+	public void setSprite(final Sprite newSprite) {
 		setSprite(newSprite, 0);
 	}
+	
 	/**
 	 * Sets the current image to the newSprite image. This method is executed in the JavaFX thread
 	 * @param newSprite
 	 * @param rotation angle
 	 */
-	private void setSprite(Sprite newSprite, double rotation) {
+	private void setSprite(final Sprite newSprite, final double rotation) {
 		Platform.runLater(() -> {
 			this.baseSprite = newSprite;
 			this.currentImg = newSprite.getImage();
@@ -89,14 +90,16 @@ public class ImageRenderer implements Renderer {
 	
 	/**
 	 * Paints an image on the screen.
-	 * @param GraphicsContext gc
+	 * @param gc
 	 */
 	@Override
-	public void paint(GraphicsContext gc) {
+	public void paint(final GraphicsContext gc) {
 		//images can be null, because they are loaded in a separated FX thread
-		if (this.currentImg == null) return;
-		double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth()/2;
-		double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight()/2;
+		if (this.currentImg == null) {
+			return;
+		}
+		final double xPos = GameApplication.convertToInt(this.obj.getPosition().getX()) - this.currentImg.getWidth() / 2;
+		final double yPos = GameApplication.convertToInt(this.obj.getPosition().getY()) - this.currentImg.getHeight() / 2;
         gc.drawImage(currentImg, xPos, yPos, currentImg.getWidth(), currentImg.getHeight());
 	}
 	
@@ -111,18 +114,18 @@ public class ImageRenderer implements Renderer {
 	}
 	
 	/**
-	 * Rotates this image by degrees angle and scales it to fit in a box of size width
+	 * Rotates this image by degrees angle and scales it to fit in a box of size width.
 	 * @param degrees
 	 * @param width - in pixels!
 	 */
 	private void rotate(final double degrees, final double width) {
-		ImageView iv = new ImageView(this.baseSprite.getImage());
+		final ImageView iv = new ImageView(this.baseSprite.getImage());
 		iv.setFitWidth(width);
-	iv.setPreserveRatio(true);
-    iv.setSmooth(true);
-    iv.setCache(true);
+		iv.setPreserveRatio(true);
+		iv.setSmooth(true);
+		iv.setCache(true);
 		iv.setRotate(degrees);
-		SnapshotParameters param = new SnapshotParameters();
+		final SnapshotParameters param = new SnapshotParameters();
 		param.setFill(Color.TRANSPARENT);
 		this.currentImg = iv.snapshot(param, null);
 	}

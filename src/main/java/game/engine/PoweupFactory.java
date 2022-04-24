@@ -7,7 +7,6 @@ import game.model.AbstractGameObject;
 import game.model.AbstractGameObject.ObjectType;
 import game.util.WhereToSpawn;
 
-// TODO: Auto-generated Javadoc
 /**
  * A factory for creating powerup objects using Factory method where it use a random type of powerup
  * and the class creates it.
@@ -15,18 +14,18 @@ import game.util.WhereToSpawn;
 public class PoweupFactory {
 	
 	/** The game engine. */
-	private GameEngine gameEngine; //da passare al costruttore
+	private final GameEngine gameEngine; //da passare al costruttore
 	
 	/** The wheretospawn. */
-	private WhereToSpawn wheretospawn = new WhereToSpawn();
+	private final WhereToSpawn wheretospawn = new WhereToSpawn();
 	
 	/**
 	 * Instantiates a new poweup factory.
 	 *
-	 * @param gameEngine2 the game engine
+	 * @param gameEngine the game engine
 	 */
-	public PoweupFactory(GameEngine gameEngine2) {
-		this.gameEngine=gameEngine2;
+	public PoweupFactory(final GameEngine gameEngine) {
+		this.gameEngine = gameEngine;
 	}
 
 	/**
@@ -35,10 +34,10 @@ public class PoweupFactory {
 	 * @return the abstract game object
 	 */
 	
-	public AbstractGameObject GetPowerUpObj()  {
-		
-		var pos = this.wheretospawn.getPowerUPSpawnPoint();
-		Integer typeOfPowerUp = new RandomInt().getRandomInt(6, 8);
+	public AbstractGameObject getPowerUpObj()  {
+
+		final var pos = this.wheretospawn.getPowerUPSpawnPoint();
+		final Integer typeOfPowerUp = new RandomInt().getRandomInt(6, 8);
 		if (typeOfPowerUp == 6) {
 			return createShield(pos);
 		} else if (typeOfPowerUp == 7) {
@@ -53,9 +52,9 @@ public class PoweupFactory {
 	 * @param position
 	 * @return the power up obj
 	 */
-	public PowerUpObj createShield(Point2D position) {
-		
-		return new PowerUpObj(position, ObjectType.PWRUP_SHIELD, gameEngine);
+	public PowerUpObj createShield(final Point2D position) {
+
+		return new PowerUpObj(position, ObjectType.PWRUP_SHIELD, this.gameEngine);
 		}
 	
 /**
@@ -63,9 +62,9 @@ public class PoweupFactory {
  * @param position
  * @return the power up obj
  */
-public PowerUpObj createMultiplier(Point2D position) {
-		
-	return new PowerUpObj(position, ObjectType.PWRUP_MULTIPLIER, gameEngine);
+public PowerUpObj createMultiplier(final Point2D position) {
+
+	return new PowerUpObj(position, ObjectType.PWRUP_MULTIPLIER, this.gameEngine);
 		}
 
 /**
@@ -73,8 +72,8 @@ public PowerUpObj createMultiplier(Point2D position) {
  * @param position
  * @return the power up obj
  */
-public PowerUpObj createSweeper(Point2D position) {
-	return new PowerUpObj(position, ObjectType.PWRUP_SWEEPER, gameEngine);
+public PowerUpObj createSweeper(final Point2D position) {
+	return new PowerUpObj(position, ObjectType.PWRUP_SWEEPER, this.gameEngine);
 		}
 
 }

@@ -14,21 +14,21 @@ public class ScoreCalc {
     private double multiplierTime;
     private double frameCounter;
     private final static double MULTIPLIER_TIME = 5;	//five seconds of multiplier
-    private final static int POINTS_PER_SECOND= 15;
+    private final static int POINTS_PER_SECOND = 15;
     private final static double SECONDS_PER_POINT = 1 / (double)POINTS_PER_SECOND;
     private final static int MULTIPLIER_2X = 2;
     
     private boolean hasMultiplier;
     
-    private List<Runnable> onMultiplierEndList = new ArrayList<>();
-    private List<Runnable> onMultiplierStartList = new ArrayList<>();
+    private final List<Runnable> onMultiplierEndList = new ArrayList<>();
+    private final List<Runnable> onMultiplierStartList = new ArrayList<>();
 
     /**
      * Creates class and sets multiplier to 1 by default.
      */
     public ScoreCalc() {
         this.multiplier = 1;
-        setCalcStatus(false);
+        this.setCalcStatus(false);
     }
 
     /**
@@ -43,10 +43,10 @@ public class ScoreCalc {
      * Gets current calc status: if true, the score shall be calculated.
      * @return calcStatus
      */
-    public boolean getCalcStatus() {
+    public boolean isCalculable() {
     	return this.calcStatus;
     }
-    
+
     /**
      * Sets whether ScoreCalc shall calculate the score (true) or not (false)
      * @param status
@@ -58,7 +58,7 @@ public class ScoreCalc {
     /**
      * Increments score by an arbitrary amount.
      * Can choose to ignore multiplier (default: apply current multiplier).
-     * @param delta
+     * @param deltaScore
      */
     public void incScore(final int deltaScore) {
         this.score += deltaScore * this.getMultiplier();
@@ -68,14 +68,15 @@ public class ScoreCalc {
      * Manages multiplier time, decreasing it until it reaches 0.
      */
     private void manageMultiplierTime(final double deltaTime) {
-    	if (!this.hasMultiplier) return;
+    	if (!this.hasMultiplier) {
+    		return;
+    	}
 	    //decrease multiplier time
         if (this.getMultiplierTime() > 0) {
             this.decMultiplierTime(deltaTime);
         } else {
             //multiplier expired: restoring normal settings
             this.resetMultiplier();
-            //TODO: add score multiplier manager
         }
     }
 
@@ -85,7 +86,7 @@ public class ScoreCalc {
      */
 	public void calculateScore(final double deltaTime) {
 		//only calculates score if calcStatus is true
-		if (this.getCalcStatus()) {
+		if (this.isCalculable()) {
 			this.frameCounter += deltaTime;
 	    	if (this.getFrameCounter() >= SECONDS_PER_POINT) {
 	    		this.incScore(1);
@@ -166,14 +167,14 @@ public class ScoreCalc {
      * Executes this runnable when the multiplier is enabled
      * @param action
      */
-    public void onMultiplierStart(Runnable action) {
+    public void onMultiplierStart(final Runnable action) {
     	this.onMultiplierStartList.add(action);
     }
     /**
      * Executes this runnable when the multiplier is disabled
      * @param action
      */
-    public void onMultiplierEnd(Runnable action) {
+    public void onMultiplierEnd(final Runnable action) {
     	this.onMultiplierEndList.add(action);
     }
 }

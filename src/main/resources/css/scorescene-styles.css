@@ -6,8 +6,8 @@
 
 /* YOUR SCORE */
 #your-score-label {
-    -fx-font-size: 40px;
-    -fx-padding:80 0 0 0;
+    -fx-font-size: 12px;
+    /*-fx-padding:80 0 0 0;*/
 }
 #your-score-table {
     -fx-max-height: 120;
@@ -28,7 +28,7 @@
     -fx-text-fill: orange;
 } */
 #leaderboard-table {
-    -fx-pref-height: 495px;
+    /*-fx-pref-height: 495px;*/
 }
 #leaderboard {
     -fx-alignment: center;
@@ -182,7 +182,7 @@
     -fx-background-color: #fe6198;
 }
 
-#border-pane {
+#anchor-pane {
     -fx-background-color: #fcdee9;
     -fx-spacing: 5;
     -fx-padding: 10 10 10 10;

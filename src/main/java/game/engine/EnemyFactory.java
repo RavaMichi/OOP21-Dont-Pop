@@ -30,49 +30,49 @@ public class EnemyFactory {
 	private Point2D direction;
 
 	/** The game engine. */
-	private GameEngine gameEngine;
+	private final GameEngine gameEngine;
 
 	/** The wheretospawn. */
-	private WhereToSpawn wheretospawn = new WhereToSpawn();
+	private final WhereToSpawn wheretospawn = new WhereToSpawn();
 
 	/**
 	 * Instantiates a new enemy factory.
 	 *
-	 * @param ge the ge
+	 * @param gameEngine - the game engine
 	 */
-	public EnemyFactory(final GameEngine gameengine) {
+	public EnemyFactory(final GameEngine gameEngine) {
 
-		this.gameEngine = gameengine;
+		this.gameEngine = gameEngine;
 	}
 
 	/**
 	 * Gets the enemy using factory method with the enemy type.
 	 *
-	 * @param type the type
+	 * @param type - the type
 	 * @return the abstract game object of a enemy
 	 */
-	public AbstractGameObject GetEnemyObj(final ObjectType type) {
+	public AbstractGameObject getEnemyObj(final ObjectType type) {
 
-		ObjectType objectTyper = type;
+		final ObjectType objectTyper = type;
 
 		if (objectTyper == ObjectType.BULLET) {
 
-			return createBullet();
+			return this.createBullet();
 
 		} else if (objectTyper == ObjectType.THORNBALL) {
 
-			return createThornball();
+			return this.createThornball();
 
 		} else if (objectTyper == ObjectType.EXPLOSION) {
 
-			return createExplosion();
+			return this.createExplosion();
 
 		} else if (objectTyper == ObjectType.LASER) {
 
-			return createLaser();
+			return this.createLaser();
 		}
 		// default enemy
-		return createBullet();
+		return this.createBullet();
 	}
 
 	/**
@@ -81,10 +81,10 @@ public class EnemyFactory {
 	 * @return the abstract game object
 	 */
 	public AbstractGameObject createBullet() {
-		spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getRandomSide());
-		direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
-		direction.sub(spawnPosition);
-		return new EnemyProjectileObj(spawnPosition, direction, BULLET_VELOCITY, ObjectType.BULLET, gameEngine);
+		this.spawnPosition = this.wheretospawn.getEnemySpawnPoint(this.wheretospawn.getRandomSide());
+		this.direction = Point2D.copyOf(this.gameEngine.getPlayerPosition());
+		this.direction.sub(this.spawnPosition);
+		return new EnemyProjectileObj(this.spawnPosition, this.direction, BULLET_VELOCITY, ObjectType.BULLET, this.gameEngine);
 	}
 
 	/**
@@ -93,10 +93,10 @@ public class EnemyFactory {
 	 * @return the abstract game object
 	 */
 	public AbstractGameObject createLaser() {
-		var r = new Random();
-		spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
-		direction = new Point2D(r.nextDouble() * 2 - 1, r.nextDouble() * 2 - 1); // (-1, -1) -> (1, 1)
-		return new EnemyLineObj(spawnPosition, direction, LASER_DETONATION_TIME, ObjectType.LASER, gameEngine);
+		final var r = new Random();
+		this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
+		this.direction = new Point2D(r.nextDouble() * 2 - 1, r.nextDouble() * 2 - 1); // (-1, -1) -> (1, 1)
+		return new EnemyLineObj(this.spawnPosition, this.direction, LASER_DETONATION_TIME, ObjectType.LASER, this.gameEngine);
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class EnemyFactory {
 	 * @return the abstract game object
 	 */
 	public AbstractGameObject createThornball() {
-		spawnPosition = wheretospawn.getEnemySpawnPoint(wheretospawn.getThornballRandomSide());
-		return new EnemyBallObj(spawnPosition, ObjectType.THORNBALL, gameEngine);
+		this.spawnPosition = this.wheretospawn.getEnemySpawnPoint(this.wheretospawn.getThornballRandomSide());
+		return new EnemyBallObj(this.spawnPosition, ObjectType.THORNBALL, this.gameEngine);
 	}
 
 	/**
@@ -115,8 +115,8 @@ public class EnemyFactory {
 	 * @return the abstract game object
 	 */
 	public AbstractGameObject createExplosion() {
-		var r = new Random();
-		spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
-		return new EnemyBombObj(spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, gameEngine);
+		final var r = new Random();
+		this.spawnPosition = new Point2D(r.nextDouble(), r.nextDouble()); // (0, 0) -> (1, 1)
+		return new EnemyBombObj(this.spawnPosition, EXPLOSION_DETONATION_TIME, ObjectType.EXPLOSION, this.gameEngine);
 	}
 }

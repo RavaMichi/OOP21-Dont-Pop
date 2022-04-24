@@ -6,26 +6,34 @@ import java.util.*;
 import game.collider.*;
 import game.util.Point2D;
 
+/**
+ * This class models a bullet.
+ */
 public class EnemyProjectileObj extends AbstractGameObject {
 	
 	private static final double SIZE = 0.07;
-	private static final double speedMultiplier = 1.5;
+	private static final double SPEED_MULTIPLIER = 1.5;
 
-	private Point2D velocity;
-	private Set<Point2D> points = new HashSet<Point2D>();
+	private final Point2D velocity;
+	private final Set<Point2D> points = new HashSet<>();
 	
-	/*
-	 * Requires initial position, direction and speed of projectile
+	/**
+	 * Requires initial position, direction and speed of bullet.
+	 * @param position
+	 * @param dir
+	 * @param speed
+	 * @param type
+	 * @param ge
 	 */
-	public EnemyProjectileObj(Point2D position, Point2D dir, float speed, ObjectType type, GameEngine ge) {
+	public EnemyProjectileObj(final Point2D position, final Point2D dir, final float speed, final ObjectType type, final GameEngine ge) {
 		super(position, type, ge);
-		velocity = dir;
-		velocity.normalize();
-		velocity.mul(speed / 60 * speedMultiplier);
-		generatePoints();
-		this.setCollider((Collider)new PointsCollider(this, points));
-		double angle = (Math.atan(velocity.getY()/velocity.getX())) * (180/Math.PI);
-		if (velocity.getX() < 0) {
+		this.velocity = dir;
+		this.velocity.normalize();
+		this.velocity.mul(speed / 60 * SPEED_MULTIPLIER);
+		this.generatePoints();
+		this.setCollider((Collider) new PointsCollider(this, this.points));
+		double angle = (Math.atan(this.velocity.getY() / this.velocity.getX())) * (180 / Math.PI);
+		if (this.velocity.getX() < 0) {
 			angle += 180;
 		}
 		this.setRenderer((Renderer)new ImageRenderer(this, ImageRenderer.Sprite.BULLET, SIZE, angle));
@@ -33,39 +41,42 @@ public class EnemyProjectileObj extends AbstractGameObject {
 	}
 	
 	/**
-	 * Calculate the positions of the collion points of the bullet, appropriately rotated to match the bullet's trajectory
+	 * Calculate the positions of the collion points of the bullet, appropriately rotated to match the bullet's trajectory.
 	 * 
 	 * Involves some simple vector math
 	 */
 	private void generatePoints() {
 		// POINT 1 = same direction as velocity, length 0.015
-		Point2D p1 = Point2D.copyOf(velocity);
+		final Point2D p1 = Point2D.copyOf(velocity);
 		p1.normalize();
-		p1.mul(SIZE/2);
-		
+		p1.mul(SIZE / 2);
+
 		// POINT 2 = sum of 2 vectors, one is the opposite of p1 and the other is the p2 offset, equal to p1/2 rotated by 90°
-		Point2D p2 = Point2D.copyOf(p1);
-		Point2D offset = Point2D.copyOf(p2);
+		final Point2D p2 = Point2D.copyOf(p1);
+		final Point2D offset = Point2D.copyOf(p2);
 		p2.mul(-1);
 		offset.mul(0.3);
 		offset.set(new Point2D(-offset.getY(), offset.getX()));
 		p2.add(offset);
-		
+
 		// POINT 3 = sum of 2 vectors, one is the opposite of p1 and the other is the p3 offset, equal to p1/2 rotated by -90° ( = p2 offset * -1)
-		Point2D p3 = Point2D.copyOf(offset);
+		final Point2D p3 = Point2D.copyOf(offset);
 		p3.mul(-1);
 		offset.mul(-1);
 		p3.add(offset);
-		
+
 		// ADD the points to set
-		points.add(p1);
-		points.add(p2);
-		points.add(p3);
+		this.points.add(p1);
+		this.points.add(p2);
+		this.points.add(p3);
 	}
 
+	/**
+	 * Updates bullet position.
+	 */
 	@Override
 	public void update() {
-		this.getPosition().add(velocity);
+		this.getPosition().add(this.velocity);
 		if (this.getPosition().getX() >= 1.5 || this.getPosition().getY() >= 1.5 || this.getPosition().getX() <= -0.5 || this.getPosition().getY() <= -0.5) {
 			this.destroy();
 		}

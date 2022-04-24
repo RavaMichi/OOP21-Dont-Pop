@@ -5,6 +5,9 @@ import game.graphics.*;
 import game.util.Point2D;
 import javafx.scene.paint.Color;
 
+/**
+ * Models the start timer, which displays a countdown lasting 3 seconds before starting the game.
+ */
 public class StartTimerObj extends AbstractGameObject {
 	
 	private double timer;
@@ -16,7 +19,7 @@ public class StartTimerObj extends AbstractGameObject {
 	 * @param type
 	 * @param gameEngine
 	 */
-	public StartTimerObj(Point2D position, double size, ObjectType type, GameEngine gameEngine) {
+	public StartTimerObj(final Point2D position, final double size, final ObjectType type, final GameEngine gameEngine) {
 		super(position, type, gameEngine);
 		this.setRenderer((Renderer)new TextRenderer(this, "3", size, Color.web("#E60707")));
 		timer = 3;

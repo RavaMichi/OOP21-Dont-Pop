@@ -11,8 +11,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
-
+/**
+ * This class runs the entire game, switching scenes when needed.
+ */
 public class GameApplication extends Application {
 	
 	private static final String SAVE_PATH = ".save";
@@ -22,15 +25,16 @@ public class GameApplication extends Application {
 	private Leaderboard leaderboard;
 	@SuppressWarnings("unused")
 	private ScoreManager scoremanager;
-	public final static int screenSize;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
+	public final static int SCREEN_SIZE;	// usare la percentuale dello schermo non valori da 0 a 1: 0.n * size; dove n è
 										// la percentuale dello schermo. ergo ho i valori da 0 a 1
 	private Stage primaryStage;
+	
 	/**
 	 * Static initializer: gets screen size.
 	 */
 	static {
-		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
+		final Rectangle2D screenBounds = Screen.getPrimary().getBounds();
+		SCREEN_SIZE = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
 	}
 	
 	/**
@@ -41,7 +45,7 @@ public class GameApplication extends Application {
 	}
 	
 	/**
-	 * Gets the player's name
+	 * Gets the player's name.
 	 * @return playerName
 	 */
 	public String getPlayerName() {
@@ -63,7 +67,7 @@ public class GameApplication extends Application {
 	 * @return percentage size
 	 */
 	public static double convertToDouble(final int num) {	// deve essere compreso tra 0 e n e lo devo trasformare in 0-1
-		return num / screenSize;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 
+		return num / SCREEN_SIZE;	// ritorna la posizione percentuale rispetto allo schermo. esempio gli passo 350 e la risoluzione è 700 lui mi tira fuori 0.5 
 									// (50% della lunghezza dello schermo)
 	}
 	
@@ -73,7 +77,7 @@ public class GameApplication extends Application {
 	 */
 	public void howToPlay() {
 		try {
-			HowToPlayScene howtoplayscene = new HowToPlayScene(this, screenSize);
+			final HowToPlayScene howtoplayscene = new HowToPlayScene(this, SCREEN_SIZE);
 			this.switchScene(howtoplayscene.getScene());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,23 +91,25 @@ public class GameApplication extends Application {
 	 * @return pixel size
 	 */
 	public static int convertToInt(final double num) {
-		return (int) (num * screenSize);
+		return (int) (num * SCREEN_SIZE);
 	}
 
 	/**
 	 * Start GUI, then launch the menu.
+	 * @param primaryStage
 	 * @throws Exception 
 	 */
 	public void start(final Stage primaryStage) throws Exception { // public void start(final Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.leaderboard = new Leaderboard(SAVE_PATH);
-		this.primaryStage.setWidth(screenSize);
-		this.primaryStage.setHeight(screenSize);
-		this.primaryStage.setResizable(false); //ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new
-		this.menu();//ScoreManager(this.scolreCalc);// prende score e il player dal game engine
-		
+		this.primaryStage.setWidth(SCREEN_SIZE);
+		this.primaryStage.setHeight(SCREEN_SIZE);
+		this.primaryStage.setResizable(false); 			//ScoreCalc scolreCalc= new ScoreCalc(); ScoreManager scoremanager = new ScoreManager(this.scolreCalc);
+		this.primaryStage.getIcons().add(new Image("/icon.png"));
+		this.menu();									// prende score e il player dal game engine
+
 		this.primaryStage.setOnCloseRequest(e -> this.exit());
-		
+
 		this.primaryStage.show();
 	}
 
@@ -113,7 +119,7 @@ public class GameApplication extends Application {
 	 */
 	public void menu() {
 		try {
-			MenuScene menuscene = new MenuScene(this, screenSize);
+			final MenuScene menuscene = new MenuScene(this, SCREEN_SIZE);
 			this.switchScene(menuscene.getScene());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,8 +130,8 @@ public class GameApplication extends Application {
 	 * Launch game GUI (run the game).
 	 */
 	public void game() {
-		GameScene gamescene = new GameScene(screenSize);
-		GameEngine gameEngine = new GameEngine(this, gamescene);
+		final GameScene gamescene = new GameScene(SCREEN_SIZE);
+		final GameEngine gameEngine = new GameEngine(this, gamescene);
 		this.switchScene(gamescene.getScene());
 		new Thread(gameEngine).start();
 
@@ -136,10 +142,10 @@ public class GameApplication extends Application {
 	 * @param score
 	 * @throws Exception 
 	 */
-	public void score(final int score){
-		ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);// prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
+	public void score(final int score) {
+		final ScoreManager scoremanager = new ScoreManager(this.playerName, score, this.leaderboard, this);   // prende score e il nome player e leaderboard dal game engine e aggiungere al costruttpre il nome del player
 		try {
-			ScoreScene scoreScene = new ScoreScene(scoremanager, this, screenSize);
+			final ScoreScene scoreScene = new ScoreScene(scoremanager, this, SCREEN_SIZE);
 			this.switchScene(scoreScene.getScene());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,9 +158,9 @@ public class GameApplication extends Application {
 	 * @throws Exception 
 	 */
 	public void viewScoreNoEdit() throws Exception {
-		ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
-		ScoreScene scoreScene = new ScoreScene(scoreManager, this, screenSize);
-		
+		final ScoreManager scoreManager = new ScoreManager(this.leaderboard, this);
+		final ScoreScene scoreScene = new ScoreScene(scoreManager, this, SCREEN_SIZE);
+
 		this.switchScene(scoreScene.getScene());
 	}
 
@@ -162,11 +168,11 @@ public class GameApplication extends Application {
 	 * Set JavaFX Thread scene to the scene passed as argument.
 	 * @param scene
 	 */
-	void switchScene(Scene scene) {
+	void switchScene(final Scene scene) {
 		Platform.runLater(() -> {
 			this.primaryStage.setScene(scene);
-			this.primaryStage.setWidth(screenSize);		//DO NOT TOUCH: doesn't work without width and height
-			this.primaryStage.setHeight(screenSize);
+			this.primaryStage.setWidth(SCREEN_SIZE);		//DO NOT TOUCH: doesn't work without width and height
+			this.primaryStage.setHeight(SCREEN_SIZE);
 			this.primaryStage.show();
 		});
 	}
@@ -181,7 +187,6 @@ public class GameApplication extends Application {
 	
 	/**
 	 * Exit function: exit from the program.
-	 * @param args
 	 */
 	private void exit() {
 		System.exit(0);

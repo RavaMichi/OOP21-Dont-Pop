@@ -9,28 +9,27 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
+/**
+ * Test class.
+ */
 public class MenuSceneController {
 	
-	private GameApplication application;
+	private final GameApplication application;
+	
+	//@FXML private AnchorPane anchorPane;
+	//@FXML private Label title;
+	@FXML private Label nameLabel;
+	@FXML private TextField namePrompt;
+	//@FXML private Button playButton;
+	//@FXML private Button leaderboardButton;
+	//@FXML private Button howtoplayButton;
 	
 	public MenuSceneController(final GameApplication application) {
 		this.application = application;
 	}
 
-	@FXML private BorderPane borderPane;
-	@FXML private Label title;
-	@FXML private VBox gameControls;
-	@FXML private HBox nameBox;
-	@FXML private Label nameLabel;
-	@FXML private TextField namePrompt;
-	@FXML private VBox buttons;
-	@FXML private Button playButton;
-	@FXML private Button leaderboardButton;
-	
 	/**
 	 * Sets some properties dependent on Java variables (not accessible from neither FXML nor CSS).
 	 */
@@ -52,14 +51,14 @@ public class MenuSceneController {
 	 * If namePrompt TextField is empty, the game will use a default nickname.
 	 */
 	public void play() {
-		String playerName = this.namePrompt.getText();
+		final String playerName = this.namePrompt.getText();
 		if (playerName.startsWith(" ")) {
 			//do nothing when player name starts with a whitespace
 			//color name box of red
 		} else if (!playerName.isEmpty()) {
 			this.application.setPlayerName(playerName);
 		}
-		
+
 		this.application.game();
 	}
 	
@@ -68,7 +67,7 @@ public class MenuSceneController {
 	 * @throws Exception 
 	 */
 	public void leaderboard() throws Exception {
-		String playerName = this.namePrompt.getText();
+		final String playerName = this.namePrompt.getText();
 		if (playerName.startsWith(" ")) {
 			//do nothing when player name starts with a whitespace
 		} else if (!playerName.isEmpty()) {
@@ -95,12 +94,12 @@ public class MenuSceneController {
 	
 	private String generateRandomName() {
 		String playerName = "Player";
-		Random rand = new Random();
-		int upperBound = 10;
-		for(int i=0; i<3; i++) {
+		final Random rand = new Random();
+		final int upperBound = 10;
+		for(int i = 0; i < 3; i++) {
 			playerName += rand.nextInt(upperBound);
 		}
-		
+
 		return playerName;
 	}
 }

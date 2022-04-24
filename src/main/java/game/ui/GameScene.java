@@ -22,34 +22,34 @@ public class GameScene {
 	private Canvas activeCanvas;
 	private Canvas bufferCanvas;
 	
-	private Point2D mousePosition = new Point2D(0.5,0.5);
-	private int size;
+	private final Point2D mousePosition = new Point2D(0.5, 0.5);
+	private final int size;
 	
 	/**
 	 * Creates a new GameScene of size (in pixels) size*size
 	 * @param size
 	 */
 	public GameScene(final int size) {
-		Group gr = new Group();
+		final Group gr = new Group();
 		this.activeCanvas = new Canvas(size, size);
 		this.bufferCanvas = new Canvas(size, size);
 		
-		setTextSettings();
+		this.setTextSettings();
 		
 		//adds to the scene only the active canvas
 		gr.getChildren().add(this.activeCanvas);
 		
 		//Updates the mouse position
 		gr.setOnMouseMoved(event -> {
-			mousePosition.setX(event.getSceneX()/size);
-			mousePosition.setY(event.getSceneY()/size);
+			this.mousePosition.setX(event.getSceneX() / size);
+			this.mousePosition.setY(event.getSceneY() / size);
 		});
 		
 		this.size = size;
 		this.scene = new Scene(gr);
 		
 		//initialize the canvases
-		render(List.of());
+		this.render(List.of());
 	}
 	
 	/**
@@ -73,24 +73,24 @@ public class GameScene {
 	 * @return the mouse position
 	 */
 	public Point2D getMouseWorldPosition() {
-		return Point2D.copyOf(mousePosition); 
+		return Point2D.copyOf(this.mousePosition); 
 	}
 	
 	/**
 	 * Displays all the elements in objects which have a renderer
 	 * @param objects - List of game objects
 	 */
-	public void render(List<AbstractGameObject> objects) {
-		clear();
+	public void render(final List<AbstractGameObject> objects) {
+		this.clear();
 		objects.stream().filter(o -> o.getRenderer() != null).forEach(o -> o.getRenderer().paint(getGraphics()));
-		swapCanvas();
+		this.swapCanvas();
 	}
 	
 	/**
 	 * Swap the buffer canvas with the active one
 	 */
 	private void swapCanvas() {
-		Canvas temp = this.bufferCanvas;
+		final Canvas temp = this.bufferCanvas;
 		this.bufferCanvas = this.activeCanvas;
 		this.activeCanvas = temp;
 	}
@@ -110,6 +110,6 @@ public class GameScene {
 	 * Clears the buffer canvas
 	 */
 	public void clear() {
-		getGraphics().clearRect(0, 0, this.size, this.size);
+		this.getGraphics().clearRect(0, 0, this.size, this.size);
 	}
 }
