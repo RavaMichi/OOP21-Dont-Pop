@@ -30,7 +30,8 @@ public class GameApplication extends Application {
 	 */
 	static {
 		Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
+//		screenSize = (int) (0.95 * Math.min(screenBounds.getWidth(), screenBounds.getHeight()));
+		screenSize = 720;
 	}
 	
 	/**

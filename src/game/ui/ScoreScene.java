@@ -4,7 +4,8 @@ import game.engine.GameApplication;
 import game.engine.ScoreManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 
 /**
  * ScoreScene displays a GUI showing your current score in a beautiful table.
@@ -12,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 public class ScoreScene {
 	
 	private final Scene scene;
+	private final static int DEFAULT_SIZE = 300;
 	
 	/**
 	 * Creates & initializes a ScoreScene.
@@ -31,16 +33,14 @@ public class ScoreScene {
 //		BuilderController controller = loader.getController();
 		
 		//load GUI from FXML
-		BorderPane root = loader.load();
+		AnchorPane root = loader.load();
 
+		double scaleFactor = (double)screenSize / DEFAULT_SIZE;
+                Scale scaleTransformation = new Scale(scaleFactor, scaleFactor, 0, 0);
+                root.getTransforms().add(scaleTransformation);
+		
 		this.scene = new Scene(root, screenSize, screenSize);
 		this.scene.getStylesheets().add(getClass().getResource("/game/css/scorescene-styles.css").toExternalForm());
-//		stage.setTitle("Score Ranking");
-//		stage.setWidth(GameApplication.screenSize * 0.90);
-//		stage.setHeight(GameApplication.screenSize * 0.90);
-//		stage.setResizable(false);
-//		stage.setScene(scene);
-//		stage.show();
 	}
 	
 	/**
