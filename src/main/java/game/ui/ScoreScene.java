@@ -23,7 +23,7 @@ public class ScoreScene {
 	 */
 	public ScoreScene(final ScoreManager scoreManager, final GameApplication application, final int screenSize) throws Exception {
 		final FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/game/fxml/scorescene.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/scorescene.fxml"));
 		
 		//controller created here
 		final ScoreSceneController controller = new ScoreSceneController(scoreManager, application, screenSize);
@@ -40,7 +40,7 @@ public class ScoreScene {
         root.getTransforms().add(scaleTransformation);
 		
 		this.scene = new Scene(root, screenSize, screenSize);
-		this.scene.getStylesheets().add(getClass().getResource("/game/css/scorescene-styles.css").toExternalForm());
+		this.scene.getStylesheets().add(getClass().getResource("/css/scorescene-styles.css").toExternalForm());
 	}
 	
 	/**

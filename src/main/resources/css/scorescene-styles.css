@@ -1,42 +1,42 @@
 .label {
     -fx-font-weight: bold;
-    -fx-font-size: 12px;
+    /* -fx-font-size: 12px; */
     -fx-text-fill: #fe6198;
 }
 
 /* YOUR SCORE */
 #your-score-label {
-    -fx-font-size: 12px;
-    /*-fx-padding:80 0 0 0;*/
+    /* -fx-font-size: 40px; */
+    /* -fx-padding:80 0 0 0; */
 }
 #your-score-table {
-    -fx-max-height: 120;
-    -fx-pref-height: 92px;
+    /* -fx-max-height: 120; */
+    /* -fx-pref-height: 92px; */
 }
-#your-score {
+/* #your-score {
     -fx-padding: 0 0 10 0;
     -fx-alignment: center;
-}
+} */
 
 /* LEADERBOARD */
 #leaderboard-label {
-    -fx-font-size: 40px;
-    -fx-font-family: fantasy;
-    -fx-padding: 0 0 0 0;
+    /* -fx-font-size: 40px; */
+    /* -fx-font-family: fantasy; */
+    /* -fx-padding: 0 0 0 0; */
 }
 /* #leaderboard-label:hover {
     -fx-text-fill: orange;
 } */
 #leaderboard-table {
-    /*-fx-pref-height: 495px;*/
+    /* -fx-pref-height: 92px; */
 }
-#leaderboard {
+/* #leaderboard {
     -fx-alignment: center;
-}
+} */
 .table-view .label {
     -fx-text-fill: #fe6198;
     /* -fx-padding: 20 0 20 0; */
-    -fx-font: normal bold 15 sans-serif;
+    /* -fx-font: normal bold 15 sans-serif; */
 }
 
 /* TABLE COLUMNS*/
@@ -57,7 +57,7 @@
 .button {
     -fx-text-fill: white;
     -fx-background-color: #fe6198;
-    -fx-label-padding: 10 20 10 20;
+    /* -fx-label-padding: 10 20 10 20; */
     -fx-background-radius: 5 5 5 5;
 }
 .button:hover {
@@ -66,10 +66,10 @@
 .button:armed {
     -fx-background-color: #7f304c;
 }
-#menu {
+/* #menu {
     -fx-padding: 20 0 0 0;
     -fx-alignment: center;
-}
+} */
 
 .table-view {
     /* -fx-background-position: center;
@@ -86,8 +86,9 @@
 /* HEADER */
 .table-view .column-header {
     -fx-background-color: transparent;
-    -fx-size: 45px;
-    -fx-min-height: 45px;
+    /* -fx-size: 45px; */
+    /* -fx-min-height: 45px; */
+    /* -fx-pref-height: 45px; */
     -fx-cursor: hand;
 }
 .table-view .column-header .label {
@@ -95,13 +96,14 @@
     -fx-font-weight: bold;
     -fx-text-fill: white;
     -fx-alignment: center;
-    -fx-padding: 5 5 5 5;
+    /* -fx-padding: 5 5 5 5; */
 }
 .table-view .filler {
     -fx-background-radius: 0 5 0 0;
     -fx-background-color: transparent;
-    -fx-size: 45px;
-    -fx-min-height: 45px;
+    /* -fx-size: 45px; */
+    /* -fx-min-height: 45px; */
+    /* -fx-pref-height: 45px; */
 }
 .table-view .show-hide-columns-button{
     -fx-background-color: #fe6198;  
@@ -138,8 +140,8 @@
 .table-row-cell {
     -fx-background-color: transparent; 
     -fx-border-width: 0.0;
-    -fx-padding: 10.0 0.0 10.0 0.0;  
-    -fx-pref-height: 45.0px;
+    /* -fx-padding: 10.0 0.0 10.0 0.0;   */
+    /* -fx-pref-height: 45.0px; */
 }
 .table-row-cell:filled:even{
     -fx-background-color: white;
@@ -161,7 +163,7 @@
 }
 .table-row-cell .table-column{
     -fx-border-width: 0.0;  
-    -fx-padding: 0.0 0.0 0.0 5.0;   
+    /* -fx-padding: 0.0 0.0 0.0 5.0;    */
 }
 /* CELL TEXT */
 .table-row-cell .text{
@@ -170,13 +172,13 @@
 }
 /* VERTICAL SCROLL BAR */
 .table-view .scroll-bar:vertical{      
-    -fx-padding: 0.0 0.0 0.0 0.0;
+    /* -fx-padding: 0.0 0.0 0.0 0.0; */
 }
 /* HORIZONTAL SCROLL BAR */
 .table-view .scroll-bar:horizontal {
-    -fx-padding: 0.0 0.0 0.0 0.0;
+    /* -fx-padding: 0.0 0.0 0.0 0.0; */
 }
-/* I ADDED THIS */
+/* COLUMN HEADER BACKGROUND */
 .table-view .column-header-background {
     -fx-background-radius: 5.0 5.0 0.0 0.0;
     -fx-background-color: #fe6198;
@@ -184,7 +186,7 @@
 
 #anchor-pane {
     -fx-background-color: #fcdee9;
-    -fx-spacing: 5;
-    -fx-padding: 10 10 10 10;
+    /* -fx-spacing: 5; */
+    /* -fx-padding: 10 10 10 10; */
     -fx-alignment: center;
 }

@@ -1,6 +1,6 @@
 #title {
     -fx-font-weight: bold;
-    -fx-font-size: 130px;
+    -fx-font-size: 35px;
     -fx-text-fill: #fe6198;
 }
 
@@ -29,13 +29,8 @@
 .button:armed {
     -fx-background-color: #6f2c42;
 }
-#buttons {
-    -fx-padding: 20 0 0 0;
-    -fx-alignment: center;
-    -fx-spacing: 20;
-}
 
-#border-pane {
+#anchor-pane {
     -fx-background-color: #fcdee9;
     
 }
