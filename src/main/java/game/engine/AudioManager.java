@@ -20,7 +20,7 @@ public class AudioManager {
 	 * It's used for long audio files.
 	 */
 	public static enum Music {
-		BALOON_GROOVE("audio/BaloonGroove.mp3");
+		BALOON_GROOVE("audio/BaloonGroove.wav");
 
 		private Music(final String path) {
 			final Media media = new Media(getResPath(path));
@@ -35,7 +35,7 @@ public class AudioManager {
 	 * It's used for short audio clips.
 	 */
 	public static enum Sound {
-		POP("audio/pop.mp3"),
+		POP("audio/pop.wav"),
 		SHIELD_GET("audio/shield_equip.wav"),
 		SHIELD_HIT("audio/shield_hit.wav"),
 		MULTIPLIER_GET("audio/2x_equip.wav"),

@@ -186,10 +186,11 @@ public class GameApplication extends Application {
 	}
 	
 	/**
-	 * Exit function: exit from the program.
+	 * Exit function: exit from program.
 	 */
 	private void exit() {
-		System.exit(0);
+//		System.exit(0);
+		Platform.exit();
 	}
 	
 }
