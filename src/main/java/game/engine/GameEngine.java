@@ -206,7 +206,7 @@ public class GameEngine implements Runnable {
                 } else {
                 	this.player.setShieldImage();
                 }
-			this.audioManager.playSound(Sound.SHIELD_GET, 0.4);
+                this.audioManager.playSound(Sound.SHIELD_GET, 0.4);
                 break;
             case PWRUP_MULTIPLIER:
                 this.hasMultiplier = true;
@@ -345,9 +345,15 @@ public class GameEngine implements Runnable {
 		    if (enemy.getCollider().checkCollision(
 		    		(CircleCollider) this.player.getCollider())) {
 		        if (this.hasShield) {
+		            //shield only -> remove shield
 			        this.hasShield = false;
 			        this.destroy(enemy);
-			        this.player.setBaloonImage();
+			        if (this.hasMultiplier) {
+			            //if multiplier is on, leave it that way
+	                    this.player.setGoldenBaloonImage();
+			        } else {
+		                 this.player.setBaloonImage();
+			        }
 	            	this.audioManager.playSound(Sound.SHIELD_HIT, 0.5);
                 } else {
                     return true;
